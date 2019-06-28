@@ -11,11 +11,10 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
 
-    var background = SKSpriteNode()
+    var background: SKSpriteNode!
     let scoreLabel = SKLabelNode(fontNamed: "AvenirNext")
     let levelLabel = SKLabelNode(fontNamed: "AvenirNext")
     
-    // Nodes
     var bgNode: SKNode!
     var fgNode: SKNode!
     var overlay: SKNode!
@@ -24,6 +23,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var catchLinePath: CGMutablePath!
     var laser: SKSpriteNode!
     var dotCount: Int = 0
+    var shipOne: SKSpriteNode!
+    var shipTwo: SKSpriteNode!
+    
     
     override func didMove(to view: SKView) {
         print("didMove")
@@ -43,7 +45,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if let dot1 = fgNode.childNode(withName: "greenDot_\(dotCount - 1)") as? SKSpriteNode {
             greenDot(position: positionInScene)
-
             lineBetween(dot1: dot1, dot2: fgNode.childNode(withName: "greenDot_\(dotCount - 1)") as! SKSpriteNode)
         } else {
             greenDot(position: positionInScene)
@@ -61,11 +62,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        }
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
-        let positionInScene = touch.location(in: self)
-        stretchLaserTo(positionInScene)
-    }
+//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        guard let touch = touches.first else { return }
+//        let positionInScene = touch.location(in: self)
+//        stretchLaserTo(positionInScene)
+//    }
 
     
     func removeDot(_ dot: SKSpriteNode) {
@@ -77,6 +78,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let worldNode = childNode(withName: "World")!
         fgNode = worldNode.childNode(withName: "Foreground")
         bgNode = worldNode.childNode(withName: "Background")
+        background = bgNode.childNode(withName: "background") as! SKSpriteNode
+        background.size = size
     }
     
     func newLaser() -> SKSpriteNode {
@@ -87,6 +90,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return laser
     }
     
+    func basicShip() -> SKSpriteNode {
+        let ship = 
+    }
     
     func greenDot(position: CGPoint) {
         let gd = SKSpriteNode(imageNamed: "greendot")
@@ -167,6 +173,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
        
     }
+    
+    // MARK: Animation
+    
     
 
 }
