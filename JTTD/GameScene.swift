@@ -43,54 +43,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if let dot1 = fgNode.childNode(withName: "greenDot_\(dotCount - 1)") as? SKSpriteNode {
             greenDot(position: positionInScene)
-        
+
             lineBetween(dot1: dot1, dot2: fgNode.childNode(withName: "greenDot_\(dotCount - 1)") as! SKSpriteNode)
         } else {
             greenDot(position: positionInScene)
         }
         
-//        guard let touchedNode = self.nodes(at: positionInScene).first as? SKSpriteNode else { return }
-//        if let dot = touchedNode.name {
-//            if dot == "dot" {
-//                removeDot(touchedNode)
-//            }
-//        }
-        
-        
-        
 //        if let _ = fgNode.childNode(withName: "laser") {
 //            print("already there")
 //        } else {
-//            laser.centerRect = CGRect(x: 0.42857143, y: 0.57142857, width: 0.14285714, height: 0.14285714)
-//            laser.anchorPoint = CGPoint(x: 0, y: 0.5)
+//
+//            laser = newLaser()
+//            laser.anchorPoint = CGPoint(x: 0, y: 0)
 //            laser.position = positionInScene
+//            laser.setScale(1)
 //            fgNode.addChild(laser)
 //        }
     }
     
-//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        guard let touch = touches.first else { return }
-//        let positionInScene = touch.location(in: self)
-//        stretchLaserTo(positionInScene)
-//    }
-   
-//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        guard let touch = touches.first else { return }
-//        let positionInScene = touch.location(in: self)
-//        print(positionInScene)
-//        guard let touchedNode = self.nodes(at: positionInScene).first as? SKSpriteNode else { return }
-//        if let dot = touchedNode.name {
-//            if dot == "dot" {
-//                removeDot(touchedNode)
-//            }
-//        }
-//        endLine(positionInScene)
-//    }
-    
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        guard let touch = touches.first
-//    }
-//
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        let positionInScene = touch.location(in: self)
+        stretchLaserTo(positionInScene)
+    }
+
     
     func removeDot(_ dot: SKSpriteNode) {
         dot.removeFromParent()
@@ -105,41 +81,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func newLaser() -> SKSpriteNode {
         laser = SKSpriteNode(imageNamed: "laser")
+//        laser.size = CGSize(width: 10, height: 10)
         laser.centerRect = CGRect(x: 0.42857143, y: 0.57142857, width: 0.14285714, height: 0.14285714)
         laser.zPosition = 100
         return laser
     }
     
-//    func backgroundNode() -> SKSpriteNode {
-//        let backgroundNode = SKSpriteNode()
-//        backgroundNode.anchorPoint = CGPoint.zero
-//        backgroundNode.size = CGSize(width: 1125, height: 2436)
-//        backgroundNode.color = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-//        backgroundNode.zPosition = 1
-//        return backgroundNode
-//    }
-    
-    
-    func debugDrawPlayableArea() {
-        guard let view = view else { return }
-        let width = size.width
-        let height = size.height
-        border = SKShapeNode(rect: CGRect(x: 0, y: 0, width: width, height: height))
-        border.strokeColor = SKColor.red
-        border.lineWidth = 4.0
-        border.zPosition = 1000
-    }
-    
-//    func debugDrawPlayableArea() {
-//        guard let view = view else { return }
-//        let width = size.width
-//        let height = size.height
-//        let shape = SKShapeNode(rect: CGRect(origin: CGPoint.zero, size: CGSize(width: width, height: height)))
-//        shape.strokeColor = SKColor.red
-//        shape.lineWidth = 4.0
-//        shape.zPosition = 1000
-//        fgNode.addChild(shape)
-//    }
     
     func greenDot(position: CGPoint) {
         let gd = SKSpriteNode(imageNamed: "greendot")
@@ -165,14 +112,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func stretchLaserTo(_ point: CGPoint) {
-        let offset = point - laser.anchorPoint
-        let length = offset.length()
-        let direction = offset / CGFloat(length)
-        
-        
-        rotate(sprite: laser, direction: direction)
+        let dx = point.x - laser.position.x
+        let dy = point.y - laser.position.y
+        let length = sqrt(dx*dx + dy*dy)
+        let angle = atan2(dy, dx)
+        laser.xScale = length / laser.size.width
+        laser.zRotation = angle
     }
-    
     
     func rotate(sprite: SKSpriteNode, direction: CGPoint) {
         sprite.zRotation = atan2(direction.y, direction.x)
@@ -194,23 +140,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         dot.run(seq)
         fgNode.addChild(dot)
     }
-    
 
-    
-//    func startLine(_ start: CGPoint) {
-//        catchLine = SKShapeNode()
-//        catchLinePath = CGMutablePath()
-//        catchLinePath.move(to: start)
-//        catchLine.path = catchLinePath
-//        catchLine.zPosition = 10
-//        catchLine.strokeColor = SKColor.red
-//        catchLine.lineWidth = 10
-//        fgNode.addChild(catchLine)
-//    }
-    
-//    let offset = location - zombie.position
-//    let length = offset.length()
-//    let direction = offset / CGFloat(length)
     
     func endLine(_ end: CGPoint) {
         
