@@ -12,7 +12,7 @@ class GameViewController: UIViewController {
         if let skView = self.view as! SKView? {
             skView.showsFPS = true
             skView.showsNodeCount = true
-            skView.ignoresSiblingOrder = true
+//            skView.ignoresSiblingOrder = true
             skView.showsPhysics = true
             skView.isMultipleTouchEnabled = true
             if let scene = SKScene(fileNamed: "GameScene") {

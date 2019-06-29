@@ -9,7 +9,10 @@
 /* Begin PBXBuildFile section */
 		31119D9F22958C460097178C /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31119D9E22958C460097178C /* AuthVC.swift */; };
 		313BF5A022BADBFF003000D2 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 313BF59F22BADBFF003000D2 /* GameScene.sks */; };
-		315E0DCA22C5883C00878219 /* BasicShip.sks in Resources */ = {isa = PBXBuildFile; fileRef = 315E0DC922C5883C00878219 /* BasicShip.sks */; };
+		315E0DCD22C6953E00878219 /* BasicShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E0DCC22C6953E00878219 /* BasicShip.swift */; };
+		315F687722C815310062646A /* TestSprite.sks in Resources */ = {isa = PBXBuildFile; fileRef = 315F687622C815310062646A /* TestSprite.sks */; };
+		315F687922C816670062646A /* TestShip.sks in Resources */ = {isa = PBXBuildFile; fileRef = 315F687822C816670062646A /* TestShip.sks */; };
+		315F687B22C8167F0062646A /* TestShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315F687A22C8167F0062646A /* TestShip.swift */; };
 		316E20E52297430F00C44494 /* InitialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316E20E42297430F00C44494 /* InitialVC.swift */; };
 		31D7D6D52294262800ADF4F6 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D7D6D42294262800ADF4F6 /* LoginVC.swift */; };
 		31D7D6DB2294287300ADF4F6 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D7D6DA2294287300ADF4F6 /* DataService.swift */; };
@@ -29,7 +32,10 @@
 		1929420761F2142F544C3BC8 /* Pods_JTTD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JTTD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		31119D9E22958C460097178C /* AuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
 		313BF59F22BADBFF003000D2 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		315E0DC922C5883C00878219 /* BasicShip.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BasicShip.sks; sourceTree = "<group>"; };
+		315E0DCC22C6953E00878219 /* BasicShip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicShip.swift; sourceTree = "<group>"; };
+		315F687622C815310062646A /* TestSprite.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestSprite.sks; sourceTree = "<group>"; };
+		315F687822C816670062646A /* TestShip.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestShip.sks; sourceTree = "<group>"; };
+		315F687A22C8167F0062646A /* TestShip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestShip.swift; sourceTree = "<group>"; };
 		316E20E42297430F00C44494 /* InitialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialVC.swift; sourceTree = "<group>"; };
 		31D7D6D42294262800ADF4F6 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		31D7D6DA2294287300ADF4F6 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
@@ -71,9 +77,20 @@
 		315E0DC622C57D2B00878219 /* Scene Files */ = {
 			isa = PBXGroup;
 			children = (
-				315E0DC922C5883C00878219 /* BasicShip.sks */,
+				313BF59F22BADBFF003000D2 /* GameScene.sks */,
+				315F687622C815310062646A /* TestSprite.sks */,
+				315F687822C816670062646A /* TestShip.sks */,
 			);
 			path = "Scene Files";
+			sourceTree = "<group>";
+		};
+		315E0DCB22C6952B00878219 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				315E0DCC22C6953E00878219 /* BasicShip.swift */,
+				315F687A22C8167F0062646A /* TestShip.swift */,
+			);
+			path = Nodes;
 			sourceTree = "<group>";
 		};
 		31D7D6D82294284300ADF4F6 /* Views */ = {
@@ -119,10 +136,10 @@
 				31D7D6D92294285900ADF4F6 /* Firebase */,
 				31D7D6D82294284300ADF4F6 /* Views */,
 				315E0DC622C57D2B00878219 /* Scene Files */,
-				31ED1D962274B09D003BBE49 /* AppDelegate.swift */,
+				315E0DCB22C6952B00878219 /* Nodes */,
 				31ED1D9C2274B09D003BBE49 /* GameScene.swift */,
-				313BF59F22BADBFF003000D2 /* GameScene.sks */,
 				31ED1D9E2274B09D003BBE49 /* GameViewController.swift */,
+				31ED1D962274B09D003BBE49 /* AppDelegate.swift */,
 				31ED1DA02274B09D003BBE49 /* Main.storyboard */,
 				31ED1DA32274B09F003BBE49 /* Assets.xcassets */,
 				31ED1DAE2274B13C003BBE49 /* MyUtils.swift */,
@@ -205,10 +222,11 @@
 			files = (
 				31ED1DA22274B09D003BBE49 /* Main.storyboard in Resources */,
 				313BF5A022BADBFF003000D2 /* GameScene.sks in Resources */,
-				315E0DCA22C5883C00878219 /* BasicShip.sks in Resources */,
 				31F82B502295BF7C0046CFF4 /* GoogleService-Info.plist in Resources */,
 				31ED1DA42274B09F003BBE49 /* Assets.xcassets in Resources */,
 				31ED1DA72274B09F003BBE49 /* LaunchScreen.storyboard in Resources */,
+				315F687722C815310062646A /* TestSprite.sks in Resources */,
+				315F687922C816670062646A /* TestShip.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,8 +294,10 @@
 			files = (
 				316E20E52297430F00C44494 /* InitialVC.swift in Sources */,
 				31ED1D9D2274B09D003BBE49 /* GameScene.swift in Sources */,
+				315E0DCD22C6953E00878219 /* BasicShip.swift in Sources */,
 				31ED1D9F2274B09D003BBE49 /* GameViewController.swift in Sources */,
 				31119D9F22958C460097178C /* AuthVC.swift in Sources */,
+				315F687B22C8167F0062646A /* TestShip.swift in Sources */,
 				31ED1D972274B09D003BBE49 /* AppDelegate.swift in Sources */,
 				31ED1DAF2274B13C003BBE49 /* MyUtils.swift in Sources */,
 				31D7D6DB2294287300ADF4F6 /* DataService.swift in Sources */,

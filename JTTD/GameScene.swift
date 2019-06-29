@@ -9,6 +9,10 @@
 import SpriteKit
 import GameplayKit
 
+protocol EventListenerNode {
+    func didMoveToScene()
+}
+
 class GameScene: SKScene, SKPhysicsContactDelegate {
 
     var background: SKSpriteNode!
@@ -23,20 +27,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var catchLinePath: CGMutablePath!
     var laser: SKSpriteNode!
     var dotCount: Int = 0
-    var shipOne: SKSpriteNode!
-    var shipTwo: SKSpriteNode!
-    
+    var shipOne: BasicShip!
+    var shipTwo: BasicShip!
     
     override func didMove(to view: SKView) {
         print("didMove")
-        setupNodes()
-        
-//        debugDrawPlayableArea()
-        self.physicsWorld.contactDelegate = self
+//        basicShip()
+//        self.physicsWorld.contactDelegate = self
 //
 //        run(SKAction.repeatForever(SKAction.sequence([SKAction.run() { [weak self] in
 //            self?.scaleDot()
 //            }, SKAction.wait(forDuration: 1.0)])))
+        
+        enumerateChildNodes(withName: "//*", using: { node, _ in
+            if let eventListenerNode = node as? EventListenerNode {
+                eventListenerNode.didMoveToScene()
+            }
+        })
+        
+        setupNodes()
+
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -78,8 +88,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let worldNode = childNode(withName: "World")!
         fgNode = worldNode.childNode(withName: "Foreground")
         bgNode = worldNode.childNode(withName: "Background")
-        background = bgNode.childNode(withName: "background") as! SKSpriteNode
-        background.size = size
+        background = bgNode.childNode(withName: "background") as? SKSpriteNode
+
+        shipOne = fgNode.childNode(withName: "shipOne") as? BasicShip
+//        shipTwo = fgNode.childNode(withName: "//basicShip") as? BasicShip
     }
     
     func newLaser() -> SKSpriteNode {
@@ -90,8 +102,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return laser
     }
     
-    func basicShip() -> SKSpriteNode {
-        let ship = 
+    func basicShip() {
+        guard let ship = SKSpriteNode(fileNamed: "BasicShip")?.childNode(withName: "basicShip") else { return }
+        ship.zPosition = 101
+        ship.setScale(1)
+        ship.position = CGPoint.zero
+        fgNode.addChild(ship)
     }
     
     func greenDot(position: CGPoint) {
