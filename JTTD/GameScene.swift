@@ -27,12 +27,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var catchLinePath: CGMutablePath!
     var laser: SKSpriteNode!
     var dotCount: Int = 0
-    var shipOne: BasicShip!
-    var shipTwo: BasicShip!
+    var shipOne: TestShip!
+    var shipTwo: TestShip!
+    var dt: TimeInterval = 0
+    var velocity = CGPoint.zero
     
     override func didMove(to view: SKView) {
         print("didMove")
-//        basicShip()
+        setupNodes()
+
+        basicShips()
 //        self.physicsWorld.contactDelegate = self
 //
 //        run(SKAction.repeatForever(SKAction.sequence([SKAction.run() { [weak self] in
@@ -45,38 +49,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         })
         
-        setupNodes()
 
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let positionInScene = touch.location(in: self)
+        move(sprite: shipOne, velocity: positionInScene)
         
-        if let dot1 = fgNode.childNode(withName: "greenDot_\(dotCount - 1)") as? SKSpriteNode {
-            greenDot(position: positionInScene)
-            lineBetween(dot1: dot1, dot2: fgNode.childNode(withName: "greenDot_\(dotCount - 1)") as! SKSpriteNode)
-        } else {
-            greenDot(position: positionInScene)
-        }
-        
-//        if let _ = fgNode.childNode(withName: "laser") {
-//            print("already there")
+//        if let dot1 = fgNode.childNode(withName: "greenDot_\(dotCount - 1)") as? SKSpriteNode {
+//            greenDot(position: positionInScene)
+//            lineBetween(dot1: dot1, dot2: fgNode.childNode(withName: "greenDot_\(dotCount - 1)") as! SKSpriteNode)
 //        } else {
-//
-//            laser = newLaser()
-//            laser.anchorPoint = CGPoint(x: 0, y: 0)
-//            laser.position = positionInScene
-//            laser.setScale(1)
-//            fgNode.addChild(laser)
+//            greenDot(position: positionInScene)
 //        }
     }
-    
-//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        guard let touch = touches.first else { return }
-//        let positionInScene = touch.location(in: self)
-//        stretchLaserTo(positionInScene)
-//    }
 
     
     func removeDot(_ dot: SKSpriteNode) {
@@ -89,9 +76,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fgNode = worldNode.childNode(withName: "Foreground")
         bgNode = worldNode.childNode(withName: "Background")
         background = bgNode.childNode(withName: "background") as? SKSpriteNode
-
-        shipOne = fgNode.childNode(withName: "shipOne") as? BasicShip
-//        shipTwo = fgNode.childNode(withName: "//basicShip") as? BasicShip
     }
     
     func newLaser() -> SKSpriteNode {
@@ -102,12 +86,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return laser
     }
     
-    func basicShip() {
-        guard let ship = SKSpriteNode(fileNamed: "BasicShip")?.childNode(withName: "basicShip") else { return }
-        ship.zPosition = 101
-        ship.setScale(1)
-        ship.position = CGPoint.zero
-        fgNode.addChild(ship)
+    func basicShips() {
+        shipOne = SKSpriteNode(fileNamed: "TestShip")?.childNode(withName: "basicShip") as? TestShip
+        shipOne.setScale(1)
+        shipOne.position = CGPoint(x: -50, y: 0)
+        
+        shipTwo = SKSpriteNode(fileNamed: "TestShip")?.childNode(withName: "basicShip") as? TestShip
+        shipTwo.setScale(1)
+        shipTwo.position = CGPoint(x: 50, y: 0)
+        
+        shipOne.move(toParent: fgNode)
+        shipTwo.move(toParent: fgNode)
+//        
+//        fgNode.addChild(shipOne)
+//        fgNode.addChild(shipTwo)
     }
     
     func greenDot(position: CGPoint) {
@@ -192,6 +184,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // MARK: Animation
     
+    func moveShipToward(location: CGPoint) {
+        let offset = location - shipOne.position
+        let length = offset.length()
+        let direction = offset / CGFloat(length)
+        velocity = direction * 700
+        move(sprite: shipOne, velocity: velocity)
+    }
     
+    
+    func move(sprite: SKSpriteNode, velocity: CGPoint) {
+        let amountToMove = velocity * CGFloat(dt)
+        sprite.position += amountToMove
+    }
 
 }

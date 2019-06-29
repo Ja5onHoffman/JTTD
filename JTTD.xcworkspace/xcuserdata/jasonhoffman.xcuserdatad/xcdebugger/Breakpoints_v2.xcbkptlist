@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JTTD/AppDelegate.swift"
-            timestampString = "583539122.336221"
+            timestampString = "583541290.279741"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JTTD/GameScene.swift"
-            timestampString = "583539122.336481"
+            timestampString = "583541719.696655"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "didMove(to:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -54,11 +54,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JTTD/AppDelegate.swift"
-            timestampString = "583539122.33656"
+            timestampString = "583541290.279887"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "14"
@@ -67,14 +67,14 @@
             landmarkType = "3">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "JTTD.AppDelegate.__allocating_init() -&gt; JTTD.AppDelegate"
                   moduleName = "JTTD"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jasonhoffman/Dropbox/Code/ProgInSwift/JTTD/JTTD/JTTD/AppDelegate.swift"
-                  timestampString = "583460263.495326"
+                  timestampString = "583539959.1686029"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -82,14 +82,14 @@
                   offsetFromSymbolStart = "12">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "JTTD.AppDelegate.init() -&gt; JTTD.AppDelegate"
                   moduleName = "JTTD"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jasonhoffman/Dropbox/Code/ProgInSwift/JTTD/JTTD/JTTD/AppDelegate.swift"
-                  timestampString = "583460263.497925"
+                  timestampString = "583539959.1718301"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "16"
@@ -97,14 +97,14 @@
                   offsetFromSymbolStart = "20">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "JTTD.AppDelegate.__deallocating_deinit"
                   moduleName = "JTTD"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jasonhoffman/Dropbox/Code/ProgInSwift/JTTD/JTTD/JTTD/AppDelegate.swift"
-                  timestampString = "583460263.5003051"
+                  timestampString = "583539959.176517"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -112,14 +112,14 @@
                   offsetFromSymbolStart = "16">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "main"
                   moduleName = "JTTD"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jasonhoffman/Dropbox/Code/ProgInSwift/JTTD/JTTD/JTTD/AppDelegate.swift"
-                  timestampString = "583460263.502774"
+                  timestampString = "583539959.181458"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -127,6 +127,22 @@
                   offsetFromSymbolStart = "12">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JTTD/GameScene.swift"
+            timestampString = "583541719.697208"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "basicShips()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
