@@ -29,13 +29,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var dotCount: Int = 0
     var shipOne: TestShip!
     var shipTwo: TestShip!
+    var lastTouchLocation: CGPoint?
+    var lastUpdateTime: TimeInterval = 0
     var dt: TimeInterval = 0
     var velocity = CGPoint.zero
+    let shipMovePointsPerSec: CGFloat = 700.0
     
     override func didMove(to view: SKView) {
         print("didMove")
         setupNodes()
-
         basicShips()
 //        self.physicsWorld.contactDelegate = self
 //
@@ -55,20 +57,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let positionInScene = touch.location(in: self)
-        move(sprite: shipOne, velocity: positionInScene)
         
-//        if let dot1 = fgNode.childNode(withName: "greenDot_\(dotCount - 1)") as? SKSpriteNode {
-//            greenDot(position: positionInScene)
-//            lineBetween(dot1: dot1, dot2: fgNode.childNode(withName: "greenDot_\(dotCount - 1)") as! SKSpriteNode)
-//        } else {
-//            greenDot(position: positionInScene)
-//        }
+        if shipOne.moved {
+            shipTwo.move(to: positionInScene, speed: 0.5)
+            shipOne.moved = !shipOne.moved
+        } else {
+            shipOne.move(to: positionInScene, speed: 0.5)
+        }
     }
 
     
-    func removeDot(_ dot: SKSpriteNode) {
-        dot.removeFromParent()
-    }
+//    func sceneTouched(location: CGPoint) {
+//        lastTouchLocation = location
+//        moveOne(velocity: location)
+//        moveTwo(velocity: location)
+//    }
     
     // MARK: Setup
     func setupNodes() {
@@ -95,11 +98,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         shipTwo.setScale(1)
         shipTwo.position = CGPoint(x: 50, y: 0)
         
+
         shipOne.move(toParent: fgNode)
         shipTwo.move(toParent: fgNode)
-//        
-//        fgNode.addChild(shipOne)
-//        fgNode.addChild(shipTwo)
     }
     
     func greenDot(position: CGPoint) {
@@ -121,7 +122,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let l = newLaser()
         l.xScale = length / laser.size.width
         l.position = CGPoint(midPointBetweenA: dot1.position, andB: dot2.position)
-        rotate(sprite: l, direction: direction)
+//        rotate(sprite: l, direction: direction)
         fgNode.addChild(l)
     }
     
@@ -134,9 +135,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         laser.zRotation = angle
     }
     
-    func rotate(sprite: SKSpriteNode, direction: CGPoint) {
-        sprite.zRotation = atan2(direction.y, direction.x)
-    }
+
     
     func scaleDot() {
         let dot = SKSpriteNode(imageNamed: "dot")
@@ -157,7 +156,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     
     func endLine(_ end: CGPoint) {
-        
         catchLinePath.addLine(to: end)
         catchLine.path = catchLinePath
     }
@@ -178,9 +176,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fgNode.addChild(catchLine)
     }
     
-    override func update(_ currentTime: TimeInterval) {
-       
-    }
+
     
     // MARK: Animation
     
@@ -189,13 +185,39 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let length = offset.length()
         let direction = offset / CGFloat(length)
         velocity = direction * 700
-        move(sprite: shipOne, velocity: velocity)
+        let moveAction = SKAction.move(to: location, duration: 0.5)
+        shipOne.run(moveAction)
     }
     
     
-    func move(sprite: SKSpriteNode, velocity: CGPoint) {
-        let amountToMove = velocity * CGFloat(dt)
-        sprite.position += amountToMove
+    func move(ship: SKSpriteNode, toward location: CGPoint) {
+        let moveAction = SKAction.move(to: location, duration: 0.5)
+        ship.run(moveAction)
     }
+    
+    
+    func rotate(sprite: SKSpriteNode, direction: CGPoint, rotateRadiansPerSec: CGFloat) {
+        let shortest = shortestAngleBetween(angle1: sprite.zRotation, angle2: velocity.angle)
+        let amountToRotate = min(rotateRadiansPerSec * CGFloat(dt), abs(shortest))
+        sprite.zRotation += shortest.sign() * amountToRotate
+    }
+    
+    
+    // MARK: Update
+    override func update(_ currentTime: TimeInterval) {
+        if lastUpdateTime > 0 {
+            dt = currentTime - lastUpdateTime
+            shipOne.dt = dt
+            shipTwo.dt = dt
+        } else {
+            dt = 0
+            shipOne.dt = dt
+            shipTwo.dt = dt
+        }
+        lastUpdateTime = currentTime
+        shipOne.lastUpdateTime = currentTime
+        shipTwo.lastUpdateTime = currentTime
+    }
+
 
 }

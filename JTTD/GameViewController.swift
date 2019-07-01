@@ -14,7 +14,6 @@ class GameViewController: UIViewController {
             skView.showsNodeCount = true
 //            skView.ignoresSiblingOrder = true
             skView.showsPhysics = true
-            skView.isMultipleTouchEnabled = true
             if let scene = SKScene(fileNamed: "GameScene") {
                 scene.size = CGSize(width: 1125, height: 2436)
                 scene.scaleMode = .aspectFill
