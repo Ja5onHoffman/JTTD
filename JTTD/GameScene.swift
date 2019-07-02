@@ -59,19 +59,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let positionInScene = touch.location(in: self)
         
         if shipOne.moved {
-            shipTwo.move(to: positionInScene, speed: 0.5)
-            shipOne.moved = !shipOne.moved
+            shipTwo.move(to: positionInScene, speed: 0.5) {
+                self.shipTwo.rotate(directionOf: self.shipOne.position)
+                self.shipOne.rotate(directionOf: self.shipTwo.position)
+                self.lineBetween(firstSprite: self.shipOne, secondSprite: self.shipTwo)
+            }
         } else {
-            shipOne.move(to: positionInScene, speed: 0.5)
+            shipOne.move(to: positionInScene, speed: 0.5, completion: nil)
         }
     }
 
-    
-//    func sceneTouched(location: CGPoint) {
-//        lastTouchLocation = location
-//        moveOne(velocity: location)
-//        moveTwo(velocity: location)
-//    }
     
     // MARK: Setup
     func setupNodes() {
@@ -97,8 +94,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         shipTwo = SKSpriteNode(fileNamed: "TestShip")?.childNode(withName: "basicShip") as? TestShip
         shipTwo.setScale(1)
         shipTwo.position = CGPoint(x: 50, y: 0)
-        
-
+    
         shipOne.move(toParent: fgNode)
         shipTwo.move(toParent: fgNode)
     }
@@ -115,15 +111,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fgNode.addChild(gd)
     }
     
-    func lineBetween(dot1: SKSpriteNode, dot2: SKSpriteNode) {
-        let offset = dot1.position - dot2.position
+    func lineBetween(firstSprite: SKSpriteNode, secondSprite: SKSpriteNode) {
+        let offset = firstSprite.position - secondSprite.position
         let length = offset.length()
         let direction = offset / CGFloat(length)
         let l = newLaser()
         l.xScale = length / laser.size.width
-        l.position = CGPoint(midPointBetweenA: dot1.position, andB: dot2.position)
-//        rotate(sprite: l, direction: direction)
+        rotate(sprite: l, direction: direction, rotateRadiansPerSec: 360)
+        l.position = CGPoint(midPointBetweenA: firstSprite.position, andB: secondSprite.position)
         fgNode.addChild(l)
+    }
+    
+    func laserFrom(firstShip: SKSpriteNode, to secondShip: SKSpriteNode) {
+        let p1 = firstShip.position
+        let p2 = secondShip.position
+        let dx = p1.x - p2.x
+        let dy = p1.y - p2.y
+        let length = sqrt(dx*dx + dy*dy)
+        let angle = atan2(dy, dx)
+        laser = newLaser()
+        laser.position = p1
+        laser.xScale = length / laser.size.width
+        laser.zRotation = angle
+        fgNode.addChild(laser)
     }
     
     func stretchLaserTo(_ point: CGPoint) {
@@ -134,9 +144,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         laser.xScale = length / laser.size.width
         laser.zRotation = angle
     }
-    
 
-    
     func scaleDot() {
         let dot = SKSpriteNode(imageNamed: "dot")
         dot.isUserInteractionEnabled = true
@@ -155,29 +163,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     
-    func endLine(_ end: CGPoint) {
-        catchLinePath.addLine(to: end)
-        catchLine.path = catchLinePath
-    }
-    
-    func drawLine(_ start: CGPoint, _ end: CGPoint) {
-        catchLine = SKShapeNode()
-        catchLinePath = CGMutablePath()
-        catchLinePath.move(to: start)
-        catchLine.path = catchLinePath
-        catchLine.zPosition = 10
-        catchLine.strokeColor = SKColor.red
-        catchLine.lineWidth = 10
-        
-//        let offset = start - end
-//        let length = offset.length()
-//        let direction = offset / CGFloat(length)
-        catchLinePath.addLines(between: [start, end])
-        fgNode.addChild(catchLine)
-    }
-    
-
-    
     // MARK: Animation
     
     func moveShipToward(location: CGPoint) {
@@ -190,7 +175,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     
-    func move(ship: SKSpriteNode, toward location: CGPoint) {
+    func move(ship: SKSpriteNode, toward location: CGPoint, completion: () -> Void?) {
         let moveAction = SKAction.move(to: location, duration: 0.5)
         ship.run(moveAction)
     }

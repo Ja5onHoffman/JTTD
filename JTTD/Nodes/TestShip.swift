@@ -33,14 +33,15 @@ class TestShip: SKSpriteNode, EventListenerNode {
         self.lastUpdateTime = lastUpdateTime
     }
     
-    func move(to location: CGPoint, speed: TimeInterval) {
+    func move(to location: CGPoint, speed: TimeInterval, completion: (() -> Void)?) {
         moved = !moved
         let moveAction = SKAction.move(to: location, duration: speed)
         rotate(directionOf: location)
-        run(moveAction)
+        run(moveAction) {
+            completion?()
+        }
     }
 
-    
     func rotate(directionOf location: CGPoint) {
         let angle = atan2(location.y - position.y , location.x - position.x)
         let rotateAction = SKAction.rotate(toAngle: angle - CGFloat(-π/2), duration: 0.1, shortestUnitArc: true)
