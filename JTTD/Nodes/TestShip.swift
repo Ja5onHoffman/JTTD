@@ -48,5 +48,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
         run(rotateAction)
     }
     
-    
+    func swapMove() {
+        moved = !moved
+    }
 }

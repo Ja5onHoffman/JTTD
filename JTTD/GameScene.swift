@@ -16,6 +16,7 @@ protocol EventListenerNode {
 class GameScene: SKScene, SKPhysicsContactDelegate {
 
     var background: SKSpriteNode!
+    var backgroundStars: SKEmitterNode!
     let scoreLabel = SKLabelNode(fontNamed: "AvenirNext")
     let levelLabel = SKLabelNode(fontNamed: "AvenirNext")
     
@@ -62,9 +63,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             shipTwo.move(to: positionInScene, speed: 0.5) {
                 self.shipTwo.rotate(directionOf: self.shipOne.position)
                 self.shipOne.rotate(directionOf: self.shipTwo.position)
+                self.shipOne.swapMove()
                 self.lineBetween(firstSprite: self.shipOne, secondSprite: self.shipTwo)
             }
         } else {
+            if let l = self.laser {
+                l.removeFromParent()
+            }
             shipOne.move(to: positionInScene, speed: 0.5, completion: nil)
         }
     }
@@ -76,12 +81,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fgNode = worldNode.childNode(withName: "Foreground")
         bgNode = worldNode.childNode(withName: "Background")
         background = bgNode.childNode(withName: "background") as? SKSpriteNode
+        backgroundStars = SKEmitterNode(fileNamed: "BackgroundStars")!
+        backgroundStars.targetNode = bgNode
+        backgroundStars.position = CGPoint(x: 0, y: size.height)
+        backgroundStars.particlePositionRange = CGVector(dx: size.width, dy: size.height)
+        backgroundStars.zPosition = -1
+        bgNode.addChild(backgroundStars)
     }
+    
     
     func newLaser() -> SKSpriteNode {
         laser = SKSpriteNode(imageNamed: "laser")
-//        laser.size = CGSize(width: 10, height: 10)
-        laser.centerRect = CGRect(x: 0.42857143, y: 0.57142857, width: 0.14285714, height: 0.14285714)
+        laser.centerRect = CGRect(x: 14/30, y: 14/30, width: 0.1, height: 0.1)
         laser.zPosition = 100
         return laser
     }
@@ -113,14 +124,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func lineBetween(firstSprite: SKSpriteNode, secondSprite: SKSpriteNode) {
         let offset = firstSprite.position - secondSprite.position
-        let length = offset.length()
+        let length = offset.length() - 94
         let direction = offset / CGFloat(length)
         let l = newLaser()
         l.xScale = length / laser.size.width
-        rotate(sprite: l, direction: direction, rotateRadiansPerSec: 360)
+        print(l.xScale)
+        l.yScale = CGFloat(4.0 / (l.xScale).squareRoot()) // This isn't great but work
+        print(l.yScale)
+        simpleRotate(sprite: l, direction: direction)
         l.position = CGPoint(midPointBetweenA: firstSprite.position, andB: secondSprite.position)
         fgNode.addChild(l)
     }
+    
     
     func laserFrom(firstShip: SKSpriteNode, to secondShip: SKSpriteNode) {
         let p1 = firstShip.position
@@ -187,6 +202,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         sprite.zRotation += shortest.sign() * amountToRotate
     }
     
+    func simpleRotate(sprite: SKSpriteNode, direction: CGPoint) {
+        sprite.zRotation = atan2(direction.y, direction.x)
+    }
     
     // MARK: Update
     override func update(_ currentTime: TimeInterval) {
