@@ -42,9 +42,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         basicShips()
 //        self.physicsWorld.contactDelegate = self
 //
-//        run(SKAction.repeatForever(SKAction.sequence([SKAction.run() { [weak self] in
-//            self?.scaleDot()
-//            }, SKAction.wait(forDuration: 1.0)])))
+        run(SKAction.repeatForever(SKAction.sequence([SKAction.run() { [weak self] in
+            self?.meteor()
+            }, SKAction.wait(forDuration: 2.0)])))
         
         enumerateChildNodes(withName: "//*", using: { node, _ in
             if let eventListenerNode = node as? EventListenerNode {
@@ -100,11 +100,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func basicShips() {
         shipOne = SKSpriteNode(fileNamed: "TestShip")?.childNode(withName: "basicShip") as? TestShip
         shipOne.setScale(1)
-        shipOne.position = CGPoint(x: -50, y: 0)
+        shipOne.position = CGPoint(x: -100, y: 0)
         
         shipTwo = SKSpriteNode(fileNamed: "TestShip")?.childNode(withName: "basicShip") as? TestShip
         shipTwo.setScale(1)
-        shipTwo.position = CGPoint(x: 50, y: 0)
+        shipTwo.position = CGPoint(x: 100, y: 0)
     
         shipOne.move(toParent: fgNode)
         shipTwo.move(toParent: fgNode)
@@ -176,7 +176,45 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         dot.run(seq)
         fgNode.addChild(dot)
     }
+    
+    func meteor() {
+        let num = Int.random(in: 1..<5)
+        let meteor = SKSpriteNode(imageNamed: "meteor\(num)")
+        meteor.name = "meteor"
+        meteor.zPosition = 100
+        meteor.setScale(CGFloat.random(in: 0.5..<3.0))
+        meteor.position = meteorPosition()
+        
+        meteor.physicsBody = SKPhysicsBody(circleOfRadius: meteor.size.width / 2)
+        meteor.physicsBody?.affectedByGravity = true
+        
+        if meteor.position.x < -size.width / 2 {
+            meteor.physicsBody?.applyForce(CGVector(dx: 5, dy: 0))
+        } else if meteor.position.x > size.width / 2 {
+            meteor.physicsBody?.applyForce(CGVector(dx: -5, dy: 0))
+        }
+        
+        fgNode.addChild(meteor)
+    }
 
+    
+    func meteorPosition() -> CGPoint {
+        let theZone = CGRect(x: (-size.width / 2) - 200, y: (size.height / 2) - 200, width: size.width + 400, height: 400)
+        let topView = CGRect(x: -size.width / 2, y: (size.height/2) - 200, width: size.width, height: 200)
+        let intersection = theZone.intersection(topView) // could just use topView
+
+//        let randomX = CGFloat.random(min: (-size.width / 2) - 200, max: size.width + 400)
+//        let randomY = CGFloat.random(min: (size.height / 2) - 200, max: (size.height/2) + 200)
+        
+        var randomX: CGFloat
+        var randomY: CGFloat
+        repeat {
+            randomX = CGFloat.random(min: (-size.width / 2) - 200, max: size.width + 400)
+            randomY = CGFloat.random(min: (size.height / 2) - 200, max: (size.height/2) + 200)
+        } while intersection.contains(CGPoint(x: randomX, y: randomY))
+
+        return CGPoint(x: randomX, y: randomY)
+    }
     
     // MARK: Animation
     
