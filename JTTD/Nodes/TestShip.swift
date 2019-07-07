@@ -26,6 +26,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
         isPaused = false
         physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
         physicsBody?.affectedByGravity = false
+        physicsBody?.linearDamping = 1.0
     }
     
     func updateTimes(dt: TimeInterval, lastUpdateTime: TimeInterval) {
@@ -35,6 +36,8 @@ class TestShip: SKSpriteNode, EventListenerNode {
     
     func move(to location: CGPoint, speed: TimeInterval, completion: (() -> Void)?) {
         moved = !moved
+        physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        physicsBody?.angularVelocity = 0.0
         let moveAction = SKAction.move(to: location, duration: speed)
         rotate(directionOf: location)
         run(moveAction) {

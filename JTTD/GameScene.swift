@@ -37,10 +37,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let shipMovePointsPerSec: CGFloat = 700.0
     
     override func didMove(to view: SKView) {
-        print("didMove")
         setupNodes()
         basicShips()
-//        self.physicsWorld.contactDelegate = self
+        self.physicsWorld.contactDelegate = self
 //
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run() { [weak self] in
             self?.meteor()
@@ -51,16 +50,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 eventListenerNode.didMoveToScene()
             }
         })
-        
-
-    }
+            }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let positionInScene = touch.location(in: self)
+        print("TOUCHES")
+        laser.removeFromParent()
         
         if shipOne.moved {
-            shipTwo.move(to: positionInScene, speed: 0.5) {
+            shipTwo.move(to: positionInScene, speed: 0.3) {
                 self.shipTwo.rotate(directionOf: self.shipOne.position)
                 self.shipOne.rotate(directionOf: self.shipTwo.position)
                 self.shipOne.swapMove()
@@ -70,7 +69,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if let l = self.laser {
                 l.removeFromParent()
             }
-            shipOne.move(to: positionInScene, speed: 0.5, completion: nil)
+            shipOne.move(to: positionInScene, speed: 0.3, completion: nil)
         }
     }
 
@@ -87,7 +86,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backgroundStars.particlePositionRange = CGVector(dx: size.width, dy: size.height)
         backgroundStars.zPosition = -1
         bgNode.addChild(backgroundStars)
+        laser = newLaser()
     }
+    
     
     
     func newLaser() -> SKSpriteNode {
@@ -128,9 +129,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let direction = offset / CGFloat(length)
         let l = newLaser()
         l.xScale = length / laser.size.width
-        print(l.xScale)
         l.yScale = CGFloat(4.0 / (l.xScale).squareRoot()) // This isn't great but work
-        print(l.yScale)
         simpleRotate(sprite: l, direction: direction)
         l.position = CGPoint(midPointBetweenA: firstSprite.position, andB: secondSprite.position)
         fgNode.addChild(l)
@@ -182,16 +181,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let meteor = SKSpriteNode(imageNamed: "meteor\(num)")
         meteor.name = "meteor"
         meteor.zPosition = 100
-        meteor.setScale(CGFloat.random(in: 0.5..<3.0))
+        meteor.setScale(CGFloat.random(in: 0.5..<2))
         meteor.position = meteorPosition()
         
         meteor.physicsBody = SKPhysicsBody(circleOfRadius: meteor.size.width / 2)
         meteor.physicsBody?.affectedByGravity = true
-        
         if meteor.position.x < -size.width / 2 {
-            meteor.physicsBody?.applyForce(CGVector(dx: 5, dy: 0))
+            let force = SKAction.applyForce(CGVector(dx: meteor.size.width, dy: 0), duration: 3)
+            meteor.run(force)
         } else if meteor.position.x > size.width / 2 {
-            meteor.physicsBody?.applyForce(CGVector(dx: -5, dy: 0))
+            let force = SKAction.applyForce(CGVector(dx: -meteor.size.width, dy: 0), duration: 3)
+            meteor.run(force)
         }
         
         fgNode.addChild(meteor)
@@ -212,7 +212,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             randomX = CGFloat.random(min: (-size.width / 2) - 200, max: size.width + 400)
             randomY = CGFloat.random(min: (size.height / 2) - 200, max: (size.height/2) + 200)
         } while intersection.contains(CGPoint(x: randomX, y: randomY))
-
         return CGPoint(x: randomX, y: randomY)
     }
     
@@ -229,11 +228,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     func move(ship: SKSpriteNode, toward location: CGPoint, completion: () -> Void?) {
-        let moveAction = SKAction.move(to: location, duration: 0.5)
+        ship.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        let moveAction = SKAction.move(to: location, duration: 0.3)
         ship.run(moveAction)
     }
     
-    
+
     func rotate(sprite: SKSpriteNode, direction: CGPoint, rotateRadiansPerSec: CGFloat) {
         let shortest = shortestAngleBetween(angle1: sprite.zRotation, angle2: velocity.angle)
         let amountToRotate = min(rotateRadiansPerSec * CGFloat(dt), abs(shortest))
