@@ -40,7 +40,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupNodes()
         basicShips()
         self.physicsWorld.contactDelegate = self
-//
+
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run() { [weak self] in
             self?.meteor()
             }, SKAction.wait(forDuration: 2.0)])))
@@ -50,7 +50,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 eventListenerNode.didMoveToScene()
             }
         })
-            }
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
@@ -73,6 +73,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 
+    // MARK: Collisions
+    func didBegin(_ contact: SKPhysicsContact) {
+        let bA = contact.bodyA.categoryBitMask
+        let bB = contact.bodyB.categoryBitMask
+        
+        if (bA == PhysicsCategory.Laser && bB == PhysicsCategory.Meteor) || (bA == PhysicsCategory.Meteor && bB == PhysicsCategory.Laser) {
+            let wait = SKAction.wait(forDuration: 0.2)
+            if contact.bodyA.node?.name == "meteor" {
+                run(wait) {
+                    self.emitParticles(name: "Poof", sprite: contact.bodyA.node as! SKSpriteNode)
+                    contact.bodyB.node?.removeFromParent()
+                }
+            } else {
+                run(wait) {
+                    self.emitParticles(name: "Poof", sprite: contact.bodyB.node as! SKSpriteNode)
+                    contact.bodyA.node?.removeFromParent()
+                }
+            }
+            
+        } else if (bA == PhysicsCategory.Ship && bB == PhysicsCategory.Meteor) || (bA == PhysicsCategory.Meteor && bB == PhysicsCategory.Ship) {
+            print("meteorship")
+            laser.removeFromParent()
+        }
+ 
+    }
+    
     
     // MARK: Setup
     func setupNodes() {
@@ -86,9 +112,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backgroundStars.particlePositionRange = CGVector(dx: size.width, dy: size.height)
         backgroundStars.zPosition = -1
         bgNode.addChild(backgroundStars)
-        laser = newLaser()
+        laser = Laser()
     }
-    
     
     
     func newLaser() -> SKSpriteNode {
@@ -127,12 +152,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let offset = firstSprite.position - secondSprite.position
         let length = offset.length() - 94
         let direction = offset / CGFloat(length)
-        let l = newLaser()
-        l.xScale = length / laser.size.width
-        l.yScale = CGFloat(4.0 / (l.xScale).squareRoot()) // This isn't great but work
-        simpleRotate(sprite: l, direction: direction)
-        l.position = CGPoint(midPointBetweenA: firstSprite.position, andB: secondSprite.position)
-        fgNode.addChild(l)
+        laser = Laser()
+        laser.xScale = length / laser.size.width
+        laser.yScale = CGFloat(4.0 / (laser.xScale).squareRoot()) // This isn't great but work
+        simpleRotate(sprite: laser, direction: direction)
+        laser.position = CGPoint(midPointBetweenA: firstSprite.position, andB: secondSprite.position)
+        fgNode.addChild(laser)
     }
     
     
@@ -182,38 +207,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         meteor.name = "meteor"
         meteor.zPosition = 100
         meteor.setScale(CGFloat.random(in: 0.5..<2))
-        meteor.position = meteorPosition()
-        
+        let path = meteorPath()
+        meteor.position = path.0
         meteor.physicsBody = SKPhysicsBody(circleOfRadius: meteor.size.width / 2)
         meteor.physicsBody?.affectedByGravity = true
-        if meteor.position.x < -size.width / 2 {
-            let force = SKAction.applyForce(CGVector(dx: meteor.size.width, dy: 0), duration: 3)
-            meteor.run(force)
-        } else if meteor.position.x > size.width / 2 {
-            let force = SKAction.applyForce(CGVector(dx: -meteor.size.width, dy: 0), duration: 3)
-            meteor.run(force)
-        }
+        meteor.physicsBody?.categoryBitMask = PhysicsCategory.Meteor
+        meteor.physicsBody?.contactTestBitMask = PhysicsCategory.Laser
+        meteor.physicsBody?.collisionBitMask = PhysicsCategory.Ship
         
+        let flight = SKAction.move(to: path.1, duration: 4.0)
+        let seq = SKAction.sequence([flight, SKAction.removeFromParent()])
+        meteor.run(seq)
         fgNode.addChild(meteor)
     }
-
     
-    func meteorPosition() -> CGPoint {
-        let theZone = CGRect(x: (-size.width / 2) - 200, y: (size.height / 2) - 200, width: size.width + 400, height: 400)
-        let topView = CGRect(x: -size.width / 2, y: (size.height/2) - 200, width: size.width, height: 200)
-        let intersection = theZone.intersection(topView) // could just use topView
 
-//        let randomX = CGFloat.random(min: (-size.width / 2) - 200, max: size.width + 400)
-//        let randomY = CGFloat.random(min: (size.height / 2) - 200, max: (size.height/2) + 200)
-        
-        var randomX: CGFloat
-        var randomY: CGFloat
-        repeat {
-            randomX = CGFloat.random(min: (-size.width / 2) - 200, max: size.width + 400)
-            randomY = CGFloat.random(min: (size.height / 2) - 200, max: (size.height/2) + 200)
-        } while intersection.contains(CGPoint(x: randomX, y: randomY))
-        return CGPoint(x: randomX, y: randomY)
-    }
     
     // MARK: Animation
     
@@ -226,6 +234,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         shipOne.run(moveAction)
     }
     
+    func emitParticles(name: String, sprite: SKSpriteNode) {
+        let pos = fgNode.convert(sprite.position, from: sprite.parent!)
+        let particles = SKEmitterNode(fileNamed: name)!
+        particles.position = pos
+        particles.zPosition = 3
+        fgNode.addChild(particles)
+        particles.run(SKAction.removeFromParentAfterDelay(0.5))
+        sprite.removeFromParent()
+    }
     
     func move(ship: SKSpriteNode, toward location: CGPoint, completion: () -> Void?) {
         ship.physicsBody?.velocity = CGVector(dx: 0, dy: 0)

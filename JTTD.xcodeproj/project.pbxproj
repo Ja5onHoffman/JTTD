@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		31119D9F22958C460097178C /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31119D9E22958C460097178C /* AuthVC.swift */; };
+		311FFECB22E2650D00E7C9C8 /* Poof.sks in Resources */ = {isa = PBXBuildFile; fileRef = 311FFECA22E2650D00E7C9C8 /* Poof.sks */; };
+		311FFECD22E2683E00E7C9C8 /* SKAction+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311FFECC22E2683E00E7C9C8 /* SKAction+Extensions.swift */; };
+		311FFECF22E27B9D00E7C9C8 /* Meteor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311FFECE22E27B9D00E7C9C8 /* Meteor.swift */; };
 		313BF5A022BADBFF003000D2 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 313BF59F22BADBFF003000D2 /* GameScene.sks */; };
 		315E0DCD22C6953E00878219 /* BasicShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E0DCC22C6953E00878219 /* BasicShip.swift */; };
 		315F687722C815310062646A /* TestSprite.sks in Resources */ = {isa = PBXBuildFile; fileRef = 315F687622C815310062646A /* TestSprite.sks */; };
@@ -16,6 +19,8 @@
 		316E20E52297430F00C44494 /* InitialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316E20E42297430F00C44494 /* InitialVC.swift */; };
 		31AC75C922CD59620070094F /* BackgroundStars.sks in Resources */ = {isa = PBXBuildFile; fileRef = 31AC75C722CD59620070094F /* BackgroundStars.sks */; };
 		31AC75CA22CD59620070094F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31AC75C822CD59620070094F /* Assets.xcassets */; };
+		31AC75CE22D398F00070094F /* PhysicsCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC75CD22D398F00070094F /* PhysicsCategories.swift */; };
+		31AC75D022D39BAE0070094F /* Laser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC75CF22D39BAE0070094F /* Laser.swift */; };
 		31D7D6D52294262800ADF4F6 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D7D6D42294262800ADF4F6 /* LoginVC.swift */; };
 		31D7D6DB2294287300ADF4F6 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D7D6DA2294287300ADF4F6 /* DataService.swift */; };
 		31D7D6DF229433F000ADF4F6 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D7D6DE229433F000ADF4F6 /* AuthService.swift */; };
@@ -33,6 +38,9 @@
 /* Begin PBXFileReference section */
 		1929420761F2142F544C3BC8 /* Pods_JTTD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JTTD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		31119D9E22958C460097178C /* AuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
+		311FFECA22E2650D00E7C9C8 /* Poof.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Poof.sks; sourceTree = "<group>"; };
+		311FFECC22E2683E00E7C9C8 /* SKAction+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKAction+Extensions.swift"; sourceTree = "<group>"; };
+		311FFECE22E27B9D00E7C9C8 /* Meteor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meteor.swift; sourceTree = "<group>"; };
 		313BF59F22BADBFF003000D2 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		315E0DCC22C6953E00878219 /* BasicShip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicShip.swift; sourceTree = "<group>"; };
 		315F687622C815310062646A /* TestSprite.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestSprite.sks; sourceTree = "<group>"; };
@@ -41,6 +49,9 @@
 		316E20E42297430F00C44494 /* InitialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialVC.swift; sourceTree = "<group>"; };
 		31AC75C722CD59620070094F /* BackgroundStars.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BackgroundStars.sks; sourceTree = "<group>"; };
 		31AC75C822CD59620070094F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		31AC75CC22D398DF0070094F /* MyUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUtils.swift; sourceTree = "<group>"; };
+		31AC75CD22D398F00070094F /* PhysicsCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsCategories.swift; sourceTree = "<group>"; };
+		31AC75CF22D39BAE0070094F /* Laser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Laser.swift; sourceTree = "<group>"; };
 		31D7D6D42294262800ADF4F6 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		31D7D6DA2294287300ADF4F6 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		31D7D6DE229433F000ADF4F6 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -86,6 +97,7 @@
 				315F687822C816670062646A /* TestShip.sks */,
 				31AC75C722CD59620070094F /* BackgroundStars.sks */,
 				31AC75C822CD59620070094F /* Assets.xcassets */,
+				311FFECA22E2650D00E7C9C8 /* Poof.sks */,
 			);
 			path = "Scene Files";
 			sourceTree = "<group>";
@@ -95,8 +107,20 @@
 			children = (
 				315E0DCC22C6953E00878219 /* BasicShip.swift */,
 				315F687A22C8167F0062646A /* TestShip.swift */,
+				31AC75CF22D39BAE0070094F /* Laser.swift */,
+				311FFECE22E27B9D00E7C9C8 /* Meteor.swift */,
 			);
 			path = Nodes;
+			sourceTree = "<group>";
+		};
+		31AC75CB22D398D30070094F /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				31AC75CC22D398DF0070094F /* MyUtils.swift */,
+				31AC75CD22D398F00070094F /* PhysicsCategories.swift */,
+				311FFECC22E2683E00E7C9C8 /* SKAction+Extensions.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		31D7D6D82294284300ADF4F6 /* Views */ = {
@@ -139,6 +163,7 @@
 		31ED1D952274B09D003BBE49 /* JTTD */ = {
 			isa = PBXGroup;
 			children = (
+				31AC75CB22D398D30070094F /* Util */,
 				31D7D6D92294285900ADF4F6 /* Firebase */,
 				31D7D6D82294284300ADF4F6 /* Views */,
 				315E0DC622C57D2B00878219 /* Scene Files */,
@@ -231,6 +256,7 @@
 				31F82B502295BF7C0046CFF4 /* GoogleService-Info.plist in Resources */,
 				31ED1DA42274B09F003BBE49 /* Assets.xcassets in Resources */,
 				31ED1DA72274B09F003BBE49 /* LaunchScreen.storyboard in Resources */,
+				311FFECB22E2650D00E7C9C8 /* Poof.sks in Resources */,
 				315F687722C815310062646A /* TestSprite.sks in Resources */,
 				315F687922C816670062646A /* TestShip.sks in Resources */,
 				31AC75CA22CD59620070094F /* Assets.xcassets in Resources */,
@@ -306,7 +332,11 @@
 				31ED1D9F2274B09D003BBE49 /* GameViewController.swift in Sources */,
 				31119D9F22958C460097178C /* AuthVC.swift in Sources */,
 				315F687B22C8167F0062646A /* TestShip.swift in Sources */,
+				31AC75D022D39BAE0070094F /* Laser.swift in Sources */,
 				31ED1D972274B09D003BBE49 /* AppDelegate.swift in Sources */,
+				311FFECF22E27B9D00E7C9C8 /* Meteor.swift in Sources */,
+				31AC75CE22D398F00070094F /* PhysicsCategories.swift in Sources */,
+				311FFECD22E2683E00E7C9C8 /* SKAction+Extensions.swift in Sources */,
 				31ED1DAF2274B13C003BBE49 /* MyUtils.swift in Sources */,
 				31D7D6DB2294287300ADF4F6 /* DataService.swift in Sources */,
 				31D7D6D52294262800ADF4F6 /* LoginVC.swift in Sources */,

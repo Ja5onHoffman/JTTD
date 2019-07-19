@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JTTD/Views/LoginVC.swift"
-            timestampString = "580998300.283958"
+            timestampString = "585266318.467633"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JTTD/AppDelegate.swift"
-            timestampString = "584192200.284692"
+            timestampString = "584988623.677646"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JTTD/AppDelegate.swift"
-            timestampString = "584192200.284765"
+            timestampString = "584988623.677749"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "14"
@@ -120,12 +120,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JTTD/GameScene.swift"
-            timestampString = "584192200.284822"
+            timestampString = "585267861.061047"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "lineBetween(firstSprite:secondSprite:)"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "greenDot(position:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JTTD/GameScene.swift"
+            timestampString = "585267861.061464"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "didBegin(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
