@@ -23,6 +23,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var bgNode: SKNode!
     var fgNode: SKNode!
     var overlay: SKNode!
+    var meteor: Meteor!
     var border: SKShapeNode!
     var catchLine: SKShapeNode!
     var catchLinePath: CGMutablePath!
@@ -40,10 +41,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupNodes()
         basicShips()
         self.physicsWorld.contactDelegate = self
-
-        run(SKAction.repeatForever(SKAction.sequence([SKAction.run() { [weak self] in
-            self?.meteor()
-            }, SKAction.wait(forDuration: 2.0)])))
+        
+        run(SKAction.repeatForever(SKAction.sequence([SKAction.run({
+            let m = Meteor(path: self.path())
+            self.fgNode.addChild(m)
+        }), SKAction.wait(forDuration: 2.0)])))
         
         enumerateChildNodes(withName: "//*", using: { node, _ in
             if let eventListenerNode = node as? EventListenerNode {
@@ -55,7 +57,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let positionInScene = touch.location(in: self)
-        print("TOUCHES")
         laser.removeFromParent()
         
         if shipOne.moved {
@@ -79,21 +80,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let bB = contact.bodyB.categoryBitMask
         
         if (bA == PhysicsCategory.Laser && bB == PhysicsCategory.Meteor) || (bA == PhysicsCategory.Meteor && bB == PhysicsCategory.Laser) {
-            let wait = SKAction.wait(forDuration: 0.2)
+//            let wait = SKAction.wait(forDuration: 0.2)
             if contact.bodyA.node?.name == "meteor" {
-                run(wait) {
-                    self.emitParticles(name: "Poof", sprite: contact.bodyA.node as! SKSpriteNode)
-                    contact.bodyB.node?.removeFromParent()
-                }
+                explode(node: contact.bodyA.node as! SKSpriteNode, time: TimeInterval(contact.bodyA.node!.frame.size.width / 500))
             } else {
-                run(wait) {
-                    self.emitParticles(name: "Poof", sprite: contact.bodyB.node as! SKSpriteNode)
-                    contact.bodyA.node?.removeFromParent()
-                }
+                explode(node: contact.bodyB.node as! SKSpriteNode, time: TimeInterval(contact.bodyB.node!.frame.size.width / 500))
             }
             
         } else if (bA == PhysicsCategory.Ship && bB == PhysicsCategory.Meteor) || (bA == PhysicsCategory.Meteor && bB == PhysicsCategory.Ship) {
-            print("meteorship")
             laser.removeFromParent()
         }
  
@@ -201,30 +195,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fgNode.addChild(dot)
     }
     
-    func meteor() {
-        let num = Int.random(in: 1..<5)
-        let meteor = SKSpriteNode(imageNamed: "meteor\(num)")
-        meteor.name = "meteor"
-        meteor.zPosition = 100
-        meteor.setScale(CGFloat.random(in: 0.5..<2))
-        let path = meteorPath()
-        meteor.position = path.0
-        meteor.physicsBody = SKPhysicsBody(circleOfRadius: meteor.size.width / 2)
-        meteor.physicsBody?.affectedByGravity = true
-        meteor.physicsBody?.categoryBitMask = PhysicsCategory.Meteor
-        meteor.physicsBody?.contactTestBitMask = PhysicsCategory.Laser
-        meteor.physicsBody?.collisionBitMask = PhysicsCategory.Ship
-        
-        let flight = SKAction.move(to: path.1, duration: 4.0)
-        let seq = SKAction.sequence([flight, SKAction.removeFromParent()])
-        meteor.run(seq)
-        fgNode.addChild(meteor)
-    }
-    
-
-    
     // MARK: Animation
     
+    func explode(node: SKSpriteNode, time: TimeInterval) {
+        let blend = SKAction.animate(with: [SKTexture(imageNamed: "\(node.name!)ex")], timePerFrame: time)
+        node.run(blend) {
+            self.emitParticles(name: "Poof", sprite: node)
+            node.removeFromParent()
+        }
+    }
+
     func moveShipToward(location: CGPoint) {
         let offset = location - shipOne.position
         let length = offset.length()
@@ -250,6 +230,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ship.run(moveAction)
     }
     
+    func path() -> (CGPoint, CGPoint) {
+        guard let _ = scene else { return (CGPoint.zero, CGPoint.zero) }
+        let theZone = CGRect(x: (-size.width / 2) - 100, y: (size.height / 2) - 100, width: size.width + 200, height: 400)
+        let topView = CGRect(x: -size.width / 2, y: (size.height/2) - 100, width: size.width, height: 100)
+        let intersection = theZone.intersection(topView)
+        var randomX: CGFloat
+        var randomY: CGFloat
+        repeat {
+            randomX = CGFloat.random(min: (-size.width / 2) - 100, max: size.width + 200)
+            randomY = CGFloat.random(min: (size.height / 2) - 100, max: (size.height/2) + 300)
+        } while intersection.contains(CGPoint(x: randomX, y: randomY))
+        let bottomX = CGFloat.random(min: -size.width / 2, max: size.width / 2)
+        return (CGPoint(x: randomX, y: randomY), CGPoint(x: bottomX, y: (-size.height / 2) - 100))
+    }
 
     func rotate(sprite: SKSpriteNode, direction: CGPoint, rotateRadiansPerSec: CGFloat) {
         let shortest = shortestAngleBetween(angle1: sprite.zRotation, angle2: velocity.angle)
@@ -260,6 +254,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func simpleRotate(sprite: SKSpriteNode, direction: CGPoint) {
         sprite.zRotation = atan2(direction.y, direction.x)
     }
+    
+    
     
     // MARK: Update
     override func update(_ currentTime: TimeInterval) {
