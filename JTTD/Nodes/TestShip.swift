@@ -29,8 +29,8 @@ class TestShip: SKSpriteNode, EventListenerNode {
         physicsBody?.affectedByGravity = false
         physicsBody?.linearDamping = 1.0
         physicsBody?.categoryBitMask = PhysicsCategory.Ship
-        physicsBody?.collisionBitMask = PhysicsCategory.Meteor
-        physicsBody?.contactTestBitMask = PhysicsCategory.Meteor
+        physicsBody?.collisionBitMask = PhysicsCategory.Meteor | PhysicsCategory.Ship
+        physicsBody?.contactTestBitMask = PhysicsCategory.Meteor | PhysicsCategory.Ship
     }
     
     func updateTimes(dt: TimeInterval, lastUpdateTime: TimeInterval) {

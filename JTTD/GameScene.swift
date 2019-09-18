@@ -40,6 +40,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         setupNodes()
         basicShips()
+        let sr = SKAction.colorize(with: SKColor.red, colorBlendFactor: 1.0, duration: 0.0)
+        shipOne.run(sr)
         self.physicsWorld.contactDelegate = self
         
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run({
@@ -60,10 +62,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         laser.removeFromParent()
         
         if shipOne.moved {
+            self.shipOne.swapMove()
             shipTwo.move(to: positionInScene, speed: 0.3) {
                 self.shipTwo.rotate(directionOf: self.shipOne.position)
                 self.shipOne.rotate(directionOf: self.shipTwo.position)
-                self.shipOne.swapMove()
                 self.lineBetween(firstSprite: self.shipOne, secondSprite: self.shipTwo)
             }
         } else {
@@ -73,6 +75,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             shipOne.move(to: positionInScene, speed: 0.3, completion: nil)
         }
     }
+    
+//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+//
+//    }
 
     // MARK: Collisions
     func didBegin(_ contact: SKPhysicsContact) {
@@ -88,12 +94,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
         } else if (bA == PhysicsCategory.Ship && bB == PhysicsCategory.Meteor) || (bA == PhysicsCategory.Meteor && bB == PhysicsCategory.Ship) {
+            print("shipcollision")
             laser.removeFromParent()
         }
  
     }
     
-    
+
     // MARK: Setup
     func setupNodes() {
         let worldNode = childNode(withName: "World")!
@@ -121,6 +128,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         shipOne = SKSpriteNode(fileNamed: "TestShip")?.childNode(withName: "basicShip") as? TestShip
         shipOne.setScale(1)
         shipOne.position = CGPoint(x: -100, y: 0)
+        shipOne.color = SKColor.red
         
         shipTwo = SKSpriteNode(fileNamed: "TestShip")?.childNode(withName: "basicShip") as? TestShip
         shipTwo.setScale(1)
@@ -156,6 +164,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     func laserFrom(firstShip: SKSpriteNode, to secondShip: SKSpriteNode) {
+        laser.removeFromParent()
         let p1 = firstShip.position
         let p2 = secondShip.position
         let dx = p1.x - p2.x
@@ -198,11 +207,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // MARK: Animation
     
     func explode(node: SKSpriteNode, time: TimeInterval) {
-        let blend = SKAction.animate(with: [SKTexture(imageNamed: "\(node.name!)ex")], timePerFrame: time)
+        let num = Int.random(in: 1..<5)
+        let blend = SKAction.animate(with: [SKTexture(imageNamed: "\(node.name!)\(num)ex")], timePerFrame: time)
+        blend.timingMode = .easeIn
         node.run(blend) {
             self.emitParticles(name: "Poof", sprite: node)
+            self.laser.removeFromParent()
             node.removeFromParent()
         }
+        
     }
 
     func moveShipToward(location: CGPoint) {
@@ -220,8 +233,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         particles.position = pos
         particles.zPosition = 3
         fgNode.addChild(particles)
-        particles.run(SKAction.removeFromParentAfterDelay(0.5))
         sprite.removeFromParent()
+        particles.run(SKAction.removeFromParentAfterDelay(0.5))
     }
     
     func move(ship: SKSpriteNode, toward location: CGPoint, completion: () -> Void?) {
