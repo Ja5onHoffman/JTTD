@@ -133,9 +133,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         shipTwo = SKSpriteNode(fileNamed: "TestShip")?.childNode(withName: "basicShip") as? TestShip
         shipTwo.setScale(1)
         shipTwo.position = CGPoint(x: 100, y: 0)
-    
+        
+        let mothership = Mothership()
+        mothership.position = CGPoint(x: 0, y: -800)
+        mothership.setScale(2)
+            
+            
         shipOne.move(toParent: fgNode)
         shipTwo.move(toParent: fgNode)
+        mothership.move(toParent: fgNode)
     }
     
     func greenDot(position: CGPoint) {
