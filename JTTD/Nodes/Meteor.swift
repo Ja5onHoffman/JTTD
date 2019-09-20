@@ -16,6 +16,8 @@ struct MeteorPath {
 
 class Meteor: SKSpriteNode {
     
+    var scale = CGFloat.zero
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("Use init()")
     }
@@ -28,8 +30,9 @@ class Meteor: SKSpriteNode {
         let num = Int.random(in: 1..<5)
         self.init(imageNamed: "meteor\(num)")
         self.name = "meteor"
-        self.zPosition = 100
-        self.setScale(CGFloat.random(in: 0.5..<2))
+        self.zPosition = 200 // Match with Poof zPostion
+        scale = CGFloat.random(in: 0.5..<2)
+        self.setScale(scale)
         self.position = path.0
         self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width / 2)
         self.physicsBody?.affectedByGravity = true

@@ -13,4 +13,5 @@ struct PhysicsCategory {
     static let Ship:    UInt32 = 0b1
     static let Meteor:  UInt32 = 0b10
     static let Laser:   UInt32 = 0b100
+    static let Mother:  UInt32 = 0b1000
 }

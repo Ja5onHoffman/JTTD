@@ -49,6 +49,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.fgNode.addChild(m)
         }), SKAction.wait(forDuration: 2.0)])))
         
+        let healthBg = SKSpriteNode(imageNamed: "Healthbackground")
+        healthBg.position = CGPoint
+        
         enumerateChildNodes(withName: "//*", using: { node, _ in
             if let eventListenerNode = node as? EventListenerNode {
                 eventListenerNode.didMoveToScene()
@@ -85,6 +88,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let bA = contact.bodyA.categoryBitMask
         let bB = contact.bodyB.categoryBitMask
         
+        // Meteor vs Laser
         if (bA == PhysicsCategory.Laser && bB == PhysicsCategory.Meteor) || (bA == PhysicsCategory.Meteor && bB == PhysicsCategory.Laser) {
 //            let wait = SKAction.wait(forDuration: 0.2)
             if contact.bodyA.node?.name == "meteor" {
@@ -92,12 +96,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             } else {
                 explode(node: contact.bodyB.node as! SKSpriteNode, time: TimeInterval(contact.bodyB.node!.frame.size.width / 500))
             }
-            
+        
+        // Ship vs Meteor
         } else if (bA == PhysicsCategory.Ship && bB == PhysicsCategory.Meteor) || (bA == PhysicsCategory.Meteor && bB == PhysicsCategory.Ship) {
-            print("shipcollision")
             laser.removeFromParent()
+        
+            if contact.bodyA.node?.name == "meteor" {
+                explode(node: contact.bodyA.node as! SKSpriteNode, time: TimeInterval(contact.bodyA.node!.frame.size.width / 500))
+                let ship = contact.bodyB.node as! TestShip
+                ship.shipHit()
+            } else {
+                explode(node: contact.bodyB.node as! SKSpriteNode, time: TimeInterval(contact.bodyA.node!.frame.size.width / 500))
+                let ship = contact.bodyA.node as! TestShip
+                ship.shipHit()
+            }
+            
+        // Mothership vs Meteor
+        } else if (bA == PhysicsCategory.Mother && bB == PhysicsCategory.Meteor) || (bA == PhysicsCategory.Meteor && bB == PhysicsCategory.Mother) {
+            if contact.bodyA.node?.name == "meteor" {
+                explode(node: contact.bodyA.node as! SKSpriteNode, time: TimeInterval(contact.bodyA.node!.frame.size.width / 500))
+                let ship = contact.bodyB.node as! Mothership
+                ship.shipHit()
+            } else {
+                explode(node: contact.bodyB.node as! SKSpriteNode, time: TimeInterval(contact.bodyB.node!.frame.size.width / 500))
+                let ship = contact.bodyA.node as! Mothership
+                ship.shipHit()
+            }
         }
- 
     }
     
 
@@ -137,7 +162,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let mothership = Mothership()
         mothership.position = CGPoint(x: 0, y: -800)
         mothership.setScale(2)
-            
             
         shipOne.move(toParent: fgNode)
         shipTwo.move(toParent: fgNode)

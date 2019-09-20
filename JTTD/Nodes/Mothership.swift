@@ -30,6 +30,13 @@ class Mothership: SKSpriteNode, EventListenerNode {
         self.init(imageNamed: "mothership10")
         self.name = "mothership"
         self.zPosition = 100
+        isPaused = false
+        physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
+        physicsBody?.affectedByGravity = false
+        physicsBody?.linearDamping = 1.0
+        physicsBody?.categoryBitMask = PhysicsCategory.Mother
+        physicsBody?.collisionBitMask = PhysicsCategory.None
+        physicsBody?.contactTestBitMask = PhysicsCategory.Meteor
     }
     
     func didMoveToScene() {
@@ -46,15 +53,17 @@ class Mothership: SKSpriteNode, EventListenerNode {
         run(rep)
     }
     
-//    convenience init() {
-//        self.init(imageNamed: "laser")
-//        self.name = "laser"
-//        self.centerRect = CGRect(x: 14/30, y: 14/30, width: 0.1, height: 0.1)
-//        self.zPosition = 100
-//        physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: size.width, height: size.height))
-//        physicsBody?.affectedByGravity = false
-//        physicsBody?.categoryBitMask = PhysicsCategory.Laser
-//        physicsBody?.contactTestBitMask = PhysicsCategory.Meteor
-//        physicsBody?.collisionBitMask = PhysicsCategory.None
-//    }
+    func shipHit() {
+        shakeShipByAmt(20)
+    
+    }
+    
+    func shakeShipByAmt(_ amt: CGFloat) {
+        self.removeAction(forKey: "shake")
+        let amount = CGPoint(x: 0, y: -amt)
+        let action = SKAction.screenShakeWithNode(self, amount: amount, oscillations: 10, duration: 0.5)
+        run(action, withKey: "shake")
+    }
+
+
 }
