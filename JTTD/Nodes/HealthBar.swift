@@ -34,9 +34,10 @@ class HealthBar: SKShapeNode {
     }
     
     func updateHealth(by health: CGFloat) {
-        print("updateHealth")
-        shipHealth -= 0.1
-        run(SKAction.scaleX(to: shipHealth, duration: 0.1))
+        if shipHealth > 0 {
+            shipHealth -= 0.1
+            run(SKAction.scaleX(to: shipHealth, duration: 0.1))
+        }
     }
 
 }

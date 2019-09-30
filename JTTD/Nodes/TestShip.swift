@@ -62,18 +62,35 @@ class TestShip: SKSpriteNode, EventListenerNode {
         let blinkTimes = 10.0
         let duration = 3.0
         health -= 0.1
-        let blinkAction = SKAction.customAction(withDuration: duration) { (node, elapsedTime) in
-            let slice = duration / blinkTimes
-            let remainder = Double(elapsedTime).truncatingRemainder(dividingBy: slice)
-            node.isHidden = remainder > slice / 2
+        
+        if health > 0 {
+            let blinkAction = SKAction.customAction(withDuration: duration) { (node, elapsedTime) in
+                let slice = duration / blinkTimes
+                let remainder = Double(elapsedTime).truncatingRemainder(dividingBy: slice)
+                node.isHidden = remainder > slice / 2
+            }
+            let setHidden = SKAction.run {
+                self.isHidden = false
+                self.invincible = false
+            }
+            
+            healthBar.updateHealth(by: health)
+            run(SKAction.sequence([blinkAction, setHidden]))
+            // lives, etc here
+        } else {
+            explode()
         }
-        let setHidden = SKAction.run {
-            self.isHidden = false
-            self.invincible = false
-        }
-        healthBar.updateHealth(by: health)
-        run(SKAction.sequence([blinkAction, setHidden]))
-        // lives, etc here
+        
+    }
+    
+    func explode() {
+        let particles = SKEmitterNode(fileNamed: "Poof")!
+        particles.position = position
+        particles.zPosition = 3
+        let fg = self.parent
+        fg?.addChild(particles)
+        removeFromParent()
+        particles.run(SKAction.removeFromParentAfterDelay(0.5))
     }
     
     
