@@ -21,6 +21,8 @@ class TestShip: SKSpriteNode, EventListenerNode {
     var invincible = false
     let radiansPerSec: CGFloat = 4.0 * π
     let movePointsPerSec: CGFloat = 500.0
+    var health: CGFloat = 1.0
+    var healthBar: HealthBar!
     
     func didMoveToScene() {
         print("test ship")
@@ -59,6 +61,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
         invincible = true
         let blinkTimes = 10.0
         let duration = 3.0
+        health -= 0.1
         let blinkAction = SKAction.customAction(withDuration: duration) { (node, elapsedTime) in
             let slice = duration / blinkTimes
             let remainder = Double(elapsedTime).truncatingRemainder(dividingBy: slice)
@@ -68,6 +71,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
             self.isHidden = false
             self.invincible = false
         }
+        healthBar.updateHealth(by: health)
         run(SKAction.sequence([blinkAction, setHidden]))
         // lives, etc here
     }

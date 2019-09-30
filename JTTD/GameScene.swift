@@ -31,6 +31,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var dotCount: Int = 0
     var shipOne: TestShip!
     var shipTwo: TestShip!
+    var mothership: Mothership!
+//    var healthBars: HealthBars!
+    var h1: HealthBar!
+    var h2: HealthBar!
+    var h3: HealthBar!
     var lastTouchLocation: CGPoint?
     var lastUpdateTime: TimeInterval = 0
     var dt: TimeInterval = 0
@@ -48,9 +53,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let m = Meteor(path: self.path())
             self.fgNode.addChild(m)
         }), SKAction.wait(forDuration: 2.0)])))
-        
-        let healthBg = SKSpriteNode(imageNamed: "Healthbackground")
-        healthBg.position = CGPoint
+    
         
         enumerateChildNodes(withName: "//*", using: { node, _ in
             if let eventListenerNode = node as? EventListenerNode {
@@ -138,6 +141,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backgroundStars.particlePositionRange = CGVector(dx: size.width, dy: size.height)
         backgroundStars.zPosition = -1
         bgNode.addChild(backgroundStars)
+        
+        h1 = HealthBar(size: CGSize(width: scene!.size.width, height: 200), color: UIColor.red)
+        h1.position = CGPoint(x: 0, y: (size.height / 2) - 200)
+        fgNode.addChild(h1)
+        
+        h2 = HealthBar(size: CGSize(width: scene!.size.width, height: 200), color: UIColor.blue)
+        h2.position = CGPoint(x: 0, y: (size.height / 2) - 250)
+        fgNode.addChild(h2)
+        
+        h3 = HealthBar(size: CGSize(width: scene!.size.width, height: 200), color: UIColor.white)
+        h3.position = CGPoint(x: 0, y: (size.height / 2) - 300)
+        fgNode.addChild(h3)
+        
+        
+        
+        
+//        healthBars = HealthBars(size: CGSize(width: scene!.size.width, height: 200))
+//        healthBars.position = CGPoint(x: 0, y: (size.height / 2) - 200)
+//        fgNode.addChild(healthBars)
+        
         laser = Laser()
     }
     
@@ -154,15 +177,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         shipOne.setScale(1)
         shipOne.position = CGPoint(x: -100, y: 0)
         shipOne.color = SKColor.red
-        
+        shipOne.healthBar = h1
+    
         shipTwo = SKSpriteNode(fileNamed: "TestShip")?.childNode(withName: "basicShip") as? TestShip
         shipTwo.setScale(1)
         shipTwo.position = CGPoint(x: 100, y: 0)
+        shipTwo.healthBar = h2
         
-        let mothership = Mothership()
+        mothership = Mothership()
         mothership.position = CGPoint(x: 0, y: -800)
         mothership.setScale(2)
-            
+
         shipOne.move(toParent: fgNode)
         shipTwo.move(toParent: fgNode)
         mothership.move(toParent: fgNode)
@@ -311,9 +336,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             shipOne.dt = dt
             shipTwo.dt = dt
         }
+        
         lastUpdateTime = currentTime
         shipOne.lastUpdateTime = currentTime
         shipTwo.lastUpdateTime = currentTime
+//        healthBars.updateHealth(one: shipOne.health, two: shipTwo.health, three: mothership.health)
     }
 
 

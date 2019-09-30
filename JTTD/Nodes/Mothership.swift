@@ -17,6 +17,7 @@ enum MothershipSettings {
 class Mothership: SKSpriteNode, EventListenerNode {
 
     let mothership = SKSpriteNode(imageNamed: "mothership10")
+    var health: CGFloat = 1.0
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("Use init()")
