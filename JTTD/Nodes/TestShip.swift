@@ -40,6 +40,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
     
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // TODO: Redraw line in collision for smoother line
         self.removeAllChildren()
         guard let touch = touches.first else { return }
         let positionInScene = touch.location(in: self)
