@@ -17,10 +17,16 @@
 		315F687922C816670062646A /* TestShip.sks in Resources */ = {isa = PBXBuildFile; fileRef = 315F687822C816670062646A /* TestShip.sks */; };
 		315F687B22C8167F0062646A /* TestShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315F687A22C8167F0062646A /* TestShip.swift */; };
 		316E20E52297430F00C44494 /* InitialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316E20E42297430F00C44494 /* InitialVC.swift */; };
+		3192203A2333BBC7007EA1EF /* Mothership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319220392333BBC7007EA1EF /* Mothership.swift */; };
+		3192203C2333D298007EA1EF /* SKAction+SpecialEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3192203B2333D298007EA1EF /* SKAction+SpecialEffects.swift */; };
+		3192203E2333D2EC007EA1EF /* SKTTimingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3192203D2333D2EC007EA1EF /* SKTTimingFunctions.swift */; };
+		319220402333D36D007EA1EF /* SKTEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3192203F2333D36D007EA1EF /* SKTEffects.swift */; };
+		3192204223344869007EA1EF /* HealthBars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3192204123344869007EA1EF /* HealthBars.swift */; };
 		31AC75C922CD59620070094F /* BackgroundStars.sks in Resources */ = {isa = PBXBuildFile; fileRef = 31AC75C722CD59620070094F /* BackgroundStars.sks */; };
 		31AC75CA22CD59620070094F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31AC75C822CD59620070094F /* Assets.xcassets */; };
 		31AC75CE22D398F00070094F /* PhysicsCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC75CD22D398F00070094F /* PhysicsCategories.swift */; };
 		31AC75D022D39BAE0070094F /* Laser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC75CF22D39BAE0070094F /* Laser.swift */; };
+		31BC4EF1233BE32500DD07DA /* HealthBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC4EF0233BE32500DD07DA /* HealthBar.swift */; };
 		31D7D6D52294262800ADF4F6 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D7D6D42294262800ADF4F6 /* LoginVC.swift */; };
 		31D7D6DB2294287300ADF4F6 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D7D6DA2294287300ADF4F6 /* DataService.swift */; };
 		31D7D6DF229433F000ADF4F6 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D7D6DE229433F000ADF4F6 /* AuthService.swift */; };
@@ -47,11 +53,17 @@
 		315F687822C816670062646A /* TestShip.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestShip.sks; sourceTree = "<group>"; };
 		315F687A22C8167F0062646A /* TestShip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestShip.swift; sourceTree = "<group>"; };
 		316E20E42297430F00C44494 /* InitialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialVC.swift; sourceTree = "<group>"; };
+		319220392333BBC7007EA1EF /* Mothership.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mothership.swift; sourceTree = "<group>"; };
+		3192203B2333D298007EA1EF /* SKAction+SpecialEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKAction+SpecialEffects.swift"; sourceTree = "<group>"; };
+		3192203D2333D2EC007EA1EF /* SKTTimingFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTTimingFunctions.swift; sourceTree = "<group>"; };
+		3192203F2333D36D007EA1EF /* SKTEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTEffects.swift; sourceTree = "<group>"; };
+		3192204123344869007EA1EF /* HealthBars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthBars.swift; sourceTree = "<group>"; };
 		31AC75C722CD59620070094F /* BackgroundStars.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BackgroundStars.sks; sourceTree = "<group>"; };
 		31AC75C822CD59620070094F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31AC75CC22D398DF0070094F /* MyUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUtils.swift; sourceTree = "<group>"; };
 		31AC75CD22D398F00070094F /* PhysicsCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsCategories.swift; sourceTree = "<group>"; };
 		31AC75CF22D39BAE0070094F /* Laser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Laser.swift; sourceTree = "<group>"; };
+		31BC4EF0233BE32500DD07DA /* HealthBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthBar.swift; sourceTree = "<group>"; };
 		31D7D6D42294262800ADF4F6 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		31D7D6DA2294287300ADF4F6 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		31D7D6DE229433F000ADF4F6 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -109,6 +121,9 @@
 				315F687A22C8167F0062646A /* TestShip.swift */,
 				31AC75CF22D39BAE0070094F /* Laser.swift */,
 				311FFECE22E27B9D00E7C9C8 /* Meteor.swift */,
+				319220392333BBC7007EA1EF /* Mothership.swift */,
+				3192204123344869007EA1EF /* HealthBars.swift */,
+				31BC4EF0233BE32500DD07DA /* HealthBar.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -119,6 +134,9 @@
 				31AC75CC22D398DF0070094F /* MyUtils.swift */,
 				31AC75CD22D398F00070094F /* PhysicsCategories.swift */,
 				311FFECC22E2683E00E7C9C8 /* SKAction+Extensions.swift */,
+				3192203B2333D298007EA1EF /* SKAction+SpecialEffects.swift */,
+				3192203D2333D2EC007EA1EF /* SKTTimingFunctions.swift */,
+				3192203F2333D36D007EA1EF /* SKTEffects.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -166,9 +184,9 @@
 				31AC75CB22D398D30070094F /* Util */,
 				31D7D6D92294285900ADF4F6 /* Firebase */,
 				31D7D6D82294284300ADF4F6 /* Views */,
-				315E0DC622C57D2B00878219 /* Scene Files */,
 				315E0DCB22C6952B00878219 /* Nodes */,
 				31ED1D9C2274B09D003BBE49 /* GameScene.swift */,
+				315E0DC622C57D2B00878219 /* Scene Files */,
 				31ED1D9E2274B09D003BBE49 /* GameViewController.swift */,
 				31ED1D962274B09D003BBE49 /* AppDelegate.swift */,
 				31ED1DA02274B09D003BBE49 /* Main.storyboard */,
@@ -329,17 +347,23 @@
 				316E20E52297430F00C44494 /* InitialVC.swift in Sources */,
 				31ED1D9D2274B09D003BBE49 /* GameScene.swift in Sources */,
 				315E0DCD22C6953E00878219 /* BasicShip.swift in Sources */,
+				319220402333D36D007EA1EF /* SKTEffects.swift in Sources */,
 				31ED1D9F2274B09D003BBE49 /* GameViewController.swift in Sources */,
+				3192204223344869007EA1EF /* HealthBars.swift in Sources */,
 				31119D9F22958C460097178C /* AuthVC.swift in Sources */,
+				31BC4EF1233BE32500DD07DA /* HealthBar.swift in Sources */,
+				3192203C2333D298007EA1EF /* SKAction+SpecialEffects.swift in Sources */,
 				315F687B22C8167F0062646A /* TestShip.swift in Sources */,
 				31AC75D022D39BAE0070094F /* Laser.swift in Sources */,
 				31ED1D972274B09D003BBE49 /* AppDelegate.swift in Sources */,
 				311FFECF22E27B9D00E7C9C8 /* Meteor.swift in Sources */,
+				3192203E2333D2EC007EA1EF /* SKTTimingFunctions.swift in Sources */,
 				31AC75CE22D398F00070094F /* PhysicsCategories.swift in Sources */,
 				311FFECD22E2683E00E7C9C8 /* SKAction+Extensions.swift in Sources */,
 				31ED1DAF2274B13C003BBE49 /* MyUtils.swift in Sources */,
 				31D7D6DB2294287300ADF4F6 /* DataService.swift in Sources */,
 				31D7D6D52294262800ADF4F6 /* LoginVC.swift in Sources */,
+				3192203A2333BBC7007EA1EF /* Mothership.swift in Sources */,
 				31D7D6DF229433F000ADF4F6 /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -490,6 +514,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XU5AWAYW87;
 				INFOPLIST_FILE = JTTD/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -509,6 +534,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XU5AWAYW87;
 				INFOPLIST_FILE = JTTD/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

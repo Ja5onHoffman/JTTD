@@ -7,8 +7,16 @@
 //
 
 import SpriteKit
+import Foundation
+
+struct MeteorPath {
+    var p1: CGPoint
+    var p2: CGPoint
+}
 
 class Meteor: SKSpriteNode {
+    
+    var scale = CGFloat.zero
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("Use init()")
@@ -18,46 +26,23 @@ class Meteor: SKSpriteNode {
         super.init(texture: texture, color: color, size: size)
     }
     
-    
-    convenience init() {
+    convenience init(path: (CGPoint, CGPoint)) { // add speed
         let num = Int.random(in: 1..<5)
-        let meteor = SKSpriteNode(imageNamed: "meteor\(num)")
-        meteor.name = "meteor"
-        meteor.zPosition = 100
-        meteor.setScale(CGFloat.random(in: 0.5..<2))
-        let path = meteorPath()
-        meteor.position = path.0
-        meteor.physicsBody = SKPhysicsBody(circleOfRadius: meteor.size.width / 2)
-        meteor.physicsBody?.affectedByGravity = true
-        meteor.physicsBody?.categoryBitMask = PhysicsCategory.Meteor
-        meteor.physicsBody?.contactTestBitMask = PhysicsCategory.Laser
-        meteor.physicsBody?.collisionBitMask = PhysicsCategory.Ship
-        
+        self.init(imageNamed: "meteor\(num)")
+        self.name = "meteor"
+        self.zPosition = 200 // Match with Poof zPostion
+        scale = CGFloat.random(in: 0.5..<2)
+        self.setScale(scale)
+        self.position = path.0
+        self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width / 2)
+        self.physicsBody?.affectedByGravity = true
+        self.physicsBody?.categoryBitMask = PhysicsCategory.Meteor
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.Laser
+        self.physicsBody?.collisionBitMask = PhysicsCategory.Ship
         let flight = SKAction.move(to: path.1, duration: 4.0)
         let seq = SKAction.sequence([flight, SKAction.removeFromParent()])
+        run(seq)
     }
-    
-    
-    func meteor() {
-        let num = Int.random(in: 1..<5)
-        let meteor = SKSpriteNode(imageNamed: "meteor\(num)")
-        meteor.name = "meteor"
-        meteor.zPosition = 100
-        meteor.setScale(CGFloat.random(in: 0.5..<2))
-        let path = meteorPath()
-        meteor.position = path.0
-        meteor.physicsBody = SKPhysicsBody(circleOfRadius: meteor.size.width / 2)
-        meteor.physicsBody?.affectedByGravity = true
-        meteor.physicsBody?.categoryBitMask = PhysicsCategory.Meteor
-        meteor.physicsBody?.contactTestBitMask = PhysicsCategory.Laser
-        meteor.physicsBody?.collisionBitMask = PhysicsCategory.Ship
-        
-        let flight = SKAction.move(to: path.1, duration: 4.0)
-        let seq = SKAction.sequence([flight, SKAction.removeFromParent()])
-        meteor.run(seq)
-//        fgNode.addChild(meteor)
-    }
-    
     
     func meteorPath() -> (CGPoint, CGPoint) {
         guard let p = parent?.scene else { return (CGPoint.zero, CGPoint.zero) }
@@ -70,11 +55,10 @@ class Meteor: SKSpriteNode {
             randomX = CGFloat.random(min: (-p.size.width / 2) - 100, max: p.size.width + 200)
             randomY = CGFloat.random(min: (p.size.height / 2) - 100, max: (p.size.height/2) + 300)
         } while intersection.contains(CGPoint(x: randomX, y: randomY))
-        
         let bottomX = CGFloat.random(min: -p.size.width / 2, max: p.size.width / 2)
-        
         return (CGPoint(x: randomX, y: randomY), CGPoint(x: bottomX, y: (-p.size.height / 2) - 100))
     }
     
+
     
 }
