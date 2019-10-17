@@ -48,13 +48,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let sr = SKAction.colorize(with: SKColor.red, colorBlendFactor: 1.0, duration: 0.0)
         shipOne.run(sr)
         self.physicsWorld.contactDelegate = self
-        
+        self.view?.isMultipleTouchEnabled = true
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run({
             let m = Meteor(path: self.path())
             self.fgNode.addChild(m)
         }), SKAction.wait(forDuration: 2.0)])))
     
-        
         enumerateChildNodes(withName: "//*", using: { node, _ in
             if let eventListenerNode = node as? EventListenerNode {
                 eventListenerNode.didMoveToScene()
@@ -62,27 +61,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         })
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
-        let positionInScene = touch.location(in: self)
-        laser.removeFromParent()
-        
-        if shipOne.moved {
-            self.shipOne.swapMove()
-            shipTwo.move(to: positionInScene, speed: 0.3) {
-                self.shipTwo.rotate(directionOf: self.shipOne.position)
-                self.shipOne.rotate(directionOf: self.shipTwo.position)
-                self.lineBetween(firstSprite: self.shipOne, secondSprite: self.shipTwo)
-            }
-        } else {
-            if let l = self.laser {
-                l.removeFromParent()
-            }
-            shipOne.move(to: positionInScene, speed: 0.3, completion: nil)
-        }
-    }
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        guard let touch = touches.first else { return }
+//        let positionInScene = touch.location(in: self)
+//        laser.removeFromParent()
+//
+//        if shipOne.moved {
+//            self.shipOne.swapMove()
+//            shipTwo.move(to: positionInScene, speed: 0.3) {
+//                self.shipTwo.rotate(directionOf: self.shipOne.position)
+//                self.shipOne.rotate(directionOf: self.shipTwo.position)
+//                self.lineBetween(firstSprite: self.shipOne, secondSprite: self.shipTwo)
+//            }
+//        } else {
+//            if let l = self.laser {
+//                l.removeFromParent()
+//            }
+//            shipOne.move(to: positionInScene, speed: 0.3, completion: nil)
+//        }
+//    }
     
 //    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        guard let touch = touches.first else { return }
+//        let positionInScene = touch.location(in: self)
+//        laser.removeFromParent()
 //
 //    }
 
@@ -141,6 +143,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backgroundStars.particlePositionRange = CGVector(dx: size.width, dy: size.height)
         backgroundStars.zPosition = -1
         bgNode.addChild(backgroundStars)
+        
+        let healthBG = SKSpriteNode(imageNamed: "Healthbackground")
         
         h1 = HealthBar(size: CGSize(width: scene!.size.width, height: 200), color: UIColor.red)
         h1.position = CGPoint(x: 0, y: (size.height / 2) - 200)
@@ -211,7 +215,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let direction = offset / CGFloat(length)
         laser = Laser()
         laser.xScale = length / laser.size.width
-        laser.yScale = CGFloat(4.0 / (laser.xScale).squareRoot()) // This isn't great but work
+        laser.yScale = CGFloat(4.0 / (laser.xScale).squareRoot()) // This isn't great but works
         simpleRotate(sprite: laser, direction: direction)
         laser.position = CGPoint(midPointBetweenA: firstSprite.position, andB: secondSprite.position)
         fgNode.addChild(laser)
