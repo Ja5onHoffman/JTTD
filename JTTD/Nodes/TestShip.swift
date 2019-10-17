@@ -63,20 +63,29 @@ class TestShip: SKSpriteNode, EventListenerNode {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.removeAllChildren()  // remove line
+        guard let touch = touches.first else { return }
+        let positionInScene = touch.location(in: self.parent!)
+        
+        var otherShip: TestShip {
+            var n: TestShip!
+            if let p = self.parent {
+                p.enumerateChildNodes(withName: "basicShip") { node, _ in
+                    if node != self {
+                        n = node as? TestShip
+                    }
+                }
+            }
+            return n
+        }
+        
+//        let otherShip = self.parent?.childNode(withName: "basicShip") as! TestShip
+        move(to: positionInScene, speed: 0.3) {
+            self.rotate(directionOf: otherShip.position)
+            otherShip.rotate(directionOf: self.position)
+
+        }
     }
     
-    
-//    func lineBetween(firstSprite: SKSpriteNode, secondSprite: SKSpriteNode) {
-//         let offset = firstSprite.position - secondSprite.position
-//         let length = offset.length() - 94
-//         let direction = offset / CGFloat(length)
-//         laser = Laser()
-//         laser.xScale = length / laser.size.width
-//         laser.yScale = CGFloat(4.0 / (laser.xScale).squareRoot()) // This isn't great but works
-//         simpleRotate(sprite: laser, direction: direction)
-//         laser.position = CGPoint(midPointBetweenA: firstSprite.position, andB: secondSprite.position)
-//         fgNode.addChild(laser)
-//     }
     
     func updateTimes(dt: TimeInterval, lastUpdateTime: TimeInterval) {
         self.dt = dt
