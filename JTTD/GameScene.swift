@@ -158,16 +158,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         h3.position = CGPoint(x: 0, y: (size.height / 2) - 300)
         fgNode.addChild(h3)
         
-        
-        
-        
 //        healthBars = HealthBars(size: CGSize(width: scene!.size.width, height: 200))
 //        healthBars.position = CGPoint(x: 0, y: (size.height / 2) - 200)
 //        fgNode.addChild(healthBars)
         
+        drawBorder()
         laser = Laser()
     }
     
+    
+    func drawBorder() {
+        let borderRect = CGRect(x: -size.width / 2, y: -size.height / 2, width: size.width, height: size.height)
+        let border = SKShapeNode(rect: borderRect)
+        border.strokeColor = UIColor.red
+        border.lineWidth = 5
+        fgNode.addChild(border)
+    }
     
     func newLaser() -> SKSpriteNode {
         laser = SKSpriteNode(imageNamed: "laser")
@@ -302,6 +308,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ship.run(moveAction)
     }
     
+    func shipsInBounds() {
+        if let s1 = shipOne, let s2 = shipTwo {
+            let s1p = s1.position
+            if s1p.x > self.size.width / 2 || s1p.x < -self.size.width / 2 || s1p.y > self.size.height / 2 || s1p.y < -self.size.height / 2 {
+                s1.blink()
+                returnShip(s1)
+            }
+            
+            let s2p = s2.position
+            if s2p.x > self.size.width / 2 || s2p.x < -self.size.width / 2 || s2p.y > self.size.height / 2 || s2p.y < -self.size.height / 2 {
+                s2.blink()
+                returnShip(s2)
+            }
+        }
+    }
+    
+    func returnShip(_ ship: TestShip) {
+//        let beam = SKSpriteNode(fileNamed: "Beam")?.childNode(withName: "beam") as? Beam
+        
+        ship.move(to: CGPoint(x: 0.0, y: 0.0), speed: 1.0, completion: nil)
+    }
+    
     func path() -> (CGPoint, CGPoint) {
         guard let _ = scene else { return (CGPoint.zero, CGPoint.zero) }
         let theZone = CGRect(x: (-size.width / 2) - 100, y: (size.height / 2) - 100, width: size.width + 200, height: 400)
@@ -341,6 +369,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             shipTwo.dt = dt
         }
         
+        shipsInBounds()
         lastUpdateTime = currentTime
         shipOne.lastUpdateTime = currentTime
         shipTwo.lastUpdateTime = currentTime
