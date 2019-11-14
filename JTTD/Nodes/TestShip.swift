@@ -22,7 +22,9 @@ class TestShip: SKSpriteNode, EventListenerNode {
     let radiansPerSec: CGFloat = 4.0 * π
     let movePointsPerSec: CGFloat = 500.0
     var health: CGFloat = 1.0
+    var shield: CGFloat = 1.0
     var healthBar: HealthBar!
+    var shieldBar: HealthBar!
     var dot: SKSpriteNode?
     var line: SKShapeNode!
     
@@ -65,25 +67,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
         self.removeAllChildren()  // remove line
         guard let touch = touches.first else { return }
         let positionInScene = touch.location(in: self.parent!)
-        
-        var otherShip: TestShip {
-            var n: TestShip!
-            if let p = self.parent {
-                p.enumerateChildNodes(withName: "basicShip") { node, _ in
-                    if node != self {
-                        n = node as? TestShip
-                    }
-                }
-            }
-            return n
-        }
-        
-//        let otherShip = self.parent?.childNode(withName: "basicShip") as! TestShip
-        move(to: positionInScene, speed: 0.3) {
-            self.rotate(directionOf: otherShip.position)
-            otherShip.rotate(directionOf: self.position)
-
-        }
+        move(to: positionInScene, speed: 0.3, completion: nil)
     }
     
     
