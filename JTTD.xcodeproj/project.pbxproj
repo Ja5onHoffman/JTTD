@@ -27,6 +27,8 @@
 		31AC75CE22D398F00070094F /* PhysicsCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC75CD22D398F00070094F /* PhysicsCategories.swift */; };
 		31AC75D022D39BAE0070094F /* Laser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC75CF22D39BAE0070094F /* Laser.swift */; };
 		31BC4EF1233BE32500DD07DA /* HealthBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC4EF0233BE32500DD07DA /* HealthBar.swift */; };
+		31BF74B2235B5C2B006F5C33 /* Beam.sks in Resources */ = {isa = PBXBuildFile; fileRef = 31BF74B1235B5C2B006F5C33 /* Beam.sks */; };
+		31BF74B4235B613D006F5C33 /* Beam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BF74B3235B613D006F5C33 /* Beam.swift */; };
 		31D7D6D52294262800ADF4F6 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D7D6D42294262800ADF4F6 /* LoginVC.swift */; };
 		31D7D6DB2294287300ADF4F6 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D7D6DA2294287300ADF4F6 /* DataService.swift */; };
 		31D7D6DF229433F000ADF4F6 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D7D6DE229433F000ADF4F6 /* AuthService.swift */; };
@@ -64,6 +66,8 @@
 		31AC75CD22D398F00070094F /* PhysicsCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsCategories.swift; sourceTree = "<group>"; };
 		31AC75CF22D39BAE0070094F /* Laser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Laser.swift; sourceTree = "<group>"; };
 		31BC4EF0233BE32500DD07DA /* HealthBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthBar.swift; sourceTree = "<group>"; };
+		31BF74B1235B5C2B006F5C33 /* Beam.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Beam.sks; sourceTree = "<group>"; };
+		31BF74B3235B613D006F5C33 /* Beam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beam.swift; sourceTree = "<group>"; };
 		31D7D6D42294262800ADF4F6 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		31D7D6DA2294287300ADF4F6 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		31D7D6DE229433F000ADF4F6 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 				31AC75C722CD59620070094F /* BackgroundStars.sks */,
 				31AC75C822CD59620070094F /* Assets.xcassets */,
 				311FFECA22E2650D00E7C9C8 /* Poof.sks */,
+				31BF74B1235B5C2B006F5C33 /* Beam.sks */,
 			);
 			path = "Scene Files";
 			sourceTree = "<group>";
@@ -124,6 +129,7 @@
 				319220392333BBC7007EA1EF /* Mothership.swift */,
 				3192204123344869007EA1EF /* HealthBars.swift */,
 				31BC4EF0233BE32500DD07DA /* HealthBar.swift */,
+				31BF74B3235B613D006F5C33 /* Beam.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -271,6 +277,7 @@
 			files = (
 				31ED1DA22274B09D003BBE49 /* Main.storyboard in Resources */,
 				313BF5A022BADBFF003000D2 /* GameScene.sks in Resources */,
+				31BF74B2235B5C2B006F5C33 /* Beam.sks in Resources */,
 				31F82B502295BF7C0046CFF4 /* GoogleService-Info.plist in Resources */,
 				31ED1DA42274B09F003BBE49 /* Assets.xcassets in Resources */,
 				31ED1DA72274B09F003BBE49 /* LaunchScreen.storyboard in Resources */,
@@ -364,6 +371,7 @@
 				31D7D6DB2294287300ADF4F6 /* DataService.swift in Sources */,
 				31D7D6D52294262800ADF4F6 /* LoginVC.swift in Sources */,
 				3192203A2333BBC7007EA1EF /* Mothership.swift in Sources */,
+				31BF74B4235B613D006F5C33 /* Beam.swift in Sources */,
 				31D7D6DF229433F000ADF4F6 /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

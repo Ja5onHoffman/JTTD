@@ -59,6 +59,13 @@ class Meteor: SKSpriteNode {
         return (CGPoint(x: randomX, y: randomY), CGPoint(x: bottomX, y: (-p.size.height / 2) - 100))
     }
     
+    func toggleCollision() {
+        if self.physicsBody?.collisionBitMask == PhysicsCategory.Ship {
+            self.physicsBody?.collisionBitMask = PhysicsCategory.None
+        } else {
+            self.physicsBody?.collisionBitMask = PhysicsCategory.Ship
+        }
+    }
 
     
 }

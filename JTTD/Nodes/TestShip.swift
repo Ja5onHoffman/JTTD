@@ -41,28 +41,25 @@ class TestShip: SKSpriteNode, EventListenerNode {
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         // TODO: Redraw line in collision for smoother line
-        self.removeAllChildren()
+        self.childNode(withName: "line")?.removeFromParent()
         guard let touch = touches.first else { return }
         let positionInScene = touch.location(in: self)
-        print(positionInScene)
         let path = CGMutablePath()
         path.move(to: CGPoint.zero)
         path.addLine(to: CGPoint(x: positionInScene.x, y: positionInScene.y))
         
         let line = SKShapeNode(path: path)
         line.name = "line"
-        line.zPosition = 5000
+        line.zPosition = -1
         line.strokeColor = UIColor.red
         line.lineWidth = 20
         line.fillColor = UIColor.red
 
-        
         self.addChild(line)
-
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.removeAllChildren()  // remove line
+        self.childNode(withName: "line")?.removeFromParent()
         guard let touch = touches.first else { return }
         let positionInScene = touch.location(in: self.parent!)
         
@@ -85,7 +82,6 @@ class TestShip: SKSpriteNode, EventListenerNode {
 
         }
     }
-    
     
     func updateTimes(dt: TimeInterval, lastUpdateTime: TimeInterval) {
         self.dt = dt
@@ -110,30 +106,34 @@ class TestShip: SKSpriteNode, EventListenerNode {
     }
     
     func shipHit() {
-        // No invincible or blinking for now
-//        invincible = true
-//        let blinkTimes = 10.0
-//        let duration = 3.0
-        health -= 0.1
-        
-        if health > 0 {
-//            let blinkAction = SKAction.customAction(withDuration: duration) { (node, elapsedTime) in
-//                let slice = duration / blinkTimes
-//                let remainder = Double(elapsedTime).truncatingRemainder(dividingBy: slice)
-//                node.isHidden = remainder > slice / 2
-//            }
-//            let setHidden = SKAction.run {
-//                self.isHidden = false
-//                self.invincible = false
-//            }
-//            run(SKAction.sequence([blinkAction, setHidden]))
-            
-            healthBar.updateHealth(by: health)
-            // lives, etc here
-        } else if health <= 0 {
-            explode()
+        if (!invincible) {
+            health -= 0.1
+            if health > 0 {
+
+                healthBar.updateHealth(by: health)
+                // lives, etc here
+            } else if health <= 0 {
+                explode()
+            }
         }
-        
+    }
+    
+    func blink() {
+        invincible = true
+        let blinkTimes = 10.0
+        let duration = 3.0
+        self.physicsBody?.collisionBitMask = PhysicsCategory.None
+        let blinkAction = SKAction.customAction(withDuration: duration) { (node, elapsedTime) in
+            let slice = duration / blinkTimes
+            let remainder = Double(elapsedTime).truncatingRemainder(dividingBy: slice)
+            node.isHidden = remainder > slice / 2
+        }
+        let setHidden = SKAction.run {
+            self.isHidden = false
+            self.invincible = false
+            self.physicsBody?.collisionBitMask = PhysicsCategory.Meteor | PhysicsCategory.Ship
+        }
+        run(SKAction.sequence([blinkAction, setHidden]))
     }
     
     func explode() {
