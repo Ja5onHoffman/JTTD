@@ -41,7 +41,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         // TODO: Redraw line in collision for smoother line
-        self.removeAllChildren()
+        self.childNode(withName: "line")?.removeFromParent()
         guard let touch = touches.first else { return }
         let positionInScene = touch.location(in: self)
         let path = CGMutablePath()
@@ -50,7 +50,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
         
         let line = SKShapeNode(path: path)
         line.name = "line"
-        line.zPosition = 5000
+        line.zPosition = -1
         line.strokeColor = UIColor.red
         line.lineWidth = 20
         line.fillColor = UIColor.red
@@ -59,7 +59,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.removeAllChildren()  // remove line
+        self.childNode(withName: "line")?.removeFromParent()
         guard let touch = touches.first else { return }
         let positionInScene = touch.location(in: self.parent!)
         
@@ -82,7 +82,6 @@ class TestShip: SKSpriteNode, EventListenerNode {
 
         }
     }
-    
     
     func updateTimes(dt: TimeInterval, lastUpdateTime: TimeInterval) {
         self.dt = dt
