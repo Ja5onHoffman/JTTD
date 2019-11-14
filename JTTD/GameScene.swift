@@ -30,13 +30,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var laser: SKSpriteNode!
     var dotCount: Int = 0
     var shipOne: TestShip!
-    var shipTwo: TestShip!
     var mothership: Mothership!
     var beam: SKSpriteNode!
 //    var healthBars: HealthBars!
     var h1: HealthBar!
     var h2: HealthBar!
-    var h3: HealthBar!
+    var shieldBar: HealthBar!
     var lastTouchLocation: CGPoint?
     var lastUpdateTime: TimeInterval = 0
     var dt: TimeInterval = 0
@@ -158,10 +157,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         h2.position = CGPoint(x: 0, y: (size.height / 2) - 250)
         fgNode.addChild(h2)
         
-        h3 = HealthBar(size: CGSize(width: scene!.size.width, height: 200), color: UIColor.white)
-        h3.position = CGPoint(x: 0, y: (size.height / 2) - 300)
-        fgNode.addChild(h3)
-        
+        shieldBar = HealthBar(size: CGSize(width: scene!.size.width, height: 200), color: UIColor.white)
+        shieldBar.position = CGPoint(x: 0, y: (size.height / 2) - 300)
+        fgNode.addChild(shieldBar)
+
 //        healthBars = HealthBars(size: CGSize(width: scene!.size.width, height: 200))
 //        healthBars.position = CGPoint(x: 0, y: (size.height / 2) - 200)
 //        fgNode.addChild(healthBars)
@@ -193,21 +192,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func basicShips() {
         shipOne = SKSpriteNode(fileNamed: "TestShip")?.childNode(withName: "basicShip") as? TestShip
         shipOne.setScale(1)
-        shipOne.position = CGPoint(x: -100, y: 0)
+        shipOne.position = CGPoint(x: 0, y: 0)
         shipOne.color = SKColor.red
         shipOne.healthBar = h1
-    
-        shipTwo = SKSpriteNode(fileNamed: "TestShip")?.childNode(withName: "basicShip") as? TestShip
-        shipTwo.setScale(1)
-        shipTwo.position = CGPoint(x: 100, y: 0)
-        shipTwo.healthBar = h2
+        shipOne.shieldBar = shieldBar
         
         mothership = Mothership()
         mothership.position = CGPoint(x: 0, y: -800)
         mothership.setScale(2)
 
         shipOne.move(toParent: fgNode)
-        shipTwo.move(toParent: fgNode)
         mothership.move(toParent: fgNode)
     }
     
@@ -373,17 +367,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if lastUpdateTime > 0 {
             dt = currentTime - lastUpdateTime
             shipOne.dt = dt
-            shipTwo.dt = dt
         } else {
             dt = 0
             shipOne.dt = dt
-            shipTwo.dt = dt
         }
         
         shipsInBounds()
         lastUpdateTime = currentTime
         shipOne.lastUpdateTime = currentTime
-        shipTwo.lastUpdateTime = currentTime
 //        healthBars.updateHealth(one: shipOne.health, two: shipTwo.health, three: mothership.health)
     }
 
