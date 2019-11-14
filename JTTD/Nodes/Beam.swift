@@ -6,7 +6,6 @@
 //  Copyright © 2019 Jason Hoffman. All rights reserved.
 //
 
-import Foundation
 import SpriteKit
 
 class Beam: SKSpriteNode, EventListenerNode {

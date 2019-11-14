@@ -32,6 +32,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var shipOne: TestShip!
     var shipTwo: TestShip!
     var mothership: Mothership!
+    var beam: SKSpriteNode!
 //    var healthBars: HealthBars!
     var h1: HealthBar!
     var h2: HealthBar!
@@ -59,6 +60,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 eventListenerNode.didMoveToScene()
             }
         })
+        
+        returnShip(shipOne)
+
     }
     
 //    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -162,8 +166,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        healthBars.position = CGPoint(x: 0, y: (size.height / 2) - 200)
 //        fgNode.addChild(healthBars)
         
+        // Beam here for now
+        beam = SKSpriteNode(fileNamed: "Beam")?.childNode(withName: "beam") as? SKSpriteNode
+
         drawBorder()
         laser = Laser()
+        
     }
     
     
@@ -325,8 +333,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func returnShip(_ ship: TestShip) {
-//        let beam = SKSpriteNode(fileNamed: "Beam")?.childNode(withName: "beam") as? Beam
         
+//        beam = SKSpriteNode(fileNamed: "Beam")?.childNode(withName: "beam") as? Beam
+        beam.position = CGPoint(x: 0.0, y: mothership.position.y + mothership.size.height / 2)
+        beam.isPaused = false
+        beam.move(toParent: mothership)
         ship.move(to: CGPoint(x: 0.0, y: 0.0), speed: 1.0, completion: nil)
     }
     

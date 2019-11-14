@@ -57,7 +57,6 @@ class Mothership: SKSpriteNode, EventListenerNode {
     
     func shipHit() {
         shakeShipByAmt(20)
-    
     }
     
     func shakeShipByAmt(_ amt: CGFloat) {
