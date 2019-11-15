@@ -119,17 +119,43 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let healthBG = SKSpriteNode(imageNamed: "Healthbackground")
         
-        h1 = HealthBar(size: CGSize(width: scene!.size.width, height: 200), color: UIColor.red)
+        let healthLabel = SKLabelNode(fontNamed: "Avenir Next")
+        healthLabel.position = CGPoint(x: -(size.width / 2) + 160, y: (size.height / 2) - 210)
+        healthLabel.text = "health"
+        healthLabel.fontColor = UIColor.white
+        healthLabel.horizontalAlignmentMode = .right
+        healthLabel.verticalAlignmentMode = .bottom
+        healthLabel.fontSize = 40
+        healthLabel.zPosition = 100
+        fgNode.addChild(healthLabel)
+        
+        h1 = HealthBar(size: CGSize(width: size.width, height: 200), color: UIColor.red)
         h1.position = CGPoint(x: 0, y: (size.height / 2) - 200)
+        h1.zPosition = 99
         fgNode.addChild(h1)
         
-        h2 = HealthBar(size: CGSize(width: scene!.size.width, height: 200), color: UIColor.blue)
-        h2.position = CGPoint(x: 0, y: (size.height / 2) - 250)
-        fgNode.addChild(h2)
-        
-        shieldBar = HealthBar(size: CGSize(width: scene!.size.width, height: 200), color: UIColor.white)
-        shieldBar.position = CGPoint(x: 0, y: (size.height / 2) - 300)
+        let shieldLabel = SKLabelNode(fontNamed: "Avenir Next")
+        shieldLabel.position = CGPoint(x: -(size.width / 2) + 160, y: (size.height / 2) - 260)
+        shieldLabel.text = "shield"
+        shieldLabel.fontColor = UIColor.white
+        shieldLabel.horizontalAlignmentMode = .right
+        shieldLabel.verticalAlignmentMode = .bottom
+        shieldLabel.fontSize = 40
+        shieldLabel.zPosition = 100
+        fgNode.addChild(shieldLabel)
+
+        shieldBar = HealthBar(size: CGSize(width: scene!.size.width, height: 200), color: UIColor.blue)
+        shieldBar.position = CGPoint(x: 0, y: (size.height / 2) - 250)
+        shieldBar.zPosition = 99
         fgNode.addChild(shieldBar)
+        
+        
+        
+//        h2 = HealthBar(size: CGSize(width: scene!.size.width, height: 200), color: UIColor.blue)
+//        h2.position = CGPoint(x: 0, y: (size.height / 2) - 250)
+//        fgNode.addChild(h2)
+        
+
 
 //        healthBars = HealthBars(size: CGSize(width: scene!.size.width, height: 200))
 //        healthBars.position = CGPoint(x: 0, y: (size.height / 2) - 200)
