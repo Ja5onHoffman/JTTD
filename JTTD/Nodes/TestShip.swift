@@ -21,15 +21,14 @@ class TestShip: SKSpriteNode, EventListenerNode {
     var invincible = false
     let radiansPerSec: CGFloat = 4.0 * π
     let movePointsPerSec: CGFloat = 500.0
-    var health: CGFloat = 1.0
-    var shield: CGFloat = 1.0
+    var health: Int = 100
+    var shield: Int = 100
     var healthBar: HealthBar!
     var shieldBar: HealthBar!
     var dot: SKSpriteNode?
     var line: SKShapeNode!
     
     func didMoveToScene() {
-        print("test ship")
         isPaused = false
         isUserInteractionEnabled = true
         physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
@@ -90,10 +89,14 @@ class TestShip: SKSpriteNode, EventListenerNode {
     }
     
     func shipHit() {
-        if (!invincible) {
-            health -= 0.1
+        if (shield >= 0) {
+            shield -= 10
+            shieldBar.updateHealth(by: shield)
+            updateShield(shield)
+            print("Shield: \(shield)")
+        } else if (shield == 0) {
+            health -= 10
             if health > 0 {
-
                 healthBar.updateHealth(by: health)
                 // lives, etc here
             } else if health <= 0 {
@@ -101,6 +104,46 @@ class TestShip: SKSpriteNode, EventListenerNode {
             }
         }
     }
+    
+    func updateShield(_ level: Int) {
+        if let s = childNode(withName: "shield") {
+            s.alpha -= 0.1
+        }
+        print("Level: \(level)")
+        if level == 0 {
+            
+            let alpha = SKAction.fadeAlpha(to: 1.0, duration: 0.1)
+            let white = SKAction.colorize(with: UIColor.white, colorBlendFactor: 1.0, duration: 1.0)
+            let scaleBig = SKAction.scale(to: 2.0, duration: 1.0)
+            let scaleSmall = SKAction.scale(to: 0.0, duration: 1.0)
+            let particles = SKAction.run { self.emitParticles(name: "ShieldPoof") }
+            let set = SKAction.group([particles, alpha, white, scaleBig, scaleSmall])
+//            self.emitParticles(name: "ShieldPoof")
+            childNode(withName: "shield")!.run(set) {
+                self.childNode(withName: "shield")!.removeFromParent()
+            }
+        }
+        
+    }
+    
+    func emitParticles(name: String) {
+        let pos = convert(position, from: parent!)
+        let particles = SKEmitterNode(fileNamed: name)!
+        particles.position = pos
+        particles.zPosition = 3
+        addChild(particles)
+        particles.run(SKAction.fadeOut(withDuration: 1)) {
+            particles.removeFromParent()
+        }
+    }
+    
+//    let pos = fgNode.convert(sprite.position, from: sprite.parent!)
+//    let particles = SKEmitterNode(fileNamed: name)!
+//    particles.position = pos
+//    particles.zPosition = 3
+//    fgNode.addChild(particles)
+//    sprite.removeFromParent()
+//    particles.run(SKAction.removeFromParentAfterDelay(0.5))
     
     func blink() {
         invincible = true

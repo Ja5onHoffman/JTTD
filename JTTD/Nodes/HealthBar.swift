@@ -11,7 +11,7 @@ import SpriteKit
 
 class HealthBar: SKShapeNode {
 
-    var shipHealth: CGFloat = 1.0
+    var shipHealth: Int = 100
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("Use init()")
@@ -33,10 +33,12 @@ class HealthBar: SKShapeNode {
         self.path = CGPath(rect: r, transform: nil)
     }
     
-    func updateHealth(by health: CGFloat) {
+    func updateHealth(by health: Int) {
         if shipHealth > 0 {
-            shipHealth -= 0.1
-            run(SKAction.scaleX(to: shipHealth, duration: 0.1))
+            shipHealth -= 10
+            print(shipHealth)
+            print(CGFloat(shipHealth) / 100.0)
+            run(SKAction.scaleX(to: CGFloat(shipHealth) / 100.0, duration: 0.1))
         }
     }
 

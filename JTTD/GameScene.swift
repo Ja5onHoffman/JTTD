@@ -45,8 +45,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         setupNodes()
         basicShips()
-        let sr = SKAction.colorize(with: SKColor.red, colorBlendFactor: 1.0, duration: 0.0)
-        shipOne.run(sr)
         self.physicsWorld.contactDelegate = self
         self.view?.isMultipleTouchEnabled = true
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run({
@@ -61,35 +59,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         })
         
         returnShip(shipOne)
-
     }
-    
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        guard let touch = touches.first else { return }
-//        let positionInScene = touch.location(in: self)
-//        laser.removeFromParent()
-//
-//        if shipOne.moved {
-//            self.shipOne.swapMove()
-//            shipTwo.move(to: positionInScene, speed: 0.3) {
-//                self.shipTwo.rotate(directionOf: self.shipOne.position)
-//                self.shipOne.rotate(directionOf: self.shipTwo.position)
-//                self.lineBetween(firstSprite: self.shipOne, secondSprite: self.shipTwo)
-//            }
-//        } else {
-//            if let l = self.laser {
-//                l.removeFromParent()
-//            }
-//            shipOne.move(to: positionInScene, speed: 0.3, completion: nil)
-//        }
-//    }
-    
-//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        guard let touch = touches.first else { return }
-//        let positionInScene = touch.location(in: self)
-//        laser.removeFromParent()
-//
-//    }
 
     // MARK: Collisions
     func didBegin(_ contact: SKPhysicsContact) {
@@ -170,9 +140,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         drawBorder()
         laser = Laser()
-        
     }
-    
     
     func drawBorder() {
         let borderRect = CGRect(x: -size.width / 2, y: -size.height / 2, width: size.width, height: size.height)
@@ -228,7 +196,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         laser.position = CGPoint(midPointBetweenA: firstSprite.position, andB: secondSprite.position)
         fgNode.addChild(laser)
     }
-    
     
     func laserFrom(firstShip: SKSpriteNode, to secondShip: SKSpriteNode) {
         laser.removeFromParent()
@@ -311,17 +278,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func shipsInBounds() {
-        if let s1 = shipOne, let s2 = shipTwo {
+        if let s1 = shipOne {
             let s1p = s1.position
             if s1p.x > self.size.width / 2 || s1p.x < -self.size.width / 2 || s1p.y > self.size.height / 2 || s1p.y < -self.size.height / 2 {
                 s1.blink()
                 returnShip(s1)
-            }
-            
-            let s2p = s2.position
-            if s2p.x > self.size.width / 2 || s2p.x < -self.size.width / 2 || s2p.y > self.size.height / 2 || s2p.y < -self.size.height / 2 {
-                s2.blink()
-                returnShip(s2)
             }
         }
     }
