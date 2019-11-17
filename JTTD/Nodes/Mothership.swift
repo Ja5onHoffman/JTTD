@@ -18,7 +18,8 @@ enum MothershipSettings {
 class Mothership: SKSpriteNode, EventListenerNode {
 
     let mothership = SKSpriteNode(imageNamed: "mothership10")
-    var health: CGFloat = 1.0
+    var health: Int = 100
+    var healthBar: HealthBar!
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("Use init()")
@@ -57,6 +58,17 @@ class Mothership: SKSpriteNode, EventListenerNode {
     
     func shipHit() {
         shakeShipByAmt(20)
+        health -= 10
+        if health > 0 {
+            healthBar.updateHealth(by: health)
+            // lives, etc here
+        } else if health <= 0 {
+            explode()
+        }
+    }
+    
+    func explode() {
+        print("explode")
     }
     
     func shakeShipByAmt(_ amt: CGFloat) {

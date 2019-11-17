@@ -193,6 +193,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         shipOne.shieldBar = shieldBar
         
         mothership = Mothership()
+        mothership.healthBar = baseBar
         mothership.position = CGPoint(x: 0, y: -800)
         mothership.setScale(2)
 
