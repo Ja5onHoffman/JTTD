@@ -34,8 +34,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var beam: SKSpriteNode!
 //    var healthBars: HealthBars!
     var h1: HealthBar!
-    var h2: HealthBar!
     var shieldBar: HealthBar!
+    var baseBar: HealthBar!
     var lastTouchLocation: CGPoint?
     var lastUpdateTime: TimeInterval = 0
     var dt: TimeInterval = 0
@@ -116,9 +116,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backgroundStars.particlePositionRange = CGVector(dx: size.width, dy: size.height)
         backgroundStars.zPosition = -1
         bgNode.addChild(backgroundStars)
-        
-        let healthBG = SKSpriteNode(imageNamed: "Healthbackground")
-        
+                
         let healthLabel = SKLabelNode(fontNamed: "Avenir Next")
         healthLabel.position = CGPoint(x: -(size.width / 2) + 160, y: (size.height / 2) - 210)
         healthLabel.text = "health"
@@ -149,17 +147,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         shieldBar.zPosition = 99
         fgNode.addChild(shieldBar)
         
+        let baseLabel = SKLabelNode(fontNamed: "Avenir Next")
+        baseLabel.position = CGPoint(x: -(size.width / 2) + 250, y: -(size.height / 2) + 100)
+        baseLabel.text = "base health"
+        baseLabel.fontColor = UIColor.white
+        baseLabel.horizontalAlignmentMode = .right
+        baseLabel.verticalAlignmentMode = .bottom
+        baseLabel.fontSize = 40
+        baseLabel.zPosition = 100
+        fgNode.addChild(baseLabel)
         
+        baseBar = HealthBar(size: CGSize(width: size.width, height: 200), color: UIColor.blue)
+        baseBar.position = CGPoint(x: 0, y: -(size.height / 2) + 110)
+        fgNode.addChild(baseBar)
         
-//        h2 = HealthBar(size: CGSize(width: scene!.size.width, height: 200), color: UIColor.blue)
-//        h2.position = CGPoint(x: 0, y: (size.height / 2) - 250)
-//        fgNode.addChild(h2)
-        
-
-
-//        healthBars = HealthBars(size: CGSize(width: scene!.size.width, height: 200))
-//        healthBars.position = CGPoint(x: 0, y: (size.height / 2) - 200)
-//        fgNode.addChild(healthBars)
         
         // Beam here for now
         beam = SKSpriteNode(fileNamed: "Beam")?.childNode(withName: "beam") as? SKSpriteNode
