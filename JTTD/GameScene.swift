@@ -58,6 +58,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         })
         
+        mothership.smokeTrail()
         returnShip(shipOne)
     }
 
@@ -360,7 +361,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             dt = 0
             shipOne.dt = dt
         }
-        
+        mothership.smokeTrail()
         shipsInBounds()
         lastUpdateTime = currentTime
         shipOne.lastUpdateTime = currentTime

@@ -26,6 +26,8 @@
 		31AC75CA22CD59620070094F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31AC75C822CD59620070094F /* Assets.xcassets */; };
 		31AC75CE22D398F00070094F /* PhysicsCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC75CD22D398F00070094F /* PhysicsCategories.swift */; };
 		31AC75D022D39BAE0070094F /* Laser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC75CF22D39BAE0070094F /* Laser.swift */; };
+		31B0DC0A2381F0D500E75A55 /* BaseDamage.sks in Resources */ = {isa = PBXBuildFile; fileRef = 31B0DC092381F0D500E75A55 /* BaseDamage.sks */; };
+		31B0DC2C2383624B00E75A55 /* SmokeTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 31B0DC2B2383624A00E75A55 /* SmokeTrail.sks */; };
 		31BC4EF1233BE32500DD07DA /* HealthBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC4EF0233BE32500DD07DA /* HealthBar.swift */; };
 		31BF74B2235B5C2B006F5C33 /* Beam.sks in Resources */ = {isa = PBXBuildFile; fileRef = 31BF74B1235B5C2B006F5C33 /* Beam.sks */; };
 		31BF74B4235B613D006F5C33 /* Beam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BF74B3235B613D006F5C33 /* Beam.swift */; };
@@ -67,6 +69,8 @@
 		31AC75CC22D398DF0070094F /* MyUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUtils.swift; sourceTree = "<group>"; };
 		31AC75CD22D398F00070094F /* PhysicsCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsCategories.swift; sourceTree = "<group>"; };
 		31AC75CF22D39BAE0070094F /* Laser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Laser.swift; sourceTree = "<group>"; };
+		31B0DC092381F0D500E75A55 /* BaseDamage.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BaseDamage.sks; sourceTree = "<group>"; };
+		31B0DC2B2383624A00E75A55 /* SmokeTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SmokeTrail.sks; sourceTree = "<group>"; };
 		31BC4EF0233BE32500DD07DA /* HealthBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthBar.swift; sourceTree = "<group>"; };
 		31BF74B1235B5C2B006F5C33 /* Beam.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Beam.sks; sourceTree = "<group>"; };
 		31BF74B3235B613D006F5C33 /* Beam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beam.swift; sourceTree = "<group>"; };
@@ -115,12 +119,14 @@
 				313BF59F22BADBFF003000D2 /* GameScene.sks */,
 				315F687622C815310062646A /* TestSprite.sks */,
 				315F687822C816670062646A /* TestShip.sks */,
+				31B0DC2B2383624A00E75A55 /* SmokeTrail.sks */,
 				31AC75C722CD59620070094F /* BackgroundStars.sks */,
 				31AC75C822CD59620070094F /* Assets.xcassets */,
 				311FFECA22E2650D00E7C9C8 /* Poof.sks */,
 				31BF74B1235B5C2B006F5C33 /* Beam.sks */,
 				31D97713237EF3DA002C9653 /* SuperShield.sks */,
 				31D97715237F3EC6002C9653 /* ShieldPoof.sks */,
+				31B0DC092381F0D500E75A55 /* BaseDamage.sks */,
 			);
 			path = "Scene Files";
 			sourceTree = "<group>";
@@ -284,6 +290,7 @@
 				31ED1DA22274B09D003BBE49 /* Main.storyboard in Resources */,
 				313BF5A022BADBFF003000D2 /* GameScene.sks in Resources */,
 				31D97714237EF3DA002C9653 /* SuperShield.sks in Resources */,
+				31B0DC2C2383624B00E75A55 /* SmokeTrail.sks in Resources */,
 				31BF74B2235B5C2B006F5C33 /* Beam.sks in Resources */,
 				31F82B502295BF7C0046CFF4 /* GoogleService-Info.plist in Resources */,
 				31ED1DA42274B09F003BBE49 /* Assets.xcassets in Resources */,
@@ -291,6 +298,7 @@
 				311FFECB22E2650D00E7C9C8 /* Poof.sks in Resources */,
 				315F687722C815310062646A /* TestSprite.sks in Resources */,
 				31D97716237F3EC6002C9653 /* ShieldPoof.sks in Resources */,
+				31B0DC0A2381F0D500E75A55 /* BaseDamage.sks in Resources */,
 				315F687922C816670062646A /* TestShip.sks in Resources */,
 				31AC75CA22CD59620070094F /* Assets.xcassets in Resources */,
 				31AC75C922CD59620070094F /* BackgroundStars.sks in Resources */,
