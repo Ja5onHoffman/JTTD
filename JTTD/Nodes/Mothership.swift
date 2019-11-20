@@ -126,7 +126,6 @@ class Mothership: SKSpriteNode, EventListenerNode {
         trail.run(SKAction.removeFromParentAfterDelay(1.0))
     }
     
-    
     func shakeShipByAmt(_ amt: CGFloat) {
         self.removeAction(forKey: "shake")
         let amount = CGPoint(x: 0, y: -amt)
