@@ -93,7 +93,6 @@ class TestShip: SKSpriteNode, EventListenerNode {
             shield -= 10
             shieldBar.updateHealth(by: shield)
             updateShield(shield)
-            print("Shield: \(shield)")
         } else if (shield == 0) {
             health -= 10
             if health > 0 {
@@ -109,7 +108,6 @@ class TestShip: SKSpriteNode, EventListenerNode {
         if let s = childNode(withName: "shield") {
             s.alpha -= 0.1
         }
-        print("Level: \(level)")
         if level == 0 {
             
             let alpha = SKAction.fadeAlpha(to: 1.0, duration: 0.1)

@@ -19,7 +19,7 @@ enum MothershipSettings {
 class Mothership: SKSpriteNode, EventListenerNode {
 
     let mothership = SKSpriteNode(imageNamed: "mothership10")
-    var health: Int = 100
+    var health: Int = 20
     var healthBar: HealthBar!
     
     required init?(coder aDecoder: NSCoder) {
@@ -91,7 +91,14 @@ class Mothership: SKSpriteNode, EventListenerNode {
     }
     
     func explode() {
-        print("explode")
+        let particles = SKEmitterNode(fileNamed: "Poof")!
+        particles.position = position
+        particles.zPosition = 3
+        let fg = self.parent
+        fg?.addChild(particles)
+        removeFromParent()
+        particles.run(SKAction.removeFromParentAfterDelay(0.5))
+        return
     }
     
 
@@ -101,9 +108,10 @@ class Mothership: SKSpriteNode, EventListenerNode {
         } else {
             let trail = SKEmitterNode(fileNamed: "SmokeTrail")!
             trail.name = "smoke"
+            trail.position = position
             trail.zPosition = zPosition - 1
-            trail.targetNode = self.parent
-            addChild(trail)
+            let fg = self.parent
+            fg?.addChild(trail) // not sure why it only works this way
             run(SKAction.sequence([SKAction.wait(forDuration: 3.0),
                                    SKAction.run() {
                                     self.removeSmoke(trail)
