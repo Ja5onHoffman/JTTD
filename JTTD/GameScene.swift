@@ -34,8 +34,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var beam: SKSpriteNode!
 //    var healthBars: HealthBars!
     var h1: HealthBar!
-    var h2: HealthBar!
     var shieldBar: HealthBar!
+    var baseBar: HealthBar!
     var lastTouchLocation: CGPoint?
     var lastUpdateTime: TimeInterval = 0
     var dt: TimeInterval = 0
@@ -45,8 +45,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         setupNodes()
         basicShips()
-        let sr = SKAction.colorize(with: SKColor.red, colorBlendFactor: 1.0, duration: 0.0)
-        shipOne.run(sr)
         self.physicsWorld.contactDelegate = self
         self.view?.isMultipleTouchEnabled = true
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run({
@@ -60,36 +58,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         })
         
+        mothership.smokeTrail()
         returnShip(shipOne)
-
     }
-    
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        guard let touch = touches.first else { return }
-//        let positionInScene = touch.location(in: self)
-//        laser.removeFromParent()
-//
-//        if shipOne.moved {
-//            self.shipOne.swapMove()
-//            shipTwo.move(to: positionInScene, speed: 0.3) {
-//                self.shipTwo.rotate(directionOf: self.shipOne.position)
-//                self.shipOne.rotate(directionOf: self.shipTwo.position)
-//                self.lineBetween(firstSprite: self.shipOne, secondSprite: self.shipTwo)
-//            }
-//        } else {
-//            if let l = self.laser {
-//                l.removeFromParent()
-//            }
-//            shipOne.move(to: positionInScene, speed: 0.3, completion: nil)
-//        }
-//    }
-    
-//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        guard let touch = touches.first else { return }
-//        let positionInScene = touch.location(in: self)
-//        laser.removeFromParent()
-//
-//    }
 
     // MARK: Collisions
     func didBegin(_ contact: SKPhysicsContact) {
@@ -146,33 +117,58 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backgroundStars.particlePositionRange = CGVector(dx: size.width, dy: size.height)
         backgroundStars.zPosition = -1
         bgNode.addChild(backgroundStars)
+                
+        let healthLabel = SKLabelNode(fontNamed: "Avenir Next")
+        healthLabel.position = CGPoint(x: -(size.width / 2) + 160, y: (size.height / 2) - 210)
+        healthLabel.text = "health"
+        healthLabel.fontColor = UIColor.white
+        healthLabel.horizontalAlignmentMode = .right
+        healthLabel.verticalAlignmentMode = .bottom
+        healthLabel.fontSize = 40
+        healthLabel.zPosition = 100
+        fgNode.addChild(healthLabel)
         
-        let healthBG = SKSpriteNode(imageNamed: "Healthbackground")
-        
-        h1 = HealthBar(size: CGSize(width: scene!.size.width, height: 200), color: UIColor.red)
+        h1 = HealthBar(size: CGSize(width: size.width, height: 200), color: UIColor.red)
         h1.position = CGPoint(x: 0, y: (size.height / 2) - 200)
+        h1.zPosition = 99
         fgNode.addChild(h1)
         
-        h2 = HealthBar(size: CGSize(width: scene!.size.width, height: 200), color: UIColor.blue)
-        h2.position = CGPoint(x: 0, y: (size.height / 2) - 250)
-        fgNode.addChild(h2)
-        
-        shieldBar = HealthBar(size: CGSize(width: scene!.size.width, height: 200), color: UIColor.white)
-        shieldBar.position = CGPoint(x: 0, y: (size.height / 2) - 300)
-        fgNode.addChild(shieldBar)
+        let shieldLabel = SKLabelNode(fontNamed: "Avenir Next")
+        shieldLabel.position = CGPoint(x: -(size.width / 2) + 160, y: (size.height / 2) - 260)
+        shieldLabel.text = "shield"
+        shieldLabel.fontColor = UIColor.white
+        shieldLabel.horizontalAlignmentMode = .right
+        shieldLabel.verticalAlignmentMode = .bottom
+        shieldLabel.fontSize = 40
+        shieldLabel.zPosition = 100
+        fgNode.addChild(shieldLabel)
 
-//        healthBars = HealthBars(size: CGSize(width: scene!.size.width, height: 200))
-//        healthBars.position = CGPoint(x: 0, y: (size.height / 2) - 200)
-//        fgNode.addChild(healthBars)
+        shieldBar = HealthBar(size: CGSize(width: scene!.size.width, height: 200), color: UIColor.blue)
+        shieldBar.position = CGPoint(x: 0, y: (size.height / 2) - 250)
+        shieldBar.zPosition = 99
+        fgNode.addChild(shieldBar)
+        
+        let baseLabel = SKLabelNode(fontNamed: "Avenir Next")
+        baseLabel.position = CGPoint(x: -(size.width / 2) + 250, y: -(size.height / 2) + 100)
+        baseLabel.text = "base health"
+        baseLabel.fontColor = UIColor.white
+        baseLabel.horizontalAlignmentMode = .right
+        baseLabel.verticalAlignmentMode = .bottom
+        baseLabel.fontSize = 40
+        baseLabel.zPosition = 100
+        fgNode.addChild(baseLabel)
+        
+        baseBar = HealthBar(size: CGSize(width: size.width, height: 200), color: UIColor.blue)
+        baseBar.position = CGPoint(x: 0, y: -(size.height / 2) + 110)
+        fgNode.addChild(baseBar)
+        
         
         // Beam here for now
         beam = SKSpriteNode(fileNamed: "Beam")?.childNode(withName: "beam") as? SKSpriteNode
 
         drawBorder()
         laser = Laser()
-        
     }
-    
     
     func drawBorder() {
         let borderRect = CGRect(x: -size.width / 2, y: -size.height / 2, width: size.width, height: size.height)
@@ -198,6 +194,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         shipOne.shieldBar = shieldBar
         
         mothership = Mothership()
+        mothership.healthBar = baseBar
         mothership.position = CGPoint(x: 0, y: -800)
         mothership.setScale(2)
 
@@ -228,7 +225,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         laser.position = CGPoint(midPointBetweenA: firstSprite.position, andB: secondSprite.position)
         fgNode.addChild(laser)
     }
-    
     
     func laserFrom(firstShip: SKSpriteNode, to secondShip: SKSpriteNode) {
         laser.removeFromParent()
@@ -311,17 +307,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func shipsInBounds() {
-        if let s1 = shipOne, let s2 = shipTwo {
+        if let s1 = shipOne {
             let s1p = s1.position
             if s1p.x > self.size.width / 2 || s1p.x < -self.size.width / 2 || s1p.y > self.size.height / 2 || s1p.y < -self.size.height / 2 {
                 s1.blink()
                 returnShip(s1)
-            }
-            
-            let s2p = s2.position
-            if s2p.x > self.size.width / 2 || s2p.x < -self.size.width / 2 || s2p.y > self.size.height / 2 || s2p.y < -self.size.height / 2 {
-                s2.blink()
-                returnShip(s2)
             }
         }
     }
@@ -371,7 +361,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             dt = 0
             shipOne.dt = dt
         }
-        
+        mothership.smokeTrail()
         shipsInBounds()
         lastUpdateTime = currentTime
         shipOne.lastUpdateTime = currentTime
