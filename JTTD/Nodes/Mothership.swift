@@ -14,11 +14,16 @@ enum MothershipSettings {
     static var shipNum = 0
 }
 
+enum State {
+   case normal, critical
+}
+
 class Mothership: SKSpriteNode, EventListenerNode {
 
     let mothership = SKSpriteNode(imageNamed: "mothership10")
     var health: Int = 100
     var healthBar: HealthBar!
+    var state: State = .normal
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("Use init()")
@@ -45,12 +50,12 @@ class Mothership: SKSpriteNode, EventListenerNode {
     func didMoveToScene() {
         beginMovement()
         // ship on fire
-        let fire = SKEmitterNode(fileNamed: "BaseDamage")!
-        fire.position = CGPoint(x: 0, y: 0)
-        fire.zPosition = zPosition - 1
-        fire.alpha = 0.1
-        addChild(fire)
-        smokeTrail()
+//        let fire = SKEmitterNode(fileNamed: "BaseDamage")!
+//        fire.position = CGPoint(x: 0, y: 0)
+//        fire.zPosition = zPosition - 1
+//        fire.alpha = 0.1
+//        addChild(fire)
+//        smokeTrail()
     }
     
     func beginMovement() {
@@ -77,6 +82,7 @@ class Mothership: SKSpriteNode, EventListenerNode {
     
     func showDamage(_ health: Int) {
         if health < 50 {
+            state = .critical
             if let fire = childNode(withName: "fire") {
                 fire.alpha += 0.2
             } else {

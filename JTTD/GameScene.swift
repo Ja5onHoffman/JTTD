@@ -57,8 +57,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 eventListenerNode.didMoveToScene()
             }
         })
-        
-        mothership.smokeTrail()
     }
 
     // MARK: Collisions
@@ -357,8 +355,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             dt = 0
             shipOne.dt = dt
         }
-        mothership.smokeTrail()
         shipsInBounds()
+        if mothership.state == .critical {
+            mothership.smokeTrail()
+        }
         lastUpdateTime = currentTime
         shipOne.lastUpdateTime = currentTime
 //        healthBars.updateHealth(one: shipOne.health, two: shipTwo.health, three: mothership.health)
