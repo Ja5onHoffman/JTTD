@@ -31,7 +31,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var dotCount: Int = 0
     var shipOne: TestShip!
     var mothership: Mothership!
-    var beam: SKSpriteNode!
+//    var beam: SKSpriteNode!
 //    var healthBars: HealthBars!
     var h1: HealthBar!
     var shieldBar: HealthBar!
@@ -59,7 +59,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         })
         
         mothership.smokeTrail()
-        returnShip(shipOne)
     }
 
     // MARK: Collisions
@@ -164,8 +163,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         // Beam here for now
-        beam = SKSpriteNode(fileNamed: "Beam")?.childNode(withName: "beam") as? SKSpriteNode
-
+//        beam = SKSpriteNode(fileNamed: "Beam")?.childNode(withName: "beam") as? SKSpriteNode
         drawBorder()
         laser = Laser()
     }
@@ -317,12 +315,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func returnShip(_ ship: TestShip) {
-        
-//        beam = SKSpriteNode(fileNamed: "Beam")?.childNode(withName: "beam") as? Beam
-        beam.position = CGPoint(x: 0.0, y: mothership.position.y + mothership.size.height / 2)
-        beam.isPaused = false
-        beam.move(toParent: mothership)
-        ship.move(to: CGPoint(x: 0.0, y: 0.0), speed: 1.0, completion: nil)
+        mothership.showBeam()
+        ship.move(to: CGPoint(x: 0.0, y: 0.0), speed: 1.0) {
+            self.mothership.removeBeam()
+        }
     }
     
     func path() -> (CGPoint, CGPoint) {

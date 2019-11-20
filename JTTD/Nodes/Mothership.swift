@@ -14,12 +14,10 @@ enum MothershipSettings {
     static var shipNum = 0
 }
 
-
-
 class Mothership: SKSpriteNode, EventListenerNode {
 
     let mothership = SKSpriteNode(imageNamed: "mothership10")
-    var health: Int = 20
+    var health: Int = 100
     var healthBar: HealthBar!
     
     required init?(coder aDecoder: NSCoder) {
@@ -41,6 +39,7 @@ class Mothership: SKSpriteNode, EventListenerNode {
         physicsBody?.categoryBitMask = PhysicsCategory.Mother
         physicsBody?.collisionBitMask = PhysicsCategory.None
         physicsBody?.contactTestBitMask = PhysicsCategory.Meteor
+        drawBorder()
     }
     
     func didMoveToScene() {
@@ -90,6 +89,21 @@ class Mothership: SKSpriteNode, EventListenerNode {
         }
     }
     
+    func showBeam() {
+        if let beam = SKSpriteNode(fileNamed: "Tractor")?.childNode(withName: "tractor") as? SKSpriteNode {
+            beam.position = CGPoint(x: position.x, y: position.y + 300)
+            beam.setScale(0.5)
+            beam.name = "beam"
+            beam.isPaused = false
+            beam.zPosition = zPosition + 1
+            beam.move(toParent: self)
+        }
+    }
+    
+    func removeBeam() {
+        childNode(withName: "beam")?.removeFromParent()
+    }
+    
     func explode() {
         let particles = SKEmitterNode(fileNamed: "Poof")!
         particles.position = position
@@ -101,6 +115,13 @@ class Mothership: SKSpriteNode, EventListenerNode {
         return
     }
     
+    func drawBorder() {
+        let borderRect = CGRect(x: -size.width / 2, y: -size.height / 2, width: size.width, height: size.height)
+        let border = SKShapeNode(rect: borderRect)
+        border.strokeColor = UIColor.red
+        border.lineWidth = 5
+        addChild(border)
+    }
 
     func smokeTrail() {
         if let _ = childNode(withName: "smoke") {
