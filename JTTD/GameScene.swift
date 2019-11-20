@@ -313,9 +313,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func returnShip(_ ship: TestShip) {
-        mothership.showBeam()
+        mothership.showTractor()
         ship.move(to: CGPoint(x: 0.0, y: 0.0), speed: 1.0) {
-            self.mothership.removeBeam()
+            self.mothership.removeTractor()
         }
     }
     

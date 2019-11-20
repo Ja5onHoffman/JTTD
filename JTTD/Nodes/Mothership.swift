@@ -56,6 +56,7 @@ class Mothership: SKSpriteNode, EventListenerNode {
 //        fire.alpha = 0.1
 //        addChild(fire)
 //        smokeTrail()
+        showHealthBeam()
     }
     
     func beginMovement() {
@@ -95,10 +96,9 @@ class Mothership: SKSpriteNode, EventListenerNode {
         }
     }
     
-    func showBeam() {
-        if let beam = SKSpriteNode(fileNamed: "Tractor")?.childNode(withName: "tractor") as? SKSpriteNode {
-            beam.position = CGPoint(x: position.x, y: position.y + 300)
-            beam.setScale(0.5)
+    func showHealthBeam() {
+        if let beam = SKSpriteNode(fileNamed: "Beam")?.childNode(withName: "beam") as? SKSpriteNode {
+            beam.position = CGPoint(x: position.x, y: position.y + 350)
             beam.name = "beam"
             beam.isPaused = false
             beam.zPosition = zPosition + 1
@@ -106,8 +106,19 @@ class Mothership: SKSpriteNode, EventListenerNode {
         }
     }
     
-    func removeBeam() {
-        childNode(withName: "beam")?.removeFromParent()
+    func showTractor() {
+        if let tractor = SKSpriteNode(fileNamed: "Tractor")?.childNode(withName: "tractor") as? SKSpriteNode {
+            tractor.position = CGPoint(x: position.x, y: position.y + 300)
+            tractor.setScale(0.5)
+            tractor.name = "tractor"
+            tractor.isPaused = false
+            tractor.zPosition = zPosition + 1
+            tractor.move(toParent: self)
+        }
+    }
+    
+    func removeTractor() {
+        childNode(withName: "tractor")?.removeFromParent()
     }
     
     func explode() {
