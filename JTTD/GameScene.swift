@@ -57,6 +57,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 eventListenerNode.didMoveToScene()
             }
         })
+        mothership.showHealthBeam()
     }
 
     // MARK: Collisions
@@ -343,7 +344,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func simpleRotate(sprite: SKSpriteNode, direction: CGPoint) {
         sprite.zRotation = atan2(direction.y, direction.x)
     }
-    
     
     
     // MARK: Update

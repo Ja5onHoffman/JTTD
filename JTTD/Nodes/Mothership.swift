@@ -57,6 +57,7 @@ class Mothership: SKSpriteNode, EventListenerNode {
 //        addChild(fire)
 //        smokeTrail()
         showHealthBeam()
+        cycleBeam()
     }
     
     func beginMovement() {
@@ -96,14 +97,34 @@ class Mothership: SKSpriteNode, EventListenerNode {
         }
     }
     
+    func cycleBeam() {
+        
+        let timer = Timer.init(timeInterval: Double.random(in: 10..<21), repeats: true) { _ in
+            let duration = Double.random(in: 2..<6)
+            self.run(SKAction.sequence([
+                SKAction.run { self.showHealthBeam() },
+                SKAction.wait(forDuration: duration),
+                SKAction.run { self.removeHealthBeam() }
+            ]))
+            
+            print("Fired")
+        }
+        timer.fire()
+    }
+    
     func showHealthBeam() {
-        if let beam = SKSpriteNode(fileNamed: "Beam")?.childNode(withName: "beam") as? SKSpriteNode {
+        if let beam = SKSpriteNode(fileNamed: "Beam")?.childNode(withName: "BeamOverlay") as? SKSpriteNode {
             beam.position = CGPoint(x: position.x, y: position.y + 350)
             beam.name = "beam"
             beam.isPaused = false
             beam.zPosition = zPosition + 1
             beam.move(toParent: self)
         }
+    }
+    
+    func removeHealthBeam() {
+        
+        self.childNode(withName: "beam")?.removeFromParent()
     }
     
     func showTractor() {

@@ -31,6 +31,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
     func didMoveToScene() {
         isPaused = false
         isUserInteractionEnabled = true
+        zPosition = 1000
         physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
         physicsBody?.affectedByGravity = false
         physicsBody?.linearDamping = 1.0
@@ -51,7 +52,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
         
         let line = SKShapeNode(path: path)
         line.name = "line"
-        line.zPosition = -1
+        line.zPosition = zPosition - 1
         line.strokeColor = UIColor.red
         line.lineWidth = 20
         line.fillColor = UIColor.red
