@@ -57,7 +57,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 eventListenerNode.didMoveToScene()
             }
         })
-        mothership.showHealthBeam()
+
     }
 
     // MARK: Collisions
@@ -359,9 +359,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if mothership.state == .critical {
             mothership.smokeTrail()
         }
+        
+        if mothership.beamState == .none {
+            let interval = TimeInterval(exactly: Int.random(in: 5..<10))!
+            print(interval)
+            mothership.cycleBeam(in: Double(interval))
+        }
+        
         lastUpdateTime = currentTime
         shipOne.lastUpdateTime = currentTime
-//        healthBars.updateHealth(one: shipOne.health, two: shipTwo.health, three: mothership.health)
     }
 
 

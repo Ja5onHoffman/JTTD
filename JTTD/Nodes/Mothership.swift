@@ -18,12 +18,18 @@ enum State {
    case normal, critical
 }
 
+enum BeamState {
+    case health, tractor, none
+}
+
 class Mothership: SKSpriteNode, EventListenerNode {
 
     let mothership = SKSpriteNode(imageNamed: "mothership10")
     var health: Int = 100
     var healthBar: HealthBar!
     var state: State = .normal
+    var beamState: BeamState = .none
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("Use init()")
@@ -56,8 +62,9 @@ class Mothership: SKSpriteNode, EventListenerNode {
 //        fire.alpha = 0.1
 //        addChild(fire)
 //        smokeTrail()
-        showHealthBeam()
-        cycleBeam()
+
+            
+    
     }
     
     func beginMovement() {
@@ -97,19 +104,18 @@ class Mothership: SKSpriteNode, EventListenerNode {
         }
     }
     
-    func cycleBeam() {
-        
-        let timer = Timer.init(timeInterval: Double.random(in: 10..<21), repeats: true) { _ in
-            let duration = Double.random(in: 2..<6)
+    func cycleBeam(in time: TimeInterval) {
+        beamState = .health
+        let timer = Timer.scheduledTimer(withTimeInterval: time, repeats: false) { _ in
+            let duration = Int.random(in: 2..<6)
             self.run(SKAction.sequence([
                 SKAction.run { self.showHealthBeam() },
-                SKAction.wait(forDuration: duration),
+                SKAction.wait(forDuration: Double(duration)),
                 SKAction.run { self.removeHealthBeam() }
             ]))
             
             print("Fired")
         }
-        timer.fire()
     }
     
     func showHealthBeam() {
@@ -123,11 +129,16 @@ class Mothership: SKSpriteNode, EventListenerNode {
     }
     
     func removeHealthBeam() {
-        
-        self.childNode(withName: "beam")?.removeFromParent()
+        beamState = .none
+        if let b = childNode(withName: "beam") {
+            b.run(SKAction.fadeOut(withDuration: 0.5)) {
+                b.removeFromParent()
+            }
+        }
     }
     
     func showTractor() {
+        beamState = .tractor
         if let tractor = SKSpriteNode(fileNamed: "Tractor")?.childNode(withName: "tractor") as? SKSpriteNode {
             tractor.position = CGPoint(x: position.x, y: position.y + 300)
             tractor.setScale(0.5)
