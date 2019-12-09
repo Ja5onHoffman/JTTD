@@ -8,9 +8,15 @@
 
 import SpriteKit
 
+// Not currently used
 class Beam: SKSpriteNode, EventListenerNode {
     
     func didMoveToScene() {
-        print("Beam")
+        isPaused = false
+        physicsBody?.affectedByGravity = false
+        physicsBody?.categoryBitMask = PhysicsCategory.Recharge
+        physicsBody?.collisionBitMask = PhysicsCategory.None
+        physicsBody?.contactTestBitMask = PhysicsCategory.Ship
     }
+
 }

@@ -29,7 +29,7 @@ class Mothership: SKSpriteNode, EventListenerNode {
     var healthBar: HealthBar!
     var state: State = .normal
     var beamState: BeamState = .none
-    
+//    var beam: Beam!
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("Use init()")
@@ -63,8 +63,6 @@ class Mothership: SKSpriteNode, EventListenerNode {
 //        addChild(fire)
 //        smokeTrail()
 
-            
-    
     }
     
     func beginMovement() {
@@ -119,13 +117,18 @@ class Mothership: SKSpriteNode, EventListenerNode {
     }
     
     func showHealthBeam() {
-        if let beam = SKSpriteNode(fileNamed: "Beam")?.childNode(withName: "BeamOverlay") as? SKSpriteNode {
-            beam.position = CGPoint(x: position.x, y: position.y + 350)
-            beam.name = "beam"
-            beam.isPaused = false
-            beam.zPosition = zPosition + 1
-            beam.move(toParent: self)
-        }
+        
+        guard let beam = SKSpriteNode(fileNamed: "Beam")?.childNode(withName: "BeamOverlay") as? SKSpriteNode else { return }
+        
+        beam.position = CGPoint(x: position.x, y: position.y + 250)
+        beam.name = "beam"
+        beam.isPaused = false
+        beam.zPosition = zPosition + 1
+        physicsBody?.affectedByGravity = false
+        physicsBody?.categoryBitMask = PhysicsCategory.Recharge
+        physicsBody?.collisionBitMask = PhysicsCategory.None
+        physicsBody?.contactTestBitMask = PhysicsCategory.Ship
+        beam.move(toParent: self)
     }
     
     func removeHealthBeam() {

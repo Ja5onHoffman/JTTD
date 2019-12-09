@@ -73,7 +73,6 @@ class HealthBars: SKSpriteNode {
     
     func updateHealth(one: CGFloat, two: CGFloat, three: CGFloat) {
         
-        
         if one < shipOneHealth {
             shipOneHealth = one
             self.shipOne.run(SKAction.resize(toWidth: shipOne.xScale * shipOneHealth, duration: 0.1))

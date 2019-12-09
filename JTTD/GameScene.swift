@@ -31,7 +31,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var dotCount: Int = 0
     var shipOne: TestShip!
     var mothership: Mothership!
-//    var beam: SKSpriteNode!
+//    var beam: Beam!
 //    var healthBars: HealthBars!
     var h1: HealthBar!
     var shieldBar: HealthBar!
@@ -99,6 +99,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let ship = contact.bodyA.node as! Mothership
                 ship.shipHit()
             }
+        
+        // Ship vs Recharge
+        } else if (bA == PhysicsCategory.Recharge && bB == PhysicsCategory.Ship) || (bA == PhysicsCategory.Ship && bB == PhysicsCategory.Recharge) {
+            print("Recharging")
         }
     }
     
@@ -160,9 +164,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         baseBar.position = CGPoint(x: 0, y: -(size.height / 2) + 110)
         fgNode.addChild(baseBar)
         
-        
-        // Beam here for now
-//        beam = SKSpriteNode(fileNamed: "Beam")?.childNode(withName: "beam") as? SKSpriteNode
         drawBorder()
         laser = Laser()
     }
@@ -362,7 +363,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if mothership.beamState == .none {
             let interval = TimeInterval(exactly: Int.random(in: 5..<10))!
-            print(interval)
             mothership.cycleBeam(in: Double(interval))
         }
         
