@@ -37,7 +37,10 @@ class TestShip: SKSpriteNode, EventListenerNode {
         physicsBody?.linearDamping = 1.0
         physicsBody?.categoryBitMask = PhysicsCategory.Ship
         physicsBody?.collisionBitMask = PhysicsCategory.Meteor | PhysicsCategory.Ship
-        physicsBody?.contactTestBitMask = PhysicsCategory.Meteor | PhysicsCategory.Ship
+        physicsBody?.contactTestBitMask =
+            PhysicsCategory.Meteor |
+            PhysicsCategory.Ship |
+            PhysicsCategory.Recharge
     }
     
 
@@ -105,6 +108,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
         }
     }
     
+    // Need to change this to increase shield as well
     func updateShield(_ level: Int) {
         if let s = childNode(withName: "shield") {
             s.alpha -= 0.1

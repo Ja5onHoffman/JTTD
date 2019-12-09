@@ -124,10 +124,13 @@ class Mothership: SKSpriteNode, EventListenerNode {
         beam.name = "beam"
         beam.isPaused = false
         beam.zPosition = zPosition + 1
-        physicsBody?.affectedByGravity = false
-        physicsBody?.categoryBitMask = PhysicsCategory.Recharge
-        physicsBody?.collisionBitMask = PhysicsCategory.None
-        physicsBody?.contactTestBitMask = PhysicsCategory.Ship
+        if let ring = beam.childNode(withName: "ring") as? SKSpriteNode {
+            ring.physicsBody = SKPhysicsBody(circleOfRadius: ring.size.width / 3)
+            ring.physicsBody?.affectedByGravity = false
+            ring.physicsBody?.categoryBitMask = PhysicsCategory.Recharge
+            ring.physicsBody?.collisionBitMask = PhysicsCategory.None
+            ring.physicsBody?.contactTestBitMask = PhysicsCategory.Ship
+        }
         beam.move(toParent: self)
     }
     

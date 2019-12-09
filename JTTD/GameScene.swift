@@ -102,7 +102,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Ship vs Recharge
         } else if (bA == PhysicsCategory.Recharge && bB == PhysicsCategory.Ship) || (bA == PhysicsCategory.Ship && bB == PhysicsCategory.Recharge) {
-            print("Recharging")
+            if contact.bodyA.node?.name == "shipOne" {
+                TestShip(bodyA)
+            }
         }
     }
     
@@ -188,6 +190,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         shipOne.setScale(1)
         shipOne.position = CGPoint(x: 0, y: 0)
         shipOne.color = SKColor.red
+        shipOne.name = "shipOne"
         shipOne.healthBar = h1
         shipOne.shieldBar = shieldBar
         
