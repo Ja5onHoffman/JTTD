@@ -95,17 +95,25 @@ class TestShip: SKSpriteNode, EventListenerNode {
     func shipHit() {
         if (shield >= 0) {
             shield -= 10
-            shieldBar.updateHealth(by: shield)
+//            shieldBar.decreaseHealth(by: shield)
             updateShield(shield)
         } else if (shield == 0) {
             health -= 10
             if health > 0 {
-                healthBar.updateHealth(by: health)
+                healthBar.decreaseHealth(by: health)
                 // lives, etc here
             } else if health <= 0 {
                 explode()
             }
         }
+    }
+    
+    // Just increments for now
+    func recharge() {
+        if let s = childNode(withName: "shield") {
+            s.alpha += 0.1
+        }
+        shieldBar.increaseHealth(by: 10)
     }
     
     // Need to change this to increase shield as well
@@ -114,7 +122,6 @@ class TestShip: SKSpriteNode, EventListenerNode {
             s.alpha -= 0.1
         }
         if level == 0 {
-            
             let alpha = SKAction.fadeAlpha(to: 1.0, duration: 0.1)
             let white = SKAction.colorize(with: UIColor.white, colorBlendFactor: 1.0, duration: 1.0)
             let scaleBig = SKAction.scale(to: 2.0, duration: 1.0)

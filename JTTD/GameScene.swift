@@ -103,7 +103,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Ship vs Recharge
         } else if (bA == PhysicsCategory.Recharge && bB == PhysicsCategory.Ship) || (bA == PhysicsCategory.Ship && bB == PhysicsCategory.Recharge) {
             if contact.bodyA.node?.name == "shipOne" {
-                TestShip(bodyA)
+                let ship = contact.bodyA.node as! TestShip
+                ship.recharge()
+            } else {
+                let ship = contact.bodyB.node as! TestShip
+                ship.recharge()
             }
         }
     }

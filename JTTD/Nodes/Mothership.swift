@@ -79,7 +79,7 @@ class Mothership: SKSpriteNode, EventListenerNode {
         shakeShipByAmt(20)
         health -= 10
         if health > 0 {
-            healthBar.updateHealth(by: health)
+            healthBar.decreaseHealth(by: health)
             showDamage(health)
             // lives, etc here
         } else if health <= 0 {
