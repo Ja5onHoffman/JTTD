@@ -95,7 +95,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
     func shipHit() {
         if (shield >= 0) {
             shield -= 10
-//            shieldBar.decreaseHealth(by: shield)
+            shieldBar.decreaseHealth(by: shield)
             updateShield(shield)
         } else if (shield == 0) {
             health -= 10
@@ -113,6 +113,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
         if let s = childNode(withName: "shield") {
             s.alpha += 0.1
         }
+        shield += 10
         shieldBar.increaseHealth(by: 10)
     }
     

@@ -36,16 +36,16 @@ class HealthBar: SKShapeNode {
     // Shouldn't repeat here
     func increaseHealth(by health: Int) {
         if shipHealth < 100 {
-            shipHealth += health
+            shipHealth += 10
             run(SKAction.scaleX(to: CGFloat(shipHealth) / 100.0, duration: 0.1))
         }
     }
     
     func decreaseHealth(by health: Int) {
         if shipHealth > 0 {
-            shipHealth -= health
-            print(shipHealth)
-            print(CGFloat(shipHealth) / 100.0)
+            shipHealth -= 10
+//            print(shipHealth)
+//            print(CGFloat(shipHealth) / 100.0)
             run(SKAction.scaleX(to: CGFloat(shipHealth) / 100.0, duration: 0.1))
         }
     }
