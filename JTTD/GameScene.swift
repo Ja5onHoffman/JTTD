@@ -321,7 +321,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    // Once shiels is gone it's gone? 
+    // Once shield is gone it's gone? 
     func returnShip(_ ship: TestShip) {
         mothership.showTractor()
         ship.move(to: CGPoint(x: 0.0, y: 0.0), speed: 1.0) {
