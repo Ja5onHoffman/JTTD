@@ -29,6 +29,11 @@ class AuthVC: UIViewController, GIDSignInUIDelegate {
         GIDSignIn.sharedInstance()?.signIn()
     }
     
+    @IBAction func justPlay(_ sender: Any) {
+        let gameVC = storyboard?.instantiateViewController(identifier: "GameView")
+        present(gameVC!, animated: true, completion: nil)
+    }
+    
     @IBAction func facebookSignIn(_ sender: Any) {
         
     }
