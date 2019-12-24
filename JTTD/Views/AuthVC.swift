@@ -22,7 +22,14 @@ class AuthVC: UIViewController, GIDSignInUIDelegate {
     
     @IBAction func emailSignIn(_ sender: Any) {
         let loginVC = storyboard?.instantiateViewController(withIdentifier: "LoginVC")
-        present(loginVC!, animated: true, completion: nil)
+        present(loginVC!, animated: true) {
+            if (Auth.auth().currentUser != nil) {
+                let gameVC = self.storyboard?.instantiateViewController(identifier: "GameView")
+                self.present(gameVC!, animated: true, completion: nil)
+            } else {
+                print("Not logged in")
+            }
+        }
     }
     
     @IBAction func googleSignIn(_ sender: Any) {
