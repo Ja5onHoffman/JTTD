@@ -14,6 +14,9 @@ class InitalVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    @IBAction func start(_ sender: Any) {
         
     }
     

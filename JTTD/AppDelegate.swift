@@ -33,7 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
+//        return GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
+        return GIDSignIn.sharedInstance().handle(url)
     }
     
     // MARK: Google Sign In
@@ -42,9 +43,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             print("Google sign in error \(error.localizedDescription)")
             return
         }
+        
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
-        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+        
+        
+        
+        Auth.auth().signIn(with: credential) { authResult, error in
             if let error = error {
                 print("Google sign in error \(error.localizedDescription)")
             } else {
@@ -52,6 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                     print("No user created")
                     return
                 }
+                
                 self.window?.rootViewController?.dismiss(animated: true, completion: nil)
                 let userInfo = ["provider": "Google", "email": user.email]
                 DataService.instance.createDBUser(uid: user.uid, userData: userInfo)
@@ -59,9 +65,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         }
     }
     
-//    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-//
-//    }
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        
+    }
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

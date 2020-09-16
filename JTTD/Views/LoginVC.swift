@@ -24,27 +24,32 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
 
-    
+    // Log in or sign up
     @IBAction func signIn(_ sender: Any) {
         if emailTextField.text != nil && passwordTextField.text != nil {
             AuthService.instance.loginUser(withEmail: emailTextField.text!, andPassword: passwordTextField.text!) { (success, loginError) in
                 if success {
+                    print("Login success!")
                     self.dismiss(animated: true, completion: nil)
                 } else {
                     print(String(describing: loginError?.localizedDescription))
                 }
-                
-                AuthService.instance.registerUser(withEmail: self.emailTextField.text!, andPassword: self.passwordTextField.text!, userCreationComplete: { (success, regError) in
-                    if success {
-                        AuthService.instance.loginUser(withEmail: self.emailTextField.text!, andPassword: self.passwordTextField.text!, loginComplete: { (success, nil) in
-                            self.dismiss(animated: true, completion: nil)
-                        })
-                    } else {
-                        print(String(describing: regError?.localizedDescription))
-                    }
-                })
             }
         }
+    }
+    
+    func signUp(with email: String, and password: String) {
+        AuthService.instance.registerUser(withEmail: self.emailTextField.text!, andPassword: self.passwordTextField.text!, userCreationComplete: { (success, regError) in
+            if success {
+                AuthService.instance.loginUser(withEmail: self.emailTextField.text!, andPassword: self.passwordTextField.text!, loginComplete: { (success, nil) in
+                    self.dismiss(animated: true, completion: nil)
+                })
+            } else {
+                print(String(describing: regError?.localizedDescription))
+            }
+        })
+        
+        
     }
     
 }
