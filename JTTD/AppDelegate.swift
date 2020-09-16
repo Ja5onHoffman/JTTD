@@ -33,7 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
+//        return GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
+        return GIDSignIn.sharedInstance().handle(url)
     }
     
     // MARK: Google Sign In
@@ -52,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                     print("No user created")
                     return
                 }
-                self.window?.rootViewController?.dismiss(animated: true, completion: nil)
+//                self.window?.rootViewController?.dismiss(animated: true, completion: nil)
                 let userInfo = ["provider": "Google", "email": user.email]
                 DataService.instance.createDBUser(uid: user.uid, userData: userInfo)
             }

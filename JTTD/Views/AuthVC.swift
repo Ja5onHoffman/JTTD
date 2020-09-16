@@ -10,7 +10,7 @@ import UIKit
 import GoogleSignIn
 import Firebase
 
-class AuthVC: UIViewController, GIDSignInUIDelegate {
+class AuthVC: UIViewController, GIDSignInDelegate {
     
     @IBOutlet weak var signInButton: GIDSignInButton!
     

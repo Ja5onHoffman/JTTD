@@ -41,6 +41,8 @@ class HealthBar: SKShapeNode {
         }
     }
     
+    
+    
     func decreaseHealth(by health: Int) {
         if shipHealth > 0 {
             shipHealth -= 10
