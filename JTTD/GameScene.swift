@@ -141,6 +141,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         h1.zPosition = 99
         fgNode.addChild(h1)
         
+        // Can these be placed on the bar itself? 
         let shieldLabel = SKLabelNode(fontNamed: "Avenir Next")
         shieldLabel.position = CGPoint(x: -(size.width / 2) + 160, y: (size.height / 2) - 260)
         shieldLabel.text = "shield"

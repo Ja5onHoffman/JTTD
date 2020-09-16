@@ -29,6 +29,8 @@
 		31AC75D022D39BAE0070094F /* Laser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC75CF22D39BAE0070094F /* Laser.swift */; };
 		31B0DC0A2381F0D500E75A55 /* BaseDamage.sks in Resources */ = {isa = PBXBuildFile; fileRef = 31B0DC092381F0D500E75A55 /* BaseDamage.sks */; };
 		31B0DC2C2383624B00E75A55 /* SmokeTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 31B0DC2B2383624A00E75A55 /* SmokeTrail.sks */; };
+		31B168CD25128F1D00132454 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B168CC25128F1D00132454 /* UserData.swift */; };
+		31B168CF2512D6BC00132454 /* InfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B168CE2512D6BC00132454 /* InfoBar.swift */; };
 		31BC4EF1233BE32500DD07DA /* HealthBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC4EF0233BE32500DD07DA /* HealthBar.swift */; };
 		31BF74B2235B5C2B006F5C33 /* Beam.sks in Resources */ = {isa = PBXBuildFile; fileRef = 31BF74B1235B5C2B006F5C33 /* Beam.sks */; };
 		31BF74B4235B613D006F5C33 /* Beam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BF74B3235B613D006F5C33 /* Beam.swift */; };
@@ -73,6 +75,8 @@
 		31AC75CF22D39BAE0070094F /* Laser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Laser.swift; sourceTree = "<group>"; };
 		31B0DC092381F0D500E75A55 /* BaseDamage.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BaseDamage.sks; sourceTree = "<group>"; };
 		31B0DC2B2383624A00E75A55 /* SmokeTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SmokeTrail.sks; sourceTree = "<group>"; };
+		31B168CC25128F1D00132454 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		31B168CE2512D6BC00132454 /* InfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBar.swift; sourceTree = "<group>"; };
 		31BC4EF0233BE32500DD07DA /* HealthBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthBar.swift; sourceTree = "<group>"; };
 		31BF74B1235B5C2B006F5C33 /* Beam.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Beam.sks; sourceTree = "<group>"; };
 		31BF74B3235B613D006F5C33 /* Beam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beam.swift; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 				3192204123344869007EA1EF /* HealthBars.swift */,
 				31BC4EF0233BE32500DD07DA /* HealthBar.swift */,
 				31BF74B3235B613D006F5C33 /* Beam.swift */,
+				31B168CE2512D6BC00132454 /* InfoBar.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -158,6 +163,7 @@
 				3192203B2333D298007EA1EF /* SKAction+SpecialEffects.swift */,
 				3192203D2333D2EC007EA1EF /* SKTTimingFunctions.swift */,
 				3192203F2333D36D007EA1EF /* SKTEffects.swift */,
+				31B168CC25128F1D00132454 /* UserData.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -383,10 +389,12 @@
 				315F687B22C8167F0062646A /* TestShip.swift in Sources */,
 				31AC75D022D39BAE0070094F /* Laser.swift in Sources */,
 				31ED1D972274B09D003BBE49 /* AppDelegate.swift in Sources */,
+				31B168CD25128F1D00132454 /* UserData.swift in Sources */,
 				311FFECF22E27B9D00E7C9C8 /* Meteor.swift in Sources */,
 				3192203E2333D2EC007EA1EF /* SKTTimingFunctions.swift in Sources */,
 				31AC75CE22D398F00070094F /* PhysicsCategories.swift in Sources */,
 				311FFECD22E2683E00E7C9C8 /* SKAction+Extensions.swift in Sources */,
+				31B168CF2512D6BC00132454 /* InfoBar.swift in Sources */,
 				31ED1DAF2274B13C003BBE49 /* MyUtils.swift in Sources */,
 				31D7D6DB2294287300ADF4F6 /* DataService.swift in Sources */,
 				31D7D6D52294262800ADF4F6 /* LoginVC.swift in Sources */,
