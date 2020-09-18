@@ -21,7 +21,13 @@ class AuthVC: UIViewController {
 //        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        // Called if presenting view controller is full screen
+        if Auth.auth().currentUser != nil {
+            // Not great but works for email sign in 
+            dismiss(animated: true, completion: nil)
+        }
+    }
     
     @IBAction func emailSignIn(_ sender: Any) {
         guard let loginVC = storyboard?.instantiateViewController(withIdentifier: "LoginVC")  else { return }
@@ -29,7 +35,6 @@ class AuthVC: UIViewController {
             print("Already logged in")
         } else {
             loginVC.modalPresentationStyle = .fullScreen
-    
             present(loginVC, animated: true)
         }
     }
@@ -46,5 +51,12 @@ class AuthVC: UIViewController {
     @IBAction func facebookSignIn(_ sender: Any) {
         
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let navigationController = segue.destination as! UINavigationController
+//        let modal = navigationController.topViewController
+//        navigationController.presentationController?.delegate = modal as! UIAdaptivePresentationControllerDelegate
+//
+//    }
     
 }

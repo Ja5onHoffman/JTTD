@@ -47,7 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
         
-        
         Auth.auth().signIn(with: credential) { authResult, error in
             if let error = error {
                 print("Google sign in error \(error.localizedDescription)")
@@ -56,7 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                     print("No user created")
                     return
                 }
-                
                 self.window?.rootViewController?.dismiss(animated: true, completion: nil)
                 let userInfo = ["provider": "Google", "email": user.email]
                 DataService.instance.createDBUser(uid: user.uid, userData: userInfo)
