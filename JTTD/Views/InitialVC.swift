@@ -21,17 +21,30 @@ class InitalVC: UIViewController {
     }
     
     @IBAction func signOut(_ sender: Any) {
-        if Auth.auth().currentUser?.providerID == "Firebase" {
+        guard let providerData = Auth.auth().currentUser?.providerData[0].providerID else { return }
+        
+        switch providerData {
+        case "google.com":
             do {
                 try Auth.auth().signOut()
-                let authVC = storyboard!.instantiateViewController(withIdentifier: "AuthVC")
-                present(authVC, animated: true)
+                toggleAuthVC()
             } catch {
-                print("Sign out error")
+                print("Error signing out. Provider: \(providerData)")
             }
-        } else if Auth.auth().currentUser?.providerID == "Google" {
-            GIDSignIn.sharedInstance()?.signOut()
+
+        default:
+            do {
+                try Auth.auth().signOut()
+                toggleAuthVC()
+            } catch {
+                print("Error signing out. Provider: \(providerData)")
+            }
         }
-        
+    }
+    
+    func toggleAuthVC() {
+        let authVC = storyboard!.instantiateViewController(withIdentifier: "AuthVC")
+        authVC.modalPresentationStyle = .fullScreen
+        present(authVC, animated: true)
     }
 }

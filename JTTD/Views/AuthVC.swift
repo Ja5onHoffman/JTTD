@@ -16,19 +16,21 @@ class AuthVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        modalPresentationStyle = .fullScreen
         GIDSignIn.sharedInstance()?.presentingViewController = self
-        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+//        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
     }
     
+    
+    
     @IBAction func emailSignIn(_ sender: Any) {
-        let loginVC = storyboard?.instantiateViewController(withIdentifier: "LoginVC")
-        present(loginVC!, animated: true) {
-            if (Auth.auth().currentUser != nil) {
-                let gameVC = self.storyboard?.instantiateViewController(identifier: "GameView")
-                self.present(gameVC!, animated: true, completion: nil)
-            } else {
-                print("Not logged in")
-            }
+        guard let loginVC = storyboard?.instantiateViewController(withIdentifier: "LoginVC")  else { return }
+        if (Auth.auth().currentUser != nil) {
+            print("Already logged in")
+        } else {
+            loginVC.modalPresentationStyle = .fullScreen
+    
+            present(loginVC, animated: true)
         }
     }
     

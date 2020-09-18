@@ -65,7 +65,7 @@
         <!--InitalVC-->
         <scene sceneID="vns-na-s4P">
             <objects>
-                <viewController id="Yw2-Fb-gxB" customClass="InitalVC" customModule="JTTD" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Yw2-Fb-gxB" customClass="InitalVC" customModule="JTTD" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="chV-I0-s6K">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

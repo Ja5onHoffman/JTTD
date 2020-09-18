@@ -9,3 +9,5 @@ GoogleService-Info.plist
 .xcbkptlist
 *xcworkspace/xcuserdata/*
 JTTD.xcodeproj/xcuserdata/jasonhoffman.xcuserdatad/
+*.txt
+
