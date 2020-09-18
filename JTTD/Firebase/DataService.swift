@@ -39,8 +39,18 @@ class DataService {
         }
     }
     
+    func lastLogin() {
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        let df = DateFormatter()
+        let date = Date()
+        df.dateFormat = "MMM d, yyyy"
+        let dateString = df.string(from: date)
+        REF_USERS.child(userID).updateChildValues(["lastLogin": dateString])
+    }
+    
     func updateScore(_ score: Int) {
-        REF_SCORES.updateChildValues([Auth.auth().currentUser?.uid: score])
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        REF_USERS.child(userID).updateChildValues(["highScore": score])
     }
     
     func getScoreFor(user uid: String) -> Int {

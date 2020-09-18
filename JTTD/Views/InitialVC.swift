@@ -18,6 +18,7 @@ class InitalVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DataService.instance.lastLogin()
         let gr = UITapGestureRecognizer(target: self, action: #selector(score))
         scoreLabel.addGestureRecognizer(gr)
         scoreLabel.isUserInteractionEnabled = true
