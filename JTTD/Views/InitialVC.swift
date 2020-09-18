@@ -12,8 +12,20 @@ import GoogleSignIn
 
 class InitalVC: UIViewController {
     
+    @IBOutlet weak var playerLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var lastGameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let gr = UITapGestureRecognizer(target: self, action: #selector(score))
+        scoreLabel.addGestureRecognizer(gr)
+        scoreLabel.isUserInteractionEnabled = true
+    }
+    
+    @objc func score() {
+        print("tapped")
+        DataService.instance.updateScore(10)
     }
     
     @IBAction func start(_ sender: Any) {

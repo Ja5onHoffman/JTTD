@@ -10,6 +10,7 @@
 
 
 struct User {
-    let name: String
-    
+    let name: String = ""
+    let score: Int = 0
+    let lastPlayed: String = ""
 }

@@ -52,11 +52,4 @@ class AuthVC: UIViewController {
         
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let navigationController = segue.destination as! UINavigationController
-//        let modal = navigationController.topViewController
-//        navigationController.presentationController?.delegate = modal as! UIAdaptivePresentationControllerDelegate
-//
-//    }
-    
 }
