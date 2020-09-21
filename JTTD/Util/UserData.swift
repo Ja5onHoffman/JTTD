@@ -9,8 +9,16 @@
 // Populate this file with user data when logged in to display on screen
 
 
-struct User {
-    let name: String = ""
-    let score: Int = 0
-    let lastPlayed: String = ""
+import FirebaseFirestoreSwift
+
+class User: Identifiable, Codable {
+    
+    static let sharedInstance = User()
+        
+    @DocumentID var id: String? = ""
+    var name: String = ""
+    var email: String = ""
+    var highScore: Int = 0
+    var lastLogin: String = ""
+    var provider: String = ""
 }

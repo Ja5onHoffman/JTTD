@@ -6,9 +6,11 @@ target 'JTTD' do
   use_frameworks!
 
   # Pods for JTTD
+  pod 'Firebase/Firestore'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'
+  pod 'FirebaseFirestoreSwift'
   
 end

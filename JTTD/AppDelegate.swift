@@ -14,7 +14,9 @@ import GoogleSignIn
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
-
+    
+    static let loggedInUser = User.sharedInstance
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
@@ -54,10 +56,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                     print("No user created")
                     return
                 }
-                self.window?.rootViewController?.dismiss(animated: true, completion: nil)
-                let userInfo = ["provider": "Google", "email": user.email]
-                DataService.instance.createDBUser(uid: user.uid, userData: userInfo)
+            
+            if let name = user.displayName, let email = user.email, let provider = user.providerID as String? {
+                AppDelegate.loggedInUser.id = user.uid
+                AppDelegate.loggedInUser.name = name
+                AppDelegate.loggedInUser.email = email
+                AppDelegate.loggedInUser.provider = provider
                 
+            }
+                self.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                DataService.instance.createDBUser(userData: AppDelegate.loggedInUser)
             }
         }
     }

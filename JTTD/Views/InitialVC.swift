@@ -55,6 +55,12 @@ class InitalVC: UIViewController {
         }
     }
     
+    func popFields() {
+        if let user = Auth.auth().currentUser {
+            
+        }
+    }
+    
     func toggleAuthVC() {
         let authVC = storyboard!.instantiateViewController(withIdentifier: "AuthVC")
         authVC.modalPresentationStyle = .fullScreen

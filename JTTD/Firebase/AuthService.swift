@@ -6,6 +6,7 @@ import Firebase
 
 class AuthService {
     static let instance = AuthService()
+    let loggedInUser = User.sharedInstance
     
     func registerUser(withEmail email: String, andPassword password: String, userCreationComplete: @escaping (_ status: Bool, _ error: Error?) -> ()) {
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
@@ -13,8 +14,16 @@ class AuthService {
                 userCreationComplete(false, error)
                 return
             }
-            let userData: Dictionary<String, Any> = ["provider": user.providerID, "email": user.email]
-            DataService.instance.createDBUser(uid: user.uid, userData: userData)
+            
+            if let name = user.displayName, let email = user.email, let provider = user.providerID as String? {
+                self.loggedInUser.id = user.uid
+                self.loggedInUser.name = name
+                self.loggedInUser.email = email
+                self.loggedInUser.provider = provider
+                
+            }
+            
+            DataService.instance.createDBUser(userData: self.loggedInUser)
             userCreationComplete(true, nil)
         }
     }

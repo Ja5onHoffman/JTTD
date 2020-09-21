@@ -10,9 +10,10 @@ import UIKit
 
 class LoginVC: UIViewController, UITextFieldDelegate {
     
-
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
+    let user = User.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             AuthService.instance.loginUser(withEmail: emailTextField.text!, andPassword: passwordTextField.text!) { (success, loginError) in
                 if success {
                     print("Login success!")
+                    
                     self.dismiss(animated: true, completion: nil)
                 } else {
                     print(String(describing: loginError?.localizedDescription))
