@@ -27,7 +27,8 @@ class DataService {
     
     func createDBUser(userData: User) {
         do {
-            try REF_USERS.addDocument(from: userData)
+            // setData creates custom userid vs createDocument
+            try REF_USERS.document(userData.id!).setData(from: userData)
             lastLogin()
         } catch {
             print("Unable to create user")

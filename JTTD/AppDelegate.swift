@@ -28,11 +28,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             let authVC = storyboard.instantiateViewController(withIdentifier: "AuthVC")
             authVC.modalPresentationStyle = .fullScreen
             window?.makeKeyAndVisible()
-            window?.rootViewController?.present(authVC, animated: true, completion: nil)
+//            window?.rootViewController?.present(authVC, animated: true, completion: nil)
+            window?.rootViewController?.present(authVC, animated: true, completion: {
+                // populate loggedInUser here?
+            })
         }
         
         return true
     }
+    
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         return GIDSignIn.sharedInstance().handle(url)
@@ -40,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     // MARK: Google Sign In
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        print("GID sign in called")
         if let error = error {
             print("Google sign in error \(error.localizedDescription)")
             return
@@ -57,15 +62,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                     return
                 }
             
-            if let name = user.displayName, let email = user.email, let provider = user.providerID as String? {
-                AppDelegate.loggedInUser.id = user.uid
-                AppDelegate.loggedInUser.name = name
-                AppDelegate.loggedInUser.email = email
-                AppDelegate.loggedInUser.provider = provider
+                if let name = user.displayName, let email = user.email, let provider = user.providerID as String? {
+                    AppDelegate.loggedInUser.id = user.uid
+                    print("UserID: \(user.uid)")
+                    AppDelegate.loggedInUser.name = name
+                    AppDelegate.loggedInUser.email = email
+                    AppDelegate.loggedInUser.provider = provider
+                    
+                }
+                                
+                DB_BASE.collection("users").document(user.uid).getDocument { (user, error) in
+                    if user!.exists {
+                        print("user exists")
+                    } else {
+                        print("user created")
+                        DataService.instance.createDBUser(userData: AppDelegate.loggedInUser)
+                    }
+                }
                 
-            }
                 self.window?.rootViewController?.dismiss(animated: true, completion: nil)
-                DataService.instance.createDBUser(userData: AppDelegate.loggedInUser)
             }
         }
     }

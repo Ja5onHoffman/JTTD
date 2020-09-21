@@ -16,7 +16,7 @@ class AuthService {
             }
             
             if let name = user.displayName, let email = user.email, let provider = user.providerID as String? {
-                self.loggedInUser.id = user.uid
+                self.loggedInUser.id = Auth.auth().currentUser?.uid
                 self.loggedInUser.name = name
                 self.loggedInUser.email = email
                 self.loggedInUser.provider = provider
