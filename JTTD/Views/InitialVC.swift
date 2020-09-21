@@ -16,17 +16,15 @@ class InitalVC: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var lastGameLabel: UILabel!
     
+    let loggedInUser = User.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         DataService.instance.lastLogin()
-        let gr = UITapGestureRecognizer(target: self, action: #selector(score))
-        scoreLabel.addGestureRecognizer(gr)
-        scoreLabel.isUserInteractionEnabled = true
     }
     
-    @objc func score() {
-        print("tapped")
-        DataService.instance.updateScore(10)
+    override func viewWillAppear(_ animated: Bool) {
+        popFields()
     }
     
     @IBAction func start(_ sender: Any) {
@@ -56,8 +54,10 @@ class InitalVC: UIViewController {
     }
     
     func popFields() {
-        if let user = Auth.auth().currentUser {
-            
+        if let _ = Auth.auth().currentUser?.uid {
+            playerLabel.text = loggedInUser.name
+            scoreLabel.text = String(loggedInUser.highScore)
+            lastGameLabel.text = loggedInUser.lastLogin
         }
     }
     
