@@ -18,14 +18,19 @@ class InitalVC: UIViewController {
     
     let loggedInUser = User.sharedInstance
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         DataService.instance.lastLogin()
+        NotificationCenter.default.addObserver(self, selector: #selector(popFields(_:)), name: .userLoaded, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        popFields()
+//        popFields()
     }
+    
+
+    
     
     @IBAction func start(_ sender: Any) {
         
@@ -53,8 +58,9 @@ class InitalVC: UIViewController {
         }
     }
     
-    func popFields() {
-        if let _ = Auth.auth().currentUser?.uid {
+    @objc func popFields(_ notification: NSNotification) {
+        print("popfields")
+        if let _ = Auth.auth().currentUser {
             playerLabel.text = loggedInUser.name
             scoreLabel.text = String(loggedInUser.highScore)
             lastGameLabel.text = loggedInUser.lastLogin
@@ -66,4 +72,9 @@ class InitalVC: UIViewController {
         authVC.modalPresentationStyle = .fullScreen
         present(authVC, animated: true)
     }
+}
+
+
+extension Notification.Name {
+    static let userLoaded = Notification.Name("userLoaded")
 }

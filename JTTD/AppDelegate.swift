@@ -22,16 +22,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         FirebaseApp.configure()
         GIDSignIn.sharedInstance()?.clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance()?.delegate = self
+                
         
-        if Auth.auth().currentUser == nil {
+        let user = Auth.auth().currentUser
+        if user == nil {
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
             let authVC = storyboard.instantiateViewController(withIdentifier: "AuthVC")
             authVC.modalPresentationStyle = .fullScreen
             window?.makeKeyAndVisible()
-//            window?.rootViewController?.present(authVC, animated: true, completion: nil)
-            window?.rootViewController?.present(authVC, animated: true, completion: {
-                // populate loggedInUser here?
-            })
+            window?.rootViewController?.present(authVC, animated: true, completion: nil)
+        } else {
+            DB_BASE.collection("users").document(String(describing: user!.uid)).getDocument { (document, error) in
+                if let err = error {
+                    print(err.localizedDescription)
+                }
+                
+                if let doc = document {
+                    AppDelegate.loggedInUser.name = doc.get("name") as! String
+                    AppDelegate.loggedInUser.highScore = doc.get("highScore") as! Int 
+                    AppDelegate.loggedInUser.lastLogin = doc.get("lastLogin") as! String
+                    NotificationCenter.default.post(name: .userLoaded, object: nil)
+                }
+            }
         }
         
         return true
@@ -68,7 +80,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                     AppDelegate.loggedInUser.name = name
                     AppDelegate.loggedInUser.email = email
                     AppDelegate.loggedInUser.provider = provider
-                    
                 }
                                 
                 DB_BASE.collection("users").document(user.uid).getDocument { (user, error) in
