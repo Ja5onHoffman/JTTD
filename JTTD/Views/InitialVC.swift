@@ -26,7 +26,7 @@ class InitalVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        popFields()
+        
     }
     
 
@@ -58,12 +58,13 @@ class InitalVC: UIViewController {
         }
     }
     
+
     @objc func popFields(_ notification: NSNotification) {
         print("popfields")
         if let _ = Auth.auth().currentUser {
             playerLabel.text = loggedInUser.name
             scoreLabel.text = String(loggedInUser.highScore)
-            lastGameLabel.text = loggedInUser.lastLogin
+            lastGameLabel.text = loggedInUser.lastLogin // With email login logged in user isn't getting a lastLogin
         }
     }
     

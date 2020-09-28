@@ -8,19 +8,26 @@ class AuthService {
     static let instance = AuthService()
     let loggedInUser = User.sharedInstance
     
-    func registerUser(withEmail email: String, andPassword password: String, userCreationComplete: @escaping (_ status: Bool, _ error: Error?) -> ()) {
+    func registerUser(withEmail email: String, andPassword password: String, andName name: String, userCreationComplete: @escaping (_ status: Bool, _ error: Error?) -> ()) {
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
             guard let user = authResult?.user else {
                 userCreationComplete(false, error)
                 return
             }
             
-            if let name = user.displayName, let email = user.email, let provider = user.providerID as String? {
+//            let addName = user.createProfileChangeRequest()
+//            addName.displayName = name
+//            addName.commitChanges { (error) in
+//                if let e = error {
+//                    print(e.localizedDescription)
+//                }
+//            }
+            
+            if let email = user.email, let provider = user.providerID as String? {
                 self.loggedInUser.id = Auth.auth().currentUser?.uid
                 self.loggedInUser.name = name
                 self.loggedInUser.email = email
                 self.loggedInUser.provider = provider
-                
             }
             
             DataService.instance.createDBUser(userData: self.loggedInUser)
@@ -34,6 +41,7 @@ class AuthService {
                 loginComplete(false, error)
                 return
             }
+            NotificationCenter.default.post(name: .userLoaded, object: nil)
             loginComplete(true, nil)
         }
     }

@@ -10,6 +10,7 @@ import UIKit
 
 class LoginVC: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -27,21 +28,26 @@ class LoginVC: UIViewController, UITextFieldDelegate {
 
     // Log in or sign up
     @IBAction func signIn(_ sender: Any) {
-        if emailTextField.text != nil && passwordTextField.text != nil {
+        if emailTextField.text != nil && passwordTextField.text != nil && nameTextField.text != nil {
             AuthService.instance.loginUser(withEmail: emailTextField.text!, andPassword: passwordTextField.text!) { (success, loginError) in
                 if success {
                     print("Login success!")
                     
                     self.dismiss(animated: true, completion: nil)
                 } else {
-                    print(String(describing: loginError?.localizedDescription))
+                    guard let email = self.emailTextField.text, let pass = self.passwordTextField.text, let name = self.nameTextField.text else {
+                        print(String(describing: loginError?.localizedDescription))
+                        return
+                    }
+                    self.signUp(with: email, andPassword: pass, andName: name)
+                    print("creating new user")
                 }
             }
         }
     }
     
-    func signUp(with email: String, and password: String) {
-        AuthService.instance.registerUser(withEmail: self.emailTextField.text!, andPassword: self.passwordTextField.text!, userCreationComplete: { (success, regError) in
+    func signUp(with email: String, andPassword password: String, andName name: String) {
+        AuthService.instance.registerUser(withEmail: self.emailTextField.text!, andPassword: self.passwordTextField.text!, andName: name, userCreationComplete: { (success, regError) in
             if success {
                 AuthService.instance.loginUser(withEmail: self.emailTextField.text!, andPassword: self.passwordTextField.text!, loginComplete: { (success, nil) in
                     self.dismiss(animated: true, completion: nil)

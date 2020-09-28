@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+//        try! Auth.auth().signOut()
         GIDSignIn.sharedInstance()?.clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance()?.delegate = self
                 
@@ -35,13 +36,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             DB_BASE.collection("users").document(String(describing: user!.uid)).getDocument { (document, error) in
                 if let err = error {
                     print(err.localizedDescription)
-                }
-                
-                if let doc = document {
-                    AppDelegate.loggedInUser.name = doc.get("name") as! String
-                    AppDelegate.loggedInUser.highScore = doc.get("highScore") as! Int 
-                    AppDelegate.loggedInUser.lastLogin = doc.get("lastLogin") as! String
-                    NotificationCenter.default.post(name: .userLoaded, object: nil)
+                } else {
+                    if let doc = document {
+                        AppDelegate.loggedInUser.name = doc.get("name") as! String
+                        AppDelegate.loggedInUser.highScore = doc.get("highScore") as! Int
+                        AppDelegate.loggedInUser.lastLogin = doc.get("lastLogin") as! String
+                        NotificationCenter.default.post(name: .userLoaded, object: nil)
+                    }
                 }
             }
         }
@@ -80,6 +81,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                     AppDelegate.loggedInUser.name = name
                     AppDelegate.loggedInUser.email = email
                     AppDelegate.loggedInUser.provider = provider
+                    
+                    // Bad solution
+                    let df = DateFormatter()
+                    let date = Date()
+                    df.dateFormat = "MMM d, yyyy"
+                    let dateString = df.string(from: date)
+                    AppDelegate.loggedInUser.lastLogin = dateString
+                    
+                    NotificationCenter.default.post(name: .userLoaded, object: nil)
                 }
                                 
                 DB_BASE.collection("users").document(user.uid).getDocument { (user, error) in

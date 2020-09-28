@@ -80,6 +80,7 @@ class DataService {
         df.dateFormat = "MMM d, yyyy"
         let dateString = df.string(from: date)
         REF_USERS.document(userID).updateData(["lastLogin": dateString])
+        
     }
     
     func updateScore(_ score: Int) {
