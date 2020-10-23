@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Yw2-Fb-gxB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Yw2-Fb-gxB">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -79,6 +80,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="DOy-1B-rJQ"/>
                         <color key="backgroundColor" red="0.16078431369999999" green="0.16862745100000001" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="l0b-Os-Ruk" firstAttribute="centerX" secondItem="jbP-NS-Cxe" secondAttribute="centerX" id="ZNR-mS-iRG"/>
@@ -86,7 +88,6 @@
                             <constraint firstItem="UPj-k8-VzQ" firstAttribute="centerX" secondItem="jbP-NS-Cxe" secondAttribute="centerX" id="gmB-H1-xkn"/>
                             <constraint firstItem="l0b-Os-Ruk" firstAttribute="top" secondItem="UPj-k8-VzQ" secondAttribute="bottom" constant="60" id="nNb-Zk-9wL"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="DOy-1B-rJQ"/>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="QD4-Z0-h4v" id="0Iw-GV-3QZ"/>
@@ -137,11 +138,11 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="81d-ZH-mHZ">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="81d-ZH-mHZ">
                                 <rect key="frame" x="160.5" y="184" width="121.5" height="83"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Player" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ijo-XS-tqQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="121.5" height="21"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="73.5" height="25"/>
                                         <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="20"/>
                                         <color key="textColor" red="0.71040273562320277" green="0.70918433777716361" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -149,7 +150,7 @@
                                         <size key="shadowOffset" width="1" height="0.0"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="High Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pp1-ho-J93">
-                                        <rect key="frame" x="0.0" y="32" width="121.5" height="20"/>
+                                        <rect key="frame" x="0.0" y="34" width="121.5" height="20"/>
                                         <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="20"/>
                                         <color key="textColor" red="0.7104027356" green="0.70918433780000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -157,7 +158,7 @@
                                         <size key="shadowOffset" width="1" height="0.0"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Last Game" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4L-0Z-HE0">
-                                        <rect key="frame" x="0.0" y="63" width="121.5" height="20"/>
+                                        <rect key="frame" x="0.0" y="63" width="109.5" height="20"/>
                                         <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="20"/>
                                         <color key="textColor" red="0.7104027356" green="0.70918433780000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -176,7 +177,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
                                         <state key="normal" image="button_start"/>
                                         <connections>
-                                            <segue destination="BV1-FR-VrT" kind="show" id="AAv-Xo-tzK"/>
+                                            <segue destination="BV1-FR-VrT" kind="show" identifier="" customClass="FadeSegue" customModule="JTTD" customModuleProvider="target" id="di9-2M-L5k"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2R-TL-sXv">
@@ -189,6 +190,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="dri-t0-Icw"/>
                         <color key="backgroundColor" red="0.16078431369999999" green="0.16862745100000001" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="NHS-Dg-hNM" firstAttribute="leading" secondItem="chV-I0-s6K" secondAttribute="leadingMargin" id="E0e-ej-f5q"/>
@@ -200,12 +202,12 @@
                             <constraint firstItem="dri-t0-Icw" firstAttribute="bottom" secondItem="ePo-wT-rnm" secondAttribute="bottom" constant="120" id="qrk-hc-upi"/>
                             <constraint firstItem="81d-ZH-mHZ" firstAttribute="centerY" secondItem="NHS-Dg-hNM" secondAttribute="centerY" id="tYT-yQ-Pc4"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="dri-t0-Icw"/>
                     </view>
                     <connections>
                         <outlet property="lastGameLabel" destination="W4L-0Z-HE0" id="MDy-K3-R9a"/>
                         <outlet property="playerLabel" destination="ijo-XS-tqQ" id="8Od-A2-A0n"/>
                         <outlet property="scoreLabel" destination="pp1-ho-J93" id="K4l-MJ-IC8"/>
+                        <outlet property="startButton" destination="ohA-BF-BZ1" id="qNH-xp-uqw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="22T-Rz-Obk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -219,8 +221,8 @@
                     <view key="view" opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <navigationItem key="navigationItem" id="iYg-yy-Ko6"/>
                 </viewController>
@@ -275,6 +277,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Rti-Mn-ZQM"/>
                         <color key="backgroundColor" red="0.16078431369999999" green="0.16862745100000001" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="tpH-bn-VvC" firstAttribute="top" secondItem="Rti-Mn-ZQM" secondAttribute="top" constant="36" id="9qf-OJ-ie8"/>
@@ -282,7 +285,6 @@
                             <constraint firstItem="Ffm-Kw-ecf" firstAttribute="centerX" secondItem="CHE-MC-Oa3" secondAttribute="centerX" id="fBH-Qp-0HX"/>
                             <constraint firstItem="tpH-bn-VvC" firstAttribute="centerX" secondItem="CHE-MC-Oa3" secondAttribute="centerX" id="qTv-hT-ZnO"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Rti-Mn-ZQM"/>
                     </view>
                     <connections>
                         <outlet property="signInButton" destination="VWY-pm-mXl" id="ViB-VZ-xvH"/>

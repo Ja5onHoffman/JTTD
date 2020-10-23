@@ -15,9 +15,10 @@ class InitalVC: UIViewController {
     @IBOutlet weak var playerLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var lastGameLabel: UILabel!
+    @IBOutlet weak var startButton: UIButton! 
     
     let loggedInUser = User.sharedInstance
-    
+    let fadeSegue = FadeSegueAnimator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +31,6 @@ class InitalVC: UIViewController {
     }
     
 
-    
-    
     @IBAction func start(_ sender: Any) {
         
     }
@@ -73,9 +72,27 @@ class InitalVC: UIViewController {
         authVC.modalPresentationStyle = .fullScreen
         present(authVC, animated: true)
     }
+    
+    // for custom segue
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let gameView = segue.destination as? GameViewController
+//        gameView?.transitioningDelegate = self
+//        segue.perform()
+//    }
 }
-
 
 extension Notification.Name {
     static let userLoaded = Notification.Name("userLoaded")
 }
+
+//extension InitalVC: UIViewControllerTransitioningDelegate {
+//    
+//    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        
+//        return fadeSegue
+//    }
+//    
+//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        return nil
+//    }
+//}
