@@ -17,6 +17,7 @@ struct MeteorPath {
 class Meteor: SKSpriteNode {
     
     var scale = CGFloat.zero
+    var score = 0
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("Use init()")
@@ -31,7 +32,7 @@ class Meteor: SKSpriteNode {
         self.init(imageNamed: "meteor\(num)")
         self.name = "meteor"
         self.zPosition = 200 // Match with Poof zPostion
-        scale = CGFloat.random(in: 0.5..<2)
+        scale = scaleAndScore()
         self.setScale(scale)
         self.position = path.0
         self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width / 2)
@@ -57,6 +58,24 @@ class Meteor: SKSpriteNode {
         } while intersection.contains(CGPoint(x: randomX, y: randomY))
         let bottomX = CGFloat.random(min: -p.size.width / 2, max: p.size.width / 2)
         return (CGPoint(x: randomX, y: randomY), CGPoint(x: bottomX, y: (-p.size.height / 2) - 100))
+    }
+    
+    func scaleAndScore() -> CGFloat {
+        let scale = CGFloat.random(in: 0.5..<2)
+        switch scale {
+        case 0.5..<0.75:
+            score = 1000
+        case 0.75..<1:
+            score = 750
+        case 1..<1.5:
+            score = 500
+        case 1.5..<2.0:
+            score = 250
+        default:
+            score = 1
+        }
+        
+        return scale
     }
     
     func toggleCollision() {
