@@ -20,6 +20,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let scoreLabel = SKLabelNode(fontNamed: "AvenirNext")
     let levelLabel = SKLabelNode(fontNamed: "AvenirNext")
     
+    let scoreDisplay = SKLabelNode(fontNamed: "Digital-7")
+    var gameScore = 0
+    
     var bgNode: SKNode!
     var fgNode: SKNode!
     var overlay: SKNode!
@@ -81,12 +84,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if contact.bodyA.node?.name == "meteor" {
                 explode(node: contact.bodyA.node as! SKSpriteNode, time: TimeInterval(contact.bodyA.node!.frame.size.width / 500))
                 let ship = contact.bodyB.node as! TestShip
+                let meteor = contact.bodyA.node as! Meteor
+                scoreBubble(meteor.score, meteor.position)
                 ship.shipHit()
+                gameScore += meteor.score
+                scoreDisplay.text = "\(gameScore)"
             } else {
                 explode(node: contact.bodyB.node as! SKSpriteNode, time: TimeInterval(contact.bodyA.node!.frame.size.width / 500))
                 let ship = contact.bodyA.node as! TestShip
+                let meteor = contact.bodyB.node as! Meteor
+                scoreBubble(meteor.score, meteor.position)
                 ship.shipHit()
+                gameScore += meteor.score
+                scoreDisplay.text = "\(gameScore)"
             }
+            
             
         // Mothership vs Meteor
         } else if (bA == PhysicsCategory.Mother && bB == PhysicsCategory.Meteor) || (bA == PhysicsCategory.Meteor && bB == PhysicsCategory.Mother) {
@@ -136,8 +148,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.zPosition = 100
         fgNode.addChild(scoreLabel)
         
-        let scoreDisplay = SKLabelNode(fontNamed: "Digital-7")
-        scoreDisplay.text = "9999"
+        scoreDisplay.text = "\(gameScore)"
         scoreDisplay.fontSize = 80
         scoreDisplay.position = CGPoint(x: 0 + scoreDisplay.frame.size.width, y: (size.height / 2) - 160)
         scoreDisplay.horizontalAlignmentMode = .center
@@ -297,6 +308,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let num = Int.random(in: 1..<5)
         let blend = SKAction.animate(with: [SKTexture(imageNamed: "\(node.name!)\(num)ex")], timePerFrame: time)
         blend.timingMode = .easeIn
+
         node.run(blend) {
             self.emitParticles(name: "Poof", sprite: node)
             self.laser.removeFromParent()
@@ -373,6 +385,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         sprite.zRotation = atan2(direction.y, direction.x)
     }
     
+    // TODO: Do - Update score incrementally
+    
+    func scoreBubble(_ score: Int, _ position: CGPoint) {
+        let scoreNode = SKLabelNode(fontNamed: "Arial")
+        scoreNode.text = "+" + "\(score)"
+        let fade = SKAction.fadeOut(withDuration: 0.3)
+        scoreNode.position = position
+        fgNode.addChild(scoreNode)
+        scoreNode.run(fade) {
+            scoreNode.removeFromParent()
+        }
+    }
     
     // MARK: Update
     override func update(_ currentTime: TimeInterval) {
