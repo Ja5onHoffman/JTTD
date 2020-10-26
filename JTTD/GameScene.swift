@@ -125,7 +125,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backgroundStars.particlePositionRange = CGVector(dx: size.width, dy: size.height)
         backgroundStars.zPosition = -1
         bgNode.addChild(backgroundStars)
-                
+        
+        let scoreLabel = SKLabelNode(fontNamed: "Avenir Next")
+        scoreLabel.text = "score:" // These first so width is accurate
+        scoreLabel.fontSize = 80
+        scoreLabel.position = CGPoint(x: 0 - scoreLabel.frame.size.width, y: (size.height / 2) - 160)
+        scoreLabel.fontColor = UIColor.white
+        scoreLabel.horizontalAlignmentMode = .right
+        scoreLabel.verticalAlignmentMode = .bottom
+        scoreLabel.zPosition = 100
+        fgNode.addChild(scoreLabel)
+        
+        let scoreDisplay = SKLabelNode(fontNamed: "Digital-7")
+        scoreDisplay.text = "9999"
+        scoreDisplay.fontSize = 80
+        scoreDisplay.position = CGPoint(x: 0 + scoreDisplay.frame.size.width, y: (size.height / 2) - 160)
+        scoreDisplay.horizontalAlignmentMode = .center
+        scoreDisplay.zPosition = 100
+        fgNode.addChild(scoreDisplay)
+        
         let healthLabel = SKLabelNode(fontNamed: "Avenir Next")
         healthLabel.position = CGPoint(x: -(size.width / 2) + 160, y: (size.height / 2) - 210)
         healthLabel.text = "health"

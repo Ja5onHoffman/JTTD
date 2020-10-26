@@ -24,6 +24,8 @@
 		3192203E2333D2EC007EA1EF /* SKTTimingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3192203D2333D2EC007EA1EF /* SKTTimingFunctions.swift */; };
 		319220402333D36D007EA1EF /* SKTEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3192203F2333D36D007EA1EF /* SKTEffects.swift */; };
 		3192204223344869007EA1EF /* HealthBars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3192204123344869007EA1EF /* HealthBars.swift */; };
+		31A625B625474A0A00A48835 /* digital-7-mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31A625B42547463600A48835 /* digital-7-mono.ttf */; };
+		31A625B825474A0E00A48835 /* digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31A625B32547463600A48835 /* digital-7.ttf */; };
 		31AC75C922CD59620070094F /* BackgroundStars.sks in Resources */ = {isa = PBXBuildFile; fileRef = 31AC75C722CD59620070094F /* BackgroundStars.sks */; };
 		31AC75CA22CD59620070094F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31AC75C822CD59620070094F /* Assets.xcassets */; };
 		31AC75CE22D398F00070094F /* PhysicsCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC75CD22D398F00070094F /* PhysicsCategories.swift */; };
@@ -70,6 +72,8 @@
 		3192203D2333D2EC007EA1EF /* SKTTimingFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTTimingFunctions.swift; sourceTree = "<group>"; };
 		3192203F2333D36D007EA1EF /* SKTEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTEffects.swift; sourceTree = "<group>"; };
 		3192204123344869007EA1EF /* HealthBars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthBars.swift; sourceTree = "<group>"; };
+		31A625B32547463600A48835 /* digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7.ttf"; sourceTree = "<group>"; };
+		31A625B42547463600A48835 /* digital-7-mono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7-mono.ttf"; sourceTree = "<group>"; };
 		31AC75C722CD59620070094F /* BackgroundStars.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BackgroundStars.sks; sourceTree = "<group>"; };
 		31AC75C822CD59620070094F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31AC75CC22D398DF0070094F /* MyUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUtils.swift; sourceTree = "<group>"; };
@@ -156,6 +160,15 @@
 			path = Nodes;
 			sourceTree = "<group>";
 		};
+		31A625B2254745B900A48835 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				31A625B42547463600A48835 /* digital-7-mono.ttf */,
+				31A625B32547463600A48835 /* digital-7.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		31AC75CB22D398D30070094F /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +224,7 @@
 		31ED1D952274B09D003BBE49 /* JTTD */ = {
 			isa = PBXGroup;
 			children = (
+				31A625B2254745B900A48835 /* fonts */,
 				31AC75CB22D398D30070094F /* Util */,
 				31D7D6D92294285900ADF4F6 /* Firebase */,
 				31D7D6D82294284300ADF4F6 /* Views */,
@@ -300,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31ED1DA22274B09D003BBE49 /* Main.storyboard in Resources */,
+				31A625B825474A0E00A48835 /* digital-7.ttf in Resources */,
 				313BF5A022BADBFF003000D2 /* GameScene.sks in Resources */,
 				31D97714237EF3DA002C9653 /* SuperShield.sks in Resources */,
 				31B0DC2C2383624B00E75A55 /* SmokeTrail.sks in Resources */,
@@ -312,6 +327,7 @@
 				315F687722C815310062646A /* TestSprite.sks in Resources */,
 				31D97716237F3EC6002C9653 /* ShieldPoof.sks in Resources */,
 				31B0DC0A2381F0D500E75A55 /* BaseDamage.sks in Resources */,
+				31A625B625474A0A00A48835 /* digital-7-mono.ttf in Resources */,
 				315F687922C816670062646A /* TestShip.sks in Resources */,
 				31AC75CA22CD59620070094F /* Assets.xcassets in Resources */,
 				31AC75C922CD59620070094F /* BackgroundStars.sks in Resources */,
