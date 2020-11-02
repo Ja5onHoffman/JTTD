@@ -48,6 +48,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         setupNodes()
         basicShips()
+        gameOver(gameScore)
         self.physicsWorld.contactDelegate = self
         self.view?.isMultipleTouchEnabled = true
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run({
@@ -106,10 +107,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 explode(node: contact.bodyA.node as! SKSpriteNode, time: TimeInterval(contact.bodyA.node!.frame.size.width / 500))
                 let ship = contact.bodyB.node as! Mothership
                 ship.shipHit()
+                if ship.gameOver { gameOver(gameScore) }
             } else {
                 explode(node: contact.bodyB.node as! SKSpriteNode, time: TimeInterval(contact.bodyB.node!.frame.size.width / 500))
                 let ship = contact.bodyA.node as! Mothership
                 ship.shipHit()
+                if ship.gameOver { gameOver(gameScore) }
             }
         
         // Ship vs Recharge
@@ -300,6 +303,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        let rep = SKAction.repeatForever(seq)
         dot.run(seq)
         fgNode.addChild(dot)
+    }
+    
+    func gameOver(_ score: Int) {
+        print("Game Over")
+        let gameOverLabel = SKLabelNode(fontNamed: "Avenir Next")
+        gameOverLabel.position = CGPoint(x: 0, y: 0)
+        gameOverLabel.text = "Game Over"
+        gameOverLabel.fontColor = UIColor.red
+        gameOverLabel.horizontalAlignmentMode = .center
+        gameOverLabel.verticalAlignmentMode = .center
+        gameOverLabel.fontSize = 100
+        gameOverLabel.alpha = 0.0
+        gameOverLabel.set
+        fgNode.addChild(gameOverLabel)
+        
+        let fade = SKAction.fadeIn(withDuration: 1)
+        let rotate = SKAction.rotate(byAngle: -0.6, duration: 1.0)
+        let seq = SKAction.sequence([rotate, rotate.reversed()])
+        gameOverLabel.run(fade)
+        gameOverLabel.run(SKAction.repeatForever(seq))
+        
+        DataService.instance.updateScore(score)
     }
     
     // MARK: Animation

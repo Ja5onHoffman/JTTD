@@ -29,6 +29,7 @@ class Mothership: SKSpriteNode, EventListenerNode {
     var healthBar: HealthBar!
     var state: State = .normal
     var beamState: BeamState = .none
+    var gameOver = false
 //    var beam: Beam!
     
     required init?(coder aDecoder: NSCoder) {
@@ -84,6 +85,8 @@ class Mothership: SKSpriteNode, EventListenerNode {
             // lives, etc here
         } else if health <= 0 {
             explode()
+            gameOver = true
+            print("gameOver = true")
         }
     }
     
@@ -195,7 +198,6 @@ class Mothership: SKSpriteNode, EventListenerNode {
             ]))
         }
     }
-    
     
     func removeSmoke(_ trail: SKEmitterNode) {
         trail.numParticlesToEmit = 1
