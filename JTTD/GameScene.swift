@@ -15,6 +15,8 @@ protocol EventListenerNode {
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
 
+    let loggedInUser = User.sharedInstance
+    
     var background: SKSpriteNode!
     var backgroundStars: SKEmitterNode!
     let scoreLabel = SKLabelNode(fontNamed: "AvenirNext")
@@ -48,7 +50,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         setupNodes()
         basicShips()
-        gameOver(gameScore)
         self.physicsWorld.contactDelegate = self
         self.view?.isMultipleTouchEnabled = true
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run({
@@ -315,7 +316,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameOverLabel.verticalAlignmentMode = .center
         gameOverLabel.fontSize = 100
         gameOverLabel.alpha = 0.0
-        gameOverLabel.set
         fgNode.addChild(gameOverLabel)
         
         let fade = SKAction.fadeIn(withDuration: 1)
@@ -324,7 +324,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameOverLabel.run(fade)
         gameOverLabel.run(SKAction.repeatForever(seq))
         
-        DataService.instance.updateScore(score)
+        if score > loggedInUser.highScore {
+            DataService.instance.updateScore(score)
+        }
     }
     
     // MARK: Animation

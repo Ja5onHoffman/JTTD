@@ -130,8 +130,8 @@ class TestShip: SKSpriteNode, EventListenerNode {
             let particles = SKAction.run { self.emitParticles(name: "ShieldPoof") }
             let set = SKAction.group([particles, alpha, white, scaleBig, scaleSmall])
 //            self.emitParticles(name: "ShieldPoof")
-            childNode(withName: "shield")!.run(set) {
-                self.childNode(withName: "shield")!.removeFromParent()
+            if let s = childNode(withName: "shield") {
+                s.run(set)
             }
         }
         
