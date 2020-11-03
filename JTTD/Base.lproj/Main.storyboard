@@ -99,10 +99,25 @@
             </objects>
             <point key="canvasLocation" x="-555.07246376811599" y="709.82142857142856"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="TgM-t5-w6d">
+            <objects>
+                <viewController id="n7u-uI-rC3" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" alpha="0.20000000000000001" contentMode="scaleToFill" id="eeZ-8o-XMj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="3un-Sa-nxJ"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6yx-ky-WV1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="248" y="710"/>
+        </scene>
         <!--InitalVC-->
         <scene sceneID="vns-na-s4P">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="Yw2-Fb-gxB" customClass="InitalVC" customModule="JTTD" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="initialVC" modalPresentationStyle="fullScreen" id="Yw2-Fb-gxB" customClass="InitalVC" customModule="JTTD" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="chV-I0-s6K">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
