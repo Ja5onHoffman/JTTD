@@ -306,8 +306,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fgNode.addChild(dot)
     }
     
+//    func gameOver(_ score: Int) {
+//        print("Game Over")
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let gameOverVC = storyboard.instantiateViewController(identifier: "gameOverVC") as! GameOverVC
+//        self.overlay
+//    }
+    
+    // Old game over
+// MARK: Game Over
     func gameOver(_ score: Int) {
         print("Game Over")
+        
+        for node in self.children as [SKNode] {
+            node.isPaused = true
+        }
+        
+        let overlayNode = SKSpriteNode(color: UIColor.black, size: CGSize(width: size.width, height: size.height))
+        overlayNode.position = CGPoint(x: 0, y: 0)
+        overlayNode.name = "Overlay"
+        overlayNode.zPosition = 1000
+        overlayNode.alpha = 0.5
+        
         let gameOverLabel = SKLabelNode(fontNamed: "Avenir Next")
         gameOverLabel.position = CGPoint(x: 0, y: 0)
         gameOverLabel.text = "Game Over"
@@ -316,7 +336,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameOverLabel.verticalAlignmentMode = .center
         gameOverLabel.fontSize = 100
         gameOverLabel.alpha = 0.0
+        gameOverLabel.zPosition = 1001
         fgNode.addChild(gameOverLabel)
+        
+        let homeTexture = SKTexture(imageNamed: "button_home")
+        let homeButton = ButtonNode(normalTexture: homeTexture, selectedTexture: homeTexture, disabledTexture: homeTexture)
+        // Add target to go back to home
         
         let fade = SKAction.fadeIn(withDuration: 1)
         let rotate = SKAction.rotate(byAngle: -0.6, duration: 1.0)
@@ -324,9 +349,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameOverLabel.run(fade)
         gameOverLabel.run(SKAction.repeatForever(seq))
         
+        
+        fgNode.addChild(overlayNode)
+        
+
         if score > loggedInUser.highScore {
             DataService.instance.updateScore(score)
         }
+    }
+    
+    func startOver() {
+        
     }
     
     // MARK: Animation

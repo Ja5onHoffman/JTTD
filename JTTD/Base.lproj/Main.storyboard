@@ -99,10 +99,10 @@
             </objects>
             <point key="canvasLocation" x="-555.07246376811599" y="709.82142857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Game OverVC-->
         <scene sceneID="TgM-t5-w6d">
             <objects>
-                <viewController id="n7u-uI-rC3" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="gameOverVC" id="n7u-uI-rC3" customClass="GameOverVC" customModule="JTTD" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" opaque="NO" alpha="0.20000000000000001" contentMode="scaleToFill" id="eeZ-8o-XMj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

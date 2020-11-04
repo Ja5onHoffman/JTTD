@@ -36,6 +36,7 @@
 		31B168CF2512D6BC00132454 /* InfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B168CE2512D6BC00132454 /* InfoBar.swift */; };
 		31BC4EF1233BE32500DD07DA /* HealthBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BC4EF0233BE32500DD07DA /* HealthBar.swift */; };
 		31BE561C2550B0B8001C2D96 /* GameOverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BE561B2550B0B8001C2D96 /* GameOverVC.swift */; };
+		31BE561F25521776001C2D96 /* ButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BE561E25521776001C2D96 /* ButtonNode.swift */; };
 		31BF74B2235B5C2B006F5C33 /* Beam.sks in Resources */ = {isa = PBXBuildFile; fileRef = 31BF74B1235B5C2B006F5C33 /* Beam.sks */; };
 		31BF74B4235B613D006F5C33 /* Beam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BF74B3235B613D006F5C33 /* Beam.swift */; };
 		31D7D6D52294262800ADF4F6 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D7D6D42294262800ADF4F6 /* LoginVC.swift */; };
@@ -86,6 +87,7 @@
 		31B168CE2512D6BC00132454 /* InfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBar.swift; sourceTree = "<group>"; };
 		31BC4EF0233BE32500DD07DA /* HealthBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthBar.swift; sourceTree = "<group>"; };
 		31BE561B2550B0B8001C2D96 /* GameOverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverVC.swift; sourceTree = "<group>"; };
+		31BE561E25521776001C2D96 /* ButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonNode.swift; sourceTree = "<group>"; };
 		31BF74B1235B5C2B006F5C33 /* Beam.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Beam.sks; sourceTree = "<group>"; };
 		31BF74B3235B613D006F5C33 /* Beam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beam.swift; sourceTree = "<group>"; };
 		31D7D6D42294262800ADF4F6 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				31BC4EF0233BE32500DD07DA /* HealthBar.swift */,
 				31BF74B3235B613D006F5C33 /* Beam.swift */,
 				31B168CE2512D6BC00132454 /* InfoBar.swift */,
+				31BE561E25521776001C2D96 /* ButtonNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				31ED1D972274B09D003BBE49 /* AppDelegate.swift in Sources */,
 				31B168CD25128F1D00132454 /* UserData.swift in Sources */,
 				311FFECF22E27B9D00E7C9C8 /* Meteor.swift in Sources */,
+				31BE561F25521776001C2D96 /* ButtonNode.swift in Sources */,
 				3192203E2333D2EC007EA1EF /* SKTTimingFunctions.swift in Sources */,
 				31AC75CE22D398F00070094F /* PhysicsCategories.swift in Sources */,
 				311FFECD22E2683E00E7C9C8 /* SKAction+Extensions.swift in Sources */,
