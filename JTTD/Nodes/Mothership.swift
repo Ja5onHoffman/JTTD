@@ -78,15 +78,15 @@ class Mothership: SKSpriteNode, EventListenerNode {
     
     func shipHit() {
         shakeShipByAmt(20)
+        print(health)
         health -= 10
-        if health > 0 {
+        if health > -10 {
             healthBar.decreaseHealth(by: health)
             showDamage(health)
             // lives, etc here
         } else if health <= 0 {
             explode()
             gameOver = true
-            print("gameOver = true")
         }
     }
     

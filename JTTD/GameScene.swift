@@ -50,6 +50,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         setupNodes()
         basicShips()
+        gameOver(gameScore)
         self.physicsWorld.contactDelegate = self
         self.view?.isMultipleTouchEnabled = true
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run({
@@ -62,7 +63,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 eventListenerNode.didMoveToScene()
             }
         })
-
     }
 
     // MARK: Collisions
@@ -306,14 +306,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fgNode.addChild(dot)
     }
     
-//    func gameOver(_ score: Int) {
-//        print("Game Over")
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let gameOverVC = storyboard.instantiateViewController(identifier: "gameOverVC") as! GameOverVC
-//        self.overlay
-//    }
     
-    // Old game over
 // MARK: Game Over
     func gameOver(_ score: Int) {
         print("Game Over")
@@ -326,22 +319,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         overlayNode.position = CGPoint(x: 0, y: 0)
         overlayNode.name = "Overlay"
         overlayNode.zPosition = 1000
-        overlayNode.alpha = 0.5
+        overlayNode.alpha = 0.7
         
-        let gameOverLabel = SKLabelNode(fontNamed: "Avenir Next")
+        let gameOverLabel = SKLabelNode(fontNamed: "Digital-7")
         gameOverLabel.position = CGPoint(x: 0, y: 0)
         gameOverLabel.text = "Game Over"
         gameOverLabel.fontColor = UIColor.red
         gameOverLabel.horizontalAlignmentMode = .center
         gameOverLabel.verticalAlignmentMode = .center
-        gameOverLabel.fontSize = 100
-        gameOverLabel.alpha = 0.0
+        gameOverLabel.fontSize = 200
+        gameOverLabel.alpha = 1.0
         gameOverLabel.zPosition = 1001
-        fgNode.addChild(gameOverLabel)
-        
+                
         let homeTexture = SKTexture(imageNamed: "button_home")
         let homeButton = ButtonNode(normalTexture: homeTexture, selectedTexture: homeTexture, disabledTexture: homeTexture)
-        // Add target to go back to home
+        homeButton.position = CGPoint(x: 0, y: -300)
+        homeButton.size = CGSize(width: 400, height: 160)
+        homeButton.zPosition = 1001
+        homeButton.setButtonAction(target: self, triggerEvent: .TouchDown, action: #selector(self.startOver))
         
         let fade = SKAction.fadeIn(withDuration: 1)
         let rotate = SKAction.rotate(byAngle: -0.6, duration: 1.0)
@@ -349,17 +344,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameOverLabel.run(fade)
         gameOverLabel.run(SKAction.repeatForever(seq))
         
-        
         fgNode.addChild(overlayNode)
+        fgNode.addChild(gameOverLabel)
+        fgNode.addChild(homeButton)
         
-
+        self.isPaused = true
         if score > loggedInUser.highScore {
             DataService.instance.updateScore(score)
         }
     }
     
-    func startOver() {
-        
+    @objc func startOver() {
+        print("start over")
+        self.removeFromParent()
     }
     
     // MARK: Animation
