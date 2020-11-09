@@ -309,7 +309,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
 // MARK: Game Over
     func gameOver(_ score: Int) {
-        print("Game Over")
         
         for node in self.children as [SKNode] {
             node.isPaused = true
@@ -355,8 +354,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     @objc func startOver() {
-        print("start over")
-        self.removeFromParent()
+        guard let gameVC = self.view?.window?.rootViewController else { return }
+        gameVC.performSegue(withIdentifier: "fadeSegue", sender: gameVC)
     }
     
     // MARK: Animation

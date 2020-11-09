@@ -8,7 +8,6 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad")
         if let skView = self.view as! SKView? {
             skView.showsFPS = true
             skView.showsNodeCount = true

@@ -192,7 +192,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
                                         <state key="normal" image="button_start"/>
                                         <connections>
-                                            <segue destination="BV1-FR-VrT" kind="show" identifier="" customClass="FadeSegue" customModule="JTTD" customModuleProvider="target" id="di9-2M-L5k"/>
+                                            <segue destination="BV1-FR-VrT" kind="show" identifier="fadeSegue" customClass="FadeSegue" customModule="JTTD" customModuleProvider="target" id="di9-2M-L5k"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2R-TL-sXv">
