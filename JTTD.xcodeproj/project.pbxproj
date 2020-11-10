@@ -26,6 +26,7 @@
 		3192204223344869007EA1EF /* HealthBars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3192204123344869007EA1EF /* HealthBars.swift */; };
 		31A625B625474A0A00A48835 /* digital-7-mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31A625B42547463600A48835 /* digital-7-mono.ttf */; };
 		31A625B825474A0E00A48835 /* digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31A625B32547463600A48835 /* digital-7.ttf */; };
+		31A726C42559B3D700DFD477 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A726C32559B3D600DFD477 /* NavigationController.swift */; };
 		31AC75C922CD59620070094F /* BackgroundStars.sks in Resources */ = {isa = PBXBuildFile; fileRef = 31AC75C722CD59620070094F /* BackgroundStars.sks */; };
 		31AC75CA22CD59620070094F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31AC75C822CD59620070094F /* Assets.xcassets */; };
 		31AC75CE22D398F00070094F /* PhysicsCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC75CD22D398F00070094F /* PhysicsCategories.swift */; };
@@ -76,6 +77,7 @@
 		3192204123344869007EA1EF /* HealthBars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthBars.swift; sourceTree = "<group>"; };
 		31A625B32547463600A48835 /* digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7.ttf"; sourceTree = "<group>"; };
 		31A625B42547463600A48835 /* digital-7-mono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7-mono.ttf"; sourceTree = "<group>"; };
+		31A726C32559B3D600DFD477 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		31AC75C722CD59620070094F /* BackgroundStars.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BackgroundStars.sks; sourceTree = "<group>"; };
 		31AC75C822CD59620070094F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31AC75CC22D398DF0070094F /* MyUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUtils.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				31ED1D9C2274B09D003BBE49 /* GameScene.swift */,
 				315E0DC622C57D2B00878219 /* Scene Files */,
 				31ED1D9E2274B09D003BBE49 /* GameViewController.swift */,
+				31A726C32559B3D600DFD477 /* NavigationController.swift */,
 				31ED1D962274B09D003BBE49 /* AppDelegate.swift */,
 				31ED1DA02274B09D003BBE49 /* Main.storyboard */,
 				31ED1DA32274B09F003BBE49 /* Assets.xcassets */,
@@ -407,6 +410,7 @@
 				31ED1D9D2274B09D003BBE49 /* GameScene.swift in Sources */,
 				315E0DCD22C6953E00878219 /* BasicShip.swift in Sources */,
 				319220402333D36D007EA1EF /* SKTEffects.swift in Sources */,
+				31A726C42559B3D700DFD477 /* NavigationController.swift in Sources */,
 				31ED1D9F2274B09D003BBE49 /* GameViewController.swift in Sources */,
 				3192204223344869007EA1EF /* HealthBars.swift in Sources */,
 				31119D9F22958C460097178C /* AuthVC.swift in Sources */,

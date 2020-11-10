@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Yw2-Fb-gxB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="obH-PA-jar">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -97,7 +97,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rZg-Sz-sei" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-555.07246376811599" y="709.82142857142856"/>
+            <point key="canvasLocation" x="-555" y="707"/>
         </scene>
         <!--Game OverVC-->
         <scene sceneID="TgM-t5-w6d">
@@ -109,10 +109,13 @@
                         <viewLayoutGuide key="safeArea" id="3un-Sa-nxJ"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                     </view>
+                    <connections>
+                        <segue destination="Yw2-Fb-gxB" kind="custom" identifier="fadeSegue" customClass="FadeSegue" customModule="JTTD" customModuleProvider="target" id="tS8-Cc-Uqh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6yx-ky-WV1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="248" y="710"/>
+            <point key="canvasLocation" x="1171" y="706"/>
         </scene>
         <!--InitalVC-->
         <scene sceneID="vns-na-s4P">
@@ -218,6 +221,7 @@
                             <constraint firstItem="81d-ZH-mHZ" firstAttribute="centerY" secondItem="NHS-Dg-hNM" secondAttribute="centerY" id="tYT-yQ-Pc4"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="bjl-ox-y9V"/>
                     <connections>
                         <outlet property="lastGameLabel" destination="W4L-0Z-HE0" id="MDy-K3-R9a"/>
                         <outlet property="playerLabel" destination="ijo-XS-tqQ" id="8Od-A2-A0n"/>
@@ -227,7 +231,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="22T-Rz-Obk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-555.07246376811599" y="20.758928571428569"/>
+            <point key="canvasLocation" x="355.07246376811599" y="20.758928571428569"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -243,7 +247,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="248" y="21"/>
+            <point key="canvasLocation" x="1172" y="21"/>
         </scene>
         <!--AuthVC-->
         <scene sceneID="dNU-QH-ZMQ">
@@ -309,7 +313,27 @@
             </objects>
             <point key="canvasLocation" x="-555.07246376811599" y="-711.16071428571422"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="QGB-0P-jl2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="obH-PA-jar" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pcu-Do-ygx">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Yw2-Fb-gxB" kind="relationship" relationship="rootViewController" id="TdS-0R-vNw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cHm-mk-gp6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-555.07246376811599" y="20.758928571428569"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="tS8-Cc-Uqh"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="button_just-play" width="200" height="50"/>
         <image name="button_sign-in" width="280" height="50"/>

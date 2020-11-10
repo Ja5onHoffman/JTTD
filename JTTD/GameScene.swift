@@ -16,6 +16,7 @@ protocol EventListenerNode {
 class GameScene: SKScene, SKPhysicsContactDelegate {
 
     let loggedInUser = User.sharedInstance
+    var viewController: UIViewController?
     
     var background: SKSpriteNode!
     var backgroundStars: SKEmitterNode!
@@ -313,7 +314,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for node in self.children as [SKNode] {
             node.isPaused = true
         }
-        
+
         let overlayNode = SKSpriteNode(color: UIColor.black, size: CGSize(width: size.width, height: size.height))
         overlayNode.position = CGPoint(x: 0, y: 0)
         overlayNode.name = "Overlay"
@@ -354,8 +355,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     @objc func startOver() {
-        guard let gameVC = self.view?.window?.rootViewController else { return }
-        gameVC.performSegue(withIdentifier: "fadeSegue", sender: gameVC)
+        print("startOver")
+//        guard let gameVC = self.view?.window?.rootViewController else { return }
+//        gameVC.dismiss(animated: true, completion: nil)
+//        self.viewController?.removeFromParent()
+//        self.viewController?.dismiss(animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let initialVC = storyboard.instantiateViewController(withIdentifier :"initialVC")
+//        let gameVC: UIViewController = UIApplication.shared.windows.first { $0.isKeyWindow }
+
+//        gameVC.present(initialVC, animated: true, completion: nil)
+        self.view?.window?.rootViewController?.present(initialVC, animated: true, completion: nil)
     }
     
     // MARK: Animation
