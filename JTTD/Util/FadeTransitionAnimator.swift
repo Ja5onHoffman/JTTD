@@ -19,7 +19,7 @@ class FadeSegueAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-       
+        print("animate")
         let gameViewController = transitionContext.viewController(forKey: .to)!
         let gameView = transitionContext.view(forKey: .to)
         let containerView = transitionContext.containerView

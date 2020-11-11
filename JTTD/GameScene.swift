@@ -330,7 +330,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameOverLabel.fontSize = 200
         gameOverLabel.alpha = 1.0
         gameOverLabel.zPosition = 1001
-                
+        
         let homeTexture = SKTexture(imageNamed: "button_home")
         let homeButton = ButtonNode(normalTexture: homeTexture, selectedTexture: homeTexture, disabledTexture: homeTexture)
         homeButton.position = CGPoint(x: 0, y: -300)
@@ -366,6 +366,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
 //        gameVC.present(initialVC, animated: true, completion: nil)
         self.view?.window?.rootViewController?.present(initialVC, animated: true, completion: nil)
+//        self.removeFromParent()
+        // This crashes but if you want segue
+//        self.view?.window?.rootViewController?.performSegue(withIdentifier: "VC", sender: self)
+
     }
     
     // MARK: Animation
