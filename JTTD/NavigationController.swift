@@ -20,4 +20,10 @@ class GameNavigationController: UINavigationController {
         }
     }
     
+    func gameOver() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let gameOverVC = storyboard.instantiateViewController(identifier: "gameOverVC")
+        present(gameOverVC, animated: true, completion: nil)
+    }
+    
 }

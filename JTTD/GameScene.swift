@@ -13,6 +13,7 @@ protocol EventListenerNode {
     func didMoveToScene()
 }
 
+
 class GameScene: SKScene, SKPhysicsContactDelegate {
 
     let loggedInUser = User.sharedInstance
@@ -310,67 +311,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
 // MARK: Game Over
     func gameOver(_ score: Int) {
-        
-        for node in self.children as [SKNode] {
-            node.isPaused = true
-        }
-
-        let overlayNode = SKSpriteNode(color: UIColor.black, size: CGSize(width: size.width, height: size.height))
-        overlayNode.position = CGPoint(x: 0, y: 0)
-        overlayNode.name = "Overlay"
-        overlayNode.zPosition = 1000
-        overlayNode.alpha = 0.7
-        
-        let gameOverLabel = SKLabelNode(fontNamed: "Digital-7")
-        gameOverLabel.position = CGPoint(x: 0, y: 0)
-        gameOverLabel.text = "Game Over"
-        gameOverLabel.fontColor = UIColor.red
-        gameOverLabel.horizontalAlignmentMode = .center
-        gameOverLabel.verticalAlignmentMode = .center
-        gameOverLabel.fontSize = 200
-        gameOverLabel.alpha = 1.0
-        gameOverLabel.zPosition = 1001
-        
-        let homeTexture = SKTexture(imageNamed: "button_home")
-        let homeButton = ButtonNode(normalTexture: homeTexture, selectedTexture: homeTexture, disabledTexture: homeTexture)
-        homeButton.position = CGPoint(x: 0, y: -300)
-        homeButton.size = CGSize(width: 400, height: 160)
-        homeButton.zPosition = 1001
-        homeButton.setButtonAction(target: self, triggerEvent: .TouchDown, action: #selector(self.startOver))
-        
-        let fade = SKAction.fadeIn(withDuration: 1)
-        let rotate = SKAction.rotate(byAngle: -0.6, duration: 1.0)
-        let seq = SKAction.sequence([rotate, rotate.reversed()])
-        gameOverLabel.run(fade)
-        gameOverLabel.run(SKAction.repeatForever(seq))
-        
-        fgNode.addChild(overlayNode)
-        fgNode.addChild(gameOverLabel)
-        fgNode.addChild(homeButton)
-        
-        self.isPaused = true
+        print("scene game over")
         if score > loggedInUser.highScore {
             DataService.instance.updateScore(score)
         }
+        
+        // Deallocates scene
+        self.view?.presentScene(nil)
+        // Has to be on main thread
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: .gameOver, object: nil)
+        }
+        
     }
     
-    @objc func startOver() {
-        print("startOver")
-//        guard let gameVC = self.view?.window?.rootViewController else { return }
-//        gameVC.dismiss(animated: true, completion: nil)
-//        self.viewController?.removeFromParent()
-//        self.viewController?.dismiss(animated: true, completion: nil)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let initialVC = storyboard.instantiateViewController(withIdentifier :"initialVC")
-//        let gameVC: UIViewController = UIApplication.shared.windows.first { $0.isKeyWindow }
 
-//        gameVC.present(initialVC, animated: true, completion: nil)
-        self.view?.window?.rootViewController?.present(initialVC, animated: true, completion: nil)
-//        self.removeFromParent()
-        // This crashes but if you want segue
-//        self.view?.window?.rootViewController?.performSegue(withIdentifier: "VC", sender: self)
-
-    }
     
     // MARK: Animation
     
@@ -491,5 +446,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         shipOne.lastUpdateTime = currentTime
     }
 
+    deinit {
+        print("Game scene deinitialized")
+    }
+}
 
+extension Notification.Name {
+    static let gameOver = Notification.Name("gameOver")
 }

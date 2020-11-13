@@ -16,7 +16,7 @@ class GameOverVC: UIViewController {
         gameOverLabel.center = CGPoint(x: 0, y: 0)
         gameOverLabel.textAlignment = .center
         gameOverLabel.textColor = UIColor.red
-        gameOverLabel.font = UIFont(name: "Avenir Next", size: 100.0)
+        gameOverLabel.font = UIFont(name: "Digital-7", size: 100.0)
         view.addSubview(gameOverLabel)
         
         let homeButtonImage = UIImage(named: "button_home")

@@ -233,10 +233,10 @@
             </objects>
             <point key="canvasLocation" x="355.07246376811599" y="20.758928571428569"/>
         </scene>
-        <!--Game View Controller-->
+        <!--GameVC-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController storyboardIdentifier="GameView" modalPresentationStyle="fullScreen" id="BV1-FR-VrT" customClass="GameViewController" customModule="JTTD" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameVC" modalPresentationStyle="fullScreen" id="BV1-FR-VrT" customClass="GameVC" customModule="JTTD" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -332,7 +332,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tS8-Cc-Uqh"/>
+        <segue reference="TdS-0R-vNw"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="button_just-play" width="200" height="50"/>
