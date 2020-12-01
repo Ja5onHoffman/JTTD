@@ -15,7 +15,7 @@ protocol EventListenerNode {
 
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
-    
+
     let loggedInUser = User.sharedInstance
     var viewController: UIViewController?
     
@@ -315,29 +315,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if score > loggedInUser.highScore {
             DataService.instance.updateScore(score)
         }
-
+        
         // Deallocates scene
         self.view?.presentScene(nil)
         // Has to be on main thread
         DispatchQueue.main.async {
             NotificationCenter.default.post(name: .gameOver, object: nil)
         }
-
+        
     }
     
-    // SKScene version
-//    func gameOver(_ score: Int) {
-//
-////       let gameOverScene = GameOverScene(size: CGSize(width: size.width, height: size.height))
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let gameOverVC = storyboard.instantiateViewController(identifier: "gameOverVC") as GameOverVC
-//
-////        gameOverScene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-//        self.viewController?.present(gameOverVC, animated: true, completion: nil)
-//
-//    }
-    
 
+    
     // MARK: Animation
     
     func explode(node: SKSpriteNode, time: TimeInterval) {

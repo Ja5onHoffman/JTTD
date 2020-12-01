@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Yw2-Fb-gxB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="obH-PA-jar">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -97,13 +97,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rZg-Sz-sei" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="355" y="721"/>
+            <point key="canvasLocation" x="-555" y="707"/>
         </scene>
         <!--Game OverVC-->
         <scene sceneID="TgM-t5-w6d">
             <objects>
-                <viewController storyboardIdentifier="GameOverVC" id="n7u-uI-rC3" customClass="GameOverVC" customModule="JTTD" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" opaque="NO" alpha="0.20000000000000001" contentMode="scaleToFill" id="eeZ-8o-XMj" customClass="SKView">
+                <viewController storyboardIdentifier="gameOverVC" id="n7u-uI-rC3" customClass="GameOverVC" customModule="JTTD" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" alpha="0.20000000000000001" contentMode="scaleToFill" id="eeZ-8o-XMj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="3un-Sa-nxJ"/>
@@ -115,12 +115,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6yx-ky-WV1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1171" y="721"/>
+            <point key="canvasLocation" x="1171" y="706"/>
         </scene>
         <!--InitalVC-->
         <scene sceneID="vns-na-s4P">
             <objects>
-                <viewController storyboardIdentifier="InitialVC" modalPresentationStyle="fullScreen" id="Yw2-Fb-gxB" customClass="InitalVC" customModule="JTTD" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="initialVC" modalPresentationStyle="fullScreen" id="Yw2-Fb-gxB" customClass="InitalVC" customModule="JTTD" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="chV-I0-s6K">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -311,9 +311,29 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IiF-tS-3NJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="355" y="-656"/>
+            <point key="canvasLocation" x="-555.07246376811599" y="-711.16071428571422"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="QGB-0P-jl2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="obH-PA-jar" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pcu-Do-ygx">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Yw2-Fb-gxB" kind="relationship" relationship="rootViewController" id="TdS-0R-vNw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cHm-mk-gp6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-555.07246376811599" y="20.758928571428569"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="TdS-0R-vNw"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="button_just-play" width="200" height="50"/>
         <image name="button_sign-in" width="280" height="50"/>

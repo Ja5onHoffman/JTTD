@@ -6,29 +6,40 @@
 //  Copyright © 2020 Jason Hoffman. All rights reserved.
 //
 
-import SwiftUI
+import Foundation
+import UIKit
+import SpriteKit
+import GameplayKit
 
 class GameOverVC: UIViewController {
     
     override func viewDidLoad() {
-        let gameOverLabel = UILabel()
-        gameOverLabel.text = "Game Over"
-        gameOverLabel.center = CGPoint(x: 0, y: 0)
-        gameOverLabel.textAlignment = .center
-        gameOverLabel.textColor = UIColor.red
-        gameOverLabel.font = UIFont(name: "Digital-7", size: 100.0)
-        view.addSubview(gameOverLabel)
-        
-        let homeButtonImage = UIImage(named: "button_home")
-        let homeButton = UIButton(type: .custom)
-        homeButton.setImage(homeButtonImage, for: .normal)
-        homeButton.addTarget(self, action: #selector(goHome), for: .touchUpInside)
-        self.view.addSubview(homeButton)
+        print("GameoverVC")
+        super.viewDidLoad()
+        if let skView = self.view as! SKView? {
+            skView.showsFPS = true
+            skView.showsNodeCount = true
+//            skView.ignoresSiblingOrder = true
+//            skView.showsPhysics = true
+            if let scene = SKScene(fileNamed: "GameOver") {
+                scene.size = CGSize(width: 1125, height: 2436)
+                scene.scaleMode = .aspectFill
+                skView.presentScene(scene)
+
+            }
+        }
+        NotificationCenter.default.addObserver(self, selector: #selector(mainMenu(notification:)), name: .goHome, object: nil)
     }
     
-    @objc func goHome() {
+    
+    @objc func mainMenu(notification: Notification) {
+        print("mainMenu called")
+
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let initialVC = storyboard.instantiateViewController(identifier: "intialVC")
+        let initialVC = storyboard.instantiateViewController(identifier: "InitialVC")
+        
+        
         self.present(initialVC, animated: true, completion: nil)
     }
 }

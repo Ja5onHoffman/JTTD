@@ -12,7 +12,6 @@
 		311FFECB22E2650D00E7C9C8 /* Poof.sks in Resources */ = {isa = PBXBuildFile; fileRef = 311FFECA22E2650D00E7C9C8 /* Poof.sks */; };
 		311FFECD22E2683E00E7C9C8 /* SKAction+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311FFECC22E2683E00E7C9C8 /* SKAction+Extensions.swift */; };
 		311FFECF22E27B9D00E7C9C8 /* Meteor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311FFECE22E27B9D00E7C9C8 /* Meteor.swift */; };
-		312DC049255EF37C00989B8A /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312DC048255EF37C00989B8A /* GameOver.swift */; };
 		313BF5A022BADBFF003000D2 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 313BF59F22BADBFF003000D2 /* GameScene.sks */; };
 		314C0CA32385C01800EDF576 /* Tractor.sks in Resources */ = {isa = PBXBuildFile; fileRef = 314C0CA22385C01700EDF576 /* Tractor.sks */; };
 		315E0DCD22C6953E00878219 /* BasicShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E0DCC22C6953E00878219 /* BasicShip.swift */; };
@@ -27,7 +26,7 @@
 		3192204223344869007EA1EF /* HealthBars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3192204123344869007EA1EF /* HealthBars.swift */; };
 		31A625B625474A0A00A48835 /* digital-7-mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31A625B42547463600A48835 /* digital-7-mono.ttf */; };
 		31A625B825474A0E00A48835 /* digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31A625B32547463600A48835 /* digital-7.ttf */; };
-		31AC40D6256ADAC100DE7D60 /* GameOver.sks in Resources */ = {isa = PBXBuildFile; fileRef = 31AC40D5256ADAC100DE7D60 /* GameOver.sks */; };
+		31A726C42559B3D700DFD477 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A726C32559B3D600DFD477 /* NavigationController.swift */; };
 		31AC75C922CD59620070094F /* BackgroundStars.sks in Resources */ = {isa = PBXBuildFile; fileRef = 31AC75C722CD59620070094F /* BackgroundStars.sks */; };
 		31AC75CA22CD59620070094F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31AC75C822CD59620070094F /* Assets.xcassets */; };
 		31AC75CE22D398F00070094F /* PhysicsCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC75CD22D398F00070094F /* PhysicsCategories.swift */; };
@@ -64,7 +63,6 @@
 		311FFECA22E2650D00E7C9C8 /* Poof.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Poof.sks; sourceTree = "<group>"; };
 		311FFECC22E2683E00E7C9C8 /* SKAction+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKAction+Extensions.swift"; sourceTree = "<group>"; };
 		311FFECE22E27B9D00E7C9C8 /* Meteor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meteor.swift; sourceTree = "<group>"; };
-		312DC048255EF37C00989B8A /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		313BF59F22BADBFF003000D2 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		314C0CA22385C01700EDF576 /* Tractor.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Tractor.sks; sourceTree = "<group>"; };
 		315E0DCC22C6953E00878219 /* BasicShip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicShip.swift; sourceTree = "<group>"; };
@@ -79,7 +77,7 @@
 		3192204123344869007EA1EF /* HealthBars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthBars.swift; sourceTree = "<group>"; };
 		31A625B32547463600A48835 /* digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7.ttf"; sourceTree = "<group>"; };
 		31A625B42547463600A48835 /* digital-7-mono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7-mono.ttf"; sourceTree = "<group>"; };
-		31AC40D5256ADAC100DE7D60 /* GameOver.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOver.sks; sourceTree = "<group>"; };
+		31A726C32559B3D600DFD477 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		31AC75C722CD59620070094F /* BackgroundStars.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BackgroundStars.sks; sourceTree = "<group>"; };
 		31AC75C822CD59620070094F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31AC75CC22D398DF0070094F /* MyUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUtils.swift; sourceTree = "<group>"; };
@@ -137,7 +135,6 @@
 			isa = PBXGroup;
 			children = (
 				313BF59F22BADBFF003000D2 /* GameScene.sks */,
-				31AC40D5256ADAC100DE7D60 /* GameOver.sks */,
 				315F687622C815310062646A /* TestSprite.sks */,
 				315F687822C816670062646A /* TestShip.sks */,
 				31B0DC2B2383624A00E75A55 /* SmokeTrail.sks */,
@@ -200,8 +197,8 @@
 				31D7D6D42294262800ADF4F6 /* LoginVC.swift */,
 				31119D9E22958C460097178C /* AuthVC.swift */,
 				316E20E42297430F00C44494 /* InitialVC.swift */,
-				31ED1D9E2274B09D003BBE49 /* GameVC.swift */,
 				31BE561B2550B0B8001C2D96 /* GameOverVC.swift */,
+				31ED1D9E2274B09D003BBE49 /* GameVC.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -242,8 +239,8 @@
 				31D7D6D82294284300ADF4F6 /* Views */,
 				315E0DCB22C6952B00878219 /* Nodes */,
 				31ED1D9C2274B09D003BBE49 /* GameScene.swift */,
-				312DC048255EF37C00989B8A /* GameOver.swift */,
 				315E0DC622C57D2B00878219 /* Scene Files */,
+				31A726C32559B3D600DFD477 /* NavigationController.swift */,
 				31ED1D962274B09D003BBE49 /* AppDelegate.swift */,
 				31ED1DA02274B09D003BBE49 /* Main.storyboard */,
 				31ED1DA32274B09F003BBE49 /* Assets.xcassets */,
@@ -337,7 +334,6 @@
 				311FFECB22E2650D00E7C9C8 /* Poof.sks in Resources */,
 				314C0CA32385C01800EDF576 /* Tractor.sks in Resources */,
 				315F687722C815310062646A /* TestSprite.sks in Resources */,
-				31AC40D6256ADAC100DE7D60 /* GameOver.sks in Resources */,
 				31D97716237F3EC6002C9653 /* ShieldPoof.sks in Resources */,
 				31B0DC0A2381F0D500E75A55 /* BaseDamage.sks in Resources */,
 				31A625B625474A0A00A48835 /* digital-7-mono.ttf in Resources */,
@@ -411,10 +407,10 @@
 			files = (
 				316E20E52297430F00C44494 /* InitialVC.swift in Sources */,
 				310C34822534BB37008EA70C /* FadeTransitionAnimator.swift in Sources */,
-				312DC049255EF37C00989B8A /* GameOver.swift in Sources */,
 				31ED1D9D2274B09D003BBE49 /* GameScene.swift in Sources */,
 				315E0DCD22C6953E00878219 /* BasicShip.swift in Sources */,
 				319220402333D36D007EA1EF /* SKTEffects.swift in Sources */,
+				31A726C42559B3D700DFD477 /* NavigationController.swift in Sources */,
 				31ED1D9F2274B09D003BBE49 /* GameVC.swift in Sources */,
 				3192204223344869007EA1EF /* HealthBars.swift in Sources */,
 				31119D9F22958C460097178C /* AuthVC.swift in Sources */,

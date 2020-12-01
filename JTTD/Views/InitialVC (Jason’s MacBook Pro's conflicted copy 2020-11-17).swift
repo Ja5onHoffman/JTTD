@@ -24,7 +24,7 @@ class InitalVC: UIViewController {
         super.viewDidLoad()
         DataService.instance.lastLogin()
         NotificationCenter.default.addObserver(self, selector: #selector(popFields(_:)), name: .userLoaded, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(gameOver(_:)), name: .gameOver, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(gameOver(_:)), name: .gameOver, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,13 +81,13 @@ class InitalVC: UIViewController {
 //        segue.perform()
 //    }
     
-//    @objc func gameOver(_ notification: NSNotification) {
-//        print("gameover")
+    @objc func gameOver(_ notification: NSNotification) {
+        print("gameover")
 //        let gameOverVC = self.storyboard!.instantiateViewController(withIdentifier: "gameOverVC")
 //        gameOverVC.modalPresentationStyle = .fullScreen
 //        present(gameOverVC, animated: true, completion: nil)
-//        self.dismiss(animated: true, completion: nil)
-//    }
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 extension Notification.Name {
