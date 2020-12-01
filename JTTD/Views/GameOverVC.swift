@@ -33,13 +33,11 @@ class GameOverVC: UIViewController {
     
     
     @objc func mainMenu(notification: Notification) {
-        print("mainMenu called")
-
-        
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: .userLoaded, object: nil) // Reloads user info
+        }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let initialVC = storyboard.instantiateViewController(identifier: "InitialVC")
-        
-        
         self.present(initialVC, animated: true, completion: nil)
     }
 }

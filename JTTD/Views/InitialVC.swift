@@ -22,13 +22,16 @@ class InitalVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DataService.instance.lastLogin()
+        print("initialVC did load")
         NotificationCenter.default.addObserver(self, selector: #selector(popFields(_:)), name: .userLoaded, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(gameOver(_:)), name: .gameOver, object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("initalVC did appear")
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        DataService.instance.lastLogin()
     }
     
 

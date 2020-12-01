@@ -87,14 +87,6 @@ class DataService {
         guard let userID = Auth.auth().currentUser?.uid else { return }
         REF_USERS.document(userID).updateData(["highScore": score])
     }
-//
-//    func getScoreFor(user uid: String) -> Int {
-//        var score = -1
-//        if let uid = Auth.auth().currentUser?.uid {
-//            score = REF_USERS.child(uid).value(forKey: "highScore")
-//        }
-//        return score
-//    }
 }
 
 
