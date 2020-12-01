@@ -13,12 +13,14 @@ import GameplayKit
 class GameOver: SKScene {
     
     override func didMove(to view: SKView) {
+        
         let background = childNode(withName: "Background")!
-        background.zPosition = 1
+//        background.zPosition = 1
         
         let gameOverLabel = SKLabelNode(fontNamed: "Avenir Next")
-        gameOverLabel.position = CGPoint.zero
+        gameOverLabel.position = CGPoint(x: 0, y: 200)
         gameOverLabel.text = "Game Over"
+        gameOverLabel.fontColor = .white
         gameOverLabel.verticalAlignmentMode = .center
         gameOverLabel.fontSize = 180
         gameOverLabel.alpha = 0.0
@@ -27,7 +29,7 @@ class GameOver: SKScene {
 
         let homeTexture = SKTexture(imageNamed: "button_home")
         let homeButton = ButtonNode(normalTexture: homeTexture, selectedTexture: homeTexture, disabledTexture: homeTexture)
-        homeButton.position = CGPoint(x: 0, y: -300)
+        homeButton.position = CGPoint(x: 0, y: -400)
         homeButton.scale(to: CGSize(width: homeButton.size.width * 3, height: homeButton.size.height * 3))
         homeButton.setButtonAction(target: self, triggerEvent: .TouchUpInside, action: #selector(goHome(_:)))
         background.addChild(homeButton)

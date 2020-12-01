@@ -23,14 +23,10 @@ class GameVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(gameOver(_:)), name: .gameOver, object: nil)
     }
     
-    // Not being called when notification fires
     @objc func gameOver(_ notification: NSNotification) {
-        print("vc gameover")
         let gameOverVC = self.storyboard!.instantiateViewController(withIdentifier: "GameOverVC")
-        
+        gameOverVC.modalTransitionStyle = .flipHorizontal
         gameOverVC.modalPresentationStyle = .fullScreen
         present(gameOverVC, animated: true, completion: nil)
-//        self.presentingViewController?.dismiss(animated: true, completion: nil)
-//        self.navigationController?.dismiss(animated: true, completion: nil)
     }
 }

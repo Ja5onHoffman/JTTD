@@ -103,11 +103,11 @@
         <scene sceneID="TgM-t5-w6d">
             <objects>
                 <viewController storyboardIdentifier="GameOverVC" id="n7u-uI-rC3" customClass="GameOverVC" customModule="JTTD" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" opaque="NO" alpha="0.20000000000000001" contentMode="scaleToFill" id="eeZ-8o-XMj" customClass="SKView">
+                    <view key="view" contentMode="scaleToFill" id="eeZ-8o-XMj" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="3un-Sa-nxJ"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
                         <segue destination="Yw2-Fb-gxB" kind="custom" identifier="fadeSegue" customClass="FadeSegue" customModule="JTTD" customModuleProvider="target" id="tS8-Cc-Uqh"/>

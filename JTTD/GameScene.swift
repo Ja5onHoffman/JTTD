@@ -311,7 +311,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
 // MARK: Game Over
     func gameOver(_ score: Int) {
-        print("scene game over")
         if score > loggedInUser.highScore {
             DataService.instance.updateScore(score)
         }
@@ -324,19 +323,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
 
     }
-    
-    // SKScene version
-//    func gameOver(_ score: Int) {
-//
-////       let gameOverScene = GameOverScene(size: CGSize(width: size.width, height: size.height))
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let gameOverVC = storyboard.instantiateViewController(identifier: "gameOverVC") as GameOverVC
-//
-////        gameOverScene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-//        self.viewController?.present(gameOverVC, animated: true, completion: nil)
-//
-//    }
-    
 
     // MARK: Animation
     
