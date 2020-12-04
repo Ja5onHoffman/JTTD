@@ -52,7 +52,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         setupNodes()
         basicShips()
-        gameOver(gameScore)
         self.physicsWorld.contactDelegate = self
         self.view?.isMultipleTouchEnabled = true
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run({
