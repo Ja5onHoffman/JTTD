@@ -14,7 +14,6 @@ import GameplayKit
 class GameOverVC: UIViewController {
     
     override func viewDidLoad() {
-        print("GameoverVC")
         super.viewDidLoad()
         if let skView = self.view as! SKView? {
             skView.showsFPS = true

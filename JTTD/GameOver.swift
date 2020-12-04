@@ -44,7 +44,6 @@ class GameOver: SKScene {
     }
     
     @objc func goHome(_ selector: Selector) {
-        print("scene goHome called")
         self.removeFromParent()
         self.view?.presentScene(nil)
         

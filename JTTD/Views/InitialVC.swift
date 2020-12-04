@@ -22,12 +22,10 @@ class InitalVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("initialVC did load")
         NotificationCenter.default.addObserver(self, selector: #selector(popFields(_:)), name: .userLoaded, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print("initalVC did appear")
     }
     
     override func viewWillAppear(_ animated: Bool) {
