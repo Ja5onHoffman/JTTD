@@ -8,6 +8,7 @@ let DB_BASE = Firestore.firestore()
 
 class DataService {
     static let instance = DataService()
+    let loggedInUser = User.sharedInstance
     
     private var _REF_BASE = DB_BASE
     private var _REF_USERS = DB_BASE.collection("users")
@@ -86,6 +87,8 @@ class DataService {
     func updateScore(_ score: Int) {
         guard let userID = Auth.auth().currentUser?.uid else { return }
         REF_USERS.document(userID).updateData(["highScore": score])
+        loggedInUser.highScore = score /* User score should change whenever object changes
+         instead of udpating here */
     }
 }
 
