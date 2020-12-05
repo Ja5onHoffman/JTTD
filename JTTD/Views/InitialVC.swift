@@ -22,6 +22,7 @@ class InitalVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        try! Auth.auth().signOut()
         NotificationCenter.default.addObserver(self, selector: #selector(popFields(_:)), name: .userLoaded, object: nil)
     }
     

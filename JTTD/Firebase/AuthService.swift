@@ -27,6 +27,7 @@ class AuthService {
                 self.loggedInUser.id = Auth.auth().currentUser?.uid
                 self.loggedInUser.name = name
                 self.loggedInUser.email = email
+                self.loggedInUser.highScore = 0
                 self.loggedInUser.provider = provider
             }
             
@@ -41,7 +42,12 @@ class AuthService {
                 loginComplete(false, error)
                 return
             }
-            NotificationCenter.default.post(name: .userLoaded, object: nil)
+            
+            // Works better on main thread
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .userLoaded, object: nil)
+            }
+            
             loginComplete(true, nil)
         }
     }

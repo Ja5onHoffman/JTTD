@@ -27,6 +27,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     }
 
     // Log in or sign up
+    // loginuser called but not sign up
     @IBAction func signIn(_ sender: Any) {
         if emailTextField.text != nil && passwordTextField.text != nil && nameTextField.text != nil {
             AuthService.instance.loginUser(withEmail: emailTextField.text!, andPassword: passwordTextField.text!) { (success, loginError) in

@@ -23,8 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 //        try! Auth.auth().signOut()
         GIDSignIn.sharedInstance()?.clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance()?.delegate = self
-                
-        
+
         let user = Auth.auth().currentUser
         if user == nil {
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
