@@ -32,7 +32,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func signInButtonPressed(_sender: Any) {
-        
+        signIn()
     }
 
     @IBAction func registerButtonPressed(_ sender: Any) {
@@ -46,7 +46,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func submitButtonPressed(_ sender: Any) {
-//        register
+        signIn() // signIn() also captures names for new users
     }
     
     
