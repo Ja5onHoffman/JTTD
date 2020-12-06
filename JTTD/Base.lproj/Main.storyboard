@@ -68,6 +68,7 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Jason H" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="if0-BJ-ICI">
                                                 <rect key="frame" x="0.0" y="-3" width="280" height="3"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -253,23 +254,30 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ePo-wT-rnm">
-                                <rect key="frame" x="107" y="622" width="200" height="120"/>
+                                <rect key="frame" x="107" y="626" width="200" height="116"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohA-BF-BZ1">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
-                                        <state key="normal" image="button_start"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="48"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="26"/>
+                                        <state key="normal" title="Start"/>
                                         <connections>
                                             <segue destination="BV1-FR-VrT" kind="show" identifier="fadeSegue" customClass="FadeSegue" customModule="JTTD" customModuleProvider="target" id="di9-2M-L5k"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2R-TL-sXv">
-                                        <rect key="frame" x="0.0" y="70" width="200" height="50"/>
-                                        <state key="normal" image="button_sign-out"/>
+                                        <rect key="frame" x="0.0" y="68" width="200" height="48"/>
+                                        <color key="backgroundColor" systemColor="systemRedColor"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="26"/>
+                                        <state key="normal" title="Sign Out"/>
                                         <connections>
                                             <action selector="signOut:" destination="Yw2-Fb-gxB" eventType="touchUpInside" id="zt1-do-5y6"/>
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="WSO-Yj-cAO"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dri-t0-Icw"/>
@@ -340,17 +348,35 @@
                                         </connections>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UjB-Bb-TsE">
-                                        <rect key="frame" x="0.0" y="110" width="280" height="50"/>
-                                        <state key="normal" image="button_sign-in-with-email"/>
+                                        <rect key="frame" x="15" y="110" width="250" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Yzh-8A-FA5"/>
+                                            <constraint firstAttribute="width" constant="250" id="byO-q9-99C"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="26"/>
+                                        <size key="titleShadowOffset" width="1" height="1"/>
+                                        <state key="normal" title="Sign In with Email">
+                                            <color key="titleShadowColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
-                                            <action selector="emailSignIn:" destination="5b6-yN-SEl" eventType="touchUpInside" id="nz0-Ec-NJv"/>
+                                            <action selector="emailSignIn:" destination="5b6-yN-SEl" eventType="touchUpInside" id="T9y-l3-k3m"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Raw-lA-TBE">
                                         <rect key="frame" x="40" y="220" width="200" height="50"/>
-                                        <state key="normal" image="button_just-play"/>
+                                        <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="GnH-pq-bUZ"/>
+                                            <constraint firstAttribute="height" constant="50" id="yWi-v7-vPb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="26"/>
+                                        <size key="titleShadowOffset" width="1" height="1"/>
+                                        <state key="normal" title="Just Play">
+                                            <color key="titleShadowColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
-                                            <action selector="justPlay:" destination="5b6-yN-SEl" eventType="touchUpInside" id="kz7-MI-cLT"/>
+                                            <action selector="justPlay:" destination="5b6-yN-SEl" eventType="touchUpInside" id="vjA-c0-JwM"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -379,10 +405,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="button_just-play" width="200" height="50"/>
-        <image name="button_sign-in-with-email" width="280" height="50"/>
-        <image name="button_sign-out" width="200" height="50"/>
-        <image name="button_start" width="200" height="50"/>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
@@ -391,6 +416,9 @@
         </systemColor>
         <systemColor name="systemPurpleColor">
             <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
