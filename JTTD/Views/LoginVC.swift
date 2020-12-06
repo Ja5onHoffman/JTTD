@@ -13,6 +13,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var usernameFields: UIStackView!
+    @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var submitButton: UIButton!
     
     let user = User.sharedInstance
     
@@ -26,9 +29,22 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
 
+    @IBAction func registerButtonPressed(_ sender: Any) {
+        UIView.animate(withDuration: 0.3) {
+            self.usernameFields.isHidden = false
+            self.submitButton.isHidden = false
+            self.registerButton.isHidden = true
+        }
+    }
+    
+    @IBAction func submitButtonPressed(_ sender: Any) {
+//        signIn()
+    }
+    
+    
     // Log in or sign up
     // loginuser called but not sign up
-    @IBAction func signIn(_ sender: Any) {
+   func signIn() {
         if emailTextField.text != nil && passwordTextField.text != nil && nameTextField.text != nil {
             AuthService.instance.loginUser(withEmail: emailTextField.text!, andPassword: passwordTextField.text!) { (success, loginError) in
                 if success {
