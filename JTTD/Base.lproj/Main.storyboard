@@ -73,14 +73,13 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l0b-Os-Ruk">
-                                <rect key="frame" x="67" y="396" width="280" height="50"/>
-                                <state key="normal" image="button_sign-in"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQR-mh-9oG">
-                                <rect key="frame" x="93" y="512" width="229" height="63"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQR-mh-9oG">
+                                <rect key="frame" x="82" y="513" width="250" height="50"/>
                                 <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="FfO-b6-KTl"/>
+                                    <constraint firstAttribute="height" constant="50" id="Fpk-wI-lel"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="26"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
                                 <state key="normal" title="Register">
@@ -91,17 +90,19 @@
                                     <action selector="registerButtonPressed:" destination="EkW-xd-ZXC" eventType="touchUpInside" id="SfX-Ep-eza"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qyb-qp-DwT">
-                                <rect key="frame" x="118" y="483" width="182" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qyb-qp-DwT">
+                                <rect key="frame" x="116.5" y="484.5" width="181.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dba-Az-pxu">
-                                <rect key="frame" x="93" y="513" width="229" height="63"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dba-Az-pxu">
+                                <rect key="frame" x="82" y="513" width="250" height="50"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="kch-MQ-guM"/>
+                                    <constraint firstAttribute="height" constant="50" id="vAg-08-poJ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="26"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
                                 <state key="normal" title="Submit">
@@ -112,21 +113,46 @@
                                     <action selector="submitButtonPressed:" destination="EkW-xd-ZXC" eventType="touchUpInside" id="8ox-eM-kba"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w33-VX-S5z">
+                                <rect key="frame" x="82" y="396" width="250" height="50"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Dxl-bg-lm5"/>
+                                    <constraint firstAttribute="width" constant="250" id="TLT-F5-HQ4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="26"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="Sign In">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="signInButtonPressedWith_sender:" destination="EkW-xd-ZXC" eventType="touchUpInside" id="eQU-q5-mvJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="DOy-1B-rJQ"/>
                         <color key="backgroundColor" red="0.16078431369999999" green="0.16862745100000001" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="l0b-Os-Ruk" firstAttribute="centerX" secondItem="jbP-NS-Cxe" secondAttribute="centerX" id="ZNR-mS-iRG"/>
+                            <constraint firstItem="NQR-mh-9oG" firstAttribute="top" secondItem="w33-VX-S5z" secondAttribute="bottom" constant="67" id="1oZ-AF-R0o"/>
+                            <constraint firstItem="NQR-mh-9oG" firstAttribute="centerX" secondItem="jbP-NS-Cxe" secondAttribute="centerX" id="2gH-GO-y70"/>
+                            <constraint firstItem="Dba-Az-pxu" firstAttribute="top" secondItem="w33-VX-S5z" secondAttribute="bottom" constant="67" id="4el-15-NhA"/>
+                            <constraint firstItem="NQR-mh-9oG" firstAttribute="top" secondItem="Qyb-qp-DwT" secondAttribute="bottom" constant="5" id="G5Z-d2-XYT"/>
+                            <constraint firstItem="w33-VX-S5z" firstAttribute="top" secondItem="UPj-k8-VzQ" secondAttribute="bottom" constant="60" id="Jy0-uV-rJP"/>
+                            <constraint firstItem="w33-VX-S5z" firstAttribute="centerX" secondItem="jbP-NS-Cxe" secondAttribute="centerX" id="OZz-Yt-Rsh"/>
                             <constraint firstItem="UPj-k8-VzQ" firstAttribute="centerX" secondItem="jbP-NS-Cxe" secondAttribute="centerX" id="gmB-H1-xkn"/>
-                            <constraint firstItem="l0b-Os-Ruk" firstAttribute="top" secondItem="UPj-k8-VzQ" secondAttribute="bottom" constant="60" id="nNb-Zk-9wL"/>
                             <constraint firstItem="UPj-k8-VzQ" firstAttribute="top" secondItem="DOy-1B-rJQ" secondAttribute="top" constant="150" id="pxY-dl-931"/>
+                            <constraint firstItem="Qyb-qp-DwT" firstAttribute="centerX" secondItem="jbP-NS-Cxe" secondAttribute="centerX" id="uyk-ey-obk"/>
+                            <constraint firstItem="Dba-Az-pxu" firstAttribute="centerX" secondItem="jbP-NS-Cxe" secondAttribute="centerX" id="yCh-hd-NLM"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="accountLabel" destination="Qyb-qp-DwT" id="CNA-UP-RwJ"/>
                         <outlet property="emailTextField" destination="QD4-Z0-h4v" id="0Iw-GV-3QZ"/>
                         <outlet property="nameTextField" destination="if0-BJ-ICI" id="b4Y-uG-vQO"/>
                         <outlet property="passwordTextField" destination="R9l-7C-Ubj" id="86B-02-JdH"/>
                         <outlet property="registerButton" destination="NQR-mh-9oG" id="aag-I7-tta"/>
+                        <outlet property="signInButton" destination="w33-VX-S5z" id="46I-dA-KzA"/>
                         <outlet property="submitButton" destination="Dba-Az-pxu" id="qj5-mF-vsS"/>
                         <outlet property="usernameFields" destination="ptd-zm-IYa" id="rAg-eV-N9d"/>
                     </connections>
@@ -352,10 +378,12 @@
     </scenes>
     <resources>
         <image name="button_just-play" width="200" height="50"/>
-        <image name="button_sign-in" width="280" height="50"/>
         <image name="button_sign-in-with-email" width="280" height="50"/>
         <image name="button_sign-out" width="200" height="50"/>
         <image name="button_start" width="200" height="50"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

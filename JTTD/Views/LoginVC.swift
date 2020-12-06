@@ -16,6 +16,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameFields: UIStackView!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var accountLabel: UILabel!
     
     let user = User.sharedInstance
     
@@ -28,17 +30,23 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
+    @IBAction func signInButtonPressed(_sender: Any) {
+        
+    }
 
     @IBAction func registerButtonPressed(_ sender: Any) {
         UIView.animate(withDuration: 0.3) {
+            self.signInButton.isHidden = true
             self.usernameFields.isHidden = false
             self.submitButton.isHidden = false
             self.registerButton.isHidden = true
+            self.accountLabel.isHidden = true
         }
     }
     
     @IBAction func submitButtonPressed(_ sender: Any) {
-//        signIn()
+//        register
     }
     
     
