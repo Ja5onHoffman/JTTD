@@ -313,6 +313,70 @@
             </objects>
             <point key="canvasLocation" x="355" y="-656"/>
         </scene>
+        <!--Sig-->
+        <scene sceneID="xjb-wh-kFg">
+            <objects>
+                <viewController storyboardIdentifier="AuthVC" id="R2A-lA-XaZ" customClass="Sig" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="N6M-9e-nfs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JTTD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K81-hn-qWc">
+                                <rect key="frame" x="145.5" y="80" width="123.5" height="66"/>
+                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="50"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <size key="shadowOffset" width="4" height="-1"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="1nW-qW-Zlr">
+                                <rect key="frame" x="67" y="313" width="280" height="270"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X4y-y1-ySy" customClass="GIDSignInButton">
+                                        <rect key="frame" x="20" y="0.0" width="240" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="googleSignIn:" destination="R2A-lA-XaZ" eventType="valueChanged" id="mvk-4r-t7f"/>
+                                        </connections>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uBr-9h-CUZ">
+                                        <rect key="frame" x="0.0" y="110" width="280" height="50"/>
+                                        <state key="normal" image="button_sign-in-with-email"/>
+                                        <connections>
+                                            <action selector="emailSignIn:" destination="R2A-lA-XaZ" eventType="touchUpInside" id="1f8-HG-jfo"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ge9-k6-ovR">
+                                        <rect key="frame" x="40" y="220" width="200" height="50"/>
+                                        <state key="normal" image="button_just-play"/>
+                                        <connections>
+                                            <action selector="justPlay:" destination="R2A-lA-XaZ" eventType="touchUpInside" id="W84-i0-H0R"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="uBr-9h-CUZ" firstAttribute="centerY" secondItem="1nW-qW-Zlr" secondAttribute="centerY" id="2n6-O5-p9P"/>
+                                    <constraint firstItem="X4y-y1-ySy" firstAttribute="leading" secondItem="1nW-qW-Zlr" secondAttribute="leading" constant="20" id="qOY-wP-ZEU"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="3ZO-U0-b4d"/>
+                        <color key="backgroundColor" red="0.16078431369999999" green="0.16862745100000001" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="1nW-qW-Zlr" firstAttribute="centerY" secondItem="N6M-9e-nfs" secondAttribute="centerY" id="ZOG-I2-YtF"/>
+                            <constraint firstItem="K81-hn-qWc" firstAttribute="top" secondItem="3ZO-U0-b4d" secondAttribute="top" constant="36" id="bPW-zC-Fnx"/>
+                            <constraint firstItem="1nW-qW-Zlr" firstAttribute="centerX" secondItem="N6M-9e-nfs" secondAttribute="centerX" id="lV6-J3-oaL"/>
+                            <constraint firstItem="K81-hn-qWc" firstAttribute="centerX" secondItem="N6M-9e-nfs" secondAttribute="centerX" id="mVu-UM-ugV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="signInButton" destination="X4y-y1-ySy" id="v9Y-YM-8aU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pBD-ME-ew2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1170" y="-656"/>
+        </scene>
     </scenes>
     <resources>
         <image name="button_just-play" width="200" height="50"/>
