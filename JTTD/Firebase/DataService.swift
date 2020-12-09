@@ -36,7 +36,7 @@ class DataService {
         }
     }
     
-    func getUsername(forUID uid: String) {
+    func getUsernameAndScore(forUID uid: String, completion: @escaping (_ name: String, _ score: Int) -> ()) {
         REF_USERS.document(uid).getDocument { (document, error) in
             if let err = error {
                 print(err.localizedDescription)
@@ -44,36 +44,14 @@ class DataService {
             }
             
             if let doc = document {
-                let name = doc.get("name")
-                print(name)
+                let name = doc.get("name") as! String
+                let score = doc.get("highScore") as! Int
+                completion(name, score)
             }
         }
     }
     
-//    func getUsername(forUID uid: String, handler: @escaping (_ username: String) -> ()) {
-//        REF_USERS.document(uid).getDocument { (document, error) in
-//            if let err = error {
-//                print(err.localizedDescription)
-//                return
-//            }
-//
-//            if let doc = document {
-//                let name = doc.get("name")
-//            }
-//        }
-        
-        
-        
-//        REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
-//            guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
-//            for user in userSnapshot {
-//                if user.key == uid {
-//                    handler(user.childSnapshot(forPath: "email").value as! String)
-//                }
-//            }
-//        }
-//    }
-    
+
     func lastLogin() {
         guard let userID = Auth.auth().currentUser?.uid else { return }
         let df = DateFormatter()
@@ -81,7 +59,6 @@ class DataService {
         df.dateFormat = "MMM d, yyyy"
         let dateString = df.string(from: date)
         REF_USERS.document(userID).updateData(["lastLogin": dateString])
-        
     }
     
     func updateScore(_ score: Int) {

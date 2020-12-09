@@ -26,11 +26,9 @@ class InitalVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(popFields(_:)), name: .userLoaded, object: nil)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         DataService.instance.lastLogin()
+//        wipeFields()
     }
     
 
@@ -42,6 +40,8 @@ class InitalVC: UIViewController {
         guard let providerData = Auth.auth().currentUser?.providerData[0].providerID else { return }
         
         switch providerData {
+        
+        // This does nothing because always Firebase
         case "google.com":
             do {
                 try Auth.auth().signOut()
@@ -60,7 +60,12 @@ class InitalVC: UIViewController {
         }
     }
     
-
+    func wipeFields() {
+        playerLabel.text = ""
+        scoreLabel.text = ""
+        lastGameLabel.text = ""
+    }
+    
     @objc func popFields(_ notification: NSNotification) {
         print("popfields")
         if let _ = Auth.auth().currentUser {
