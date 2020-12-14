@@ -95,7 +95,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
     }
     
     func shipHit() {
-        if (shield >= 0) {
+        if (shield > 0) {
             shield -= 10
             shieldBar.decreaseHealth(by: shield)
             updateShield(shield)
@@ -112,8 +112,14 @@ class TestShip: SKSpriteNode, EventListenerNode {
     
     // Just increments for now
     func recharge() {
+        printShields()
+
         if let s = childNode(withName: "shield") {
-            s.alpha += 0.1
+            if s.xScale == 0 {
+                let scaleBig = SKAction.scale(to: 1.0, duration: 1.0)
+                s.run(scaleBig)
+            }
+            s.alpha += CGFloat(0.1)
         }
         shield += 10
         shieldBar.increaseHealth(by: 10)
@@ -121,8 +127,11 @@ class TestShip: SKSpriteNode, EventListenerNode {
     
     // Need to change this to increase shield as well
     func updateShield(_ level: Int) {
+        printShields()
         if let s = childNode(withName: "shield") {
-            s.alpha -= 0.1
+            if s.alpha > 0 {
+                s.alpha -= 0.1
+            }
         }
         if level == 0 {
             let alpha = SKAction.fadeAlpha(to: 1.0, duration: 0.1)
@@ -189,5 +198,11 @@ class TestShip: SKSpriteNode, EventListenerNode {
     
     func swapMove() {
         moved = !moved
+    }
+    
+    func printShields() {
+        let s = childNode(withName: "shield")!
+        print("Shield: \(shield)")
+        print("SA: \(s.alpha)")
     }
 }
