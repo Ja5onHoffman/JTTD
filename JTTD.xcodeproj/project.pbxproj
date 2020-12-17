@@ -25,6 +25,7 @@
 		3192203E2333D2EC007EA1EF /* SKTTimingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3192203D2333D2EC007EA1EF /* SKTTimingFunctions.swift */; };
 		319220402333D36D007EA1EF /* SKTEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3192203F2333D36D007EA1EF /* SKTEffects.swift */; };
 		3192204223344869007EA1EF /* HealthBars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3192204123344869007EA1EF /* HealthBars.swift */; };
+		319EBA78258B9AE400BA1452 /* SToken.sks in Resources */ = {isa = PBXBuildFile; fileRef = 319EBA77258B9AE400BA1452 /* SToken.sks */; };
 		31A625B625474A0A00A48835 /* digital-7-mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31A625B42547463600A48835 /* digital-7-mono.ttf */; };
 		31A625B825474A0E00A48835 /* digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31A625B32547463600A48835 /* digital-7.ttf */; };
 		31AC40D6256ADAC100DE7D60 /* GameOver.sks in Resources */ = {isa = PBXBuildFile; fileRef = 31AC40D5256ADAC100DE7D60 /* GameOver.sks */; };
@@ -56,7 +57,6 @@
 		31ED1DAF2274B13C003BBE49 /* MyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ED1DAE2274B13C003BBE49 /* MyUtils.swift */; };
 		31F82B502295BF7C0046CFF4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31F82B4F2295BF7C0046CFF4 /* GoogleService-Info.plist */; };
 		31F881CD25895D1A005DCF2B /* SuperToken.sks in Resources */ = {isa = PBXBuildFile; fileRef = 31F881CC25895D1A005DCF2B /* SuperToken.sks */; };
-		31F881D0258960C3005DCF2B /* SToken.sks in Resources */ = {isa = PBXBuildFile; fileRef = 31F881CF258960C3005DCF2B /* SToken.sks */; };
 		5723CABF08EB8FF5E6848403 /* Pods_JTTD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1929420761F2142F544C3BC8 /* Pods_JTTD.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +80,7 @@
 		3192203D2333D2EC007EA1EF /* SKTTimingFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTTimingFunctions.swift; sourceTree = "<group>"; };
 		3192203F2333D36D007EA1EF /* SKTEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTEffects.swift; sourceTree = "<group>"; };
 		3192204123344869007EA1EF /* HealthBars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthBars.swift; sourceTree = "<group>"; };
+		319EBA77258B9AE400BA1452 /* SToken.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SToken.sks; sourceTree = "<group>"; };
 		31A625B32547463600A48835 /* digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7.ttf"; sourceTree = "<group>"; };
 		31A625B42547463600A48835 /* digital-7-mono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7-mono.ttf"; sourceTree = "<group>"; };
 		31AC40D5256ADAC100DE7D60 /* GameOver.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOver.sks; sourceTree = "<group>"; };
@@ -114,7 +115,6 @@
 		31ED1DAE2274B13C003BBE49 /* MyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyUtils.swift; path = ../../../ZombieConga/ZombieConga/MyUtils.swift; sourceTree = "<group>"; };
 		31F82B4F2295BF7C0046CFF4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		31F881CC25895D1A005DCF2B /* SuperToken.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SuperToken.sks; sourceTree = "<group>"; };
-		31F881CF258960C3005DCF2B /* SToken.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SToken.sks; sourceTree = "<group>"; };
 		378EE55FB09CD9AC1CAEE20A /* Pods-JTTD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JTTD.release.xcconfig"; path = "Pods/Target Support Files/Pods-JTTD/Pods-JTTD.release.xcconfig"; sourceTree = "<group>"; };
 		7ADDD0CE39F93B4B19F724E4 /* Pods-JTTD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JTTD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JTTD/Pods-JTTD.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,7 +156,7 @@
 				31B0DC092381F0D500E75A55 /* BaseDamage.sks */,
 				314C0CA22385C01700EDF576 /* Tractor.sks */,
 				31F881CC25895D1A005DCF2B /* SuperToken.sks */,
-				31F881CF258960C3005DCF2B /* SToken.sks */,
+				319EBA77258B9AE400BA1452 /* SToken.sks */,
 			);
 			path = SceneFiles;
 			sourceTree = "<group>";
@@ -338,7 +338,7 @@
 				31A625B825474A0E00A48835 /* digital-7.ttf in Resources */,
 				313BF5A022BADBFF003000D2 /* GameScene.sks in Resources */,
 				31D97714237EF3DA002C9653 /* SuperShield.sks in Resources */,
-				31F881D0258960C3005DCF2B /* SToken.sks in Resources */,
+				319EBA78258B9AE400BA1452 /* SToken.sks in Resources */,
 				31B0DC2C2383624B00E75A55 /* SmokeTrail.sks in Resources */,
 				31BF74B2235B5C2B006F5C33 /* Beam.sks in Resources */,
 				31F82B502295BF7C0046CFF4 /* GoogleService-Info.plist in Resources */,

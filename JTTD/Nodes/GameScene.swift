@@ -38,7 +38,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var dotCount: Int = 0
     var shipOne: TestShip!
     var mothership: Mothership!
-    var superToken: SKSpriteNode!
+//    var superToken: SKSpriteNode!
 //    var beam: Beam!
 //    var healthBars: HealthBars!
     var h1: HealthBar!
@@ -212,17 +212,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         baseLabel.fontSize = 40
         baseLabel.zPosition = 100
         fgNode.addChild(baseLabel)
-        
-        
-
-        
-//        superToken = SKSpriteNode(imageNamed: "superShield")
-//        superToken.name = "supertoken"
-//        superToken.position = CGPoint(x: 0, y: 0)
-//        superToken.physicsBody = SKPhysicsBody(circleOfRadius: superToken.frame.size.width / 2)
-//        superToken.physicsBody?.categoryBitMask = PhysicsCategory.Token
-//        superToken.physicsBody?.collisionBitMask = PhysicsCategory.Ship
-//        fgNode.addChild(superToken)
         
         baseBar = HealthBar(size: CGSize(width: size.width, height: 200), color: UIColor.blue)
         baseBar.position = CGPoint(x: 0, y: -(size.height / 2) + 110)
@@ -423,32 +412,49 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+//    func showSuperToken() {
+//        let superToken = SKEmitterNode(fileNamed: "SuperToken.sks")!
+//        superToken.name = "supertoken"
+//        let randomX = CGFloat.random(min: (-size.width / 2), max: (size.width / 2))
+//        let randomY = CGFloat.random(min: (size.height / 2), max: (size.height/2))
+//        let position = CGPoint(x: randomX, y: randomY)
+//
+//        superToken.position = position
+//        superToken.physicsBody = SKPhysicsBody(circleOfRadius: superToken.frame.size.width / 2)
+//        superToken.physicsBody?.affectedByGravity = false
+//        superToken.physicsBody?.categoryBitMask = PhysicsCategory.Token
+//        superToken.physicsBody?.collisionBitMask = PhysicsCategory.Ship
+//        superToken.targetNode = fgNode
+//        superToken.targetNode = fgNode
+//
+//        fgNode.addChild(superToken)
+//    }
+    
+// Why does emitter suddenly work here?
     func showSuperToken() {
-        superToken = SKSpriteNode(imageNamed: "superShield")
-        superToken.name = "supertoken"
-        let randomX = CGFloat.random(min: (-size.width / 2), max: (size.width / 2))
-        let randomY = CGFloat.random(min: (size.height / 2), max: (size.height/2))
+
+        let randomX = CGFloat.random(min: (-size.width / 2) + 200, max: (size.width / 2) - 200)
+        let randomY = CGFloat.random(min: (size.height / 2) + 200, max: (size.height/2) - 200)
         let position = CGPoint(x: randomX, y: randomY)
 
-        superToken.position = CGPoint(x: 0, y: 0)
-        superToken.physicsBody = SKPhysicsBody(circleOfRadius: superToken.frame.size.width / 2)
+        let superToken = SKEmitterNode(fileNamed: "SuperToken.sks")!
+        superToken.name = "superToken"
+        superToken.position = CGPoint.zero
+        superToken.targetNode = fgNode
+        superToken.physicsBody = SKPhysicsBody(circleOfRadius: 30.0) // Fixed number for  now
         superToken.physicsBody?.affectedByGravity = false
         superToken.physicsBody?.categoryBitMask = PhysicsCategory.Token
         superToken.physicsBody?.collisionBitMask = PhysicsCategory.Ship
         
-        let fire = SKEmitterNode(fileNamed: "SuperToken.sks")!
-        fire.name = "fire"
-        fire.position = CGPoint.zero
-        fire.targetNode = fgNode
-    
-        fgNode.addChild(fire)
-        
-        let rotateCont = SKAction.repeatForever(SKAction.rotate(byAngle: 360.0, duration: 2))
+        fgNode.addChild(superToken)
+
+//        let rotateCont = SKAction.repeatForever(SKAction.rotate(byAngle: 360.0, duration: 2))
 //        let scaleUp = SKAction.scale(to: 1.5, duration: 0.5)
 //        let scaleDown = SKAction.scale(to: 0.5, duration: 0.5)
 //        let seq = SKAction.group([rotateCont, scaleUp, scaleUp.reversed()])
-        fgNode.addChild(superToken)
-        superToken.run(rotateCont)
+//        fgNode.addChild(superToken)
+//        superToken.run(rotateCont)
+        
         let remove = SKAction.removeFromParentAfterDelay(5.0)
         superToken.run(remove)
     }
