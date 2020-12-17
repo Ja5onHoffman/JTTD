@@ -55,6 +55,8 @@
 		31ED1DA72274B09F003BBE49 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31ED1DA52274B09F003BBE49 /* LaunchScreen.storyboard */; };
 		31ED1DAF2274B13C003BBE49 /* MyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ED1DAE2274B13C003BBE49 /* MyUtils.swift */; };
 		31F82B502295BF7C0046CFF4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31F82B4F2295BF7C0046CFF4 /* GoogleService-Info.plist */; };
+		31F881CD25895D1A005DCF2B /* SuperToken.sks in Resources */ = {isa = PBXBuildFile; fileRef = 31F881CC25895D1A005DCF2B /* SuperToken.sks */; };
+		31F881D0258960C3005DCF2B /* SToken.sks in Resources */ = {isa = PBXBuildFile; fileRef = 31F881CF258960C3005DCF2B /* SToken.sks */; };
 		5723CABF08EB8FF5E6848403 /* Pods_JTTD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1929420761F2142F544C3BC8 /* Pods_JTTD.framework */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +113,8 @@
 		31ED1DA82274B09F003BBE49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31ED1DAE2274B13C003BBE49 /* MyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyUtils.swift; path = ../../../ZombieConga/ZombieConga/MyUtils.swift; sourceTree = "<group>"; };
 		31F82B4F2295BF7C0046CFF4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		31F881CC25895D1A005DCF2B /* SuperToken.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SuperToken.sks; sourceTree = "<group>"; };
+		31F881CF258960C3005DCF2B /* SToken.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SToken.sks; sourceTree = "<group>"; };
 		378EE55FB09CD9AC1CAEE20A /* Pods-JTTD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JTTD.release.xcconfig"; path = "Pods/Target Support Files/Pods-JTTD/Pods-JTTD.release.xcconfig"; sourceTree = "<group>"; };
 		7ADDD0CE39F93B4B19F724E4 /* Pods-JTTD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JTTD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JTTD/Pods-JTTD.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,7 +139,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		315E0DC622C57D2B00878219 /* Scene Files */ = {
+		315E0DC622C57D2B00878219 /* SceneFiles */ = {
 			isa = PBXGroup;
 			children = (
 				313BF59F22BADBFF003000D2 /* GameScene.sks */,
@@ -151,8 +155,10 @@
 				31D97715237F3EC6002C9653 /* ShieldPoof.sks */,
 				31B0DC092381F0D500E75A55 /* BaseDamage.sks */,
 				314C0CA22385C01700EDF576 /* Tractor.sks */,
+				31F881CC25895D1A005DCF2B /* SuperToken.sks */,
+				31F881CF258960C3005DCF2B /* SToken.sks */,
 			);
-			path = "Scene Files";
+			path = SceneFiles;
 			sourceTree = "<group>";
 		};
 		315E0DCB22C6952B00878219 /* Nodes */ = {
@@ -168,6 +174,7 @@
 				31BF74B3235B613D006F5C33 /* Beam.swift */,
 				31B168CE2512D6BC00132454 /* InfoBar.swift */,
 				31BE561E25521776001C2D96 /* ButtonNode.swift */,
+				31ED1D9C2274B09D003BBE49 /* GameScene.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -244,9 +251,8 @@
 				31D7D6D92294285900ADF4F6 /* Firebase */,
 				31D7D6D82294284300ADF4F6 /* Views */,
 				315E0DCB22C6952B00878219 /* Nodes */,
-				31ED1D9C2274B09D003BBE49 /* GameScene.swift */,
 				312DC048255EF37C00989B8A /* GameOver.swift */,
-				315E0DC622C57D2B00878219 /* Scene Files */,
+				315E0DC622C57D2B00878219 /* SceneFiles */,
 				31ED1D962274B09D003BBE49 /* AppDelegate.swift */,
 				31ED1DA02274B09D003BBE49 /* Main.storyboard */,
 				31ED1DA32274B09F003BBE49 /* Assets.xcassets */,
@@ -332,11 +338,13 @@
 				31A625B825474A0E00A48835 /* digital-7.ttf in Resources */,
 				313BF5A022BADBFF003000D2 /* GameScene.sks in Resources */,
 				31D97714237EF3DA002C9653 /* SuperShield.sks in Resources */,
+				31F881D0258960C3005DCF2B /* SToken.sks in Resources */,
 				31B0DC2C2383624B00E75A55 /* SmokeTrail.sks in Resources */,
 				31BF74B2235B5C2B006F5C33 /* Beam.sks in Resources */,
 				31F82B502295BF7C0046CFF4 /* GoogleService-Info.plist in Resources */,
 				31ED1DA42274B09F003BBE49 /* Assets.xcassets in Resources */,
 				31ED1DA72274B09F003BBE49 /* LaunchScreen.storyboard in Resources */,
+				31F881CD25895D1A005DCF2B /* SuperToken.sks in Resources */,
 				311FFECB22E2650D00E7C9C8 /* Poof.sks in Resources */,
 				314C0CA32385C01800EDF576 /* Tractor.sks in Resources */,
 				315F687722C815310062646A /* TestSprite.sks in Resources */,

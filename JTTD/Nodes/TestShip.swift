@@ -27,6 +27,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
     var shieldBar: HealthBar!
     var dot: SKSpriteNode?
     var line: SKShapeNode!
+    var superShield = false
     
     func didMoveToScene() {
         isPaused = false
@@ -113,16 +114,15 @@ class TestShip: SKSpriteNode, EventListenerNode {
     // Just increments for now
     func recharge() {
         printShields()
-
-        if let s = childNode(withName: "shield") {
-            if s.xScale == 0 {
-                let scaleBig = SKAction.scale(to: 1.0, duration: 1.0)
-                s.run(scaleBig)
-            }
-            s.alpha += CGFloat(0.1)
-        }
         shield += 10
         shieldBar.increaseHealth(by: 10)
+        if let s = childNode(withName: "shield") {
+            if s.xScale == 0 {
+                let scaleBig = SKAction.scale(to: 0.5, duration: 1.0)
+                s.run(scaleBig)
+            }
+            s.alpha = CGFloat(shield) / 100
+        }
     }
     
     // Need to change this to increase shield as well
@@ -130,7 +130,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
         printShields()
         if let s = childNode(withName: "shield") {
             if s.alpha > 0 {
-                s.alpha -= 0.1
+                s.alpha = CGFloat(shield) / 100
             }
         }
         if level == 0 {
@@ -158,14 +158,6 @@ class TestShip: SKSpriteNode, EventListenerNode {
             particles.removeFromParent()
         }
     }
-    
-//    let pos = fgNode.convert(sprite.position, from: sprite.parent!)
-//    let particles = SKEmitterNode(fileNamed: name)!
-//    particles.position = pos
-//    particles.zPosition = 3
-//    fgNode.addChild(particles)
-//    sprite.removeFromParent()
-//    particles.run(SKAction.removeFromParentAfterDelay(0.5))
     
     func blink() {
         invincible = true
@@ -195,6 +187,14 @@ class TestShip: SKSpriteNode, EventListenerNode {
         particles.run(SKAction.removeFromParentAfterDelay(0.5))
     }
     
+    func addSuperShield() {
+        if let superShield = SKEmitterNode(fileNamed: "SuperShield") {
+            superShield.targetNode = self
+            superShield.setScale(2.0)
+            superShield.position = CGPoint(x: -0.945, y: -3.136)
+            self.addChild(superShield)
+        }
+    }
     
     func swapMove() {
         moved = !moved
@@ -204,5 +204,6 @@ class TestShip: SKSpriteNode, EventListenerNode {
         let s = childNode(withName: "shield")!
         print("Shield: \(shield)")
         print("SA: \(s.alpha)")
+        print(CGFloat(shield) / 100)
     }
 }

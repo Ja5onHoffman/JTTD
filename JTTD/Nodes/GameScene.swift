@@ -38,6 +38,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var dotCount: Int = 0
     var shipOne: TestShip!
     var mothership: Mothership!
+    var superToken: SKSpriteNode!
 //    var beam: Beam!
 //    var healthBars: HealthBars!
     var h1: HealthBar!
@@ -56,6 +57,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.view?.isMultipleTouchEnabled = true
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run({
             let m = Meteor(path: self.path())
+            let r = Int.random(in: 0..<10)
+            
+//            if r == 5 {
+//                self.showSuperToken()
+//            }
+            
             self.fgNode.addChild(m)
         }), SKAction.wait(forDuration: 2.0)])))
     
@@ -126,12 +133,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let ship = contact.bodyB.node as! TestShip
                 ship.recharge()
             }
+            
+        // Ship vs SuperToken
+        } else if (bA == PhysicsCategory.Token && bB == PhysicsCategory.Ship) || (bA == PhysicsCategory.Ship && bB == PhysicsCategory.Token) {
+            shipOne.addSuperShield()
         }
     }
     
 
     // MARK: Setup
     func setupNodes() {
+        
         let worldNode = childNode(withName: "World")!
         fgNode = worldNode.childNode(withName: "Foreground")
         bgNode = worldNode.childNode(withName: "Background")
@@ -201,13 +213,42 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         baseLabel.zPosition = 100
         fgNode.addChild(baseLabel)
         
+        
+
+        
+//        superToken = SKSpriteNode(imageNamed: "superShield")
+//        superToken.name = "supertoken"
+//        superToken.position = CGPoint(x: 0, y: 0)
+//        superToken.physicsBody = SKPhysicsBody(circleOfRadius: superToken.frame.size.width / 2)
+//        superToken.physicsBody?.categoryBitMask = PhysicsCategory.Token
+//        superToken.physicsBody?.collisionBitMask = PhysicsCategory.Ship
+//        fgNode.addChild(superToken)
+        
         baseBar = HealthBar(size: CGSize(width: size.width, height: 200), color: UIColor.blue)
         baseBar.position = CGPoint(x: 0, y: -(size.height / 2) + 110)
         fgNode.addChild(baseBar)
         
         drawBorder()
         laser = Laser()
+        
+        showSuperToken()
+
     }
+    
+//    func particleEmitterWithName(name: String) -> SKEmitterNode?
+//    {
+//        //Users/jasonhoffman/Dropbox/Code/ProgInSwift/JTTD/JTTD/JTTD/SceneFiles/SuperToken.sks
+//        let path = Bundle.main.
+//        let path = Bundle.main.url(forResource: name, withExtension: "sks")
+////        let path = Bundle.main.url(forResource: name, withExtension: "sks")
+//        let sceneData = try! Data(contentsOf: path!, options: .mappedIfSafe)
+//        let archiver = try! NSKeyedUnarchiver(forReadingFrom: sceneData)
+//
+//        archiver.setClass(SKEmitterNode.self, forClassName: "SKEditorScene")
+//        let node = archiver.decodeObject(forKey: NSKeyedArchiveRootObjectKey) as! SKEmitterNode?
+//        archiver.finishDecoding()
+//        return node
+//    }
     
     func drawBorder() {
         let borderRect = CGRect(x: -size.width / 2, y: -size.height / 2, width: size.width, height: size.height)
@@ -336,6 +377,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             node.removeFromParent()
         }
         
+//        showSuperToken()
     }
 
     func moveShipToward(location: CGPoint) {
@@ -379,6 +421,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ship.move(to: CGPoint(x: 0.0, y: 0.0), speed: 1.0) {
             self.mothership.removeTractor()
         }
+    }
+    
+    func showSuperToken() {
+        superToken = SKSpriteNode(imageNamed: "superShield")
+        superToken.name = "supertoken"
+        let randomX = CGFloat.random(min: (-size.width / 2), max: (size.width / 2))
+        let randomY = CGFloat.random(min: (size.height / 2), max: (size.height/2))
+        let position = CGPoint(x: randomX, y: randomY)
+
+        superToken.position = CGPoint(x: 0, y: 0)
+        superToken.physicsBody = SKPhysicsBody(circleOfRadius: superToken.frame.size.width / 2)
+        superToken.physicsBody?.affectedByGravity = false
+        superToken.physicsBody?.categoryBitMask = PhysicsCategory.Token
+        superToken.physicsBody?.collisionBitMask = PhysicsCategory.Ship
+        
+        let fire = SKEmitterNode(fileNamed: "SuperToken.sks")!
+        fire.name = "fire"
+        fire.position = CGPoint.zero
+        fire.targetNode = fgNode
+    
+        fgNode.addChild(fire)
+        
+        let rotateCont = SKAction.repeatForever(SKAction.rotate(byAngle: 360.0, duration: 2))
+//        let scaleUp = SKAction.scale(to: 1.5, duration: 0.5)
+//        let scaleDown = SKAction.scale(to: 0.5, duration: 0.5)
+//        let seq = SKAction.group([rotateCont, scaleUp, scaleUp.reversed()])
+        fgNode.addChild(superToken)
+        superToken.run(rotateCont)
+        let remove = SKAction.removeFromParentAfterDelay(5.0)
+        superToken.run(remove)
     }
     
     func path() -> (CGPoint, CGPoint) {

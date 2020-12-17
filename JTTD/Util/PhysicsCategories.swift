@@ -15,4 +15,5 @@ struct PhysicsCategory {
     static let Laser:       UInt32 = 0b100
     static let Mother:      UInt32 = 0b1000
     static let Recharge:    UInt32 = 0b10000
+    static let Token:       UInt32 = 0b100000
 }
