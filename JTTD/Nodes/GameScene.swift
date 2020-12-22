@@ -227,21 +227,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     }
     
-//    func particleEmitterWithName(name: String) -> SKEmitterNode?
-//    {
-//        //Users/jasonhoffman/Dropbox/Code/ProgInSwift/JTTD/JTTD/JTTD/SceneFiles/SuperToken.sks
-//        let path = Bundle.main.
-//        let path = Bundle.main.url(forResource: name, withExtension: "sks")
-////        let path = Bundle.main.url(forResource: name, withExtension: "sks")
-//        let sceneData = try! Data(contentsOf: path!, options: .mappedIfSafe)
-//        let archiver = try! NSKeyedUnarchiver(forReadingFrom: sceneData)
-//
-//        archiver.setClass(SKEmitterNode.self, forClassName: "SKEditorScene")
-//        let node = archiver.decodeObject(forKey: NSKeyedArchiveRootObjectKey) as! SKEmitterNode?
-//        archiver.finishDecoding()
-//        return node
-//    }
-    
     func drawBorder() {
         let borderRect = CGRect(x: -size.width / 2, y: -size.height / 2, width: size.width, height: size.height)
         let border = SKShapeNode(rect: borderRect)
