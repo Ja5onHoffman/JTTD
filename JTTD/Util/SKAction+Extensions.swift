@@ -54,6 +54,4 @@ public extension SKAction {
             node.position = CGPoint(x: originalPosition.x, y: originalPosition.y + yOffset)
         }
     }
-    
-//    public class func animate
 }

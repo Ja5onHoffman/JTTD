@@ -113,7 +113,6 @@ class TestShip: SKSpriteNode, EventListenerNode {
     
     // Just increments for now
     func recharge() {
-        printShields()
         shield += 10
         shieldBar.increaseHealth(by: 10)
         if let s = childNode(withName: "shield") {
@@ -127,7 +126,6 @@ class TestShip: SKSpriteNode, EventListenerNode {
     
     // Need to change this to increase shield as well
     func updateShield(_ level: Int) {
-        printShields()
         if let s = childNode(withName: "shield") {
             if s.alpha > 0 {
                 s.alpha = CGFloat(shield) / 100
@@ -188,11 +186,27 @@ class TestShip: SKSpriteNode, EventListenerNode {
     }
     
     func addSuperShield() {
+        superShield = !superShield
         if let superShield = SKEmitterNode(fileNamed: "SuperShield") {
             superShield.targetNode = self
             superShield.setScale(2.0)
             superShield.position = CGPoint(x: -0.945, y: -3.136)
+            superShield.alpha = 0.0
+            if let s = childNode(withName: "shield") {
+                let seq = SKAction.sequence([
+                SKAction.fadeOut(withDuration: 0.3),
+                SKAction.afterDelay(5.0, performAction: SKAction.fadeIn(withDuration: 0.3))])
+                s.run(seq)
+            }
+            
             self.addChild(superShield)
+            run(SKAction.afterDelay(5.0, performAction: SKAction.run {
+                let fade = SKAction.fadeOut(withDuration: 1.0)
+                superShield.run(fade) { // Doesn't fade\
+                    superShield.removeFromParent()
+                }
+            }))
+            
         }
     }
     
