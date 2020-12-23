@@ -78,7 +78,6 @@ class Mothership: SKSpriteNode, EventListenerNode {
     
     func shipHit() {
         shakeShipByAmt(20)
-        print(health)
         health -= 10
         if health > -10 {
             healthBar.decreaseHealth(by: health)
@@ -114,8 +113,6 @@ class Mothership: SKSpriteNode, EventListenerNode {
                 SKAction.wait(forDuration: Double(duration)),
                 SKAction.run { self.removeHealthBeam() }
             ]))
-            
-            print("Fired")
         }
     }
     

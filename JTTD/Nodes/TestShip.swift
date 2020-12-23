@@ -113,6 +113,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
     
     // Just increments for now
     func recharge() {
+        printShields()
         shield += 10
         shieldBar.increaseHealth(by: 10)
         if let s = childNode(withName: "shield") {
@@ -143,7 +144,6 @@ class TestShip: SKSpriteNode, EventListenerNode {
                 s.run(SKAction.scaleX(to: 1.0, duration: 0.0))
             }
         }
-        
     }
     
     func emitParticles(name: String) {

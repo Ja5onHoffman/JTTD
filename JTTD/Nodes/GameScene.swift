@@ -56,7 +56,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run({
             let m = Meteor(path: self.path())
             let r = Int.random(in: 0..<5)
-            print("R: \(r)")
+//            print("R: \(r)")
             if r == 4 && !self.shipOne.superShield {
                 self.showSuperToken()
             }
