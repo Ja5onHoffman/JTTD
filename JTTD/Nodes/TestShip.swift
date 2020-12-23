@@ -138,9 +138,9 @@ class TestShip: SKSpriteNode, EventListenerNode {
             let scaleSmall = SKAction.scale(to: 0.0, duration: 1.0)
             let particles = SKAction.run { self.emitParticles(name: "ShieldPoof") }
             let set = SKAction.group([particles, alpha, white, scaleBig, scaleSmall])
-//            self.emitParticles(name: "ShieldPoof")
             if let s = childNode(withName: "shield") {
                 s.run(set)
+                s.run(SKAction.scaleX(to: 1.0, duration: 0.0))
             }
         }
         

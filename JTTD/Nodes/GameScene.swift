@@ -38,9 +38,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var dotCount: Int = 0
     var shipOne: TestShip!
     var mothership: Mothership!
-    var superToken: SKEmitterNode!
-//    var beam: Beam!
-//    var healthBars: HealthBars!
     var h1: HealthBar!
     var shieldBar: HealthBar!
     var baseBar: HealthBar!
@@ -49,6 +46,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var dt: TimeInterval = 0
     var velocity = CGPoint.zero
     let shipMovePointsPerSec: CGFloat = 700.0
+    let superTokenOrig = SKEmitterNode(fileNamed: "SuperToken.sks")!
     
     override func didMove(to view: SKView) {
         setupNodes()
@@ -136,13 +134,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         // Ship vs SuperToken
         } else if (bA == PhysicsCategory.Token && bB == PhysicsCategory.Ship) || (bA == PhysicsCategory.Ship && bB == PhysicsCategory.Token) {
-            superToken.run(SKAction.fadeOut(withDuration: 0.2)) {
-                self.superToken.removeFromParent()
+            if bA == PhysicsCategory.Token {
+                if let s = contact.bodyA.node as? SKEmitterNode {
+                    s.run(SKAction.fadeOut(withDuration: 0.2)) {
+                        s.removeFromParent()
+                    }
+                }
+            } else {
+                if let s = contact.bodyB.node as? SKEmitterNode {
+                    s.run(SKAction.fadeOut(withDuration: 0.2)) {
+                        s.removeFromParent()
+                    }
+                }
             }
-            
-            shipOne.addSuperShield()
-            shipOne.shield = 100
-            shipOne.updateShield(100)
         }
     }
     
@@ -353,8 +357,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.laser.removeFromParent()
             node.removeFromParent()
         }
-        
-//        showSuperToken()
     }
 
     func moveShipToward(location: CGPoint) {
@@ -404,8 +406,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let randomX = CGFloat.random(min: (-size.width / 2) + 100, max: (size.width / 2) - 100)
         let randomY = CGFloat.random(min: (-size.height / 2) + 100, max: (size.height / 2) - 300)
         let position = CGPoint(x: randomX, y: randomY)
-
-        superToken = SKEmitterNode(fileNamed: "SuperToken.sks")!
+        let superToken = superTokenOrig.copy() as! SKEmitterNode
         superToken.name = "superToken"
         superToken.position = position // Need to constrain this more
         superToken.targetNode = fgNode
@@ -417,12 +418,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         superToken.physicsBody?.contactTestBitMask = PhysicsCategory.Ship
         
         let appear = SKAction.fadeIn(withDuration: 1.0)
-        let disappear = SKAction.afterDelay(3.0, performAction: SKAction.fadeOut(withDuration: 1.0)) // Doesn't fade
-        let seq = SKAction.sequence([appear, disappear])
+        let wait = SKAction.wait(forDuration: 3.0)
+        let disappear = appear.reversed()
+        let remove = SKAction.removeFromParent()
+        let seq = SKAction.sequence([appear, wait, disappear, remove])
         fgNode.addChild(superToken)
-        superToken.run(seq) {
-            superToken.removeFromParent()
-        }
+        superToken.run(seq) // Still doesn't fade
+//        superToken.run(seq) {
+//            self.childNode(withName: "superToken")?.removeFromParent()
+//        }
     }
     
     func path() -> (CGPoint, CGPoint) {
