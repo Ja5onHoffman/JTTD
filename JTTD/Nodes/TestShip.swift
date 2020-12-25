@@ -27,7 +27,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
     var shieldBar: HealthBar!
     var dot: SKSpriteNode?
     var line: SKShapeNode!
-    var superShield = false
+    var superShieldVisible = false
     
     func didMoveToScene() {
         isPaused = false
@@ -44,7 +44,6 @@ class TestShip: SKSpriteNode, EventListenerNode {
             PhysicsCategory.Recharge
     }
     
-
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         // TODO: Redraw line in collision for smoother line
         self.childNode(withName: "line")?.removeFromParent()
@@ -67,7 +66,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.childNode(withName: "line")?.removeFromParent()
         guard let touch = touches.first else { return }
-        let positionInScene = touch.location(in: self.parent!)
+        let positionInScene = touch.location(in: self.parent!) // crashes when touched after ship gone
         move(to: positionInScene, speed: 0.3, completion: nil)
     }
     
@@ -96,7 +95,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
     }
     
     func shipHit() {
-        if (shield > 0) {
+        if (shield > 0) && !superShieldVisible {
             shield -= 10
             shieldBar.decreaseHealth(by: shield)
             updateShield(shield)
@@ -186,7 +185,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
     }
     
     func addSuperShield() {
-        superShield = !superShield
+        superShieldVisible = !superShieldVisible
         if let superShield = SKEmitterNode(fileNamed: "SuperShield") {
             superShield.targetNode = self
             superShield.setScale(2.0)
@@ -204,6 +203,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
                 let fade = SKAction.fadeOut(withDuration: 1.0)
                 superShield.run(fade) { // Doesn't fade\
                     superShield.removeFromParent()
+                    self.superShieldVisible = !self.superShieldVisible
                 }
             }))
             
@@ -221,4 +221,5 @@ class TestShip: SKSpriteNode, EventListenerNode {
         print("SA: \(s.alpha)")
         print(CGFloat(shield) / 100)
     }
+
 }

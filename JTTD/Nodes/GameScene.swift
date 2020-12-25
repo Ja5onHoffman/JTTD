@@ -57,9 +57,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.view?.isMultipleTouchEnabled = true
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run({
             let m = Meteor(path: self.path())
-            let r = Int.random(in: 0..<5)
+            let arc4 = GKARC4RandomSource()
+            let r = arc4.nextInt(upperBound: 5)
 //            print("R: \(r)")
-            if r == 4 && !self.shipOne.superShield && !self.superTokenVisible {
+            if r == 4 && !self.shipOne.superShieldVisible && !self.superTokenVisible {
                 self.showSuperToken()
             }
             
@@ -495,6 +496,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         lastUpdateTime = currentTime
         shipOne.lastUpdateTime = currentTime
+    }
+    
+    
+    func printSTV() {
+        print("STV: \(superTokenVisible)")
     }
 
     deinit {
