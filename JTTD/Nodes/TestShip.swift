@@ -208,6 +208,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
             }))
             
         }
+        updateShield(100)
     }
     
     func swapMove() {

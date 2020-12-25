@@ -47,6 +47,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var velocity = CGPoint.zero
     let shipMovePointsPerSec: CGFloat = 700.0
     let superTokenOrig = SKEmitterNode(fileNamed: "SuperToken.sks")!
+    var superTokenVisible = false
+    
     
     override func didMove(to view: SKView) {
         setupNodes()
@@ -57,7 +59,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let m = Meteor(path: self.path())
             let r = Int.random(in: 0..<5)
 //            print("R: \(r)")
-            if r == 4 && !self.shipOne.superShield {
+            if r == 4 && !self.shipOne.superShield && !self.superTokenVisible {
                 self.showSuperToken()
             }
             
@@ -138,12 +140,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if let s = contact.bodyA.node as? SKEmitterNode {
                     s.run(SKAction.fadeOut(withDuration: 0.2)) {
                         s.removeFromParent()
+                        self.shipOne.addSuperShield()
+                        self.superTokenVisible = !self.superTokenVisible
                     }
                 }
             } else {
                 if let s = contact.bodyB.node as? SKEmitterNode {
                     s.run(SKAction.fadeOut(withDuration: 0.2)) {
                         s.removeFromParent()
+                        self.shipOne.addSuperShield()
+                        self.superTokenVisible = !self.superTokenVisible
                     }
                 }
             }
@@ -403,6 +409,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func showSuperToken() {
+        superTokenVisible = !superTokenVisible
         let randomX = CGFloat.random(min: (-size.width / 2) + 100, max: (size.width / 2) - 100)
         let randomY = CGFloat.random(min: (-size.height / 2) + 100, max: (size.height / 2) - 300)
         let position = CGPoint(x: randomX, y: randomY)
@@ -424,9 +431,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let seq = SKAction.sequence([appear, wait, disappear, remove])
         fgNode.addChild(superToken)
         superToken.run(seq) // Still doesn't fade
-//        superToken.run(seq) {
-//            self.childNode(withName: "superToken")?.removeFromParent()
-//        }
+        superToken.run(seq) {
+            self.superTokenVisible = !self.superTokenVisible
+        }
     }
     
     func path() -> (CGPoint, CGPoint) {
