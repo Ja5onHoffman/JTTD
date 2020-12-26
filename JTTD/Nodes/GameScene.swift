@@ -66,7 +66,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             self.fgNode.addChild(m)
         }), SKAction.wait(forDuration: 2.0)])))
-    
+        
         enumerateChildNodes(withName: "//*", using: { node, _ in
             if let eventListenerNode = node as? EventListenerNode {
                 eventListenerNode.didMoveToScene()

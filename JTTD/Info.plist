@@ -43,6 +43,7 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>zorque.regular.ttf</string>
 		<string>digital-7-mono.ttf</string>
 		<string>digital-7.ttf</string>
 	</array>

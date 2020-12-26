@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		310C34822534BB37008EA70C /* FadeTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310C34812534BB37008EA70C /* FadeTransitionAnimator.swift */; };
 		31119D9F22958C460097178C /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31119D9E22958C460097178C /* AuthVC.swift */; };
+		3114A7E42596124B007D796B /* zorque.regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3114A7E32596124B007D796B /* zorque.regular.ttf */; };
 		311FFECB22E2650D00E7C9C8 /* Poof.sks in Resources */ = {isa = PBXBuildFile; fileRef = 311FFECA22E2650D00E7C9C8 /* Poof.sks */; };
 		311FFECD22E2683E00E7C9C8 /* SKAction+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311FFECC22E2683E00E7C9C8 /* SKAction+Extensions.swift */; };
 		311FFECF22E27B9D00E7C9C8 /* Meteor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311FFECE22E27B9D00E7C9C8 /* Meteor.swift */; };
@@ -64,6 +65,7 @@
 		1929420761F2142F544C3BC8 /* Pods_JTTD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JTTD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		310C34812534BB37008EA70C /* FadeTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeTransitionAnimator.swift; sourceTree = "<group>"; };
 		31119D9E22958C460097178C /* AuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
+		3114A7E32596124B007D796B /* zorque.regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = zorque.regular.ttf; sourceTree = "<group>"; };
 		311FFECA22E2650D00E7C9C8 /* Poof.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Poof.sks; sourceTree = "<group>"; };
 		311FFECC22E2683E00E7C9C8 /* SKAction+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKAction+Extensions.swift"; sourceTree = "<group>"; };
 		311FFECE22E27B9D00E7C9C8 /* Meteor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meteor.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 		31A625B2254745B900A48835 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				3114A7E32596124B007D796B /* zorque.regular.ttf */,
 				31A625B42547463600A48835 /* digital-7-mono.ttf */,
 				31A625B32547463600A48835 /* digital-7.ttf */,
 			);
@@ -342,6 +345,7 @@
 				31B0DC2C2383624B00E75A55 /* SmokeTrail.sks in Resources */,
 				31BF74B2235B5C2B006F5C33 /* Beam.sks in Resources */,
 				31F82B502295BF7C0046CFF4 /* GoogleService-Info.plist in Resources */,
+				3114A7E42596124B007D796B /* zorque.regular.ttf in Resources */,
 				31ED1DA42274B09F003BBE49 /* Assets.xcassets in Resources */,
 				31ED1DA72274B09F003BBE49 /* LaunchScreen.storyboard in Resources */,
 				31F881CD25895D1A005DCF2B /* SuperToken.sks in Resources */,
