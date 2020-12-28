@@ -17,6 +17,7 @@ class InitalVC: UIViewController {
     @IBOutlet weak var lastGameLabel: UILabel!
     @IBOutlet weak var startButton: UIButton! 
     @IBOutlet weak var spacePlow: UILabel!
+    @IBOutlet weak var scoreBG: UIView!
     
     let loggedInUser = User.sharedInstance
     let fadeSegue = FadeSegueAnimator()
@@ -29,6 +30,9 @@ class InitalVC: UIViewController {
         spacePlow.layer.shadowColor = UIColor.darkGray.cgColor
         spacePlow.layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
         spacePlow.layer.shadowOpacity = 1.0
+        scoreBG.layer.cornerRadius = 10.0
+//        scoreBG.layer.zPosition = -1
+        scoreLabel.layer.zPosition = 100
     }
     
     override func viewWillAppear(_ animated: Bool) {

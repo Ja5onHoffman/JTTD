@@ -195,16 +195,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Space Flow" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBC-HG-qeu">
-                                <rect key="frame" x="51.5" y="80" width="311.5" height="61"/>
-                                <fontDescription key="fontDescription" name="Zorque-Regular" family="Zorque" pointSize="50"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="hgz-Mp-AgV">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q2g-DS-oxp">
+                                <rect key="frame" x="20" y="321" width="374" height="128"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="OIO-eb-1om"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Space Flow" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBC-HG-qeu">
+                                <rect key="frame" x="30" y="129" width="354.5" height="69.5"/>
+                                <fontDescription key="fontDescription" name="Zorque-Regular" family="Zorque" pointSize="57"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="shadowOffset" width="4" height="-1"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="NHS-Dg-hNM">
-                                <rect key="frame" x="20" y="184" width="132.5" height="83"/>
+                                <rect key="frame" x="70" y="344" width="132.5" height="83"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKI-kl-cOI">
                                         <rect key="frame" x="48" y="0.0" width="84.5" height="23"/>
@@ -227,7 +237,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="81d-ZH-mHZ">
-                                <rect key="frame" x="160.5" y="184" width="121.5" height="83"/>
+                                <rect key="frame" x="210.5" y="344" width="121.5" height="83"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ijo-XS-tqQ">
                                         <rect key="frame" x="0.0" y="0.0" width="73.5" height="50"/>
@@ -259,7 +269,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ePo-wT-rnm">
-                                <rect key="frame" x="107" y="626" width="200" height="116"/>
+                                <rect key="frame" x="107" y="496" width="200" height="116"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohA-BF-BZ1">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="48"/>
@@ -288,20 +298,29 @@
                         <viewLayoutGuide key="safeArea" id="dri-t0-Icw"/>
                         <color key="backgroundColor" red="0.16078431369999999" green="0.16862745100000001" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="NHS-Dg-hNM" firstAttribute="leading" secondItem="chV-I0-s6K" secondAttribute="leadingMargin" id="E0e-ej-f5q"/>
-                            <constraint firstItem="NHS-Dg-hNM" firstAttribute="top" secondItem="chV-I0-s6K" secondAttribute="topMargin" constant="140" id="Fov-bs-OFh"/>
+                            <constraint firstItem="DBC-HG-qeu" firstAttribute="centerX" secondItem="chV-I0-s6K" secondAttribute="centerX" id="61Y-dW-ZIT"/>
+                            <constraint firstItem="NHS-Dg-hNM" firstAttribute="leading" secondItem="chV-I0-s6K" secondAttribute="leadingMargin" constant="50" id="E0e-ej-f5q"/>
+                            <constraint firstItem="NHS-Dg-hNM" firstAttribute="top" secondItem="chV-I0-s6K" secondAttribute="topMargin" constant="300" id="Fov-bs-OFh"/>
                             <constraint firstItem="81d-ZH-mHZ" firstAttribute="leading" secondItem="NHS-Dg-hNM" secondAttribute="trailing" constant="8" id="JoJ-3l-anv"/>
-                            <constraint firstItem="DBC-HG-qeu" firstAttribute="top" secondItem="dri-t0-Icw" secondAttribute="top" constant="36" id="SYY-Qp-olo"/>
+                            <constraint firstItem="DBC-HG-qeu" firstAttribute="top" secondItem="dri-t0-Icw" secondAttribute="top" constant="85" id="SYY-Qp-olo"/>
+                            <constraint firstItem="Q2g-DS-oxp" firstAttribute="top" secondItem="chV-I0-s6K" secondAttribute="topMargin" constant="277" id="TV3-d0-kqb"/>
                             <constraint firstItem="ePo-wT-rnm" firstAttribute="centerX" secondItem="chV-I0-s6K" secondAttribute="centerX" id="UHc-Ql-Ory"/>
-                            <constraint firstItem="DBC-HG-qeu" firstAttribute="centerX" secondItem="chV-I0-s6K" secondAttribute="centerX" id="lP5-8g-5iV"/>
-                            <constraint firstItem="dri-t0-Icw" firstAttribute="bottom" secondItem="ePo-wT-rnm" secondAttribute="bottom" constant="120" id="qrk-hc-upi"/>
+                            <constraint firstItem="hgz-Mp-AgV" firstAttribute="top" secondItem="chV-I0-s6K" secondAttribute="top" id="ZJ3-6C-3tp"/>
+                            <constraint firstItem="Q2g-DS-oxp" firstAttribute="leading" secondItem="dri-t0-Icw" secondAttribute="leading" constant="20" id="ey8-K5-wv3"/>
+                            <constraint firstItem="Q2g-DS-oxp" firstAttribute="centerX" secondItem="chV-I0-s6K" secondAttribute="centerX" id="rgJ-qD-y7O"/>
+                            <constraint firstItem="hgz-Mp-AgV" firstAttribute="trailing" secondItem="dri-t0-Icw" secondAttribute="trailing" id="rkE-OC-eLm"/>
+                            <constraint firstAttribute="bottom" secondItem="hgz-Mp-AgV" secondAttribute="bottom" id="tMp-l3-r3N"/>
                             <constraint firstItem="81d-ZH-mHZ" firstAttribute="centerY" secondItem="NHS-Dg-hNM" secondAttribute="centerY" id="tYT-yQ-Pc4"/>
+                            <constraint firstItem="dri-t0-Icw" firstAttribute="trailing" secondItem="Q2g-DS-oxp" secondAttribute="trailing" constant="20" id="vKV-am-FJi"/>
+                            <constraint firstItem="ePo-wT-rnm" firstAttribute="top" secondItem="Q2g-DS-oxp" secondAttribute="bottom" constant="47" id="vdZ-Z9-Y1b"/>
+                            <constraint firstItem="hgz-Mp-AgV" firstAttribute="leading" secondItem="dri-t0-Icw" secondAttribute="leading" id="ye0-Kl-FTk"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bjl-ox-y9V"/>
                     <connections>
                         <outlet property="lastGameLabel" destination="W4L-0Z-HE0" id="MDy-K3-R9a"/>
                         <outlet property="playerLabel" destination="ijo-XS-tqQ" id="8Od-A2-A0n"/>
+                        <outlet property="scoreBG" destination="Q2g-DS-oxp" id="dka-uV-ELb"/>
                         <outlet property="scoreLabel" destination="pp1-ho-J93" id="K4l-MJ-IC8"/>
                         <outlet property="spacePlow" destination="DBC-HG-qeu" id="I6O-IM-mPR"/>
                         <outlet property="startButton" destination="ohA-BF-BZ1" id="qNH-xp-uqw"/>
@@ -411,6 +430,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="background" width="1024" height="1369"/>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
