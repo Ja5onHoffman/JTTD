@@ -110,6 +110,10 @@ class TestShip: SKSpriteNode, EventListenerNode {
         }
     }
     
+    func fullShield() {
+        shieldBar.increaseHealth(by: <#T##Int#>)
+    }
+    
     // Just increments for now
     func recharge() {
         printShields()
