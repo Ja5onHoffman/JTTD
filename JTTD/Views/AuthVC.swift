@@ -13,12 +13,17 @@ import Firebase
 class AuthVC: UIViewController {
     
     @IBOutlet weak var signInButton: GIDSignInButton!
+    @IBOutlet weak var spacePlow: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         modalPresentationStyle = .fullScreen
         GIDSignIn.sharedInstance()?.presentingViewController = self
 //        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+        
+        spacePlow.layer.shadowColor = UIColor.darkGray.cgColor
+        spacePlow.layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
+        spacePlow.layer.shadowOpacity = 1.0
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,6 +32,7 @@ class AuthVC: UIViewController {
             // Not great but works for email sign in 
             dismiss(animated: true, completion: nil)
         }
+        animateShadow()
     }
     
     @IBAction func emailSignIn(_ sender: Any) {
@@ -50,6 +56,16 @@ class AuthVC: UIViewController {
     
     @IBAction func facebookSignIn(_ sender: Any) {
         
+    }
+    
+    func animateShadow() {
+        let color = CABasicAnimation(keyPath: "shadowColor")
+        color.repeatCount = 5000.0
+        color.duration = 5.0
+        color.autoreverses = true
+        color.fromValue = CGColor(red: 76.0 / 255, green: 0.0 / 255, blue: 153.0 / 255, alpha: 1.0)
+        color.toValue = UIColor.red.cgColor
+        spacePlow.layer.add(color, forKey: "shadowColor")
     }
     
 }
