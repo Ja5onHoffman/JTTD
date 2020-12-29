@@ -41,7 +41,10 @@ class HealthBar: SKShapeNode {
         }
     }
     
-    
+    func fullHealth() {
+        shipHealth = 100
+        run(SKAction.scaleX(to: 100.0, duration: 0.1))
+    }
     
     func decreaseHealth(by health: Int) {
         if shipHealth > 0 {

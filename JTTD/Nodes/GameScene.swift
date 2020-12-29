@@ -126,6 +126,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         
         // Ship vs Recharge
+        // FIXME: 12/28/20 - Shield comes back early w supershield if touching recharge
         } else if (bA == PhysicsCategory.Recharge && bB == PhysicsCategory.Ship) || (bA == PhysicsCategory.Ship && bB == PhysicsCategory.Recharge) {
             if contact.bodyA.node?.name == "shipOne" {
                 let ship = contact.bodyA.node as! TestShip
@@ -142,6 +143,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     s.run(SKAction.fadeOut(withDuration: 0.2)) {
                         s.removeFromParent()
                         self.shipOne.addSuperShield()
+                        self.shipOne.fullShield()
                         self.superTokenVisible = !self.superTokenVisible
                     }
                 }
@@ -150,6 +152,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     s.run(SKAction.fadeOut(withDuration: 0.2)) {
                         s.removeFromParent()
                         self.shipOne.addSuperShield()
+                        self.shipOne.fullShield()
                         self.superTokenVisible = !self.superTokenVisible
                     }
                 }

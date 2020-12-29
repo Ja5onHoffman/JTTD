@@ -110,21 +110,31 @@ class TestShip: SKSpriteNode, EventListenerNode {
         }
     }
     
+    // FIXME: After shield gone doesn't come back.
     func fullShield() {
-        shieldBar.increaseHealth(by: <#T##Int#>)
-    }
-    
-    // Just increments for now
-    func recharge() {
-        printShields()
-        shield += 10
-        shieldBar.increaseHealth(by: 10)
+        shieldBar.fullHealth()
+        shield = 100
         if let s = childNode(withName: "shield") {
             if s.xScale == 0 {
                 let scaleBig = SKAction.scale(to: 0.5, duration: 1.0)
                 s.run(scaleBig)
             }
             s.alpha = CGFloat(shield) / 100
+        }
+    }
+    
+    // Just increments for now
+    func recharge() {
+        if !superShieldVisible {
+            shield += 10
+            shieldBar.increaseHealth(by: 10)
+            if let s = childNode(withName: "shield") {
+                if s.xScale == 0 {
+                    let scaleBig = SKAction.scale(to: 0.5, duration: 1.0)
+                    s.run(scaleBig)
+                }
+                s.alpha = CGFloat(shield) / 100
+            }
         }
     }
     
