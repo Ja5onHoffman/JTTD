@@ -190,12 +190,21 @@ class TestShip: SKSpriteNode, EventListenerNode {
     
     func explode() {
         let particles = SKEmitterNode(fileNamed: "Poof")!
+        let explosion = SKAudioNode(fileNamed: "Thunderous Explosive.wav")
+        explosion.position = self.position
+        explosion.autoplayLooped = false
+        print(explosion.value(forKey: "volume"))
+        self.addChild(explosion)
+        explosion.run(SKAction.play())
+        
         particles.position = position
         particles.zPosition = 3
         let fg = self.parent
         fg?.addChild(particles)
         removeFromParent()
         particles.run(SKAction.removeFromParentAfterDelay(0.5))
+        
+        
     }
     
     func addSuperShield() {

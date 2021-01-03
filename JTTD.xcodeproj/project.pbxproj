@@ -15,6 +15,29 @@
 		311FFECF22E27B9D00E7C9C8 /* Meteor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311FFECE22E27B9D00E7C9C8 /* Meteor.swift */; };
 		312DC049255EF37C00989B8A /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312DC048255EF37C00989B8A /* GameOver.swift */; };
 		313BF5A022BADBFF003000D2 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 313BF59F22BADBFF003000D2 /* GameScene.sks */; };
+		313C83F3259BBBE700C484C1 /* Alex Catana - Speed Of Light.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 313C83F2259BBBE700C484C1 /* Alex Catana - Speed Of Light.mp3 */; };
+		313C83F6259BBE4300C484C1 /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313C83F5259BBE4300C484C1 /* MusicPlayer.swift */; };
+		313C83FA259BC28600C484C1 /* Vibra-Space.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 313C83F9259BC28600C484C1 /* Vibra-Space.mp3 */; };
+		313C8410259BC5DE00C484C1 /* Shock Blast.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C83FC259BC5DD00C484C1 /* Shock Blast.wav */; };
+		313C8411259BC5DE00C484C1 /* Cataclysmic Explosive.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C83FD259BC5DD00C484C1 /* Cataclysmic Explosive.wav */; };
+		313C8412259BC5DE00C484C1 /* Electrical Explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C83FE259BC5DD00C484C1 /* Electrical Explosion.wav */; };
+		313C8413259BC5DE00C484C1 /* Catastrophic Explosive.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C83FF259BC5DD00C484C1 /* Catastrophic Explosive.wav */; };
+		313C8414259BC5DE00C484C1 /* Bombed Explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C8400259BC5DD00C484C1 /* Bombed Explosion.wav */; };
+		313C8415259BC5DE00C484C1 /* Deep Fireworks.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C8401259BC5DD00C484C1 /* Deep Fireworks.wav */; };
+		313C8416259BC5DE00C484C1 /* Clysmic Explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C8402259BC5DD00C484C1 /* Clysmic Explosion.wav */; };
+		313C8417259BC5DE00C484C1 /* Explosive Nova.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C8403259BC5DD00C484C1 /* Explosive Nova.wav */; };
+		313C8418259BC5DE00C484C1 /* SubAtomic Bomb.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C8404259BC5DD00C484C1 /* SubAtomic Bomb.wav */; };
+		313C8419259BC5DE00C484C1 /* Thunderous Explosive.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C8405259BC5DD00C484C1 /* Thunderous Explosive.wav */; };
+		313C841A259BC5DE00C484C1 /* Blown Transformer.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C8406259BC5DD00C484C1 /* Blown Transformer.wav */; };
+		313C841B259BC5DE00C484C1 /* Heat Waves Explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C8407259BC5DD00C484C1 /* Heat Waves Explosion.wav */; };
+		313C841C259BC5DE00C484C1 /* Burst Fireworks.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C8408259BC5DD00C484C1 /* Burst Fireworks.wav */; };
+		313C841D259BC5DE00C484C1 /* ShockWav Explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C8409259BC5DD00C484C1 /* ShockWav Explosion.wav */; };
+		313C841E259BC5DE00C484C1 /* Frying Fireworks.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C840A259BC5DD00C484C1 /* Frying Fireworks.wav */; };
+		313C841F259BC5DE00C484C1 /* Electric Engine Explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C840B259BC5DD00C484C1 /* Electric Engine Explosion.wav */; };
+		313C8420259BC5DE00C484C1 /* Short Explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C840C259BC5DD00C484C1 /* Short Explosion.wav */; };
+		313C8421259BC5DE00C484C1 /* Nova Explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C840D259BC5DE00C484C1 /* Nova Explosion.wav */; };
+		313C8422259BC5DE00C484C1 /* Roar Nova Explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C840E259BC5DE00C484C1 /* Roar Nova Explosion.wav */; };
+		313C8423259BC5DE00C484C1 /* Super Explosive Explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C840F259BC5DE00C484C1 /* Super Explosive Explosion.wav */; };
 		314C0CA32385C01800EDF576 /* Tractor.sks in Resources */ = {isa = PBXBuildFile; fileRef = 314C0CA22385C01700EDF576 /* Tractor.sks */; };
 		315E0DCD22C6953E00878219 /* BasicShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E0DCC22C6953E00878219 /* BasicShip.swift */; };
 		315F687722C815310062646A /* TestSprite.sks in Resources */ = {isa = PBXBuildFile; fileRef = 315F687622C815310062646A /* TestSprite.sks */; };
@@ -71,6 +94,29 @@
 		311FFECE22E27B9D00E7C9C8 /* Meteor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meteor.swift; sourceTree = "<group>"; };
 		312DC048255EF37C00989B8A /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		313BF59F22BADBFF003000D2 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		313C83F2259BBBE700C484C1 /* Alex Catana - Speed Of Light.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Alex Catana - Speed Of Light.mp3"; path = "../../Music/Particles (Music Pack)/Mp3/Alex Catana - Speed Of Light.mp3"; sourceTree = "<group>"; };
+		313C83F5259BBE4300C484C1 /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
+		313C83F9259BC28600C484C1 /* Vibra-Space.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Vibra-Space.mp3"; path = "../../Music/Vibra-Space/Vibra-Space.mp3"; sourceTree = "<group>"; };
+		313C83FC259BC5DD00C484C1 /* Shock Blast.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Shock Blast.wav"; path = "../../Music/Explosive SuperNova - Nova Sound/Shock Blast.wav"; sourceTree = "<group>"; };
+		313C83FD259BC5DD00C484C1 /* Cataclysmic Explosive.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Cataclysmic Explosive.wav"; path = "../../Music/Explosive SuperNova - Nova Sound/Cataclysmic Explosive.wav"; sourceTree = "<group>"; };
+		313C83FE259BC5DD00C484C1 /* Electrical Explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Electrical Explosion.wav"; path = "../../Music/Explosive SuperNova - Nova Sound/Electrical Explosion.wav"; sourceTree = "<group>"; };
+		313C83FF259BC5DD00C484C1 /* Catastrophic Explosive.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Catastrophic Explosive.wav"; path = "../../Music/Explosive SuperNova - Nova Sound/Catastrophic Explosive.wav"; sourceTree = "<group>"; };
+		313C8400259BC5DD00C484C1 /* Bombed Explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Bombed Explosion.wav"; path = "../../Music/Explosive SuperNova - Nova Sound/Bombed Explosion.wav"; sourceTree = "<group>"; };
+		313C8401259BC5DD00C484C1 /* Deep Fireworks.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Deep Fireworks.wav"; path = "../../Music/Explosive SuperNova - Nova Sound/Deep Fireworks.wav"; sourceTree = "<group>"; };
+		313C8402259BC5DD00C484C1 /* Clysmic Explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Clysmic Explosion.wav"; path = "../../Music/Explosive SuperNova - Nova Sound/Clysmic Explosion.wav"; sourceTree = "<group>"; };
+		313C8403259BC5DD00C484C1 /* Explosive Nova.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Explosive Nova.wav"; path = "../../Music/Explosive SuperNova - Nova Sound/Explosive Nova.wav"; sourceTree = "<group>"; };
+		313C8404259BC5DD00C484C1 /* SubAtomic Bomb.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "SubAtomic Bomb.wav"; path = "../../Music/Explosive SuperNova - Nova Sound/SubAtomic Bomb.wav"; sourceTree = "<group>"; };
+		313C8405259BC5DD00C484C1 /* Thunderous Explosive.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Thunderous Explosive.wav"; path = "../../Music/Explosive SuperNova - Nova Sound/Thunderous Explosive.wav"; sourceTree = "<group>"; };
+		313C8406259BC5DD00C484C1 /* Blown Transformer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Blown Transformer.wav"; path = "../../Music/Explosive SuperNova - Nova Sound/Blown Transformer.wav"; sourceTree = "<group>"; };
+		313C8407259BC5DD00C484C1 /* Heat Waves Explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Heat Waves Explosion.wav"; path = "../../Music/Explosive SuperNova - Nova Sound/Heat Waves Explosion.wav"; sourceTree = "<group>"; };
+		313C8408259BC5DD00C484C1 /* Burst Fireworks.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Burst Fireworks.wav"; path = "../../Music/Explosive SuperNova - Nova Sound/Burst Fireworks.wav"; sourceTree = "<group>"; };
+		313C8409259BC5DD00C484C1 /* ShockWav Explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "ShockWav Explosion.wav"; path = "../../Music/Explosive SuperNova - Nova Sound/ShockWav Explosion.wav"; sourceTree = "<group>"; };
+		313C840A259BC5DD00C484C1 /* Frying Fireworks.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Frying Fireworks.wav"; path = "../../Music/Explosive SuperNova - Nova Sound/Frying Fireworks.wav"; sourceTree = "<group>"; };
+		313C840B259BC5DD00C484C1 /* Electric Engine Explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Electric Engine Explosion.wav"; path = "../../Music/Explosive SuperNova - Nova Sound/Electric Engine Explosion.wav"; sourceTree = "<group>"; };
+		313C840C259BC5DD00C484C1 /* Short Explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Short Explosion.wav"; path = "../../Music/Explosive SuperNova - Nova Sound/Short Explosion.wav"; sourceTree = "<group>"; };
+		313C840D259BC5DE00C484C1 /* Nova Explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Nova Explosion.wav"; path = "../../Music/Explosive SuperNova - Nova Sound/Nova Explosion.wav"; sourceTree = "<group>"; };
+		313C840E259BC5DE00C484C1 /* Roar Nova Explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Roar Nova Explosion.wav"; path = "../../Music/Explosive SuperNova - Nova Sound/Roar Nova Explosion.wav"; sourceTree = "<group>"; };
+		313C840F259BC5DE00C484C1 /* Super Explosive Explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Super Explosive Explosion.wav"; path = "../../Music/Explosive SuperNova - Nova Sound/Super Explosive Explosion.wav"; sourceTree = "<group>"; };
 		314C0CA22385C01700EDF576 /* Tractor.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Tractor.sks; sourceTree = "<group>"; };
 		315E0DCC22C6953E00878219 /* BasicShip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicShip.swift; sourceTree = "<group>"; };
 		315F687622C815310062646A /* TestSprite.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestSprite.sks; sourceTree = "<group>"; };
@@ -139,6 +185,36 @@
 				1929420761F2142F544C3BC8 /* Pods_JTTD.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		313C83F1259BBB9D00C484C1 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				313C83F9259BC28600C484C1 /* Vibra-Space.mp3 */,
+				313C83F2259BBBE700C484C1 /* Alex Catana - Speed Of Light.mp3 */,
+				313C83F5259BBE4300C484C1 /* MusicPlayer.swift */,
+				313C8406259BC5DD00C484C1 /* Blown Transformer.wav */,
+				313C8400259BC5DD00C484C1 /* Bombed Explosion.wav */,
+				313C8408259BC5DD00C484C1 /* Burst Fireworks.wav */,
+				313C83FD259BC5DD00C484C1 /* Cataclysmic Explosive.wav */,
+				313C83FF259BC5DD00C484C1 /* Catastrophic Explosive.wav */,
+				313C8402259BC5DD00C484C1 /* Clysmic Explosion.wav */,
+				313C8401259BC5DD00C484C1 /* Deep Fireworks.wav */,
+				313C840B259BC5DD00C484C1 /* Electric Engine Explosion.wav */,
+				313C83FE259BC5DD00C484C1 /* Electrical Explosion.wav */,
+				313C8403259BC5DD00C484C1 /* Explosive Nova.wav */,
+				313C840A259BC5DD00C484C1 /* Frying Fireworks.wav */,
+				313C8407259BC5DD00C484C1 /* Heat Waves Explosion.wav */,
+				313C840D259BC5DE00C484C1 /* Nova Explosion.wav */,
+				313C840E259BC5DE00C484C1 /* Roar Nova Explosion.wav */,
+				313C83FC259BC5DD00C484C1 /* Shock Blast.wav */,
+				313C8409259BC5DD00C484C1 /* ShockWav Explosion.wav */,
+				313C840C259BC5DD00C484C1 /* Short Explosion.wav */,
+				313C8404259BC5DD00C484C1 /* SubAtomic Bomb.wav */,
+				313C840F259BC5DE00C484C1 /* Super Explosive Explosion.wav */,
+				313C8405259BC5DD00C484C1 /* Thunderous Explosive.wav */,
+			);
+			path = Music;
 			sourceTree = "<group>";
 		};
 		315E0DC622C57D2B00878219 /* SceneFiles */ = {
@@ -233,6 +309,7 @@
 			children = (
 				31ED1D952274B09D003BBE49 /* JTTD */,
 				31A625B2254745B900A48835 /* fonts */,
+				313C83F1259BBB9D00C484C1 /* Music */,
 				31ED1D942274B09D003BBE49 /* Products */,
 				5DE70E2E058076E41074A6AA /* Pods */,
 				134DB680F089F1746F561EFC /* Frameworks */,
@@ -337,27 +414,49 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				313C8420259BC5DE00C484C1 /* Short Explosion.wav in Resources */,
 				31ED1DA22274B09D003BBE49 /* Main.storyboard in Resources */,
+				313C8422259BC5DE00C484C1 /* Roar Nova Explosion.wav in Resources */,
+				313C8417259BC5DE00C484C1 /* Explosive Nova.wav in Resources */,
+				313C841A259BC5DE00C484C1 /* Blown Transformer.wav in Resources */,
 				31A625B825474A0E00A48835 /* digital-7.ttf in Resources */,
+				313C8418259BC5DE00C484C1 /* SubAtomic Bomb.wav in Resources */,
+				313C8412259BC5DE00C484C1 /* Electrical Explosion.wav in Resources */,
 				313BF5A022BADBFF003000D2 /* GameScene.sks in Resources */,
+				313C8414259BC5DE00C484C1 /* Bombed Explosion.wav in Resources */,
 				31D97714237EF3DA002C9653 /* SuperShield.sks in Resources */,
 				319EBA78258B9AE400BA1452 /* SToken.sks in Resources */,
 				31B0DC2C2383624B00E75A55 /* SmokeTrail.sks in Resources */,
+				313C841E259BC5DE00C484C1 /* Frying Fireworks.wav in Resources */,
 				31BF74B2235B5C2B006F5C33 /* Beam.sks in Resources */,
 				31F82B502295BF7C0046CFF4 /* GoogleService-Info.plist in Resources */,
+				313C83F3259BBBE700C484C1 /* Alex Catana - Speed Of Light.mp3 in Resources */,
+				313C8421259BC5DE00C484C1 /* Nova Explosion.wav in Resources */,
+				313C8415259BC5DE00C484C1 /* Deep Fireworks.wav in Resources */,
+				313C8423259BC5DE00C484C1 /* Super Explosive Explosion.wav in Resources */,
+				313C8413259BC5DE00C484C1 /* Catastrophic Explosive.wav in Resources */,
 				3114A7E42596124B007D796B /* zorque.regular.ttf in Resources */,
+				313C841F259BC5DE00C484C1 /* Electric Engine Explosion.wav in Resources */,
+				313C83FA259BC28600C484C1 /* Vibra-Space.mp3 in Resources */,
 				31ED1DA42274B09F003BBE49 /* Assets.xcassets in Resources */,
 				31ED1DA72274B09F003BBE49 /* LaunchScreen.storyboard in Resources */,
+				313C8411259BC5DE00C484C1 /* Cataclysmic Explosive.wav in Resources */,
+				313C8416259BC5DE00C484C1 /* Clysmic Explosion.wav in Resources */,
 				31F881CD25895D1A005DCF2B /* SuperToken.sks in Resources */,
 				311FFECB22E2650D00E7C9C8 /* Poof.sks in Resources */,
+				313C8419259BC5DE00C484C1 /* Thunderous Explosive.wav in Resources */,
 				314C0CA32385C01800EDF576 /* Tractor.sks in Resources */,
 				315F687722C815310062646A /* TestSprite.sks in Resources */,
 				31AC40D6256ADAC100DE7D60 /* GameOver.sks in Resources */,
+				313C8410259BC5DE00C484C1 /* Shock Blast.wav in Resources */,
 				31D97716237F3EC6002C9653 /* ShieldPoof.sks in Resources */,
 				31B0DC0A2381F0D500E75A55 /* BaseDamage.sks in Resources */,
 				31A625B625474A0A00A48835 /* digital-7-mono.ttf in Resources */,
 				315F687922C816670062646A /* TestShip.sks in Resources */,
+				313C841B259BC5DE00C484C1 /* Heat Waves Explosion.wav in Resources */,
+				313C841C259BC5DE00C484C1 /* Burst Fireworks.wav in Resources */,
 				31AC75CA22CD59620070094F /* Assets.xcassets in Resources */,
+				313C841D259BC5DE00C484C1 /* ShockWav Explosion.wav in Resources */,
 				31AC75C922CD59620070094F /* BackgroundStars.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,6 +531,7 @@
 				319220402333D36D007EA1EF /* SKTEffects.swift in Sources */,
 				31ED1D9F2274B09D003BBE49 /* GameVC.swift in Sources */,
 				3192204223344869007EA1EF /* HealthBars.swift in Sources */,
+				313C83F6259BBE4300C484C1 /* MusicPlayer.swift in Sources */,
 				31119D9F22958C460097178C /* AuthVC.swift in Sources */,
 				31BC4EF1233BE32500DD07DA /* HealthBar.swift in Sources */,
 				3192203C2333D298007EA1EF /* SKAction+SpecialEffects.swift in Sources */,

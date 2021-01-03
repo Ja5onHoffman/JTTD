@@ -27,6 +27,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let scoreDisplay = SKLabelNode(fontNamed: "Digital-7")
     var gameScore = 0
     
+    var music: SKAudioNode! 
+    
     var bgNode: SKNode!
     var fgNode: SKNode!
     var overlay: SKNode!
@@ -48,6 +50,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let shipMovePointsPerSec: CGFloat = 700.0
     let superTokenOrig = SKEmitterNode(fileNamed: "SuperToken.sks")!
     var superTokenVisible = false
+    let musicPlayer = MusicPlayer.shared
     
     
     override func didMove(to view: SKView) {
@@ -72,6 +75,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 eventListenerNode.didMoveToScene()
             }
         })
+        
+//        musicPlayer.startBackgroundMusic("Vibra-Space")
     }
 
     // MARK: Collisions
@@ -361,7 +366,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let num = Int.random(in: 1..<5)
         let blend = SKAction.animate(with: [SKTexture(imageNamed: "\(node.name!)\(num)ex")], timePerFrame: time)
         blend.timingMode = .easeIn
-
+        musicPlayer.addExplosionTo(node, atPostion: node.position)
         node.run(blend) {
             self.emitParticles(name: "Poof", sprite: node)
             self.laser.removeFromParent()

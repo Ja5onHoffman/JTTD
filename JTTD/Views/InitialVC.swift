@@ -21,6 +21,7 @@ class InitalVC: UIViewController {
     
     let loggedInUser = User.sharedInstance
     let fadeSegue = FadeSegueAnimator()
+    let musicPlayer = MusicPlayer.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,8 @@ class InitalVC: UIViewController {
         scoreBG.layer.cornerRadius = 10.0
 //        scoreBG.layer.zPosition = -1
         scoreLabel.layer.zPosition = 100
+        
+//        musicPlayer.startBackgroundMusic("Alex Catana - Speed Of Light")
     }
     
     override func viewWillAppear(_ animated: Bool) {
