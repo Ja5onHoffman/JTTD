@@ -59,14 +59,12 @@ class MusicPlayer: SKNode {
         explosion.run(SKAction.play())
     }
     
-    func shipExplosion(_ node: SKNode, atPosition position: CGPoint) {
-        let explosion = SKAudioNode(fileNamed: "Thunderous Explosive.wav")
+    func shieldExplosion(_ node: SKNode, atPosition position: CGPoint) {
+        let explosion = SKAudioNode(fileNamed: "Electrical Engine Explosion.wav")
         explosion.isPositional = true
         explosion.autoplayLooped = false
         explosion.position = position
         node.addChild(explosion)
         explosion.run(SKAction.play())
-        
-        
     }
 }

@@ -137,7 +137,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
             }
         }
     }
-    
+    // FIXME: Ship explodes before shield zero
     // Need to change this to increase shield as well
     func updateShield(_ level: Int) {
         if let s = childNode(withName: "shield") {
@@ -152,6 +152,14 @@ class TestShip: SKSpriteNode, EventListenerNode {
             let scaleSmall = SKAction.scale(to: 0.0, duration: 1.0)
             let particles = SKAction.run { self.emitParticles(name: "ShieldPoof") }
             let set = SKAction.group([particles, alpha, white, scaleBig, scaleSmall])
+            
+            let explosion = SKAudioNode(fileNamed: "Electric Engine Explosion.wav")
+            explosion.isPositional = true
+            explosion.autoplayLooped = false
+            explosion.position = self.position
+            addChild(explosion)
+            explosion.run(SKAction.play())
+            
             if let s = childNode(withName: "shield") {
                 s.run(set)
                 s.run(SKAction.scaleX(to: 1.0, duration: 0.0))
@@ -193,7 +201,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
         let explosion = SKAudioNode(fileNamed: "Thunderous Explosive.wav")
         explosion.position = self.position
         explosion.autoplayLooped = false
-        print(explosion.value(forKey: "volume"))
+        
         self.addChild(explosion)
         explosion.run(SKAction.play())
         
@@ -203,8 +211,6 @@ class TestShip: SKSpriteNode, EventListenerNode {
         fg?.addChild(particles)
         removeFromParent()
         particles.run(SKAction.removeFromParentAfterDelay(0.5))
-        
-        
     }
     
     func addSuperShield() {
