@@ -383,6 +383,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         shipOne.run(moveAction)
     }
     
+    // FIXME: Crashes when ship hits meteor that's already exploding
     func emitParticles(name: String, sprite: SKSpriteNode) {
         let pos = fgNode.convert(sprite.position, from: sprite.parent!)
         let particles = SKEmitterNode(fileNamed: name)!

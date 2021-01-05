@@ -30,7 +30,7 @@ class Mothership: SKSpriteNode, EventListenerNode {
     var state: State = .normal
     var beamState: BeamState = .none
     var gameOver = false
-//    var beam: Beam!
+    let musicPlayer = MusicPlayer.shared
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("Use init()")
@@ -165,6 +165,7 @@ class Mothership: SKSpriteNode, EventListenerNode {
         particles.zPosition = 3
         let fg = self.parent
         fg?.addChild(particles)
+        musicPlayer.shipExplosion(self, atPosition: position)
         removeFromParent()
         particles.run(SKAction.removeFromParentAfterDelay(0.5))
         return

@@ -28,6 +28,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
     var dot: SKSpriteNode?
     var line: SKShapeNode!
     var superShieldVisible = false
+    let musicPlayer = MusicPlayer.shared
     
     func didMoveToScene() {
         isPaused = false
@@ -153,12 +154,7 @@ class TestShip: SKSpriteNode, EventListenerNode {
             let particles = SKAction.run { self.emitParticles(name: "ShieldPoof") }
             let set = SKAction.group([particles, alpha, white, scaleBig, scaleSmall])
             
-            let explosion = SKAudioNode(fileNamed: "Electric Engine Explosion.wav")
-            explosion.isPositional = true
-            explosion.autoplayLooped = false
-            explosion.position = self.position
-            addChild(explosion)
-            explosion.run(SKAction.play())
+            musicPlayer.shieldExplosion(self, atPosition: position)
             
             if let s = childNode(withName: "shield") {
                 s.run(set)
@@ -198,18 +194,15 @@ class TestShip: SKSpriteNode, EventListenerNode {
     
     func explode() {
         let particles = SKEmitterNode(fileNamed: "Poof")!
-        let explosion = SKAudioNode(fileNamed: "Thunderous Explosive.wav")
-        explosion.position = self.position
-        explosion.autoplayLooped = false
-        
-        self.addChild(explosion)
-        explosion.run(SKAction.play())
-        
         particles.position = position
         particles.zPosition = 3
         let fg = self.parent
         fg?.addChild(particles)
-        removeFromParent()
+        run(SKAction.run {
+            self.musicPlayer.shipExplosion(self, atPosition: self.position)
+        }) {
+            self.removeFromParent()
+        }
         particles.run(SKAction.removeFromParentAfterDelay(0.5))
     }
     

@@ -38,11 +38,11 @@
 		313C8421259BC5DE00C484C1 /* Nova Explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C840D259BC5DE00C484C1 /* Nova Explosion.wav */; };
 		313C8422259BC5DE00C484C1 /* Roar Nova Explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C840E259BC5DE00C484C1 /* Roar Nova Explosion.wav */; };
 		313C8423259BC5DE00C484C1 /* Super Explosive Explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C840F259BC5DE00C484C1 /* Super Explosive Explosion.wav */; };
+		313C842725A3EBDC00C484C1 /* TestShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315F687A22C8167F0062646A /* TestShip.swift */; };
 		314C0CA32385C01800EDF576 /* Tractor.sks in Resources */ = {isa = PBXBuildFile; fileRef = 314C0CA22385C01700EDF576 /* Tractor.sks */; };
 		315E0DCD22C6953E00878219 /* BasicShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E0DCC22C6953E00878219 /* BasicShip.swift */; };
 		315F687722C815310062646A /* TestSprite.sks in Resources */ = {isa = PBXBuildFile; fileRef = 315F687622C815310062646A /* TestSprite.sks */; };
 		315F687922C816670062646A /* TestShip.sks in Resources */ = {isa = PBXBuildFile; fileRef = 315F687822C816670062646A /* TestShip.sks */; };
-		315F687B22C8167F0062646A /* TestShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315F687A22C8167F0062646A /* TestShip.swift */; };
 		316E20E52297430F00C44494 /* InitialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316E20E42297430F00C44494 /* InitialVC.swift */; };
 		3192203A2333BBC7007EA1EF /* Mothership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319220392333BBC7007EA1EF /* Mothership.swift */; };
 		3192203C2333D298007EA1EF /* SKAction+SpecialEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3192203B2333D298007EA1EF /* SKAction+SpecialEffects.swift */; };
@@ -121,7 +121,7 @@
 		315E0DCC22C6953E00878219 /* BasicShip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicShip.swift; sourceTree = "<group>"; };
 		315F687622C815310062646A /* TestSprite.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestSprite.sks; sourceTree = "<group>"; };
 		315F687822C816670062646A /* TestShip.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestShip.sks; sourceTree = "<group>"; };
-		315F687A22C8167F0062646A /* TestShip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestShip.swift; sourceTree = "<group>"; };
+		315F687A22C8167F0062646A /* TestShip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestShip.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		316E20E42297430F00C44494 /* InitialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialVC.swift; sourceTree = "<group>"; };
 		319220392333BBC7007EA1EF /* Mothership.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mothership.swift; sourceTree = "<group>"; };
 		3192203B2333D298007EA1EF /* SKAction+SpecialEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKAction+SpecialEffects.swift"; sourceTree = "<group>"; };
@@ -535,12 +535,12 @@
 				31119D9F22958C460097178C /* AuthVC.swift in Sources */,
 				31BC4EF1233BE32500DD07DA /* HealthBar.swift in Sources */,
 				3192203C2333D298007EA1EF /* SKAction+SpecialEffects.swift in Sources */,
-				315F687B22C8167F0062646A /* TestShip.swift in Sources */,
 				31AC75D022D39BAE0070094F /* Laser.swift in Sources */,
 				31BE561C2550B0B8001C2D96 /* GameOverVC.swift in Sources */,
 				31ED1D972274B09D003BBE49 /* AppDelegate.swift in Sources */,
 				31B168CD25128F1D00132454 /* UserData.swift in Sources */,
 				311FFECF22E27B9D00E7C9C8 /* Meteor.swift in Sources */,
+				313C842725A3EBDC00C484C1 /* TestShip.swift in Sources */,
 				31BE561F25521776001C2D96 /* ButtonNode.swift in Sources */,
 				3192203E2333D2EC007EA1EF /* SKTTimingFunctions.swift in Sources */,
 				31AC75CE22D398F00070094F /* PhysicsCategories.swift in Sources */,
