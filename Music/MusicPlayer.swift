@@ -17,7 +17,6 @@ class MusicPlayer: SKNode {
     var explosionPlayer = AVAudioPlayer()
     
     let explosions = [
-        "Blown Transformer.wav",
         "Bombed Explosion.wav",
         "Burst Fireworks.wav",
         "Cataclysmic Explosive.wav",
@@ -55,8 +54,8 @@ class MusicPlayer: SKNode {
         explosion.isPositional = true
         explosion.autoplayLooped = false
         explosion.position = position
-//        node.addChild(explosion)
-//        explosion.run(SKAction.play())
+        node.addChild(explosion)
+        explosion.run(SKAction.play())
     }
     
     func shieldExplosion(_ node: SKNode, atPosition position: CGPoint) {
@@ -75,5 +74,25 @@ class MusicPlayer: SKNode {
         explosion.position = position
         node.addChild(explosion)
         explosion.run(SKAction.play())
+    }
+    
+    func beamSound(_ node: SKNode) {
+        let beam = SKAudioNode(fileNamed: "Sci-Fi Static Electricity Loop 1.wav")
+        beam.isPositional = true
+        beam.autoplayLooped = false
+        beam.position = node.position
+        node.addChild(beam)
+        beam.run(SKAction.play())
+    }
+    
+    // TODO: Speed this up
+    func tractorSound(_ node: SKNode) {
+        let tractor = SKAudioNode(fileNamed: "Sci-Fi Energy Sweep 1.wav")
+        tractor.isPositional = true
+        tractor.autoplayLooped = false
+        tractor.position = node.position
+        
+        node.addChild(tractor)
+        tractor.run(SKAction.play())
     }
 }

@@ -131,6 +131,7 @@ class Mothership: SKSpriteNode, EventListenerNode {
             ring.physicsBody?.collisionBitMask = PhysicsCategory.None
             ring.physicsBody?.contactTestBitMask = PhysicsCategory.Ship
         }
+        musicPlayer.beamSound(self)
         beam.move(toParent: self)
     }
     
@@ -152,6 +153,7 @@ class Mothership: SKSpriteNode, EventListenerNode {
             tractor.isPaused = false
             tractor.zPosition = zPosition + 1
             tractor.move(toParent: self)
+            musicPlayer.tractorSound(tractor)
         }
     }
     

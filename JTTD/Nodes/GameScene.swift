@@ -496,6 +496,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         shipsInBounds()
         if mothership.state == .critical {
             mothership.smokeTrail()
+            run(SKAction.colorGlitchWithScene(self, originalColor: .black, duration: 5.0))
         }
         
         if mothership.beamState == .none {

@@ -39,6 +39,15 @@
 		313C8422259BC5DE00C484C1 /* Roar Nova Explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C840E259BC5DE00C484C1 /* Roar Nova Explosion.wav */; };
 		313C8423259BC5DE00C484C1 /* Super Explosive Explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C840F259BC5DE00C484C1 /* Super Explosive Explosion.wav */; };
 		313C842725A3EBDC00C484C1 /* TestShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315F687A22C8167F0062646A /* TestShip.swift */; };
+		313C842B25A3F16100C484C1 /* Sci-Fi Energy Sweep 1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C842A25A3F16100C484C1 /* Sci-Fi Energy Sweep 1.wav */; };
+		313C842E25A3F16A00C484C1 /* Eerie Sci-Fi Alarm 1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C842D25A3F16A00C484C1 /* Eerie Sci-Fi Alarm 1.wav */; };
+		313C843125A3F18700C484C1 /* Sci-Fi Static Electricity Loop 1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C843025A3F18700C484C1 /* Sci-Fi Static Electricity Loop 1.wav */; };
+		313C843625A3F1A100C484C1 /* Sci-Fi Injection Sound 4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C843325A3F1A100C484C1 /* Sci-Fi Injection Sound 4.wav */; };
+		313C843725A3F1A100C484C1 /* Sci-Fi Injection Sound 3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C843425A3F1A100C484C1 /* Sci-Fi Injection Sound 3.wav */; };
+		313C843825A3F1A100C484C1 /* Sci-Fi Injection Sound 2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C843525A3F1A100C484C1 /* Sci-Fi Injection Sound 2.wav */; };
+		313C843B25A3F1BC00C484C1 /* Sci-Fi Energy Shield Up 16.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C843A25A3F1BC00C484C1 /* Sci-Fi Energy Shield Up 16.wav */; };
+		313C843E25A3F1DF00C484C1 /* Sci-Fi Energy Shield Up 17.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C843D25A3F1DF00C484C1 /* Sci-Fi Energy Shield Up 17.wav */; };
+		313C844125ACFD1200C484C1 /* MotherExp.sks in Resources */ = {isa = PBXBuildFile; fileRef = 313C844025ACFD1200C484C1 /* MotherExp.sks */; };
 		314C0CA32385C01800EDF576 /* Tractor.sks in Resources */ = {isa = PBXBuildFile; fileRef = 314C0CA22385C01700EDF576 /* Tractor.sks */; };
 		315E0DCD22C6953E00878219 /* BasicShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E0DCC22C6953E00878219 /* BasicShip.swift */; };
 		315F687722C815310062646A /* TestSprite.sks in Resources */ = {isa = PBXBuildFile; fileRef = 315F687622C815310062646A /* TestSprite.sks */; };
@@ -117,6 +126,15 @@
 		313C840D259BC5DE00C484C1 /* Nova Explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Nova Explosion.wav"; path = "../../Music/Explosive SuperNova - Nova Sound/Nova Explosion.wav"; sourceTree = "<group>"; };
 		313C840E259BC5DE00C484C1 /* Roar Nova Explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Roar Nova Explosion.wav"; path = "../../Music/Explosive SuperNova - Nova Sound/Roar Nova Explosion.wav"; sourceTree = "<group>"; };
 		313C840F259BC5DE00C484C1 /* Super Explosive Explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Super Explosive Explosion.wav"; path = "../../Music/Explosive SuperNova - Nova Sound/Super Explosive Explosion.wav"; sourceTree = "<group>"; };
+		313C842A25A3F16100C484C1 /* Sci-Fi Energy Sweep 1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Sci-Fi Energy Sweep 1.wav"; path = "../../4830 - Sci-Fi SFX Pack 8/Sci-Fi Energy Sweep 1.wav"; sourceTree = "<group>"; };
+		313C842D25A3F16A00C484C1 /* Eerie Sci-Fi Alarm 1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Eerie Sci-Fi Alarm 1.wav"; path = "../../4830 - Sci-Fi SFX Pack 8/Eerie Sci-Fi Alarm 1.wav"; sourceTree = "<group>"; };
+		313C843025A3F18700C484C1 /* Sci-Fi Static Electricity Loop 1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Sci-Fi Static Electricity Loop 1.wav"; path = "../../4830 - Sci-Fi SFX Pack 8/Sci-Fi Static Electricity Loop 1.wav"; sourceTree = "<group>"; };
+		313C843325A3F1A100C484C1 /* Sci-Fi Injection Sound 4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Sci-Fi Injection Sound 4.wav"; path = "../../4830 - Sci-Fi SFX Pack 8/Sci-Fi Injection Sound 4.wav"; sourceTree = "<group>"; };
+		313C843425A3F1A100C484C1 /* Sci-Fi Injection Sound 3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Sci-Fi Injection Sound 3.wav"; path = "../../4830 - Sci-Fi SFX Pack 8/Sci-Fi Injection Sound 3.wav"; sourceTree = "<group>"; };
+		313C843525A3F1A100C484C1 /* Sci-Fi Injection Sound 2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Sci-Fi Injection Sound 2.wav"; path = "../../4830 - Sci-Fi SFX Pack 8/Sci-Fi Injection Sound 2.wav"; sourceTree = "<group>"; };
+		313C843A25A3F1BC00C484C1 /* Sci-Fi Energy Shield Up 16.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Sci-Fi Energy Shield Up 16.wav"; path = "../../4830 - Sci-Fi SFX Pack 8/Sci-Fi Energy Shield Up 16.wav"; sourceTree = "<group>"; };
+		313C843D25A3F1DF00C484C1 /* Sci-Fi Energy Shield Up 17.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Sci-Fi Energy Shield Up 17.wav"; path = "../../4830 - Sci-Fi SFX Pack 8/Sci-Fi Energy Shield Up 17.wav"; sourceTree = "<group>"; };
+		313C844025ACFD1200C484C1 /* MotherExp.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MotherExp.sks; sourceTree = "<group>"; };
 		314C0CA22385C01700EDF576 /* Tractor.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Tractor.sks; sourceTree = "<group>"; };
 		315E0DCC22C6953E00878219 /* BasicShip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicShip.swift; sourceTree = "<group>"; };
 		315F687622C815310062646A /* TestSprite.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestSprite.sks; sourceTree = "<group>"; };
@@ -202,8 +220,16 @@
 				313C8401259BC5DD00C484C1 /* Deep Fireworks.wav */,
 				313C840B259BC5DD00C484C1 /* Electric Engine Explosion.wav */,
 				313C83FE259BC5DD00C484C1 /* Electrical Explosion.wav */,
+				313C842D25A3F16A00C484C1 /* Eerie Sci-Fi Alarm 1.wav */,
 				313C8403259BC5DD00C484C1 /* Explosive Nova.wav */,
+				313C843025A3F18700C484C1 /* Sci-Fi Static Electricity Loop 1.wav */,
+				313C842A25A3F16100C484C1 /* Sci-Fi Energy Sweep 1.wav */,
 				313C840A259BC5DD00C484C1 /* Frying Fireworks.wav */,
+				313C843525A3F1A100C484C1 /* Sci-Fi Injection Sound 2.wav */,
+				313C843A25A3F1BC00C484C1 /* Sci-Fi Energy Shield Up 16.wav */,
+				313C843D25A3F1DF00C484C1 /* Sci-Fi Energy Shield Up 17.wav */,
+				313C843425A3F1A100C484C1 /* Sci-Fi Injection Sound 3.wav */,
+				313C843325A3F1A100C484C1 /* Sci-Fi Injection Sound 4.wav */,
 				313C8407259BC5DD00C484C1 /* Heat Waves Explosion.wav */,
 				313C840D259BC5DE00C484C1 /* Nova Explosion.wav */,
 				313C840E259BC5DE00C484C1 /* Roar Nova Explosion.wav */,
@@ -235,6 +261,7 @@
 				314C0CA22385C01700EDF576 /* Tractor.sks */,
 				31F881CC25895D1A005DCF2B /* SuperToken.sks */,
 				319EBA77258B9AE400BA1452 /* SToken.sks */,
+				313C844025ACFD1200C484C1 /* MotherExp.sks */,
 			);
 			path = SceneFiles;
 			sourceTree = "<group>";
@@ -415,15 +442,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				313C8420259BC5DE00C484C1 /* Short Explosion.wav in Resources */,
+				313C842B25A3F16100C484C1 /* Sci-Fi Energy Sweep 1.wav in Resources */,
 				31ED1DA22274B09D003BBE49 /* Main.storyboard in Resources */,
 				313C8422259BC5DE00C484C1 /* Roar Nova Explosion.wav in Resources */,
 				313C8417259BC5DE00C484C1 /* Explosive Nova.wav in Resources */,
 				313C841A259BC5DE00C484C1 /* Blown Transformer.wav in Resources */,
 				31A625B825474A0E00A48835 /* digital-7.ttf in Resources */,
+				313C843825A3F1A100C484C1 /* Sci-Fi Injection Sound 2.wav in Resources */,
 				313C8418259BC5DE00C484C1 /* SubAtomic Bomb.wav in Resources */,
 				313C8412259BC5DE00C484C1 /* Electrical Explosion.wav in Resources */,
 				313BF5A022BADBFF003000D2 /* GameScene.sks in Resources */,
 				313C8414259BC5DE00C484C1 /* Bombed Explosion.wav in Resources */,
+				313C844125ACFD1200C484C1 /* MotherExp.sks in Resources */,
 				31D97714237EF3DA002C9653 /* SuperShield.sks in Resources */,
 				319EBA78258B9AE400BA1452 /* SToken.sks in Resources */,
 				31B0DC2C2383624B00E75A55 /* SmokeTrail.sks in Resources */,
@@ -432,20 +462,25 @@
 				31F82B502295BF7C0046CFF4 /* GoogleService-Info.plist in Resources */,
 				313C83F3259BBBE700C484C1 /* Alex Catana - Speed Of Light.mp3 in Resources */,
 				313C8421259BC5DE00C484C1 /* Nova Explosion.wav in Resources */,
+				313C842E25A3F16A00C484C1 /* Eerie Sci-Fi Alarm 1.wav in Resources */,
 				313C8415259BC5DE00C484C1 /* Deep Fireworks.wav in Resources */,
 				313C8423259BC5DE00C484C1 /* Super Explosive Explosion.wav in Resources */,
 				313C8413259BC5DE00C484C1 /* Catastrophic Explosive.wav in Resources */,
 				3114A7E42596124B007D796B /* zorque.regular.ttf in Resources */,
 				313C841F259BC5DE00C484C1 /* Electric Engine Explosion.wav in Resources */,
 				313C83FA259BC28600C484C1 /* Vibra-Space.mp3 in Resources */,
+				313C843725A3F1A100C484C1 /* Sci-Fi Injection Sound 3.wav in Resources */,
 				31ED1DA42274B09F003BBE49 /* Assets.xcassets in Resources */,
 				31ED1DA72274B09F003BBE49 /* LaunchScreen.storyboard in Resources */,
+				313C843125A3F18700C484C1 /* Sci-Fi Static Electricity Loop 1.wav in Resources */,
 				313C8411259BC5DE00C484C1 /* Cataclysmic Explosive.wav in Resources */,
 				313C8416259BC5DE00C484C1 /* Clysmic Explosion.wav in Resources */,
 				31F881CD25895D1A005DCF2B /* SuperToken.sks in Resources */,
 				311FFECB22E2650D00E7C9C8 /* Poof.sks in Resources */,
 				313C8419259BC5DE00C484C1 /* Thunderous Explosive.wav in Resources */,
 				314C0CA32385C01800EDF576 /* Tractor.sks in Resources */,
+				313C843625A3F1A100C484C1 /* Sci-Fi Injection Sound 4.wav in Resources */,
+				313C843B25A3F1BC00C484C1 /* Sci-Fi Energy Shield Up 16.wav in Resources */,
 				315F687722C815310062646A /* TestSprite.sks in Resources */,
 				31AC40D6256ADAC100DE7D60 /* GameOver.sks in Resources */,
 				313C8410259BC5DE00C484C1 /* Shock Blast.wav in Resources */,
@@ -456,6 +491,7 @@
 				313C841B259BC5DE00C484C1 /* Heat Waves Explosion.wav in Resources */,
 				313C841C259BC5DE00C484C1 /* Burst Fireworks.wav in Resources */,
 				31AC75CA22CD59620070094F /* Assets.xcassets in Resources */,
+				313C843E25A3F1DF00C484C1 /* Sci-Fi Energy Shield Up 17.wav in Resources */,
 				313C841D259BC5DE00C484C1 /* ShockWav Explosion.wav in Resources */,
 				31AC75C922CD59620070094F /* BackgroundStars.sks in Resources */,
 			);
