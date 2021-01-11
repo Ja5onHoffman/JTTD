@@ -25,7 +25,7 @@ class GameVC: UIViewController {
     
     @objc func gameOver(_ notification: NSNotification) {
         let gameOverVC = self.storyboard!.instantiateViewController(withIdentifier: "GameOverVC")
-        gameOverVC.modalTransitionStyle = .flipHorizontal
+        gameOverVC.modalTransitionStyle = .crossDissolve
         gameOverVC.modalPresentationStyle = .fullScreen
         present(gameOverVC, animated: true, completion: nil)
     }

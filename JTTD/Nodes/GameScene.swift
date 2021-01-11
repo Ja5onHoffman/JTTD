@@ -351,12 +351,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             DataService.instance.updateScore(score)
         }
 
-        // Deallocates scene
-        self.view?.presentScene(nil)
-        // Has to be on main thread
-        DispatchQueue.main.async {
-            NotificationCenter.default.post(name: .gameOver, object: nil)
+        run(SKAction.fadeOut(withDuration: 3.0)) {
+            // Deallocates scene
+            self.view?.presentScene(nil)
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .gameOver, object: nil)
+            }
         }
+        
+        // Has to be on main thread
+
 
     }
 
@@ -496,7 +500,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         shipsInBounds()
         if mothership.state == .critical {
             mothership.smokeTrail()
-            run(SKAction.colorGlitchWithScene(self, originalColor: .black, duration: 5.0))
+//            run(SKAction.colorGlitchWithScene(self, originalColor: .black, duration: 5.0))
         }
         
         if mothership.beamState == .none {

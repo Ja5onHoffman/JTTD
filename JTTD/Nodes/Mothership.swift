@@ -162,14 +162,15 @@ class Mothership: SKSpriteNode, EventListenerNode {
     }
     
     func explode() {
-        let particles = SKEmitterNode(fileNamed: "Poof")!
+        let particles = SKEmitterNode(fileNamed: "MotherExp")!
         particles.position = position
         particles.zPosition = 3
+        particles.setScale(5.0)
         let fg = self.parent
         fg?.addChild(particles)
         musicPlayer.shipExplosion(self, atPosition: position)
         removeFromParent()
-        particles.run(SKAction.removeFromParentAfterDelay(0.5))
+        particles.run(SKAction.removeFromParentAfterDelay(10))
         return
     }
     
