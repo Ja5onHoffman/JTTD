@@ -4,7 +4,7 @@
 //
 //  Created by Jason Hoffman on 5/22/19.
 //  Copyright © 2019 Jason Hoffman. All rights reserved.
-//
+//  You can't have insight without focus 
 
 import UIKit
 import GoogleSignIn
@@ -12,8 +12,12 @@ import Firebase
 
 class AuthVC: UIViewController {
     
-    @IBOutlet weak var signInButton: GIDSignInButton!
+    @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var spacePlow: UILabel!
+    @IBOutlet weak var emailButton: UIButton!
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var buttonBG: UIView!
+    @IBOutlet weak var buttonStack: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +28,12 @@ class AuthVC: UIViewController {
         spacePlow.layer.shadowColor = UIColor.darkGray.cgColor
         spacePlow.layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
         spacePlow.layer.shadowOpacity = 1.0
+        
+        emailButton.layer.cornerRadius = 5.0
+        playButton.layer.cornerRadius = 5.0
+        signInButton.layer.cornerRadius = 5.0
+        // buttonBG wants to go to front
+        self.view.bringSubviewToFront(buttonStack)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,6 +53,8 @@ class AuthVC: UIViewController {
             loginVC.modalPresentationStyle = .fullScreen
             present(loginVC, animated: true)
         }
+        
+        print("Email sign in")
     }
     
     @IBAction func googleSignIn(_ sender: Any) {
@@ -52,10 +64,7 @@ class AuthVC: UIViewController {
     @IBAction func justPlay(_ sender: Any) {
         let gameVC = storyboard?.instantiateViewController(identifier: "GameView")
         present(gameVC!, animated: true, completion: nil)
-    }
-    
-    @IBAction func facebookSignIn(_ sender: Any) {
-        
+        print("Just play")
     }
     
     func animateShadow() {

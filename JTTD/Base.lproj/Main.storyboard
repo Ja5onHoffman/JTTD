@@ -221,7 +221,7 @@
                                 <size key="shadowOffset" width="4" height="-1"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="NHS-Dg-hNM">
-                                <rect key="frame" x="70" y="344" width="132.5" height="83"/>
+                                <rect key="frame" x="50" y="344" width="132.5" height="83"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKI-kl-cOI">
                                         <rect key="frame" x="48" y="0.0" width="84.5" height="23"/>
@@ -244,7 +244,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="81d-ZH-mHZ">
-                                <rect key="frame" x="210.5" y="344" width="121.5" height="83"/>
+                                <rect key="frame" x="190.5" y="344" width="121.5" height="83"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ijo-XS-tqQ">
                                         <rect key="frame" x="0.0" y="0.0" width="73.5" height="50"/>
@@ -306,7 +306,7 @@
                         <color key="backgroundColor" red="0.16078431369999999" green="0.16862745100000001" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="DBC-HG-qeu" firstAttribute="centerX" secondItem="chV-I0-s6K" secondAttribute="centerX" id="61Y-dW-ZIT"/>
-                            <constraint firstItem="NHS-Dg-hNM" firstAttribute="leading" secondItem="chV-I0-s6K" secondAttribute="leadingMargin" constant="50" id="E0e-ej-f5q"/>
+                            <constraint firstItem="NHS-Dg-hNM" firstAttribute="leading" secondItem="chV-I0-s6K" secondAttribute="leadingMargin" constant="30" id="E0e-ej-f5q"/>
                             <constraint firstItem="NHS-Dg-hNM" firstAttribute="top" secondItem="chV-I0-s6K" secondAttribute="topMargin" constant="300" id="Fov-bs-OFh"/>
                             <constraint firstItem="81d-ZH-mHZ" firstAttribute="leading" secondItem="NHS-Dg-hNM" secondAttribute="trailing" constant="8" id="JoJ-3l-anv"/>
                             <constraint firstItem="DBC-HG-qeu" firstAttribute="top" secondItem="dri-t0-Icw" secondAttribute="top" constant="85" id="SYY-Qp-olo"/>
@@ -329,8 +329,9 @@
                         <outlet property="playerLabel" destination="ijo-XS-tqQ" id="8Od-A2-A0n"/>
                         <outlet property="scoreBG" destination="Q2g-DS-oxp" id="dka-uV-ELb"/>
                         <outlet property="scoreLabel" destination="pp1-ho-J93" id="K4l-MJ-IC8"/>
+                        <outlet property="signoutButton" destination="g2R-TL-sXv" id="2ka-bj-1qX"/>
                         <outlet property="spacePlow" destination="DBC-HG-qeu" id="I6O-IM-mPR"/>
-                        <outlet property="startButton" destination="ohA-BF-BZ1" id="qNH-xp-uqw"/>
+                        <outlet property="startButton" destination="ohA-BF-BZ1" id="GoE-3Q-d8Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="22T-Rz-Obk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -372,18 +373,23 @@
                                 <color key="shadowColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="shadowOffset" width="4" height="-1"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="Ffm-Kw-ecf">
-                                <rect key="frame" x="67" y="340" width="280" height="216"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="Ffm-Kw-ecf">
+                                <rect key="frame" x="82" y="355" width="250" height="186"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VWY-pm-mXl" customClass="GIDSignInButton">
-                                        <rect key="frame" x="20" y="0.0" width="240" height="50"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <connections>
-                                            <action selector="googleSignIn:" destination="5b6-yN-SEl" eventType="valueChanged" id="kJS-99-mT3"/>
-                                        </connections>
-                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dad-NA-DBN">
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="UfP-Lh-ZC4"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="26"/>
+                                        <size key="titleShadowOffset" width="1" height="1"/>
+                                        <state key="normal" title="Google Sign In">
+                                            <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UjB-Bb-TsE">
-                                        <rect key="frame" x="15" y="83" width="250" height="50"/>
+                                        <rect key="frame" x="0.0" y="68" width="250" height="50"/>
                                         <color key="backgroundColor" systemColor="systemBlueColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Yzh-8A-FA5"/>
@@ -399,10 +405,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Raw-lA-TBE">
-                                        <rect key="frame" x="40" y="166" width="200" height="50"/>
+                                        <rect key="frame" x="0.0" y="136" width="250" height="50"/>
                                         <color key="backgroundColor" systemColor="systemPurpleColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="200" id="GnH-pq-bUZ"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="Ty0-9h-3gh"/>
                                             <constraint firstAttribute="height" constant="50" id="yWi-v7-vPb"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="26"/>
@@ -415,11 +421,19 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="UjB-Bb-TsE" firstAttribute="centerY" secondItem="Ffm-Kw-ecf" secondAttribute="centerY" id="5Wd-YE-sHq"/>
-                                    <constraint firstItem="VWY-pm-mXl" firstAttribute="leading" secondItem="Ffm-Kw-ecf" secondAttribute="leading" constant="20" id="x6g-NI-JmO"/>
                                 </constraints>
                             </stackView>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MJ3-vR-sqO">
+                                <rect key="frame" x="29.5" y="323" width="355" height="250"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.49536941225165565" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="WtQ-ZH-E2i"/>
+                                    <constraint firstAttribute="width" constant="355" id="uTd-Ca-QvA"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Rti-Mn-ZQM"/>
                         <color key="backgroundColor" red="0.16078431369999999" green="0.16862745100000001" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -427,6 +441,8 @@
                             <constraint firstItem="90y-hn-Vgh" firstAttribute="top" secondItem="CHE-MC-Oa3" secondAttribute="top" id="66u-iK-EF2"/>
                             <constraint firstItem="tpH-bn-VvC" firstAttribute="top" secondItem="Rti-Mn-ZQM" secondAttribute="top" constant="85" id="9qf-OJ-ie8"/>
                             <constraint firstItem="90y-hn-Vgh" firstAttribute="trailing" secondItem="Rti-Mn-ZQM" secondAttribute="trailing" id="TEQ-ty-60B"/>
+                            <constraint firstItem="MJ3-vR-sqO" firstAttribute="centerY" secondItem="CHE-MC-Oa3" secondAttribute="centerY" id="U8z-RC-lQr"/>
+                            <constraint firstItem="MJ3-vR-sqO" firstAttribute="centerX" secondItem="CHE-MC-Oa3" secondAttribute="centerX" id="WKk-Ap-Yc1"/>
                             <constraint firstItem="90y-hn-Vgh" firstAttribute="leading" secondItem="Rti-Mn-ZQM" secondAttribute="leading" id="ZIt-kU-zA5"/>
                             <constraint firstItem="Ffm-Kw-ecf" firstAttribute="centerY" secondItem="CHE-MC-Oa3" secondAttribute="centerY" id="eIy-m0-e98"/>
                             <constraint firstItem="Ffm-Kw-ecf" firstAttribute="centerX" secondItem="CHE-MC-Oa3" secondAttribute="centerX" id="fBH-Qp-0HX"/>
@@ -435,13 +451,17 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="signInButton" destination="VWY-pm-mXl" id="ViB-VZ-xvH"/>
+                        <outlet property="buttonBG" destination="MJ3-vR-sqO" id="GeM-f7-aXO"/>
+                        <outlet property="buttonStack" destination="Ffm-Kw-ecf" id="4Hw-9O-b3N"/>
+                        <outlet property="emailButton" destination="UjB-Bb-TsE" id="rku-6S-TsG"/>
+                        <outlet property="playButton" destination="Raw-lA-TBE" id="90H-kf-Q96"/>
+                        <outlet property="signInButton" destination="dad-NA-DBN" id="tfn-Pl-Ibl"/>
                         <outlet property="spacePlow" destination="tpH-bn-VvC" id="cJw-G7-HCI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IiF-tS-3NJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="355" y="-656"/>
+            <point key="canvasLocation" x="353.62318840579712" y="-656.25"/>
         </scene>
     </scenes>
     <resources>

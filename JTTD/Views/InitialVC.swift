@@ -18,6 +18,7 @@ class InitalVC: UIViewController {
     @IBOutlet weak var startButton: UIButton! 
     @IBOutlet weak var spacePlow: UILabel!
     @IBOutlet weak var scoreBG: UIView!
+    @IBOutlet weak var signoutButton: UIButton!
     
     let loggedInUser = User.sharedInstance
     let fadeSegue = FadeSegueAnimator()
@@ -34,6 +35,9 @@ class InitalVC: UIViewController {
         scoreBG.layer.cornerRadius = 10.0
 //        scoreBG.layer.zPosition = -1
         scoreLabel.layer.zPosition = 100
+        
+        startButton.layer.cornerRadius = 5.0
+        signoutButton.layer.cornerRadius = 5.0
         
 //        musicPlayer.startBackgroundMusic("Alex Catana - Speed Of Light")
     }

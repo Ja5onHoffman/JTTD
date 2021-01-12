@@ -18,6 +18,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var accountLabel: UILabel!
+    @IBOutlet weak var emailButton: UIButton!
     
     let user = User.sharedInstance
     
