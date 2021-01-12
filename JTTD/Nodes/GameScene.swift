@@ -76,6 +76,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         })
         
+        gameOver(gameScore)
 //        musicPlayer.startBackgroundMusic("Vibra-Space")
     }
 
@@ -352,11 +353,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
 
         run(SKAction.fadeOut(withDuration: 3.0)) {
-            // Deallocates scene
-            self.view?.presentScene(nil)
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: .gameOver, object: nil)
             }
+            
+            // Deallocates scene
+            self.view?.presentScene(nil)
         }
         
         // Has to be on main thread

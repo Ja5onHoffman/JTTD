@@ -30,7 +30,6 @@ class GameOverVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(mainMenu(notification:)), name: .goHome, object: nil)
     }
     
-    
     @objc func mainMenu(notification: Notification) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let initialVC = storyboard.instantiateViewController(identifier: "InitialVC")

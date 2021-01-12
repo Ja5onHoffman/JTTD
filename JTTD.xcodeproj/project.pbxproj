@@ -48,6 +48,8 @@
 		313C843B25A3F1BC00C484C1 /* Sci-Fi Energy Shield Up 16.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C843A25A3F1BC00C484C1 /* Sci-Fi Energy Shield Up 16.wav */; };
 		313C843E25A3F1DF00C484C1 /* Sci-Fi Energy Shield Up 17.wav in Resources */ = {isa = PBXBuildFile; fileRef = 313C843D25A3F1DF00C484C1 /* Sci-Fi Energy Shield Up 17.wav */; };
 		313C844125ACFD1200C484C1 /* MotherExp.sks in Resources */ = {isa = PBXBuildFile; fileRef = 313C844025ACFD1200C484C1 /* MotherExp.sks */; };
+		313C846025AD153C00C484C1 /* LabelFire.sks in Resources */ = {isa = PBXBuildFile; fileRef = 313C845F25AD153C00C484C1 /* LabelFire.sks */; };
+		313C846325AD1A5C00C484C1 /* Local.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313C846225AD1A5C00C484C1 /* Local.swift */; };
 		314C0CA32385C01800EDF576 /* Tractor.sks in Resources */ = {isa = PBXBuildFile; fileRef = 314C0CA22385C01700EDF576 /* Tractor.sks */; };
 		315E0DCD22C6953E00878219 /* BasicShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E0DCC22C6953E00878219 /* BasicShip.swift */; };
 		315F687722C815310062646A /* TestSprite.sks in Resources */ = {isa = PBXBuildFile; fileRef = 315F687622C815310062646A /* TestSprite.sks */; };
@@ -135,6 +137,8 @@
 		313C843A25A3F1BC00C484C1 /* Sci-Fi Energy Shield Up 16.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Sci-Fi Energy Shield Up 16.wav"; path = "../../4830 - Sci-Fi SFX Pack 8/Sci-Fi Energy Shield Up 16.wav"; sourceTree = "<group>"; };
 		313C843D25A3F1DF00C484C1 /* Sci-Fi Energy Shield Up 17.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Sci-Fi Energy Shield Up 17.wav"; path = "../../4830 - Sci-Fi SFX Pack 8/Sci-Fi Energy Shield Up 17.wav"; sourceTree = "<group>"; };
 		313C844025ACFD1200C484C1 /* MotherExp.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MotherExp.sks; sourceTree = "<group>"; };
+		313C845F25AD153C00C484C1 /* LabelFire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LabelFire.sks; sourceTree = "<group>"; };
+		313C846225AD1A5C00C484C1 /* Local.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Local.swift; sourceTree = "<group>"; };
 		314C0CA22385C01700EDF576 /* Tractor.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Tractor.sks; sourceTree = "<group>"; };
 		315E0DCC22C6953E00878219 /* BasicShip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicShip.swift; sourceTree = "<group>"; };
 		315F687622C815310062646A /* TestSprite.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestSprite.sks; sourceTree = "<group>"; };
@@ -262,6 +266,7 @@
 				31F881CC25895D1A005DCF2B /* SuperToken.sks */,
 				319EBA77258B9AE400BA1452 /* SToken.sks */,
 				313C844025ACFD1200C484C1 /* MotherExp.sks */,
+				313C845F25AD153C00C484C1 /* LabelFire.sks */,
 			);
 			path = SceneFiles;
 			sourceTree = "<group>";
@@ -327,6 +332,7 @@
 			children = (
 				31D7D6DA2294287300ADF4F6 /* DataService.swift */,
 				31D7D6DE229433F000ADF4F6 /* AuthService.swift */,
+				313C846225AD1A5C00C484C1 /* Local.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -451,6 +457,7 @@
 				313C843825A3F1A100C484C1 /* Sci-Fi Injection Sound 2.wav in Resources */,
 				313C8418259BC5DE00C484C1 /* SubAtomic Bomb.wav in Resources */,
 				313C8412259BC5DE00C484C1 /* Electrical Explosion.wav in Resources */,
+				313C846025AD153C00C484C1 /* LabelFire.sks in Resources */,
 				313BF5A022BADBFF003000D2 /* GameScene.sks in Resources */,
 				313C8414259BC5DE00C484C1 /* Bombed Explosion.wav in Resources */,
 				313C844125ACFD1200C484C1 /* MotherExp.sks in Resources */,
@@ -578,6 +585,7 @@
 				311FFECF22E27B9D00E7C9C8 /* Meteor.swift in Sources */,
 				313C842725A3EBDC00C484C1 /* TestShip.swift in Sources */,
 				31BE561F25521776001C2D96 /* ButtonNode.swift in Sources */,
+				313C846325AD1A5C00C484C1 /* Local.swift in Sources */,
 				3192203E2333D2EC007EA1EF /* SKTTimingFunctions.swift in Sources */,
 				31AC75CE22D398F00070094F /* PhysicsCategories.swift in Sources */,
 				311FFECD22E2683E00E7C9C8 /* SKAction+Extensions.swift in Sources */,
