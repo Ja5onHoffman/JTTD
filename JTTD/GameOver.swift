@@ -31,7 +31,6 @@ class GameOver: SKScene {
         gameOverLabel.physicsBody = SKPhysicsBody(circleOfRadius: 1.0)
         gameOverLabel.physicsBody?.affectedByGravity = true
         
-    
         background.addChild(gameOverLabel)
         let gameOverLabelSize = gameOverLabel.calculateAccumulatedFrame()
         
