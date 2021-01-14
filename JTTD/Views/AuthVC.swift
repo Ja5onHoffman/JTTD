@@ -10,6 +10,7 @@ import UIKit
 import GoogleSignIn
 import Firebase
 
+
 class AuthVC: UIViewController {
     
     @IBOutlet weak var signInButton: UIButton!
@@ -18,7 +19,7 @@ class AuthVC: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var buttonBG: UIView!
     @IBOutlet weak var buttonStack: UIStackView!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         modalPresentationStyle = .fullScreen
@@ -34,7 +35,7 @@ class AuthVC: UIViewController {
         signInButton.layer.cornerRadius = 5.0
         // buttonBG wants to go to front
         self.view.bringSubviewToFront(buttonStack)
-    }
+    } 
     
     override func viewWillAppear(_ animated: Bool) {
         // Called if presenting view controller is full screen
@@ -62,9 +63,12 @@ class AuthVC: UIViewController {
     }
     
     @IBAction func justPlay(_ sender: Any) {
-        let gameVC = storyboard?.instantiateViewController(identifier: "GameView")
+        let gameVC = storyboard?.instantiateViewController(identifier: "GameVC")
         present(gameVC!, animated: true, completion: nil)
-        print("Just play")
+    }
+    
+    @IBAction func login(_ sender: Any) {
+        
     }
     
     func animateShadow() {

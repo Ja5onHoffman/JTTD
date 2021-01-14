@@ -296,6 +296,16 @@
                                             <action selector="signOut:" destination="Yw2-Fb-gxB" eventType="touchUpInside" id="zt1-do-5y6"/>
                                         </connections>
                                     </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xxg-Cg-HcG">
+                                        <rect key="frame" x="0.0" y="116" width="200" height="0.0"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="26"/>
+                                        <state key="normal" title="Log In"/>
+                                        <connections>
+                                            <action selector="login:" destination="Yw2-Fb-gxB" eventType="touchUpInside" id="3IS-0V-jtY"/>
+                                            <segue destination="5b6-yN-SEl" kind="custom" id="9PH-9y-eIl"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="WSO-Yj-cAO"/>
@@ -326,6 +336,7 @@
                     <navigationItem key="navigationItem" id="bjl-ox-y9V"/>
                     <connections>
                         <outlet property="lastGameLabel" destination="W4L-0Z-HE0" id="MDy-K3-R9a"/>
+                        <outlet property="loginButton" destination="Xxg-Cg-HcG" id="S6I-7a-DDY"/>
                         <outlet property="playerLabel" destination="ijo-XS-tqQ" id="8Od-A2-A0n"/>
                         <outlet property="scoreBG" destination="Q2g-DS-oxp" id="dka-uV-ELb"/>
                         <outlet property="scoreLabel" destination="pp1-ho-J93" id="K4l-MJ-IC8"/>
@@ -336,7 +347,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="22T-Rz-Obk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="355.07246376811599" y="20.758928571428569"/>
+            <point key="canvasLocation" x="-342" y="21"/>
         </scene>
         <!--GameVC-->
         <scene sceneID="tXr-a1-R10">
@@ -387,6 +398,9 @@
                                         <state key="normal" title="Google Sign In">
                                             <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="googleSignIn:" destination="5b6-yN-SEl" eventType="touchUpInside" id="sbX-EX-ovb"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UjB-Bb-TsE">
                                         <rect key="frame" x="0.0" y="68" width="250" height="50"/>
@@ -450,6 +464,7 @@
                             <constraint firstAttribute="bottom" secondItem="90y-hn-Vgh" secondAttribute="bottom" id="saR-a1-obE"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Sb3-MY-2or"/>
                     <connections>
                         <outlet property="buttonBG" destination="MJ3-vR-sqO" id="GeM-f7-aXO"/>
                         <outlet property="buttonStack" destination="Ffm-Kw-ecf" id="4Hw-9O-b3N"/>

@@ -17,10 +17,10 @@ class GameOver: SKScene {
         let background = childNode(withName: "Background")!
 //        background.zPosition = 1
         self.backgroundColor = .black
-        
+    
         
         let gameOverLabel = SKLabelNode(fontNamed: "Zorque-Regular")
-        gameOverLabel.position = CGPoint(x: 0, y: 500)
+        gameOverLabel.position = CGPoint(x: 0, y: (size.height / 2) - 100)
         gameOverLabel.text = "Game Over"
         gameOverLabel.fontColor = .white
         gameOverLabel.verticalAlignmentMode = .center
@@ -30,6 +30,7 @@ class GameOver: SKScene {
 
         gameOverLabel.physicsBody = SKPhysicsBody(circleOfRadius: 1.0)
         gameOverLabel.physicsBody?.affectedByGravity = true
+        gameOverLabel.physicsBody?.linearDamping = 1.0
         
         background.addChild(gameOverLabel)
         let gameOverLabelSize = gameOverLabel.calculateAccumulatedFrame()

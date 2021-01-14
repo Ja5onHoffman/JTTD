@@ -19,6 +19,7 @@ class InitalVC: UIViewController {
     @IBOutlet weak var spacePlow: UILabel!
     @IBOutlet weak var scoreBG: UIView!
     @IBOutlet weak var signoutButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
     
     let loggedInUser = User.sharedInstance
     let fadeSegue = FadeSegueAnimator()
@@ -26,27 +27,26 @@ class InitalVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        try! Auth.auth().signOut()
         NotificationCenter.default.addObserver(self, selector: #selector(popFields(_:)), name: .userLoaded, object: nil)
-        
+//        try! Auth.auth().signOut()
         spacePlow.layer.shadowColor = UIColor.darkGray.cgColor
         spacePlow.layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
         spacePlow.layer.shadowOpacity = 1.0
         scoreBG.layer.cornerRadius = 10.0
-//        scoreBG.layer.zPosition = -1
         scoreLabel.layer.zPosition = 100
         
         startButton.layer.cornerRadius = 5.0
         signoutButton.layer.cornerRadius = 5.0
-        
+        loginButton.layer.cornerRadius = 5.0
 //        musicPlayer.startBackgroundMusic("Alex Catana - Speed Of Light")
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("VIEWWILLAPPEAR")
         DataService.instance.lastLogin()
         animateShadow()
+        toggleJustPlay()
     }
-    
 
     @IBAction func start(_ sender: Any) {
         
@@ -73,6 +73,36 @@ class InitalVC: UIViewController {
             } catch {
                 print("Error signing out. Provider: \(providerData)")
             }
+        }
+    }
+    
+    @IBAction func login(_ sender: Any) {
+        
+    }
+    
+    func toggleJustPlay() {
+        signoutButton.isHidden = !signoutButton.isHidden
+        loginButton.isHidden = !loginButton.isHidden
+        
+//        scoreBG.alpha = 1.0
+        let label = UILabel(frame: CGRect(
+                                x: scoreBG.frame.origin.x,
+                                y: scoreBG.frame.origin.y,
+                                width: scoreBG.frame.size.width,
+                                height: scoreBG.frame.size.height))
+        label.layer.name = "loginLabel"
+        label.text = "Log in to record score"
+        label.font = UIFont(name: "Zorque-Regular", size: 22.0)
+        label.textColor = UIColor.white
+        label.textAlignment = .center
+        label.layer.position = CGPoint(x: scoreBG.frame.size.width / 2, y: scoreBG.frame.size.height / 2)
+        
+        if scoreBG.subviews.contains(label) {
+            label.removeFromSuperview()
+            self.view.sendSubviewToBack(scoreBG)
+        } else {
+            scoreBG.addSubview(label)
+            self.view.bringSubviewToFront(scoreBG)
         }
     }
     
