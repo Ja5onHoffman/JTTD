@@ -19,6 +19,9 @@ class InitalVC: UIViewController {
     @IBOutlet weak var spacePlow: UILabel!
     @IBOutlet weak var scoreBG: UIView!
     @IBOutlet weak var signoutButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var scoreScreen: UIView!
+    @IBOutlet weak var loginLabel: UILabel!
     
     let loggedInUser = User.sharedInstance
     let fadeSegue = FadeSegueAnimator()
@@ -26,27 +29,28 @@ class InitalVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        try! Auth.auth().signOut()
         NotificationCenter.default.addObserver(self, selector: #selector(popFields(_:)), name: .userLoaded, object: nil)
-        
+//        try! Auth.auth().signOut()
         spacePlow.layer.shadowColor = UIColor.darkGray.cgColor
         spacePlow.layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
         spacePlow.layer.shadowOpacity = 1.0
         scoreBG.layer.cornerRadius = 10.0
-//        scoreBG.layer.zPosition = -1
         scoreLabel.layer.zPosition = 100
         
         startButton.layer.cornerRadius = 5.0
         signoutButton.layer.cornerRadius = 5.0
+        loginButton.layer.cornerRadius = 5.0
+        scoreScreen.layer.cornerRadius = 5.0
         
-//        musicPlayer.startBackgroundMusic("Alex Catana - Speed Of Light")
+        musicPlayer.startBackgroundMusic("Alex Catana - Speed Of Light")
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("VIEWWILLAPPEAR")
         DataService.instance.lastLogin()
         animateShadow()
+        toggleJustPlay()
     }
-    
 
     @IBAction func start(_ sender: Any) {
         
@@ -73,6 +77,39 @@ class InitalVC: UIViewController {
             } catch {
                 print("Error signing out. Provider: \(providerData)")
             }
+        }
+    }
+    
+    @IBAction func login(_ sender: Any) {
+        toggleAuthVC()
+    }
+    
+//    func toggleJustPlay() {
+//        signoutButton.isHidden = !signoutButton.isHidden
+//        loginButton.isHidden = !loginButton.isHidden
+//        scoreScreen.isHidden = !scoreScreen.isHidden
+//        loginLabel.isHidden = !loginLabel.isHidden
+//    }
+    
+    func toggleJustPlay() {
+        
+        if Auth.auth().currentUser != nil {
+            loginButton.isHidden = true
+            scoreScreen.isHidden = true
+            loginLabel.isHidden = true
+            loginButton.isHidden = true
+            signoutButton.isHidden = false
+        } else {
+            scoreScreen.isHidden = false
+            loginLabel.isHidden = false
+            loginButton.isHidden = false
+            signoutButton.isHidden = true
+            self.view.bringSubviewToFront(loginLabel)
+
+            // This works
+            scoreLabel.text = scoreLabel.text?.padding(toLength: 10, withPad: " ", startingAt: 0)
+            playerLabel.text = playerLabel.text?.padding(toLength: 10, withPad: " ", startingAt: 0)
+            lastGameLabel.text = lastGameLabel.text?.padding(toLength: 10, withPad: " ", startingAt: 0)
         }
     }
     
