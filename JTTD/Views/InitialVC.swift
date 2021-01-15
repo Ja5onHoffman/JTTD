@@ -20,6 +20,8 @@ class InitalVC: UIViewController {
     @IBOutlet weak var scoreBG: UIView!
     @IBOutlet weak var signoutButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var scoreScreen: UIView!
+    @IBOutlet weak var loginLabel: UILabel!
     
     let loggedInUser = User.sharedInstance
     let fadeSegue = FadeSegueAnimator()
@@ -38,7 +40,9 @@ class InitalVC: UIViewController {
         startButton.layer.cornerRadius = 5.0
         signoutButton.layer.cornerRadius = 5.0
         loginButton.layer.cornerRadius = 5.0
-//        musicPlayer.startBackgroundMusic("Alex Catana - Speed Of Light")
+        scoreScreen.layer.cornerRadius = 5.0
+        
+        musicPlayer.startBackgroundMusic("Alex Catana - Speed Of Light")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,32 +81,35 @@ class InitalVC: UIViewController {
     }
     
     @IBAction func login(_ sender: Any) {
-        
+        toggleAuthVC()
     }
     
+//    func toggleJustPlay() {
+//        signoutButton.isHidden = !signoutButton.isHidden
+//        loginButton.isHidden = !loginButton.isHidden
+//        scoreScreen.isHidden = !scoreScreen.isHidden
+//        loginLabel.isHidden = !loginLabel.isHidden
+//    }
+    
     func toggleJustPlay() {
-        signoutButton.isHidden = !signoutButton.isHidden
-        loginButton.isHidden = !loginButton.isHidden
         
-//        scoreBG.alpha = 1.0
-        let label = UILabel(frame: CGRect(
-                                x: scoreBG.frame.origin.x,
-                                y: scoreBG.frame.origin.y,
-                                width: scoreBG.frame.size.width,
-                                height: scoreBG.frame.size.height))
-        label.layer.name = "loginLabel"
-        label.text = "Log in to record score"
-        label.font = UIFont(name: "Zorque-Regular", size: 22.0)
-        label.textColor = UIColor.white
-        label.textAlignment = .center
-        label.layer.position = CGPoint(x: scoreBG.frame.size.width / 2, y: scoreBG.frame.size.height / 2)
-        
-        if scoreBG.subviews.contains(label) {
-            label.removeFromSuperview()
-            self.view.sendSubviewToBack(scoreBG)
+        if Auth.auth().currentUser != nil {
+            loginButton.isHidden = true
+            scoreScreen.isHidden = true
+            loginLabel.isHidden = true
+            loginButton.isHidden = true
+            signoutButton.isHidden = false
         } else {
-            scoreBG.addSubview(label)
-            self.view.bringSubviewToFront(scoreBG)
+            scoreScreen.isHidden = false
+            loginLabel.isHidden = false
+            loginButton.isHidden = false
+            signoutButton.isHidden = true
+            self.view.bringSubviewToFront(loginLabel)
+
+            // This works
+            scoreLabel.text = scoreLabel.text?.padding(toLength: 10, withPad: " ", startingAt: 0)
+            playerLabel.text = playerLabel.text?.padding(toLength: 10, withPad: " ", startingAt: 0)
+            lastGameLabel.text = lastGameLabel.text?.padding(toLength: 10, withPad: " ", startingAt: 0)
         }
     }
     
