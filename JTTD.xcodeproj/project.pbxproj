@@ -92,11 +92,12 @@
 		31ED1DAF2274B13C003BBE49 /* MyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ED1DAE2274B13C003BBE49 /* MyUtils.swift */; };
 		31F82B502295BF7C0046CFF4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31F82B4F2295BF7C0046CFF4 /* GoogleService-Info.plist */; };
 		31F881CD25895D1A005DCF2B /* SuperToken.sks in Resources */ = {isa = PBXBuildFile; fileRef = 31F881CC25895D1A005DCF2B /* SuperToken.sks */; };
-		5723CABF08EB8FF5E6848403 /* Pods_JTTD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1929420761F2142F544C3BC8 /* Pods_JTTD.framework */; };
+		FE17982B90EB4855C45D8EC9 /* Pods_JTTD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A27E3EE093A475957F140F0 /* Pods_JTTD.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1929420761F2142F544C3BC8 /* Pods_JTTD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JTTD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A27E3EE093A475957F140F0 /* Pods_JTTD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JTTD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27A607D4FE014544FE5AAF02 /* Pods-JTTD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JTTD.debug.xcconfig"; path = "Target Support Files/Pods-JTTD/Pods-JTTD.debug.xcconfig"; sourceTree = "<group>"; };
 		310C34812534BB37008EA70C /* FadeTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeTransitionAnimator.swift; sourceTree = "<group>"; };
 		31119D9E22958C460097178C /* AuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
 		3114A7E32596124B007D796B /* zorque.regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = zorque.regular.ttf; sourceTree = "<group>"; };
@@ -185,8 +186,7 @@
 		31ED1DAE2274B13C003BBE49 /* MyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyUtils.swift; path = ../../../ZombieConga/ZombieConga/MyUtils.swift; sourceTree = "<group>"; };
 		31F82B4F2295BF7C0046CFF4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		31F881CC25895D1A005DCF2B /* SuperToken.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SuperToken.sks; sourceTree = "<group>"; };
-		378EE55FB09CD9AC1CAEE20A /* Pods-JTTD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JTTD.release.xcconfig"; path = "Pods/Target Support Files/Pods-JTTD/Pods-JTTD.release.xcconfig"; sourceTree = "<group>"; };
-		7ADDD0CE39F93B4B19F724E4 /* Pods-JTTD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JTTD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JTTD/Pods-JTTD.debug.xcconfig"; sourceTree = "<group>"; };
+		B4D635DC8B763404DB8E80D9 /* Pods-JTTD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JTTD.release.xcconfig"; path = "Target Support Files/Pods-JTTD/Pods-JTTD.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,21 +194,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5723CABF08EB8FF5E6848403 /* Pods_JTTD.framework in Frameworks */,
+				FE17982B90EB4855C45D8EC9 /* Pods_JTTD.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		134DB680F089F1746F561EFC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1929420761F2142F544C3BC8 /* Pods_JTTD.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		313C83F1259BBB9D00C484C1 /* Music */ = {
 			isa = PBXGroup;
 			children = (
@@ -344,8 +336,8 @@
 				31A625B2254745B900A48835 /* fonts */,
 				313C83F1259BBB9D00C484C1 /* Music */,
 				31ED1D942274B09D003BBE49 /* Products */,
-				5DE70E2E058076E41074A6AA /* Pods */,
-				134DB680F089F1746F561EFC /* Frameworks */,
+				42C2472DA77A5C792DC9BE72 /* Pods */,
+				BBF367CFBF26981553252B55 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -377,13 +369,21 @@
 			path = JTTD;
 			sourceTree = "<group>";
 		};
-		5DE70E2E058076E41074A6AA /* Pods */ = {
+		42C2472DA77A5C792DC9BE72 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7ADDD0CE39F93B4B19F724E4 /* Pods-JTTD.debug.xcconfig */,
-				378EE55FB09CD9AC1CAEE20A /* Pods-JTTD.release.xcconfig */,
+				27A607D4FE014544FE5AAF02 /* Pods-JTTD.debug.xcconfig */,
+				B4D635DC8B763404DB8E80D9 /* Pods-JTTD.release.xcconfig */,
 			);
-			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BBF367CFBF26981553252B55 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1A27E3EE093A475957F140F0 /* Pods_JTTD.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -393,12 +393,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 31ED1DAB2274B09F003BBE49 /* Build configuration list for PBXNativeTarget "JTTD" */;
 			buildPhases = (
-				7CC65406F249EC93C13C28EC /* [CP] Check Pods Manifest.lock */,
+				A3AB80854CD5B95D836E8C97 /* [CP] Check Pods Manifest.lock */,
 				31ED1D8F2274B09D003BBE49 /* Sources */,
 				31ED1D902274B09D003BBE49 /* Frameworks */,
 				31ED1D912274B09D003BBE49 /* Resources */,
-				795B9352615C6C8AD6820E4B /* [CP] Embed Pods Frameworks */,
-				930B102FC0DDF79729D31CB1 /* [CP] Copy Pods Resources */,
+				E330D6691445B63E2049B580 /* [CP] Embed Pods Frameworks */,
+				EA9D01965BEE6549E0708A45 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -507,7 +507,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		795B9352615C6C8AD6820E4B /* [CP] Embed Pods Frameworks */ = {
+		A3AB80854CD5B95D836E8C97 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JTTD-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E330D6691445B63E2049B580 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -524,25 +546,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JTTD/Pods-JTTD-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7CC65406F249EC93C13C28EC /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-JTTD-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		930B102FC0DDF79729D31CB1 /* [CP] Copy Pods Resources */ = {
+		EA9D01965BEE6549E0708A45 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -659,6 +663,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -676,7 +681,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -720,6 +725,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -740,45 +746,47 @@
 		};
 		31ED1DAC2274B09F003BBE49 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7ADDD0CE39F93B4B19F724E4 /* Pods-JTTD.debug.xcconfig */;
+			baseConfigurationReference = 27A607D4FE014544FE5AAF02 /* Pods-JTTD.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XU5AWAYW87;
 				EXCLUDED_ARCHS = "";
-				"EXCLUDED_ARCHS[sdk=*]" = arm64;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = JTTD/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = JHM.SpacePlow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		31ED1DAD2274B09F003BBE49 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 378EE55FB09CD9AC1CAEE20A /* Pods-JTTD.release.xcconfig */;
+			baseConfigurationReference = B4D635DC8B763404DB8E80D9 /* Pods-JTTD.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XU5AWAYW87;
 				EXCLUDED_ARCHS = "";
-				"EXCLUDED_ARCHS[sdk=*]" = arm64;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = JTTD/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = JHM.SpacePlow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

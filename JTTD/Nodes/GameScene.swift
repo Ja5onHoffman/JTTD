@@ -77,7 +77,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         })
         
         gameOver(gameScore)
-//        musicPlayer.startBackgroundMusic("Vibra-Space")
+        musicPlayer.startBackgroundMusic("Vibra-Space")
     }
 
     // MARK: Collisions
