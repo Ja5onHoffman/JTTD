@@ -9,10 +9,10 @@ class GameVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let skView = self.view as! SKView? {
-            skView.showsFPS = true
-            skView.showsNodeCount = true
+//            skView.showsFPS = true
+//            skView.showsNodeCount = true
 //            skView.ignoresSiblingOrder = true
-            skView.showsPhysics = true
+//            skView.showsPhysics = true
             if let scene = SKScene(fileNamed: "GameScene") {
                 scene.size = CGSize(width: 1125, height: 2436)
                 scene.scaleMode = .aspectFill

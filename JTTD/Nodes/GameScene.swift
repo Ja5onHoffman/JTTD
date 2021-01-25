@@ -76,7 +76,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         })
         
-        gameOver(gameScore)
         musicPlayer.startBackgroundMusic("Vibra-Space")
     }
 
@@ -242,7 +241,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         baseBar.position = CGPoint(x: 0, y: -(size.height / 2) + 110)
         fgNode.addChild(baseBar)
         
-        drawBorder()
+//        drawBorder()
         laser = Laser()
     
     }
@@ -391,7 +390,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // FIXME: Crashes when ship hits meteor that's already exploding
     func emitParticles(name: String, sprite: SKSpriteNode) {
-        let pos = fgNode.convert(sprite.position, from: sprite.parent!)
+        
+        guard let p = sprite.parent else { return }
+        let pos = fgNode.convert(sprite.position, from: p)
         let particles = SKEmitterNode(fileNamed: name)!
         particles.position = pos
         particles.zPosition = 3
@@ -512,11 +513,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         lastUpdateTime = currentTime
         shipOne.lastUpdateTime = currentTime
-    }
-    
-    
-    func printSTV() {
-        print("STV: \(superTokenVisible)")
     }
 
     deinit {

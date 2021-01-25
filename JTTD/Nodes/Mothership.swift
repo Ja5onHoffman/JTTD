@@ -51,7 +51,7 @@ class Mothership: SKSpriteNode, EventListenerNode {
         physicsBody?.categoryBitMask = PhysicsCategory.Mother
         physicsBody?.collisionBitMask = PhysicsCategory.None
         physicsBody?.contactTestBitMask = PhysicsCategory.Meteor
-        drawBorder()
+//        drawBorder()
     }
     
     func didMoveToScene() {

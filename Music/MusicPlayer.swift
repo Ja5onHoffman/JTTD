@@ -38,7 +38,7 @@ class MusicPlayer: SKNode {
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf:backgroundMusic as URL)
                 guard let audioPlayer = audioPlayer else { return }
-                audioPlayer.setVolume(0.7, fadeDuration: 1.0)
+                audioPlayer.setVolume(0.1, fadeDuration: 1.0)
                 audioPlayer.numberOfLoops = -1
                 audioPlayer.prepareToPlay()
                 audioPlayer.play()
@@ -69,20 +69,24 @@ class MusicPlayer: SKNode {
     
     func shipExplosion(_ node: SKNode, atPosition position: CGPoint) {
         let explosion = SKAudioNode(fileNamed: "Thunderous Explosive.wav")
-        explosion.isPositional = true
+//        explosion.isPositional = true
         explosion.autoplayLooped = false
         explosion.position = position
+        let vol = SKAction.changeVolume(to: 1.0, duration: 1.0)
+        let group = SKAction.group([vol, SKAction.play()])
         node.addChild(explosion)
-        explosion.run(SKAction.play())
+        explosion.run(group)
     }
     
     func beamSound(_ node: SKNode) {
         let beam = SKAudioNode(fileNamed: "Sci-Fi Static Electricity Loop 1.wav")
+        let vol = SKAction.changeVolume(to: 10.0, duration: 3.0)
         beam.isPositional = true
         beam.autoplayLooped = false
         beam.position = node.position
         node.addChild(beam)
-        beam.run(SKAction.play())
+        let play = SKAction.group([vol, SKAction.play()])
+        beam.run(play)
     }
     
     // TODO: Speed this up
