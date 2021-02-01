@@ -16,8 +16,8 @@ class GameOverVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let skView = self.view as! SKView? {
-            skView.showsFPS = true
-            skView.showsNodeCount = true
+//            skView.showsFPS = true
+//            skView.showsNodeCount = true
 //            skView.ignoresSiblingOrder = true
 //            skView.showsPhysics = true
             if let scene = SKScene(fileNamed: "GameOver") {

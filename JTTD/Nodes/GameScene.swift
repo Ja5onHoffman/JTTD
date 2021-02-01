@@ -103,16 +103,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let meteor = contact.bodyA.node as! Meteor
                 scoreBubble(meteor.score, meteor.position)
                 ship.shipHit()
-                gameScore += meteor.score
-                scoreDisplay.text = "\(gameScore)"
+//                gameScore += meteor.score
+//                scoreDisplay.text = "\(gameScore)"
+                incrementScore(by: meteor.score)
             } else {
                 explode(node: contact.bodyB.node as! SKSpriteNode, time: TimeInterval(contact.bodyA.node!.frame.size.width / 500))
                 let ship = contact.bodyA.node as! TestShip
                 let meteor = contact.bodyB.node as! Meteor
                 scoreBubble(meteor.score, meteor.position)
                 ship.shipHit()
-                gameScore += meteor.score
-                scoreDisplay.text = "\(gameScore)"
+//                gameScore += meteor.score
+//                scoreDisplay.text = "\(gameScore)"
+                incrementScore(by: meteor.score)
+
             }
             
             
@@ -344,6 +347,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fgNode.addChild(dot)
     }
     
+    
+    // counting effect
+    // put on different thread to delay
+    func incrementScore(by score: Int) {
+        gameScore += score
+        var disp = Int(scoreDisplay.text!)!
+        while disp < gameScore {
+            disp += 1
+            UIView.animate(withDuration: 0.1) {
+                self.scoreDisplay.text = String(disp)
+            }
+        }
+        
+    }
     
 // MARK: Game Over
     func gameOver(_ score: Int) {
